@@ -14,7 +14,7 @@ export default function reducer(state = initialState, { type, payload }) {
         case GET_NAME_PRODUCT:
             return {
                 ...state,
-                dogs: payload
+                product: payload
             }
 
             default: return state
