@@ -31,8 +31,8 @@ export function getProducts() {
                 type: GET_PRODUCTS,
                 payload: json.data
             })
-        } catch (e) {
-            return e
+        } catch (error) {
+            return error;
         }
     }
 }

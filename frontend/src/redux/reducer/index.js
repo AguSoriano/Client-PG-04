@@ -1,5 +1,6 @@
 import {
     GET_NAME_PRODUCT,
+    GET_PRODUCTS
 } from "../actions/ActionsTypes";
 
 
@@ -15,6 +16,13 @@ export default function reducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 product: payload
+            }
+
+            case GET_PRODUCTS:
+            return {
+                ...state,
+                product: payload,
+
             }
 
             default: return state
