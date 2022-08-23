@@ -20,16 +20,19 @@ function SearchBar() {
          alert('There is not product with that name');
       }
     });
+    setName("")
   }
 
   return (
     <div>
+        <form>
       <input
       type = 'text'
       placeholder='Search...'
       onChange = {(e) => handleInputChange(e)}
       />
       <button type='submit' onClick={(e) => handleSubmit(e)}>Search</button>
+      </form>
       </div>
   )
 };
