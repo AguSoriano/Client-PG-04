@@ -1,0 +1,1 @@
+export const GET_NAME_DOGS = "GET_NAME_DOGS";
