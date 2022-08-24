@@ -1,20 +1,25 @@
-import React from 'react';
+import React from "react";
+import { Card } from "antd";
 
+const { Meta } = Card;
 
-function Card({name, id, img, price, stock, shortDesc}) {
-  name = "Celular"
-  stock= 5
-  price= 123
-  shortDesc= "Esta es una prueba para ver como queda"
+function CardP({ name, id, img, price, stock, shortDesc }) {
+  name = "Celular";
+  stock = 5;
+  price = 123;
+  shortDesc = "Esta es una prueba para ver como queda";
+  let newP = `$ ${price}`;
   return (
     <div>
-      <h1>{name}</h1>
-      <img alt={name} src={img}/>
-      <h2>$ {price}</h2>
-      <h3>{stock} unidades</h3>
-      <p>{shortDesc}</p>
+      <Card
+        hoverable
+        style={{ width: 240 }}
+        cover={<img alt={name} src={img} />}
+      >
+        <Meta title={price} description={shortDesc} />
+      </Card>
     </div>
-  )
+  );
 }
 
-export default Card
+export default CardP;
