@@ -3,9 +3,11 @@ import {
 
     GET_NAME_PRODUCT,
     GET_PRODUCTS,
-    ORDER_ALPHABETICAL
+    ORDER_ALPHABETICAL,
+    ORDER_PRICE
 
 } from "./ActionsTypes";
+
 
 export function getNameProduct(name) {
     return async function (dispatch) {
@@ -46,5 +48,12 @@ export function OrderAlphabetical(payload) {
         }
     } catch (error) {
         return error
+    }
+};
+
+export function OrderPrice(payload) {
+    return {
+        type: ORDER_PRICE,
+        payload
     }
 };

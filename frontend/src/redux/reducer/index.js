@@ -2,7 +2,8 @@ import {
 
     GET_NAME_PRODUCT,
     GET_PRODUCTS,
-    ORDER_ALPHABETICAL
+    ORDER_ALPHABETICAL,
+    ORDER_PRICE
 
 } from "../actions/ActionsTypes";
 
@@ -54,6 +55,16 @@ export default function reducer(state = initialState, { type, payload }) {
                 ...state,
                 product: sortedName,
 
+            };
+
+            case ORDER_PRICE:
+            const sortedPrice =
+                payload === "min_price"
+                    ? state.product.sort((a, b) => parseInt(a.price) - parseInt(b.price))
+                    : state.product.sort((a, b) => parseInt(b.price) - parseInt(a.price))
+            return {
+                ...state,
+                product: sortedPrice,
             };
 
         default: return state
