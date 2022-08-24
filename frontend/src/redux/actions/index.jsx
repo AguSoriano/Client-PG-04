@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
 
     GET_NAME_PRODUCT,
-    GET_PRODUCTS
+    GET_PRODUCTS,
+    ORDER_ALPHABETICAL
 
 } from "./ActionsTypes";
 
@@ -36,3 +37,14 @@ export function getProducts() {
         }
     }
 }
+
+export function OrderAlphabetical(payload) {
+    try {
+        return {
+            type: ORDER_ALPHABETICAL,
+            payload
+        }
+    } catch (error) {
+        return error
+    }
+};
