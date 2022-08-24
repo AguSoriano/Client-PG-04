@@ -1,6 +1,9 @@
 import {
+
     GET_NAME_PRODUCT,
-    GET_PRODUCTS
+    GET_PRODUCTS,
+    ORDER_ALPHABETICAL
+
 } from "../actions/ActionsTypes";
 
 
@@ -18,13 +21,41 @@ export default function reducer(state = initialState, { type, payload }) {
                 product: payload
             }
 
-            case GET_PRODUCTS:
+        case GET_PRODUCTS:
             return {
                 ...state,
                 product: payload,
 
             }
+            
+        case ORDER_ALPHABETICAL:
 
-            default: return state
+            const sortedName =
+                payload === "A-Z"
+                    ? state.product.sort((a, b) => {
+                        if (a.name > b.name) {
+                            return 1;
+                        }
+                        if (b.name > a.name) {
+                            return -1;
+                        }
+                        return 0;
+                    })
+                    : state.product.sort((a, b) => {
+                        if (a.name > b.name) {
+                            return -1;
+                        }
+                        if (b.name > a.name) {
+                            return 1;
+                        }
+                        return 0;
+                    });
+            return {
+                ...state,
+                product: sortedName,
+
+            };
+
+        default: return state
     }
 }
