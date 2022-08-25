@@ -3,11 +3,11 @@ import { Card } from "antd";
 
 const { Meta } = Card;
 
-function CardP({ name, id, img, price, stock, shortDesc }) {
-  name = "Celular";
-  stock = 5;
-  price = 123;
-  shortDesc = "Esta es una prueba para ver como queda";
+function CardP({ name, id, img, price, shortDesc }) {
+  // name = "Celular";
+  // stock = 5;
+  // price = 123;
+  // shortDesc = "Esta es una prueba para ver como queda";
   let newP = `$ ${price}`;
   return (
     <div>
@@ -16,7 +16,7 @@ function CardP({ name, id, img, price, stock, shortDesc }) {
         style={{ width: 240 }}
         cover={<img alt={name} src={img} />}
       >
-        <Meta title={price} description={shortDesc} />
+        <Meta title={newP} description={shortDesc} />
       </Card>
     </div>
   );
