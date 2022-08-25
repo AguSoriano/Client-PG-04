@@ -3,7 +3,7 @@ import {
   GET_PRODUCTS,
   ORDER_ALPHABETICAL,
   ORDER_PRICE,
-} from "../actions/ActionsTypes";
+} from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
 const initialState = {
