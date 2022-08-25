@@ -4,8 +4,9 @@ import {
   GET_PRODUCTS,
   ORDER_ALPHABETICAL,
   ORDER_PRICE,
-} from "./ActionsTypes";
+} from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
+import { products } from "../../DB/db";
 
 export function getNameProduct(name) {
   return async function (dispatch) {
@@ -26,11 +27,12 @@ export function getNameProduct(name) {
 export function getProducts() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("path get/products", {});
+      // let json = await axios.get("path get/products", {});
 
       return dispatch({
         type: GET_PRODUCTS,
-        payload: json.data,
+        // payload: json.data,
+        payload: products,
       });
     } catch (error) {
       return error;
