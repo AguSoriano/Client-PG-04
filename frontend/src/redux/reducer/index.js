@@ -31,7 +31,7 @@ export default function reducer(state = initialState, { type, payload }) {
       case GET_PRODUCT_BY_CATEGORY:
             return {
                 ...state,
-                categories: action.payload,
+                categories: payload,
             }
 
     case ORDER_ALPHABETICAL:
