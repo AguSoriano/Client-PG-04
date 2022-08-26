@@ -4,6 +4,7 @@ import {
   GET_PRODUCTS,
   ORDER_ALPHABETICAL,
   ORDER_PRICE,
+  GET_PRODUCT_BY_CATEGORY
 } from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
 import { products } from "../../DB/db";
@@ -40,6 +41,16 @@ export function getProducts() {
   };
 }
 
+export function getProductByCategory(categoryName) {
+    return function (dispatch) {
+        return axios.get(`/products/category/${categoryName}`)
+            .then(products => {
+                dispatch({ type: GET_PRODUCT_BY_CATEGORY, payload: products.data });
+            })
+            .catch(err => console.log(err))
+    };
+}
+
 export function OrderAlphabetical(payload) {
   try {
     return {
@@ -72,3 +83,5 @@ export const getDetail = () => {
     }
   };
 };
+
+
