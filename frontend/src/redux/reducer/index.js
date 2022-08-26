@@ -3,12 +3,14 @@ import {
   GET_PRODUCTS,
   ORDER_ALPHABETICAL,
   ORDER_PRICE,
+  GET_PRODUCT_BY_CATEGORY
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
 const initialState = {
   product: [],
   prodDetail: [],
+  categories: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -25,6 +27,12 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         product: payload,
       };
+
+      case GET_PRODUCT_BY_CATEGORY:
+            return {
+                ...state,
+                categories: action.payload,
+            }
 
     case ORDER_ALPHABETICAL:
       const sortedName =
