@@ -23,6 +23,9 @@ function Detail() {
         <div>
           <h1>{product.name}</h1>
           <img alt={product.name} src={product.image} />
+          {product.categories.map((cat) => (
+            <p key={cat.id}>{cat.name}</p>
+          ))}
           <p>{product.longDescription}</p>
           <section>
             <p>Stock disponible</p>
