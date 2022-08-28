@@ -1,23 +1,22 @@
 import React from "react";
 import { Card } from "antd";
+import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 
 function CardP({ name, id, img, price, shortDesc }) {
-  // name = "Celular";
-  // stock = 5;
-  // price = 123;
-  // shortDesc = "Esta es una prueba para ver como queda";
   let newP = `$ ${price}`;
   return (
     <div>
-      <Card
-        hoverable
-        style={{ width: 240 }}
-        cover={<img alt={name} src={img} />}
-      >
-        <Meta title={newP} description={shortDesc} />
-      </Card>
+      <Link to={`/products/${id}`}>
+        <Card
+          hoverable
+          style={{ width: 240 }}
+          cover={<img alt={name} src={img} />}
+        >
+          <Meta title={newP} description={shortDesc} />
+        </Card>
+      </Link>
     </div>
   );
 }
