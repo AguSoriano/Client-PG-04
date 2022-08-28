@@ -6,6 +6,7 @@ import {
   ORDER_PRICE,
   GET_PRODUCT_BY_CATEGORY,
   GET_CATEGORIES,
+  CLEAN_DETAIL,
 } from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
 // import { products } from "../../DB/db";
@@ -95,5 +96,12 @@ export const getDetail = (id) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const cleanDetail = () => {
+  return {
+    type: CLEAN_DETAIL,
+    payload: {},
   };
 };
