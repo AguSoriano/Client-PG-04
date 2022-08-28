@@ -1,0 +1,23 @@
+.footer {
+    width: 100%;
+    color: rgb(175, 166, 166);
+    display: flex;
+}
+
+.site_footer {
+    display: column;
+    padding: 2rem ;
+}
+
+.site_footer .copyright{
+    font-size: 0.8rem;
+}
+
+.redes_sociales{
+    padding: 1rem 0 0 0;
+    font-size: 1rem;
+}
+
+.redes_sociales img{
+    width: 30px;
+}
