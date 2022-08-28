@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import Card from "../Card/Card";
+import Footer from "../Footer/Footer"
 import * as ReactRedux from "react-redux";
 import { getProducts } from "../../redux/actions";
 
@@ -27,7 +28,11 @@ function Home() {
             />
           ))
         : "Loading..."}
+        <Footer />
     </div>
+    
+    
+    
   );
 }
 
