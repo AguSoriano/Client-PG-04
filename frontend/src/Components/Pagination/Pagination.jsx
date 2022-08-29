@@ -2,7 +2,7 @@ import React from "react";
 
 function Pagination({ page, setPage, products }) {
   const numbers = [];
-  for (let i = 0; i < products.length / 10; i++) {
+  for (let i = 0; i < products.length / 6; i++) {
     numbers.push(i);
   }
 
@@ -10,28 +10,28 @@ function Pagination({ page, setPage, products }) {
     if (number === 0) {
       return setPage(0);
     }
-    setPage(10 * number);
+    setPage(6 * number);
   };
 
   const actualPage = (num) => {
-    if (page / 10 === num ) {
+    if (page / 6 === num) {
       return "red";
     }
   };
 
   const next = () => {
-    if (page < products.length - 10) {
-      setPage(page + 10);
+    if (page < products.length - 6) {
+      setPage(page + 6);
     }
   };
 
   const prev = () => {
     if (page > 0) {
-      setPage(page - 10);
+      setPage(page - 6);
     }
   };
   return (
-    <div >
+    <div>
       <button onClick={prev}>Previous</button>
       {numbers.length &&
         numbers.map((num, i) => (
