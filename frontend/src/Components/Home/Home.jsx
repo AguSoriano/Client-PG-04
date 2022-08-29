@@ -8,6 +8,7 @@ import Sort from "../Sort/Sort";
 import Pagination from "../Pagination/Pagination";
 import img from "../Img/PG0.png";
 import style from "./Home.module.css";
+import Loading from "../Loading/Loading";
 
 function Home() {
   const dispatch = ReactRedux.useDispatch();
@@ -45,7 +46,7 @@ function Home() {
                 shortDesc={prod.shortDescription}
               />
             ))
-          : "Loading..."}
+          : <Loading/>}
       </section>
       <section>
         {products.length > 1 ? (
