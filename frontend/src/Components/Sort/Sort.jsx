@@ -11,7 +11,7 @@ function Sort({ setOrder, setPage }) {
     e.preventDefault();
     dispatch(OrderAlphabetical(e.target.value));
     setOrder(e.target.value);
-    setPage(1);
+    setPage(0);
   }
 
   function handleSortByPrice(e) {
