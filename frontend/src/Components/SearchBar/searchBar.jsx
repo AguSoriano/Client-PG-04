@@ -25,7 +25,7 @@ function SearchBar() {
 
   return (
     <div className={style.buscar}>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
           placeholder="Search..."
