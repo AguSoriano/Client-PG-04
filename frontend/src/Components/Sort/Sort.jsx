@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import style from "./Sort.module.css";
 
 import { OrderAlphabetical, OrderPrice } from "../../redux/actions";
 
@@ -20,9 +21,8 @@ function Sort({ setOrder, setPage }) {
   }
 
   return (
-    <div>
-      {/* <h2> Sort </h2> */}
-      <div>
+    <div className={style.sort}>
+      <section>
         <select onChange={(e) => handleSort(e)}>
           <option value="order"> ALFABÉTICO </option>
           <option value="A-Z"> Ascendente </option>
@@ -33,7 +33,7 @@ function Sort({ setOrder, setPage }) {
           <option value="min_price"> Menor precio </option>
           <option value="max_price"> Mayor precio </option>
         </select>
-      </div>
+      </section>
     </div>
   );
 }

@@ -5,7 +5,7 @@
 }
 
 .site_footer {
-    display: column;
+    display: flex;
     padding: 2rem ;
 }
 
