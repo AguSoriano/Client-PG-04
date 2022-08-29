@@ -15,7 +15,7 @@ export function getNameProduct(name) {
   return async function (dispatch) {
     try {
       const json = await axios.get(
-        `https://pf-api-04.up.railway.app/products${name}`
+        `https://pf-api-04.up.railway.app/products?name=${name}`
       );
       return dispatch({
         type: GET_NAME_PRODUCT,
