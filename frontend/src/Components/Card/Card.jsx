@@ -11,10 +11,10 @@ function CardP({ name, id, img, price, shortDesc }) {
       <Link to={`/products/${id}`}>
         <Card
           hoverable
-          style={{ width: 240 }}
+          style={{ width: 375, height: 450 }}
           cover={<img alt={name} src={img} />}
         >
-          <Meta title={newP} description={shortDesc} />
+          <Meta title={newP} description={shortDesc} style={{justifyContent: "center", marginTop: "2rem"}}/>
         </Card>
       </Link>
     </div>
