@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import * as ReactRedux from "react-redux";
 import { useParams } from "react-router-dom";
 import { cleanDetail, getDetail } from "../../redux/actions";
+import Loading from "../Loading/Loading";
 import img from "../Img/PG0.png";
 
 function Detail() {
@@ -52,7 +53,7 @@ function Detail() {
           </section>
         </div>
       ) : (
-        "Loading.."
+        <Loading/>
       )}
     </div>
   );
