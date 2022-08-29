@@ -1,13 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
+import * as ReactRedux from "react-redux";
+import { filterBy, getCategories } from "../../redux/actions";
 
+function Filter() {
+  const dispatch = ReactRedux.useDispatch();
 
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
-function Filter (){ 
-    return (
-        <div>
-        <p> filtrar productos</p>
-        </div>
-    )
+  const categories = ReactRedux.useSelector((state) => state.categories);
+
+  const handleSelect = (e) => {
+    e.preventDefault(e);
+    dispatch(filterBy(e.target.value));
+  };
+
+  return (
+    <select onChange={(e) => handleSelect(e)}>
+      <option value="all">Categorias</option>
+      {categories.length > 1 ? (
+        categories.map((cat) => (
+          <option value={cat.name} key={cat.id}>
+            {cat.name.toUpperCase()}
+          </option>
+        ))
+      ) : (
+        <option>Sin Registros</option>
+      )}
+    </select>
+  );
 }
 
-export default Filter
+export default Filter;

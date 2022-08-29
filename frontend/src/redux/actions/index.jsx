@@ -7,6 +7,7 @@ import {
   GET_PRODUCT_BY_CATEGORY,
   GET_CATEGORIES,
   CLEAN_DETAIL,
+  FILTER_BY,
 } from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
 // import { products } from "../../DB/db";
@@ -103,5 +104,12 @@ export const cleanDetail = () => {
   return {
     type: CLEAN_DETAIL,
     payload: {},
+  };
+};
+
+export const filterBy = (category) => {
+  return {
+    type: FILTER_BY,
+    payload: category,
   };
 };

@@ -6,11 +6,13 @@ import {
   GET_PRODUCT_BY_CATEGORY,
   GET_CATEGORIES,
   CLEAN_DETAIL,
+  FILTER_BY,
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
 const initialState = {
   product: [],
+  productCopy: [],
   prodDetail: {},
   categories: [],
 };
@@ -28,6 +30,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         product: payload,
+        productCopy: payload,
       };
 
     case GET_CATEGORIES:
@@ -89,7 +92,17 @@ export default function reducer(state = initialState, { type, payload }) {
         prodDetail: payload,
       };
     }
-
+    case FILTER_BY: {
+      return {
+        ...state,
+        product:
+          payload === "all"
+            ? state.productCopy
+            : state.productCopy.filter((prod) =>
+                prod.categories.some((cat) => cat.name === payload)
+              ),
+      };
+    }
     default:
       return state;
   }
