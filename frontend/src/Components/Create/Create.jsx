@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
-import { traerCategory } from "../../actions";
+import { getCategories } from "../../redux/actions";
 import style from "./Create.module.css";
 
 function Create() {
   const dispatch = ReactRedux.useDispatch();
 
   useEffect(() => {
-    dispatch(traerCategory());
+    dispatch(getCategories());
   }, [dispatch]);
 
-  const todasCategory = ReactRedux.useSelector((state) => state.category);
-  todasCategory.sort((a, b) =>
-    a.nombre < b.nombre ? -1 : +(a.nombre > b.nombre)
-  );
+  const allCategory = ReactRedux.useSelector((state) => state.categories);
 
   const validador = (input) => {
     let noNumero = /^[A-Za-z]+$/;
@@ -30,11 +27,11 @@ function Create() {
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: "",
-    ShortDescription: "",
-    Description: "",
+    shortDescription: "",
+    description: "",
     stock: 0,
-    Prise: 0,
-    Category: [],
+    price: 0,
+    category: [],
   });
 
   const handleInputChange = (evento) => {
@@ -58,11 +55,11 @@ function Create() {
     console.log(e.target.value);
     setInput({
       ...input,
-      Category: input.Category.filter((p) => p !== e.target.value),
+      category: input.category.filter((p) => p !== e.target.value),
     });
   };
 
-  console.log(input.Category);
+  console.log(input.category);
 
   const handleSelect = (evento) => {
     evento.preventDefault();
@@ -71,13 +68,13 @@ function Create() {
       setErrors(
         validador({
           ...input,
-          Category: [...input.Category, evento.target.value],
+          category: [...input.category, evento.target.value],
         })
       );
 
       setInput({
         ...input,
-        Category: [...input.Category, evento.target.value],
+        category: [...input.category, evento.target.value],
       });
     } else {
       alert(validoSelect(input, evento.target.value));
@@ -102,27 +99,39 @@ function Create() {
           />
           {errors.name && <p className={style.errors}>{errors.name}</p>}
           <label>description corta</label>
-          <select
+          <input
             name="shortDescription"
+            value={input.shortDescription}
+            type="textarea"
             onChange={(e) => handleInputChange(e)}
-          >
-            <option value={1}>1</option>
-          </select>
+          />
           <label>description</label>
-          <select
+          <input
             name="description"
+            value={input.description}
+            type="textarea"
             onChange={(e) => handleInputChange(e)}
-          ></select>
+          />
           <label>stock</label>
-          <select name="stock" onChange={(e) => handleInputChange(e)}></select>
+          <input
+            name="stock"
+            value={input.stock}
+            type="number"
+            onChange={(e) => handleInputChange(e)}
+          />
           <label>price</label>
-          <select name="price" onChange={(e) => handleInputChange(e)}></select>
+          <input
+            name="price"
+            value={input.price}
+            type="number"
+            onChange={(e) => handleInputChange(e)}
+          />
         </section>
         <section>
           <label>category</label>
           <select onChange={(e) => handleSelect(e)}>
             <option></option>
-            {todasCategory.map((p, i) => (
+            {allCategory.map((p, i) => (
               <option key={i} value={p.name}>
                 {p.name.toUpperCase()}
               </option>
