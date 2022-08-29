@@ -7,6 +7,7 @@ import {
   CarouselCaption
 } from 'reactstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
+import style from "./Carousel.module.css"
 
 const items = [
   {
@@ -71,11 +72,12 @@ class App extends Component {
     const slides = items.map((item) => {
       return (
         <CarouselItem
+      
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={item.src}
         >
-          <img src={item.src} alt={item.altText} width="50%" height="500px" />
+          <img  className={style.ig} src={item.src} alt={item.altText} width="40%" height="300px" />
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
@@ -83,11 +85,12 @@ class App extends Component {
 
     return (
       <Carousel
+      className={style.img}
         activeIndex={activeIndex}
         next={this.next}
         previous={this.previous}
       >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        <CarouselIndicators  items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
