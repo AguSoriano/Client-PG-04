@@ -15,3 +15,7 @@
   justify-content: space-evenly;
   width: 100%;
 }
+
+.search{
+  align-items:left;
+}
