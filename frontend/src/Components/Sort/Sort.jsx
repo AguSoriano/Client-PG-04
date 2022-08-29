@@ -1,28 +1,18 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import {
-  getProducts,
-  OrderAlphabetical,
-  OrderPrice,
-} from "../../redux/actions";
+import { OrderAlphabetical, OrderPrice } from "../../redux/actions";
 
-function Sort() {
+function Sort({ setOrder, setPage }) {
   const dispatch = useDispatch();
-  const allProducts = useSelector((state) => state.product);
-  const [order, setOrder] = useState("");
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
 
   function handleSort(e) {
     e.preventDefault();
     dispatch(OrderAlphabetical(e.target.value));
     setOrder(e.target.value);
-    //  setPage(1);
+    setPage(1);
   }
+
   function handleSortByPrice(e) {
     e.preventDefault();
     dispatch(OrderPrice(e.target.value));
@@ -31,7 +21,7 @@ function Sort() {
 
   return (
     <div>
-      <h2> Sort </h2>
+      {/* <h2> Sort </h2> */}
       <div>
         <select onChange={(e) => handleSort(e)}>
           <option value="order"> ALFABÉTICO </option>
