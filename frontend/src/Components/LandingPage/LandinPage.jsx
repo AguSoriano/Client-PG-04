@@ -1,12 +1,16 @@
 import React from "react";
+import Carousel from "../Carousel/Corousel"
 
 
-function LandingPage () {
-    return(
-        <div> 
-            Hello World 
-             SOY UNA FUTURA LANDING PAGE 
-         </div>
+function LandingPage() {
+    return (
+        <div>
+            <div padding="50px">
+                <Carousel />
+            </div>
+        </div>
+
+
     )
 }
 export default LandingPage;

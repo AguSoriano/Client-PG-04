@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import * as ReactRedux from "react-redux";
 import { useParams } from "react-router-dom";
 import { cleanDetail, getDetail } from "../../redux/actions";
-import img from "../Img/Logo1.png";
+import img from "../Img/PG0.png";
 
 function Detail() {
   const { id } = useParams();
