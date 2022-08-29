@@ -6,7 +6,7 @@ import * as ReactRedux from "react-redux";
 import { getProducts } from "../../redux/actions";
 import Sort from "../Sort/Sort";
 import Pagination from "../Pagination/Pagination";
-import img from "../Img/Logo1.png";
+import img from "../Img/PG0.png";
 
 function Home() {
   const dispatch = ReactRedux.useDispatch();
