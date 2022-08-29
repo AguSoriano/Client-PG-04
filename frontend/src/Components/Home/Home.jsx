@@ -7,6 +7,7 @@ import { getProducts } from "../../redux/actions";
 import Sort from "../Sort/Sort";
 import Pagination from "../Pagination/Pagination";
 import img from "../Img/PG0.png";
+import style from "./Home.module.css";
 
 function Home() {
   const dispatch = ReactRedux.useDispatch();
@@ -22,13 +23,7 @@ function Home() {
   const prodPage = products.slice(page, page + 6);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-      }}
-    >
+    <div className={style.main}>
       <section>
         {products.length > 1 ? (
           <Sort setOrder={setOrder} setPage={setPage} />
@@ -36,15 +31,8 @@ function Home() {
           <div></div>
         )}
       </section>
-      <section
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          marginTop: "4rem",
-          marginLeft: "8rem",
-          gap: "2rem",
-        }}
-      >
+
+      <section className={style.prodSection}>
         {products.length > 1
           ? prodPage.map((prod) => (
               <Card

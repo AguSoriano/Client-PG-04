@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.prodSection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 4rem;
+  margin-left: 8rem;
+  gap: 2rem;
+}
