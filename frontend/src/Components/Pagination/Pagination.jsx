@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./Pagination.module.css";
 
 function Pagination({ page, setPage, products }) {
   const numbers = [];
@@ -15,7 +16,10 @@ function Pagination({ page, setPage, products }) {
 
   const actualPage = (num) => {
     if (page / 6 === num) {
-      return "red";
+      return {
+        backgroundColor: "grey",
+        fontWeight: "bold",
+      };
     }
   };
 
@@ -31,14 +35,15 @@ function Pagination({ page, setPage, products }) {
     }
   };
   return (
-    <div>
-      <button onClick={prev}>Previous</button>
+    <div className={style.mainP}>
+      <button onClick={prev}>Prev</button>
       {numbers.length &&
         numbers.map((num, i) => (
           <button
             key={i}
             onClick={() => goTo(num)}
-            style={{ backgroundColor: actualPage(num) }}
+            style={actualPage(num)}
+            className={style.numbers}
           >
             {num + 1}
           </button>

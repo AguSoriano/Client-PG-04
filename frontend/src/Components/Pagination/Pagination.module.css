@@ -1,0 +1,16 @@
+.mainP{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 4px;
+}
+
+.mainP > button {
+  background-color: white;
+  border: 0.01px solid grey;
+}
+
+.numbers {
+  width: 2.5rem;
+  height: 2.5rem;
+}
