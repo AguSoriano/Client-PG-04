@@ -8,6 +8,7 @@ import {
   CLEAN_DETAIL,
   FILTER_BY,
   SET_PAGE,
+  WEEK_PROD,
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
@@ -17,6 +18,7 @@ const initialState = {
   prodDetail: {},
   categories: [],
   page: 0,
+  weekProd: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -109,6 +111,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         page: payload,
+      };
+    }
+    case WEEK_PROD: {
+      return {
+        ...state,
+        weekProd: payload,
       };
     }
     default:
