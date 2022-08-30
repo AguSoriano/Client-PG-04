@@ -6,7 +6,7 @@ import * as ReactRedux from "react-redux";
 import { getProducts } from "../../redux/actions";
 import Sort from "../Sort/Sort";
 import Pagination from "../Pagination/Pagination";
-import img from "../Img/PG0.png";
+import img from "../Img/Logo1V2.png";
 import style from "./Home.module.css";
 import Loading from "../Loading/Loading";
 
@@ -41,7 +41,7 @@ function Home() {
               key={prod.id}
               id={prod.id}
               name={prod.name}
-              img={prod.image}
+              img={prod.image ? prod.image : img}
               price={prod.price}
               stock={prod.stock}
               shortDesc={prod.shortDescription}
