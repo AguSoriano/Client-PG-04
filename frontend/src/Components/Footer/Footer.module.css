@@ -1,7 +1,9 @@
 .footer {
+    padding-top: 50px;
     width: 100%;
     color: rgb(175, 166, 166);
-    display: flex;
+    display: column;
+    
 }
 
 .site_footer {
@@ -9,12 +11,17 @@
     padding: 2rem ;
 }
 
-.site_footer .copyright{
+.copyright{
     font-size: 0.8rem;
 }
 
 .redes_sociales{
-    padding: 1rem 0 0 0;
+    padding-left: 10px;
+    font-size: 1rem;
+}
+
+.nombre{
+    padding: 10px;
     font-size: 1rem;
 }
 
