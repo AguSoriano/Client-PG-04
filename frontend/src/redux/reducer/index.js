@@ -7,6 +7,7 @@ import {
   GET_CATEGORIES,
   CLEAN_DETAIL,
   FILTER_BY,
+  SET_PAGE,
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
@@ -15,6 +16,7 @@ const initialState = {
   productCopy: [],
   prodDetail: {},
   categories: [],
+  page: 0,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -101,6 +103,12 @@ export default function reducer(state = initialState, { type, payload }) {
             : state.productCopy.filter((prod) =>
                 prod.categories.some((cat) => cat.name === payload)
               ),
+      };
+    }
+    case SET_PAGE: {
+      return {
+        ...state,
+        page: payload,
       };
     }
     default:

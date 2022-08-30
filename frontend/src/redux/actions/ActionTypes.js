@@ -7,3 +7,4 @@ export const GET_PRODUCT_BY_CATEGORY = "GET_PRODUCT_BY_CATEGORY";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const FILTER_BY = "FILTER_BY";
+export const SET_PAGE = "SET_PAGE";
