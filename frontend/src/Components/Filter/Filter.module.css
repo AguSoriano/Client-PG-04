@@ -1,0 +1,18 @@
+.select {
+    position: relative;
+    width:19rem;
+    height: 1.8rem;
+
+    font-size: 1rem;
+    font-family: 'Verdana', sans-serif;
+    font-weight: 300;
+    background-color:white;
+    border-radius:   4.5px;
+    border-color: #24A19C;
+    color: black;
+    margin-bottom: 0.5rem;  
+    margin-left: -8rem;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.7);
+      
+    
+}

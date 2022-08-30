@@ -1,12 +1,14 @@
 .buscar{
-    padding: 5px;
+    padding: 4px;
     position: absolute;
-    right:100px;
+    right:90px;
+    margin-right: -38px;
+    margin-top: 13px;
 }
 
 .buscar input{
     width: 0px;
-    height: 40px;
+    height: 30px;
     padding: 0 20px;
     font-size: 18px;
     color: #000;
