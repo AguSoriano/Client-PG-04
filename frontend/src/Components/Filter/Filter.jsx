@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import * as ReactRedux from "react-redux";
 import { filterBy, getCategories } from "../../redux/actions";
+import style from "./Filter.module.css"
 
 function Filter() {
   const dispatch = ReactRedux.useDispatch();
@@ -17,7 +18,7 @@ function Filter() {
   };
 
   return (
-    <select onChange={(e) => handleSelect(e)}>
+    <select className={style.select} onChange={(e) => handleSelect(e)}>
       <option value="all">Categorias</option>
       {categories.length > 1 ? (
         categories.map((cat) => (

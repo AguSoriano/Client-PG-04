@@ -29,7 +29,7 @@ function SearchBar() {
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Buscar..."
           onChange={(e) => handleInputChange(e)}
         />
         <div className={style.btn}>
