@@ -1,0 +1,59 @@
+.style{
+    width: 650px;
+    height: 700px;
+    margin-left: 20rem;
+    margin-top: 5rem;
+    padding: 0.5rem;
+    border: 2px solid black ;
+    box-shadow: 5px 3px 3px #000000 ;
+   
+    
+    
+}
+
+.img{
+    width: 450px;
+    height: 350px;
+    border: 2px solid black ;
+    box-shadow: 5px 3px 3px #000000 ;
+margin-top:-9rem;
+cursor: pointer;
+}
+.img:hover {
+    box-shadow: 20px 20px 20px rgb(0, 0, 0, 0, 4);
+    transform: translateY(-3%);
+  }
+
+.title{
+    width: 50rem;
+    height: 200px;
+    justify-content: center;
+    color:black;
+     font-size: 3rem;
+     margin-left: -5rem;
+     font-family: 'Pacifico';
+     text-decoration: underline #E6EE9C ;
+     
+  
+}
+.details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    
+   
+}
+.stock{
+    font-size: 1.3rem;
+    color: red;
+    background-color: antiquewhite;
+}
+.precio{
+    font-size: 1.5rem;
+    color: black;
+    background-color: #E6EE9C ;
+    
+}

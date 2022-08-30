@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { cleanDetail, getDetail } from "../../redux/actions";
 import Loading from "../Loading/Loading";
 import img from "../Img/PG0.png";
+import style from "./Details.module.css"
 
 function Detail() {
   const { id } = useParams();
@@ -22,34 +23,35 @@ function Detail() {
   return (
     <div>
       {product.name ? (
-        <div>
-          <h1>{product.name}</h1>
+        <div className={style.style}>
+          <h1 className={style.title}>{product.name}</h1>
           <img
+          className={style.img}
             alt={product.name}
             src={product.image ? product.image : img}
-            style={{ width: 450, height: 450 }}
+            // style={{ width: 450, height: 450 }}
           />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "2rem",
-            }}
+          <div className={style.details}
+            // style={{
+            //   display: "flex",
+            //   flexDirection: "row",
+            //   alignItems: "center",
+            //   justifyContent: "center",
+            //   gap: "2rem",
+            // }}
           >
             {product.categories.map((cat) => (
               <p key={cat.id}>{cat.name}</p>
             ))}
           </div>
-          <p>{product.longDescription}</p>
+          <p className={style.details}>{product.longDescription}</p>
           <section>
-            <p>Stock disponible</p>
-            <h3>{product.stock} unidades</h3>
+            <p  className={style.stock}>Stock disponible</p>
+            <h3 className={style.stock}>{product.stock} unidades</h3>
           </section>
           <section>
-            <p>Precio</p>
-            <h3>${product.price}</h3>
+            <p className={style.precio}>Precio</p>
+            <h3 className={style.precio}>${product.price}</h3>
           </section>
         </div>
       ) : (
