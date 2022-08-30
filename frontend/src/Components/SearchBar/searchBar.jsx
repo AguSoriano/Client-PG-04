@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getNameProduct } from "../../redux/actions/index";
-import style from "./searchBar.module.css"
+import { getNameProduct, setPageAct } from "../../redux/actions/index";
+import style from "./searchBar.module.css";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ function SearchBar() {
       }
     });
     setName("");
+    dispatch(setPageAct(0));
   }
 
   return (
@@ -31,10 +32,12 @@ function SearchBar() {
           placeholder="Search..."
           onChange={(e) => handleInputChange(e)}
         />
-        <div  className={style.btn}> 
-        <i 
-        class="fas fa-search icon" type="submit" onClick={(e) => handleSubmit(e)}>
-        </i>
+        <div className={style.btn}>
+          <i
+            class="fas fa-search icon"
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          ></i>
         </div>
       </form>
     </div>

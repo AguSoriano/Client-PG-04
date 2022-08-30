@@ -64,29 +64,29 @@ function Create() {
   const handleSelect = (evento) => {
     evento.preventDefault();
 
-    if (!validoSelect(input, evento.target.value)) {
-      setErrors(
-        validador({
-          ...input,
-          category: [...input.category, evento.target.value],
-        })
-      );
+    // if (!validoSelect(input, evento.target.value)) {
+    //   setErrors(
+    //     validador({
+    //       ...input,
+    //       category: [...input.category, evento.target.value],
+    //     })
+    //   );
 
-      setInput({
-        ...input,
-        category: [...input.category, evento.target.value],
-      });
-    } else {
-      alert(validoSelect(input, evento.target.value));
-    }
+    //   setInput({
+    //     ...input,
+    //     category: [...input.category, evento.target.value],
+    //   });
+    // } else {
+    //   alert(validoSelect(input, evento.target.value));
+    // }
   };
 
   return (
     <form
       className={style.formPrincipal}
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
+      // onSubmit={(e) => {
+      //   handleSubmit(e);
+      // }}
     >
       <div className={style.divSection}>
         <section>

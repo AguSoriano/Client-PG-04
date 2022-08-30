@@ -8,6 +8,7 @@ import {
   GET_CATEGORIES,
   CLEAN_DETAIL,
   FILTER_BY,
+  SET_PAGE,
 } from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
 // import { products } from "../../DB/db";
@@ -111,5 +112,12 @@ export const filterBy = (category) => {
   return {
     type: FILTER_BY,
     payload: category,
+  };
+};
+
+export const setPageAct = (page) => {
+  return {
+    type: SET_PAGE,
+    payload: page,
   };
 };

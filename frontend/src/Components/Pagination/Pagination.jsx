@@ -1,7 +1,13 @@
 import React from "react";
 import style from "./Pagination.module.css";
+import * as ReactRedux from "react-redux";
+import { setPageAct } from "../../redux/actions";
 
-function Pagination({ page, setPage, products }) {
+function Pagination({ /*page, setPage,*/ products }) {
+  const dispatch = ReactRedux.useDispatch();
+
+  const page = ReactRedux.useSelector((state) => state.page);
+
   const numbers = [];
   for (let i = 0; i < products.length / 6; i++) {
     numbers.push(i);
@@ -9,9 +15,9 @@ function Pagination({ page, setPage, products }) {
 
   const goTo = (number) => {
     if (number === 0) {
-      return setPage(0);
+      return dispatch(setPageAct(0));
     }
-    setPage(6 * number);
+    dispatch(setPageAct(6 * number));
   };
 
   const actualPage = (num) => {
@@ -25,13 +31,13 @@ function Pagination({ page, setPage, products }) {
 
   const next = () => {
     if (page < products.length - 6) {
-      setPage(page + 6);
+      dispatch(setPageAct(page + 6));
     }
   };
 
   const prev = () => {
     if (page > 0) {
-      setPage(page - 6);
+      dispatch(setPageAct(page - 6));
     }
   };
   return (

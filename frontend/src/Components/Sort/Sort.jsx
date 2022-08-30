@@ -2,22 +2,23 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import style from "./Sort.module.css";
 
-import { OrderAlphabetical, OrderPrice } from "../../redux/actions";
+import { OrderAlphabetical, OrderPrice, setPageAct } from "../../redux/actions";
 
-function Sort({ setOrder, setPage }) {
+function Sort({ setOrder /*setPage*/ }) {
   const dispatch = useDispatch();
 
   function handleSort(e) {
     e.preventDefault();
     dispatch(OrderAlphabetical(e.target.value));
     setOrder(e.target.value);
-    setPage(0);
+    dispatch(setPageAct(0));
   }
 
   function handleSortByPrice(e) {
     e.preventDefault();
     dispatch(OrderPrice(e.target.value));
     setOrder(e.target.value);
+    dispatch(setPageAct(0));
   }
 
   return (
