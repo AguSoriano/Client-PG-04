@@ -41,7 +41,7 @@ function Home() {
               key={prod.id}
               id={prod.id}
               name={prod.name}
-              img={prod.image ? prod.image : img}
+              img={prod.image}
               price={prod.price}
               stock={prod.stock}
               shortDesc={prod.shortDescription}
