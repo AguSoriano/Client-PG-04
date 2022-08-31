@@ -6,8 +6,15 @@
 }
 
 .mainP > button {
-  background-color: white;
-  border: 0.01px solid grey;
+  border: 2px solid white;
+  background-color: #2fdca2;
+  color: black;
+  font-size: 15px;
+  border-radius: 40px;
+}
+
+.mainP > button:hover {
+  background-color: rgb(167, 247, 247);
 }
 
 .numbers {
