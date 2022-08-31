@@ -17,10 +17,10 @@ function Footer() {
                 <div className={style.redes_sociales}>
                     <div>
                     <a href="https://www.linkedin.com/in/federico-eloy-fucci-87664357/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
+                        <img className={style.img} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
                     </a>
                     <a href="https://github.com/federicofucci21" target="_blank" rel="noopener noreferrer">
-                        <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
+                        <img className={style.img}  src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
                     </a>
                     <h4 className={style.nombre}>Federico Eloy Fucci</h4>
                     </div>
@@ -28,11 +28,11 @@ function Footer() {
                 <div className={style.redes_sociales}>
                     <div>
                     <a href="https://www.linkedin.com/in/mario-a-caballero/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
+                        <img className={style.img} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
                         
                     </a>
                     <a href="https://github.com/marioacaballero" target="_blank" rel="noopener noreferrer">
-                        <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
+                        <img className={style.img} src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
                     </a>
                     <h4 className={style.nombre}>Mario Caballero</h4>
                     </div>
@@ -40,30 +40,30 @@ function Footer() {
                 <div className={style.redes_sociales}>
                     <div>
                     <a href="https://www.linkedin.com/in/sofia-gonzalez-zapiola/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
+                        <img className={style.img} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
                         
                     </a>
                     <a href="https://github.com/ChofGonzalez" target="_blank" rel="noopener noreferrer">
-                        <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
+                        <img className={style.img} src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
                     </a>
                     <h4 className={style.nombre}>Sofia Gonzalez</h4>
                     </div>
                 </div>
                 <div className={style.redes_sociales}>
-                    <div></div>
+                    
                     <a href="https://github.com/vanegabioud" target="_blank" rel="noopener noreferrer">
-                        <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
-                        <h4 className={style.nombre}>Vanesa Gabioud</h4>
+                        <img className={style.img} src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
                     </a>
+                    <h4 className={style.nombre}>Vanesa Gabioud</h4>
                 </div>
                 <div className={style.redes_sociales}>
                 <div>
                     <a href="https://www.linkedin.com/in/hidalgoeduardo/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
+                        <img className={style.img} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
                         
                     </a>
                     <a href="https://github.com/hidalgo86" target="_blank" rel="noopener noreferrer">
-                        <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
+                        <img className={style.img} src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
                     </a>
                     <h4 className={style.nombre}>Eduardo Hidalgo</h4>
                     </div>
@@ -71,11 +71,11 @@ function Footer() {
                 <div className={style.redes_sociales}>
                 <div>
                     <a href="https://www.linkedin.com/in/cperlovan/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
+                        <img className={style.img} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
                         
                     </a>
                     <a href="https://github.com/cperlovan" target="_blank" rel="noopener noreferrer">
-                        <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
+                        <img className={style.img} src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
                     </a>
                     <h4 className={style.nombre}>Carlos Perez</h4>
                     </div>
@@ -83,11 +83,11 @@ function Footer() {
                 <div className={style.redes_sociales}>
                 <div>
                     <a href="https://www.linkedin.com/in/luciacostamagna/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
+                        <img className={style.img} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
                         
                     </a>
                     <a href="https://github.com/Lucostamagna" target="_blank" rel="noopener noreferrer">
-                        <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
+                        <img className={style.img} src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
                     </a>
                     <h4 className={style.nombre}>Lucia Costamagna</h4>
                     </div>
@@ -95,11 +95,11 @@ function Footer() {
                 <div className={style.redes_sociales}>
                 <div>
                     <a href="https://www.linkedin.com/in/agustin-soriano-027876119/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
+                        <img className={style.img} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
                         
                     </a>
                     <a href="https://github.com/AguSoriano" target="_blank" rel="noopener noreferrer">
-                        <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
+                        <img className={style.img} src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
                     </a>
                     <h4 className={style.nombre}>Agustin Soriano</h4>
                     </div>

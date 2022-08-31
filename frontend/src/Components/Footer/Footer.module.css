@@ -9,6 +9,7 @@
 .site_footer {
     display: flex;
     padding: 2rem ;
+    justify-content: center;
 }
 
 .copyright{
@@ -16,13 +17,16 @@
 }
 
 .redes_sociales{
-    padding-left: 10px;
+    
     font-size: 1rem;
+}
+.img {
+    padding-right: 5px;
 }
 
 .nombre{
     padding: 10px;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .redes_sociales img{
