@@ -5,24 +5,7 @@ import Carousel from "../Carousel/Carousel"
 function LandingPage() {
 
     const slides = [
-        {
-            src: require('../Img/PG0.png'),
-          },
-          {
-            src: require('../Img/PG1.jpeg'),
-          },
-          {
-            src: require('../Img/PG2.jpeg'),
-          },
-          {
-            src: require('../Img/PG3.jpeg'),
-          },
-          {
-            src: require('../Img/PG4.jpg'),
-          },
-          {
-            src: require('../Img/PG5.jpg'),
-          }
+      "https://photos.google.com/share/AF1QipNOXQvNNyPrqBoBiOYc1SJ3jJz-UDX-Nuwl1suXtYx-r16TwlwYudJrVO0p8QjQAg/photo/AF1QipNrhtVh1mhN22My7XOF3imz3pk1Y6OaxcR7lwqv?key=VjJBZ2NPWVF0SWNuVjJab1IwYmVZVkltVDJjYWJR",
       ]
 
     return (
