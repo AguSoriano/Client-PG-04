@@ -26,6 +26,7 @@ const initialState = {
   categories: [],
   page: 0,
   weekProd: [],
+  cartproduct:[]
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -155,12 +156,15 @@ export default function reducer(state = initialState, { type, payload }) {
     }
     case REMOVE_ONE_FROM_CART:{
       return{
-
+        ...state,
+        cartproduct: state.cartproduct.filter((product)=> product.id !== payload)
       }
     }
     case REMOVE_ALL_FROM_CART:{
       return{
-        
+        ...state,
+        cartproducts:[]
+
       }
       
     }

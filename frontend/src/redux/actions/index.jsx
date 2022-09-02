@@ -11,6 +11,8 @@ import {
   SET_PAGE,
   WEEK_PROD,
   FILTER_BY2,
+  REMOVE_ALL_FROM_CART,
+  REMOVE_ONE_FROM_CART,
 } from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
 // import { products } from "../../DB/db";
@@ -149,3 +151,30 @@ export const filterBy2 = (category2) => {
     payload: category2,
   };
 };
+
+
+export const removeOneProducts=(id)=>async(dispatch)=>{
+  try{
+    const {data} = await axios.delete()//ruta
+    return dispatch({
+ type: REMOVE_ONE_FROM_CART,
+ payload: data
+    })
+  } catch(error){
+    console.log(error)
+  }
+} //HAY QUE MODIFICAR LA LOGICA CON LA RUTA Y CON EL LOCALSTORAGE
+//IMPEDIR ELIMINAR SIN LOGUEARSE Y CONFIRMAR ELIMINACION
+
+export const removeAllCart=()=>async(dispatch)=>{
+  try{
+    const {data} = await axios.delete()//ruta+ID
+    return dispatch({
+ type: REMOVE_ALL_FROM_CART,
+ payload: data
+    })
+  } catch(error){
+    console.log(error)
+  }
+} //HAY QUE MODIFICAR LA LOGICA CON LA RUTA Y CON EL LOCALSTORAGE
+//IMPEDIR ELIMINAR SIN LOGUEARSE Y CONFIRMAR ELIMINACION
