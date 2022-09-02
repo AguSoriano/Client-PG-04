@@ -9,3 +9,4 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const FILTER_BY = "FILTER_BY";
 export const SET_PAGE = "SET_PAGE";
 export const WEEK_PROD = "WEEK_PROD";
+export const FILTER_BY2 = "FILTER_BY2";

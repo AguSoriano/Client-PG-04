@@ -10,6 +10,7 @@ import {
   FILTER_BY,
   SET_PAGE,
   WEEK_PROD,
+  FILTER_BY2,
 } from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
 // import { products } from "../../DB/db";
@@ -139,5 +140,12 @@ export const weekProd = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const filterBy2 = (category2) => {
+  return {
+    type: FILTER_BY2,
+    payload: category2,
   };
 };

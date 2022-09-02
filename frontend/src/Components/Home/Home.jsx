@@ -9,6 +9,7 @@ import Pagination from "../Pagination/Pagination";
 import img from "../Img/Logo1V2.png";
 import style from "./Home.module.css";
 import Loading from "../Loading/Loading";
+import Filter from "../Filter/Filter";
 
 function Home() {
   const dispatch = ReactRedux.useDispatch();
@@ -30,7 +31,10 @@ function Home() {
     <div className={style.main}>
       <section>
         {products.length > 1 ? (
-          <Sort setOrder={setOrder} /*setPage={setPage}*/ />
+          <>
+            <Filter />
+            <Sort setOrder={setOrder} /*setPage={setPage}*/ />
+          </>
         ) : (
           <div></div>
         )}
