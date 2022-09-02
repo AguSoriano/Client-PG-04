@@ -46,9 +46,9 @@ function App() {
          cargo='Full-Stack'
          testimonio='Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones en Henry, cambió mi vida y ahora se que puedo lograr lo que sea que me proponga.'/>
          <Testimonio
-         nombre='Agustin Soriano'
+         nombre='Vanesa Gabioud'
          pais='Argentina'
-         imagen='AgustinSoriano'
+         imagen='VanesaGabioud'
          cargo='Full-Stack'
          testimonio='Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones en Henry, cambió mi vida y ahora se que puedo lograr lo que sea que me proponga.'/>
          <Testimonio
