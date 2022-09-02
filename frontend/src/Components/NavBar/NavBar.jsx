@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Filter from "../Filter/Filter";
+
 import SearchBar from "../SearchBar/searchBar";
 import style from "./NavBar.module.css";
 import { FaHeart, FaCartArrowDown,} from "react-icons/fa";
@@ -13,7 +13,7 @@ function NavBar() {
         <SearchBar />
       </section>
       <section className={style.links}>
-        <Filter />
+        
         <Link className={style.link}to={"/home"}>Tienda</Link>
         {/* <Link className={style.link} to={"/"}>Post</Link> */}
         <Link className={style.link} to={"/"}> <AiOutlineTeam size='1.5rem'/>Ingresar</Link>

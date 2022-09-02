@@ -9,12 +9,14 @@ import {
   FILTER_BY,
   SET_PAGE,
   WEEK_PROD,
+  FILTER_BY2,
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
 const initialState = {
   product: [],
   productCopy: [],
+  productCopy2: [],
   prodDetail: {},
   categories: [],
   page: 0,
@@ -103,6 +105,23 @@ export default function reducer(state = initialState, { type, payload }) {
           payload === "all"
             ? state.productCopy
             : state.productCopy.filter((prod) =>
+                prod.categories.some((cat) => cat.name === payload)
+              ),
+        productCopy2:
+          payload === "all"
+            ? state.productCopy
+            : state.productCopy.filter((prod) =>
+                prod.categories.some((cat) => cat.name === payload)
+              ),
+      };
+    }
+    case FILTER_BY2: {
+      return {
+        ...state,
+        product:
+          payload === "all"
+            ? state.productCopy2
+            : state.productCopy2.filter((prod) =>
                 prod.categories.some((cat) => cat.name === payload)
               ),
       };

@@ -1,10 +1,17 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 import * as ReactRedux from "react-redux";
-import { filterBy, getCategories } from "../../redux/actions";
-import style from "./Filter.module.css"
+import {
+  filterBy,
+  filterBy2,
+  getCategories,
+  setPageAct,
+} from "../../redux/actions";
+import style from "./Filter.module.css";
 
 function Filter() {
   const dispatch = ReactRedux.useDispatch();
+  const [filtro, setFiltro] = useState("");
 
   useEffect(() => {
     dispatch(getCategories());
@@ -13,23 +20,43 @@ function Filter() {
   const categories = ReactRedux.useSelector((state) => state.categories);
 
   const handleSelect = (e) => {
-    e.preventDefault(e);
+    e.preventDefault();
+    setFiltro(e.target.value);
     dispatch(filterBy(e.target.value));
+    dispatch(setPageAct(0));
+  };
+
+  const handleSelect2 = (e) => {
+    e.preventDefault();
+    dispatch(filterBy2(e.target.value));
+    dispatch(setPageAct(0));
   };
 
   return (
-    <select className={style.select} onChange={(e) => handleSelect(e)}>
-      <option value="all">Categorias</option>
-      {categories.length > 1 ? (
-        categories.map((cat) => (
-          <option value={cat.name} key={cat.id}>
-            {cat.name.toUpperCase()}
-          </option>
-        ))
+    <div>
+      <select className={style.select} onChange={(e) => handleSelect(e)}>
+        <option value="all">CATEGORIAS</option>
+        <option value="all">Todos</option>
+        <option value="medallon">Medallones</option>
+        <option value="tarta">Tartas</option>
+        <option value="pasta rellena">Pastas</option>
+        <option value="bebida">Bebidas</option>
+      </select>
+      {filtro === "medallon" ? (
+        <select className={style.select} onChange={(e) => handleSelect2(e)}>
+          <option value="all">SUBCATEGORIAS</option>
+          <option value="all">Todos</option>
+          <option value="soja">Soja</option>
+          <option value="garbanzo">Garbanzo</option>
+          <option value="arveja">Arveja</option>
+          <option value="vegano">Vegano</option>
+          <option value="con relleno">Relleno</option>
+          <option value="sin relleno">Sin relleno</option>
+        </select>
       ) : (
-        <option>Sin Registros</option>
+        <div></div>
       )}
-    </select>
+    </div>
   );
 }
 
