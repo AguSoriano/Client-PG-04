@@ -5,6 +5,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import Detail from "./Components/Detail/Detail";
 import LandingPage from './Components/LandingPage/LandinPage';
 import Create from './Components/Create/Create';
+import About from './Components/About/About';
 
 
 
@@ -16,6 +17,7 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="about" element={<About />} />
         <Route exact path="home" element={<Home />} />
         <Route exact path="products/:id" element={<Detail />} />
         <Route  path="new" element={<Create />} />

@@ -14,6 +14,7 @@ function NavBar() {
       </section>
       <section className={style.links}>
         <Filter />
+        <Link className={style.link}to={"/about"}>Sobre Nosotros</Link>
         <Link className={style.link}to={"/home"}>Tienda</Link>
         {/* <Link className={style.link} to={"/"}>Post</Link> */}
         <Link className={style.link} to={"/"}> <AiOutlineTeam size='1.5rem'/>Ingresar</Link>
