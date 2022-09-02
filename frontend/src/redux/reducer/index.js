@@ -9,6 +9,11 @@ import {
   FILTER_BY,
   SET_PAGE,
   WEEK_PROD,
+  ADD_TO_CART,
+  REMOVE_ONE_FROM_CART,
+  REMOVE_ALL_FROM_CART,
+  ORDER_PRODUCT,
+  CLEAR_CART,
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
@@ -118,6 +123,32 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         weekProd: payload,
       };
+    }
+    case ADD_TO_CART:{
+        return{
+
+        }
+    }
+    case ORDER_PRODUCT:{
+      return{
+
+      }
+    }
+    case REMOVE_ONE_FROM_CART:{
+      return{
+
+      }
+    }
+    case REMOVE_ALL_FROM_CART:{
+      return{
+        
+      }
+      
+    }
+    case CLEAR_CART:{
+      return{
+
+      }
     }
     default:
       return state;
