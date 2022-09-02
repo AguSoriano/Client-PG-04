@@ -9,12 +9,19 @@ import {
   FILTER_BY,
   SET_PAGE,
   WEEK_PROD,
+  ADD_TO_CART,
+  REMOVE_ONE_FROM_CART,
+  REMOVE_ALL_FROM_CART,
+  ORDER_PRODUCT,
+  CLEAR_CART,
+  FILTER_BY2,
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
 const initialState = {
   product: [],
   productCopy: [],
+  productCopy2: [],
   prodDetail: {},
   categories: [],
   page: 0,
@@ -105,6 +112,23 @@ export default function reducer(state = initialState, { type, payload }) {
             : state.productCopy.filter((prod) =>
                 prod.categories.some((cat) => cat.name === payload)
               ),
+        productCopy2:
+          payload === "all"
+            ? state.productCopy
+            : state.productCopy.filter((prod) =>
+                prod.categories.some((cat) => cat.name === payload)
+              ),
+      };
+    }
+    case FILTER_BY2: {
+      return {
+        ...state,
+        product:
+          payload === "all"
+            ? state.productCopy2
+            : state.productCopy2.filter((prod) =>
+                prod.categories.some((cat) => cat.name === payload)
+              ),
       };
     }
     case SET_PAGE: {
@@ -118,6 +142,32 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         weekProd: payload,
       };
+    }
+    case ADD_TO_CART:{
+        return{
+
+        }
+    }
+    case ORDER_PRODUCT:{
+      return{
+
+      }
+    }
+    case REMOVE_ONE_FROM_CART:{
+      return{
+
+      }
+    }
+    case REMOVE_ALL_FROM_CART:{
+      return{
+        
+      }
+      
+    }
+    case CLEAR_CART:{
+      return{
+
+      }
     }
     default:
       return state;
