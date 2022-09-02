@@ -37,6 +37,8 @@ function NavBar() {
           <FaCartArrowDown size="1.5rem" />
         </Link>
         <Link to="/profile">PERFIL</Link>
+        <Link className={style.link} to={"/about"}>Sobre Nosotros</Link>
+        {/* <Link className={style.link} to={"/"}>Post</Link> */}
       </section>
     </div>
   );
