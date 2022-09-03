@@ -18,44 +18,56 @@ import {
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
-const initialState = {
-  product: [],
-  productCopy: [],
-  productCopy2: [],
-  prodDetail: {},
-  categories: [],
-  page: 0,
-  weekProd: [],
-  cartproduct:[]
+const initialState = JSON.parse(
+  window.localStorage.getItem("reduxStore") ||
+    JSON.stringify({
+      product: [],
+      productCopy: [],
+      productCopy2: [],
+      prodDetail: {},
+      categories: [],
+      page: 0,
+      weekProd: [],
+      cartproduct: [],
+    })
+);
+
+const saveState = (state) => {
+  window.localStorage.setItem("reduxStore", JSON.stringify(state));
 };
 
 export default function reducer(state = initialState, { type, payload }) {
   //vamos a ejecutar los typos de accion para saber donde ejecutar cada logica
+  let newState;
   switch (type) {
     case GET_NAME_PRODUCT:
-      return {
+      newState = {
         ...state,
         product: payload,
       };
+      break;
 
     case GET_PRODUCTS:
-      return {
+      newState = {
         ...state,
         product: payload,
         productCopy: payload,
       };
+      break;
 
     case GET_CATEGORIES:
-      return {
+      newState = {
         ...state,
         categories: payload,
       };
+      break;
 
     case GET_PRODUCT_BY_CATEGORY:
-      return {
+      newState = {
         ...state,
         categories: payload,
       };
+      break;
 
     case ORDER_ALPHABETICAL:
       const sortedName =
@@ -78,34 +90,38 @@ export default function reducer(state = initialState, { type, payload }) {
               }
               return 0;
             });
-      return {
+      newState = {
         ...state,
         product: sortedName,
       };
+      break;
 
     case ORDER_PRICE:
       const sortedPrice =
         payload === "min_price"
           ? state.product.sort((a, b) => parseInt(a.price) - parseInt(b.price))
           : state.product.sort((a, b) => parseInt(b.price) - parseInt(a.price));
-      return {
+      newState = {
         ...state,
         product: sortedPrice,
       };
+      break;
     case GET_DETAIL: {
-      return {
+      newState = {
         ...state,
         prodDetail: payload,
       };
+      break;
     }
     case CLEAN_DETAIL: {
-      return {
+      newState = {
         ...state,
         prodDetail: payload,
       };
+      break;
     }
     case FILTER_BY: {
-      return {
+      newState = {
         ...state,
         product:
           payload === "all"
@@ -120,9 +136,10 @@ export default function reducer(state = initialState, { type, payload }) {
                 prod.categories.some((cat) => cat.name === payload)
               ),
       };
+      break;
     }
     case FILTER_BY2: {
-      return {
+      newState = {
         ...state,
         product:
           payload === "all"
@@ -131,49 +148,55 @@ export default function reducer(state = initialState, { type, payload }) {
                 prod.categories.some((cat) => cat.name === payload)
               ),
       };
+      break;
     }
     case SET_PAGE: {
-      return {
+      newState = {
         ...state,
         page: payload,
       };
+      break;
     }
     case WEEK_PROD: {
-      return {
+      newState = {
         ...state,
         weekProd: payload,
       };
+      break;
     }
-    case ADD_TO_CART:{
-        return{
-
-        }
+    case ADD_TO_CART: {
+      newState = {};
+      break;
     }
-    case ORDER_PRODUCT:{
-      return{
-
-      }
+    case ORDER_PRODUCT: {
+      newState = {};
+      break;
     }
-    case REMOVE_ONE_FROM_CART:{
-      return{
+    case REMOVE_ONE_FROM_CART: {
+      newState = {
         ...state,
-        cartproduct: state.cartproduct.filter((product)=> product.id !== payload)
-      }
+        cartproduct: state.cartproduct.filter(
+          (product) => product.id !== payload
+        ),
+      };
+      break;
     }
-    case REMOVE_ALL_FROM_CART:{
-      return{
+    case REMOVE_ALL_FROM_CART: {
+      newState = {
         ...state,
-        cartproducts:[]
-
-      }
-      
+        cartproducts: [],
+      };
+      break;
     }
-    case CLEAR_CART:{
-      return{
-
-      }
+    case CLEAR_CART: {
+      newState = {};
+      break;
     }
     default:
-      return state;
+      newState = state;
   }
+
+  saveState(newState);
+
+  return newState;
 }
