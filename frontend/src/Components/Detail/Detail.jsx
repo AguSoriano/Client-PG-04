@@ -2,10 +2,10 @@ import React from "react";
 import { useEffect } from "react";
 import * as ReactRedux from "react-redux";
 import { useParams } from "react-router-dom";
-import { cleanDetail, getDetail } from "../../redux/actions";
+import { addFav, cleanDetail, getDetail, removeFav } from "../../redux/actions";
 import Loading from "../Loading/Loading";
 import img from "../Img/PG0.png";
-import style from "./Details.module.css"
+import style from "./Details.module.css";
 
 function Detail() {
   const { id } = useParams();
@@ -26,12 +26,13 @@ function Detail() {
         <div className={style.style}>
           <h1 className={style.title}>{product.name}</h1>
           <img
-          className={style.img}
+            className={style.img}
             alt={product.name}
             src={product.image ? product.image : img}
             // style={{ width: 450, height: 450 }}
           />
-          <div className={style.details}
+          <div
+            className={style.details}
             // style={{
             //   display: "flex",
             //   flexDirection: "row",
@@ -46,16 +47,22 @@ function Detail() {
           </div>
           <p className={style.details}>{product.longDescription}</p>
           <section>
-            <p  className={style.stock}>Stock disponible</p>
+            <p className={style.stock}>Stock disponible</p>
             <h3 className={style.stock}>{product.stock} unidades</h3>
           </section>
           <section>
             <p className={style.precio}>Precio</p>
             <h3 className={style.precio}>${product.price}</h3>
+            <button onClick={() => dispatch(addFav(product))}>
+              Agregar Fav
+            </button>
+            <button onClick={() => dispatch(removeFav(product.id))}>
+              Sacar Fav
+            </button>
           </section>
         </div>
       ) : (
-        <Loading/>
+        <Loading />
       )}
     </div>
   );

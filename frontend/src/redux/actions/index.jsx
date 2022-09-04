@@ -14,6 +14,8 @@ import {
   FILTER_BY2,
   REMOVE_ALL_FROM_CART,
   REMOVE_ONE_FROM_CART,
+  ADD_FAV,
+  REMOVE_FAV,
 } from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
 // import { products } from "../../DB/db";
@@ -197,5 +199,19 @@ export const register = (data) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const addFav = (product) => {
+  return {
+    type: ADD_FAV,
+    payload: product,
+  };
+};
+
+export const removeFav = (id) => {
+  return {
+    type: REMOVE_FAV,
+    payload: id,
   };
 };

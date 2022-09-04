@@ -15,6 +15,8 @@ import {
   ORDER_PRODUCT,
   CLEAR_CART,
   FILTER_BY2,
+  ADD_FAV,
+  REMOVE_FAV,
 } from "../actions/ActionTypes.js";
 import { GET_DETAIL } from "../actions/ActionTypes";
 
@@ -29,6 +31,7 @@ const initialState = JSON.parse(
       page: 0,
       weekProd: [],
       cartproduct: [],
+      favorites: [],
     })
 );
 
@@ -190,6 +193,20 @@ export default function reducer(state = initialState, { type, payload }) {
     }
     case CLEAR_CART: {
       newState = {};
+      break;
+    }
+    case ADD_FAV: {
+      newState = {
+        ...state,
+        favorites: [...state.favorites, payload],
+      };
+      break;
+    }
+    case REMOVE_FAV: {
+      newState = {
+        ...state,
+        favorites: state.favorites.filter((prod) => prod.id !== payload),
+      };
       break;
     }
     default:
