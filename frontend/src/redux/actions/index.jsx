@@ -1,4 +1,5 @@
 import axios from "axios";
+import { AiFillCodeSandboxCircle } from "react-icons/ai";
 import {
   GET_NAME_PRODUCT,
   GET_PRODUCTS,
@@ -152,29 +153,50 @@ export const filterBy2 = (category2) => {
   };
 };
 
-
-export const removeOneProducts=(id)=>async(dispatch)=>{
-  try{
-    const {data} = await axios.delete()//ruta
+export const removeOneProducts = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios.delete(); //ruta
     return dispatch({
- type: REMOVE_ONE_FROM_CART,
- payload: data
-    })
-  } catch(error){
-    console.log(error)
+      type: REMOVE_ONE_FROM_CART,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
   }
-} //HAY QUE MODIFICAR LA LOGICA CON LA RUTA Y CON EL LOCALSTORAGE
+}; //HAY QUE MODIFICAR LA LOGICA CON LA RUTA Y CON EL LOCALSTORAGE
 //IMPEDIR ELIMINAR SIN LOGUEARSE Y CONFIRMAR ELIMINACION
 
-export const removeAllCart=()=>async(dispatch)=>{
-  try{
-    const {data} = await axios.delete()//ruta+ID
+export const removeAllCart = () => async (dispatch) => {
+  try {
+    const { data } = await axios.delete(); //ruta+ID
     return dispatch({
- type: REMOVE_ALL_FROM_CART,
- payload: data
-    })
-  } catch(error){
-    console.log(error)
+      type: REMOVE_ALL_FROM_CART,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
   }
-} //HAY QUE MODIFICAR LA LOGICA CON LA RUTA Y CON EL LOCALSTORAGE
+}; //HAY QUE MODIFICAR LA LOGICA CON LA RUTA Y CON EL LOCALSTORAGE
 //IMPEDIR ELIMINAR SIN LOGUEARSE Y CONFIRMAR ELIMINACION
+
+export const register = (data) => {
+  return async () => {
+    try {
+      const newUser = {
+        given_name: data.given_name,
+        family_name: data.family_name,
+        nickname: data.nickname,
+        email: data.email,
+        picture: data.picture,
+      };
+
+      const user = await axios.post(
+        "https://pf-api-04.up.railway.app/signup",
+        newUser
+      );
+      console.log("User register on DB", user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
