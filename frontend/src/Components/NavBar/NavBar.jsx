@@ -38,7 +38,7 @@ function NavBar() {
         {/* <Link className={style.link} to={loginWithRedirect}>
           Ingresar
         </Link> */}
-        <Link className={style.link} to={"/"}>
+        <Link className={style.link} to={"/favorite"}>
           {" "}
           Favoritos <FaHeart />
         </Link>
