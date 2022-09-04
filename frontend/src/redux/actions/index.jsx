@@ -189,9 +189,8 @@ export const register = (data) => {
         email: data.email,
         picture: data.picture,
       };
-
       const user = await axios.post(
-        "https://pf-api-04.up.railway.app/signup",
+        "https://pf-api-04.up.railway.app/auth/signup",
         newUser
       );
       console.log("User register on DB", user);
