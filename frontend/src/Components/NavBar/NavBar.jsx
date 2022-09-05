@@ -42,7 +42,7 @@ function NavBar() {
           {" "}
           Favoritos <FaHeart />
         </Link>
-        <Link className={style.link} to={"/"}>
+        <Link className={style.link} to={"/shop"}>
           <FaCartArrowDown size="1.5rem" />
         </Link>
         <Link to="/profile">PERFIL</Link>

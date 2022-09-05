@@ -8,6 +8,11 @@ import Create from "./Components/Create/Create";
 import Profile from "./Components/Profile/Profile";
 import About from "./Components/About/About";
 import Favorite from "./Components/Favorite/Favorite";
+import Shop from "./Components/Shop/Shop";
+
+
+
+
 
 function App() {
   return (
@@ -22,6 +27,7 @@ function App() {
         <Route path="new" element={<Create />} />
         <Route path="profile" element={<Profile />} />
         <Route path="favorite" element={<Favorite />} />
+        <Route path="shop" element={<Shop/>} />
       </Routes>
     </div>
   );
