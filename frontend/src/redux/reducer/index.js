@@ -168,7 +168,10 @@ export default function reducer(state = initialState, { type, payload }) {
       break;
     }
     case ADD_TO_CART: {
-      newState = {};
+      newState = {
+        ...state,
+        cartproduct: [...state.cartproduct, payload],
+      };
       break;
     }
     case ORDER_PRODUCT: {
@@ -187,7 +190,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case REMOVE_ALL_FROM_CART: {
       newState = {
         ...state,
-        cartproducts: [],
+        cartproduct: payload,
       };
       break;
     }

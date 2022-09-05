@@ -1,45 +1,39 @@
-import React from "react"; 
-import { useReducer } from"react";
+import React from "react";
 import * as ReactRedux from "react-redux";
-import { useEffect } from "react";
-import { ADD_TO_CART } from "../../redux/actions/ActionTypes";
+import { removeAllCart } from "../../redux/actions/index";
 import CartItem from "./CartItem";
 
+function Shop() {
+  const dispatch = ReactRedux.useDispatch();
 
-function Shop(){
-     const dispatch = ReactRedux.useDispatch();
-    // const products = ReactRedux.useSelector((state) => state.product);
+  const cartItems = ReactRedux.useSelector((state) => state.cartproduct);
 
-    const cartItems = ReactRedux.useSelector((state) => state.cartproduct);
+  const clearCart = () => {
+    dispatch(removeAllCart());
+  };
 
+  const priceTotal = () => {
+    return cartItems?.reduce((acc, prod) => acc + prod.price, 0);
+  };
+  // const deleteFromCart = () => {};
 
-    // useEffect((id) => {
-    //     dispatch(ADD_TO_CART(id));
-    //   }, [dispatch]);
+  return (
+    <div>
+      <h2> Carrito de compras</h2>
+      <button onClick={clearCart}> Limpiar Carrito</button>
+      <h3>PRODUCTOS</h3>
+      {/* <h3> carrito</h3> */}
 
-    const deleteFromCart=()=>{
+      {cartItems?.length ? (
+        cartItems.map((p) => (
+          <CartItem key={p.id} name={p.name} price={p.price} id={p.id} />
+        ))
+      ) : (
+        <spam> Tu carrito esta vacio </spam>
+      )}
 
-    }
-    const clearCart=()=>{
-
-    }
-    
-
-
-    return(
-        <div>
-            <h2> Carrito de compras</h2>
-            <h3>PRODUCTOS</h3>
-            <h3> carrito</h3>
-         
-        
-        <button> Limpiar Carrito</button>
-        {cartItems && cartItems.length ?
-  <CartItem product={cartItems} deleteFromCart={deleteFromCart}/> :
-  <spam> Tu carrito esta vacio </spam>
-
+      {cartItems?.length ? <h3>Total sin impuestos: ${priceTotal()}</h3> : <></>}
+    </div>
+  );
 }
-        </div>
-    )
-}
- export default Shop;
+export default Shop;

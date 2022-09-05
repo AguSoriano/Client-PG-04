@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AiFillCodeSandboxCircle } from "react-icons/ai";
+// import { AiFillCodeSandboxCircle } from "react-icons/ai";
 import {
   GET_NAME_PRODUCT,
   GET_PRODUCTS,
@@ -16,6 +16,7 @@ import {
   REMOVE_ONE_FROM_CART,
   ADD_FAV,
   REMOVE_FAV,
+  ADD_TO_CART,
 } from "./ActionTypes";
 import { GET_DETAIL } from "./ActionTypes";
 // import { products } from "../../DB/db";
@@ -155,31 +156,49 @@ export const filterBy2 = (category2) => {
   };
 };
 
-export const removeOneProducts = (id) => async (dispatch) => {
-  try {
-    const { data } = await axios.delete(); //ruta
-    return dispatch({
-      type: REMOVE_ONE_FROM_CART,
-      payload: data,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+export const removeOneProducts = (id) => {
+  // return async (dispatch) => {
+  // try {
+  //   const { data } = await axios.delete(); //ruta
+  //   return dispatch({
+  return {
+    type: REMOVE_ONE_FROM_CART,
+    // payload: data,
+    payload: id,
+  };
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 }; //HAY QUE MODIFICAR LA LOGICA CON LA RUTA Y CON EL LOCALSTORAGE
 //IMPEDIR ELIMINAR SIN LOGUEARSE Y CONFIRMAR ELIMINACION
 
-export const removeAllCart = () => async (dispatch) => {
-  try {
-    const { data } = await axios.delete(); //ruta+ID
-    return dispatch({
-      type: REMOVE_ALL_FROM_CART,
-      payload: data,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+export const removeAllCart = () => {
+  // return async (dispatch) => {
+  // try {
+  // const { data } = await axios.delete(); //ruta+ID
+  // return dispatch({
+
+  return {
+    type: REMOVE_ALL_FROM_CART,
+    // payload: data,
+    payload: [],
+  };
+  // );
+  // } catch (error) {
+  //   console.log(error);
+  // }
+  // };
 }; //HAY QUE MODIFICAR LA LOGICA CON LA RUTA Y CON EL LOCALSTORAGE
 //IMPEDIR ELIMINAR SIN LOGUEARSE Y CONFIRMAR ELIMINACION
+
+export const addToCart = (product) => {
+  return {
+    type: ADD_TO_CART,
+    payload: product,
+  };
+};
 
 export const register = (data) => {
   return async () => {
