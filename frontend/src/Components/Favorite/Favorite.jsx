@@ -8,7 +8,7 @@ function Favorite() {
 
   return (
     <div>
-      {favorites.length
+      {favorites?.length
         ? favorites.map((prod) => (
             <CardP
               key={prod.id}
