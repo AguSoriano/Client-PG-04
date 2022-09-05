@@ -1,5 +1,8 @@
 import React from "react";
 import Carousel from "../Carousel/Carousel"
+import style from "./LandingPage.module.css"
+import Footer from "../Footer/Footer";
+
 
 
 function LandingPage() {
@@ -18,8 +21,15 @@ function LandingPage() {
 
     return (
         <div>
-            <div>
+             <p className={style.p}> Comprá y disfrutá </p>
+         <p className={style.p2}> Tienda de productos naturales y saludables </p>
+       
+            <div className={style.img}>
             <Carousel slides={slides} controls indicators width={1200} />
+            </div>
+        
+            <div className={style.footer}>
+                <Footer/>
             </div>
         </div>
     )
