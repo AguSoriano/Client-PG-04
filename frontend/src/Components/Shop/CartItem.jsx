@@ -1,20 +1,20 @@
-import React from "react";
+// import React from "react";
 
-function CartItem({product}){
-    let {price, image, name} =product
-    return(
-        <div>
-            <h5>{price}</h5>
-            <h4> {name}</h4>
+// function CartItem({product}){
+//     let {price, image, name} =product
+//     return(
+//         <div>
+//             <h5>{price}</h5>
+//             <h4> {name}</h4>
 
-        </div>
-    )
-}
-
-
+//         </div>
+//     )
+// }
 
 
 
 
 
-export default CartItem;
+
+
+// export default CartItem;

@@ -1,10 +1,10 @@
-function Cart(){
-    return (
-        <div> lucia</div>
-    )
-}
+// function Cart(){
+//     return (
+//         <div> </div>
+//     )
+// }
 
 
 
 
-export default Cart;
+// export default Cart;
