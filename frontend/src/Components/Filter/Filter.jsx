@@ -17,7 +17,7 @@ function Filter() {
     dispatch(getCategories());
   }, [dispatch]);
 
-  const categories = ReactRedux.useSelector((state) => state.categories);
+  // const categories = ReactRedux.useSelector((state) => state.categories);
 
   const handleSelect = (e) => {
     e.preventDefault();
