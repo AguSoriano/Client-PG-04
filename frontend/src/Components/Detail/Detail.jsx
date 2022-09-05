@@ -26,11 +26,15 @@ function Detail() {
   const favorites = ReactRedux.useSelector((state) => state.favorites);
 
   const add = () => {
-    dispatch(addFav(product));
+    if (product.name) {
+      dispatch(addFav(product));
+    }
   };
 
   const remove = (id) => {
-    dispatch(removeFav(id));
+    if (product.id) {
+      dispatch(removeFav(id));
+    }
   };
 
   const prodIsFav = (id) => {
