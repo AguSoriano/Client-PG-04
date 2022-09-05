@@ -10,6 +10,7 @@ import img from "../Img/Logo1V2.png";
 import style from "./Home.module.css";
 import Loading from "../Loading/Loading";
 import Filter from "../Filter/Filter";
+import Carousel from "../Carousel/Carousel"
 
 function Home() {
   const dispatch = ReactRedux.useDispatch();
@@ -42,8 +43,8 @@ function Home() {
 
       <section className={style.weekSect}>
         <h1>DESTACADO DE LA SEMANA</h1>
-        <div className={style.weekP}>
-          {weekProds.length > 1 ? (
+        <div className={style.img}>
+        <Carousel slides={weekProds.length > 1 ? (
             weekProds.map((prod) => (
               <Card
                 key={prod.id}
@@ -57,7 +58,8 @@ function Home() {
             ))
           ) : (
             <Loading />
-          )}
+          )} controls indicators width={1200} />
+          
         </div>
       </section>
 
