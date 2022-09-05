@@ -34,7 +34,7 @@ function Detail() {
   };
 
   const prodIsFav = (id) => {
-    if (favorites.length) {
+    if (favorites?.length) {
       return favorites.find((prod) => prod.id === id) ? true : false;
     }
     return false;
