@@ -30,7 +30,7 @@ function NavBar() {
         <Link className={style.link} to={"/about"}>
           Sobre Nosotros
         </Link>
-        <Link className={style.link} to={"/"}>
+        <Link className={style.link} to={"/shop"}>
           <FaCartArrowDown size="1.5rem" />
         </Link>
         {isAuthenticated ? (
