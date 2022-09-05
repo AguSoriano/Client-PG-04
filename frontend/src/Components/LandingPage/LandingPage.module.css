@@ -1,0 +1,24 @@
+.img{
+    width: 100%;
+    height: 100%;
+ 
+   
+    
+   
+}
+.p{
+    font-family: "Latin Modern Roman";
+  font-style: italic;
+  font-size: 190%;
+  font-weight: 700;
+ margin-top: 2rem;
+ position: relative;
+}
+.p2{
+    font-family: "Latin Modern Roman";
+  font-style: italic;
+  margin-top: -2.3rem;
+  color: black;
+  font-weight: 600;
+  background-color:#D5F5E3;
+}

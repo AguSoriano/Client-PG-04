@@ -1,8 +1,11 @@
 .carousel {
   margin: 0 auto;
   overflow: hidden;
-  max-width: 1000px;
+  max-width: 1500px;
   position: relative;
+  border-radius: 2rem;
+  border: 3rem;
+  
 }
 
 .carousel-inner {
@@ -16,15 +19,16 @@
 }
 
 .carousel-control {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color:transparent;
   border: none;
   display: inline-block;
   position: absolute;
-  height: 50px;
-  width: 70px;
+  height: 70px;
+  width: 100px;
   top: calc(50% - 25px);
-  color: #f3f3f3;
+  color:black;
   cursor: pointer;
+  
 }
 .left {
   left: 0;
@@ -37,18 +41,15 @@
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
-  bottom: 1.5em;
+ 
   z-index: 2;
 }
 
 .carousel-indicator-item {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 25px;
   border: none;
-  background: #fff;
-  opacity: 0.5;
-  margin: 0.2em;
-  border-radius: 50%;
+ 
   cursor: pointer;
 }
 .active {
