@@ -2,7 +2,13 @@ import React from "react";
 import { useEffect } from "react";
 import * as ReactRedux from "react-redux";
 import { useParams } from "react-router-dom";
-import { addFav, cleanDetail, getDetail, removeFav } from "../../redux/actions";
+import {
+  addFav,
+  addToCart,
+  cleanDetail,
+  getDetail,
+  removeFav,
+} from "../../redux/actions";
 import Loading from "../Loading/Loading";
 import img from "../Img/PG0.png";
 import style from "./Details.module.css";
@@ -24,14 +30,15 @@ function Detail() {
 
   const product = ReactRedux.useSelector((state) => state.prodDetail);
   const favorites = ReactRedux.useSelector((state) => state.favorites);
+  const cart = ReactRedux.useSelector((state) => state.cartproduct);
 
-  const add = () => {
+  const addFav = () => {
     if (product.name) {
       dispatch(addFav(product));
     }
   };
 
-  const remove = (id) => {
+  const removeFav = (id) => {
     if (product.id) {
       dispatch(removeFav(id));
     }
@@ -44,6 +51,21 @@ function Detail() {
     return false;
   };
 
+  const isOnCart = () => {
+    if (cart?.length) {
+      return cart.find((p) => p.id === product.id) ? true : false;
+    }
+    return false;
+  };
+
+  const addCart = () => {
+    if (isOnCart()) {
+      return alert("El producto ya esta en el carrito");
+    }
+    dispatch(addToCart(product));
+    alert(`${product.name} agregado al carrito`);
+  };
+
   return (
     <div>
       {product.name ? (
@@ -53,18 +75,8 @@ function Detail() {
             className={style.img}
             alt={product.name}
             src={product.image ? product.image : img}
-            // style={{ width: 450, height: 450 }}
           />
-          <div
-            className={style.details}
-            // style={{
-            //   display: "flex",
-            //   flexDirection: "row",
-            //   alignItems: "center",
-            //   justifyContent: "center",
-            //   gap: "2rem",
-            // }}
-          >
+          <div className={style.details}>
             {product.categories.map((cat) => (
               <p key={cat.id}>{cat.name}</p>
             ))}
@@ -80,16 +92,16 @@ function Detail() {
             {!isAuthenticated ? (
               <></>
             ) : prodIsFav(product.id) ? (
-              <button onClick={() => remove(product.id)}>
+              <button onClick={() => removeFav(product.id)}>
                 <FcLike />
               </button>
             ) : (
-              <button onClick={add}>
+              <button onClick={addFav}>
                 <AiOutlineHeart />
               </button>
             )}
-
-            {/* <button onClick={remove}>Sacar Fav</button> */}
+            <button onClick={addCart}> Agregar al Carro </button>
+            <button> Comprar </button>
           </section>
         </div>
       ) : (
