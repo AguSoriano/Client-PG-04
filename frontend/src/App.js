@@ -7,6 +7,8 @@ import LandingPage from "./Components/LandingPage/LandinPage";
 import Create from "./Components/Create/Create";
 import Profile from "./Components/Profile/Profile";
 import About from './Components/About/About';
+import Shop from "./Components/Shop/Shop";
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route exact path="products/:id" element={<Detail />} />
         <Route path="new" element={<Create />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="shop" element={<Shop/>} />
       </Routes>
     </div>
   );
