@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 
-function CardP({ name, id, img, price, shortDesc }) {
+function CardP({ name, id, img, price, shortDesc,  }) {
   let newP = `$ ${price}`;
   return (
     <div>
@@ -15,6 +15,7 @@ function CardP({ name, id, img, price, shortDesc }) {
           cover={<img alt={name} src={img} />}
         >
           <Meta title={newP} description={shortDesc} style={{justifyContent: "center", marginTop: "2rem"}}/>
+          <button > Agregar al Carro </button>
         </Card>
       </Link>
     </div>
