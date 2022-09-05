@@ -14,8 +14,11 @@ function CardP({ name, id, img, price, shortDesc }) {
           style={{ width: 375, height: 450 }}
           cover={<img alt={name} src={img} />}
         >
-          <Meta title={newP} description={shortDesc} style={{justifyContent: "center", marginTop: "2rem"}}/>
-          <button > Agregar al Carro </button>
+          <Meta
+            title={newP}
+            description={shortDesc}
+            style={{ justifyContent: "center", marginTop: "2rem" }}
+          />
         </Card>
       </Link>
     </div>
