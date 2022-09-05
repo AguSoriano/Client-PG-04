@@ -215,3 +215,17 @@ export const removeFav = (id) => {
     payload: id,
   };
 };
+
+export const createProduct = (data) => {
+  return async () => {
+    try {
+      const product = await axios.post(
+        "https://pf-api-04.up.railway.app/products",
+        data
+      );
+      alert(`El producto ${data.name} se creo`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

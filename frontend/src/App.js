@@ -10,10 +10,6 @@ import About from "./Components/About/About";
 import Favorite from "./Components/Favorite/Favorite";
 import Shop from "./Components/Shop/Shop";
 
-
-
-
-
 function App() {
   return (
     <div className="App">
@@ -26,7 +22,8 @@ function App() {
         <Route path="new" element={<Create />} />
         <Route path="profile" element={<Profile />} />
         <Route path="favorite" element={<Favorite />} />
-        <Route path="shop" element={<Shop/>} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="newproduct" element={<Create />} />
       </Routes>
     </div>
   );
