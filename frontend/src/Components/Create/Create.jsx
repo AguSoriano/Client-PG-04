@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
-import { getCategories } from "../../redux/actions";
+import { createProduct, getCategories } from "../../redux/actions";
 import style from "./Create.module.css";
 
 function Create() {
@@ -15,11 +15,26 @@ function Create() {
   const validador = (input) => {
     let noNumero = /^[A-Za-z]+$/;
     let error = {};
-    if (!noNumero.test(input.nombre)) {
-      error.nombre = "el nombre solo acepta letras";
+    if (!noNumero.test(input.name)) {
+      error.name = "el nombre solo acepta letras";
     }
-    if (!input.nombre) {
-      error.nombre = "el nombre no puede estar vacio";
+    if (!input.name) {
+      error.name = "el nombre no puede estar vacio";
+    }
+    if (!input.category.length) {
+      error.categories = "al menos se necesita una categoria";
+    }
+    return error;
+  };
+
+  const validoSelect = (input, event) => {
+    let error = "";
+    let categories = input.category;
+
+    if (categories.length > 0) {
+      if (categories.find((p) => p === event)) {
+        error = "Categoria ya agregada";
+      }
     }
     return error;
   };
@@ -61,32 +76,43 @@ function Create() {
 
   console.log(input.category);
 
-  const handleSelect = (evento) => {
-    evento.preventDefault();
+  const handleSelect = (event) => {
+    event.preventDefault();
 
-    // if (!validoSelect(input, evento.target.value)) {
-    //   setErrors(
-    //     validador({
-    //       ...input,
-    //       category: [...input.category, evento.target.value],
-    //     })
-    //   );
+    if (!validoSelect(input, event.target.value)) {
+      setErrors(
+        validador({
+          ...input,
+          category: [...input.category, event.target.value],
+        })
+      );
 
-    //   setInput({
-    //     ...input,
-    //     category: [...input.category, evento.target.value],
-    //   });
-    // } else {
-    //   alert(validoSelect(input, evento.target.value));
-    // }
+      setInput({
+        ...input,
+        category: [...input.category, event.target.value],
+      });
+    } else {
+      alert(validoSelect(input, event.target.value));
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!errors.name && !errors.categories) {
+      dispatch(createProduct(input));
+      // alert("Producto creado con exito");
+    } else {
+      alert("Hubo un problema al crear el producto, mirar el formulario");
+    }
   };
 
   return (
     <form
       className={style.formPrincipal}
-      // onSubmit={(e) => {
-      //   handleSubmit(e);
-      // }}
+      onSubmit={(e) => {
+        handleSubmit(e);
+      }}
     >
       <div className={style.divSection}>
         <section>
@@ -98,14 +124,14 @@ function Create() {
             onChange={(e) => handleInputChange(e)}
           />
           {errors.name && <p className={style.errors}>{errors.name}</p>}
-          <label>description corta</label>
+          <label>descripcion corta</label>
           <input
             name="shortDescription"
             value={input.shortDescription}
             type="textarea"
             onChange={(e) => handleInputChange(e)}
           />
-          <label>description</label>
+          <label>descripcion</label>
           <input
             name="description"
             value={input.description}
@@ -119,7 +145,7 @@ function Create() {
             type="number"
             onChange={(e) => handleInputChange(e)}
           />
-          <label>price</label>
+          <label>precio</label>
           <input
             name="price"
             value={input.price}
@@ -128,7 +154,7 @@ function Create() {
           />
         </section>
         <section>
-          <label>category</label>
+          <label>categorias </label>
           <select onChange={(e) => handleSelect(e)}>
             <option></option>
             {allCategory.map((p, i) => (
@@ -151,7 +177,9 @@ function Create() {
               </li>
             ))}
           </ul>
-          {errors.category && <p className={style.errors}>{errors.category}</p>}
+          {errors.categories && (
+            <p className={style.errors}>{errors.categories}</p>
+          )}
         </section>
       </div>
       <button type="submit" className={style.btn}>
