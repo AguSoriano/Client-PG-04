@@ -6,8 +6,12 @@ import { addFav, cleanDetail, getDetail, removeFav } from "../../redux/actions";
 import Loading from "../Loading/Loading";
 import img from "../Img/PG0.png";
 import style from "./Details.module.css";
+import { AiOutlineHeart } from "react-icons/ai";
+import { FcLike } from "react-icons/fc";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Detail() {
+  const { isAuthenticated } = useAuth0();
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
 
@@ -19,6 +23,19 @@ function Detail() {
   }, [dispatch, id]);
 
   const product = ReactRedux.useSelector((state) => state.prodDetail);
+  const favorites = ReactRedux.useSelector((state) => state.favorites);
+
+  const add = () => {
+    dispatch(addFav(product));
+  };
+
+  const remove = (id) => {
+    dispatch(removeFav(id));
+  };
+
+  const prodIsFav = (id) => {
+    return favorites?.find((prod) => prod.id === id) ? true : false;
+  };
 
   return (
     <div>
@@ -53,12 +70,19 @@ function Detail() {
           <section>
             <p className={style.precio}>Precio</p>
             <h3 className={style.precio}>${product.price}</h3>
-            <button onClick={() => dispatch(addFav(product))}>
-              Agregar Fav
-            </button>
-            <button onClick={() => dispatch(removeFav(product.id))}>
-              Sacar Fav
-            </button>
+            {!isAuthenticated ? (
+              <></>
+            ) : prodIsFav(product.id) ? (
+              <button onClick={() => remove(product.id)}>
+                <FcLike />
+              </button>
+            ) : (
+              <button onClick={add}>
+                <AiOutlineHeart />
+              </button>
+            )}
+
+            {/* <button onClick={remove}>Sacar Fav</button> */}
           </section>
         </div>
       ) : (
