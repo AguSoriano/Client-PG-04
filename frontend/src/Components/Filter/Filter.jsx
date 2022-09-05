@@ -33,8 +33,8 @@ function Filter() {
   };
 
   return (
-    <div>
-      <select className={style.select} onChange={(e) => handleSelect(e)}>
+    <div className={style.fMain}>
+      <select className={style.select1} onChange={(e) => handleSelect(e)}>
         <option value="all">CATEGORIAS</option>
         <option value="all">Todos</option>
         <option value="medallon">Medallones</option>
@@ -43,7 +43,7 @@ function Filter() {
         <option value="bebida">Bebidas</option>
       </select>
       {filtro === "medallon" ? (
-        <select className={style.select} onChange={(e) => handleSelect2(e)}>
+        <select className={style.select2} onChange={(e) => handleSelect2(e)}>
           <option value="all">SUBCATEGORIAS</option>
           <option value="all">Todos</option>
           <option value="soja">Soja</option>
