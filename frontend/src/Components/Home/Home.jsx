@@ -6,11 +6,11 @@ import * as ReactRedux from "react-redux";
 import { getProducts, weekProd } from "../../redux/actions";
 import Sort from "../Sort/Sort";
 import Pagination from "../Pagination/Pagination";
-import img from "../Img/Logo1V2.png";
+// import img from "../Img/Logo1V2.png";
 import style from "./Home.module.css";
 import Loading from "../Loading/Loading";
 import Filter from "../Filter/Filter";
-import Carousel from "../Carousel/Carousel"
+import Carousel from "../Carousel/Carousel";
 
 function Home() {
   const dispatch = ReactRedux.useDispatch();
@@ -45,20 +45,27 @@ function Home() {
         <h1 className={style.Text}>DESTACADO DE LA SEMANA</h1>
         <div className={style.img}>
           {weekProds.length > 1 ? (
-            <Carousel slides={     
-              weekProds.map(
-                prod => {
-                  return <Card
-                  key={prod.id}
-                  id={prod.id}
-                  name={prod.name}
-                  img={prod.image ? prod.image : img}
-                  price={prod.price}
-                  stock={prod.stock}
-                  shortDesc={prod.shortDescription}
-                />
-                }
-              )} controls indicators width={1200} ifCard={true} />
+            <Carousel
+              slides={weekProds.map((prod) => {
+                return (
+                  <Card
+                    key={prod.id}
+                    id={prod.id}
+                    name={prod.name}
+                    img={prod.image /* ? prod.image : img*/}
+                    price={prod.price}
+                    stock={prod.stock}
+                    // shortDesc={prod.shortDescription}
+                    widthCard={550}
+                    heightCard={300}
+                  />
+                );
+              })}
+              controls
+              indicators
+              width={1200}
+              ifCard={true}
+            />
           ) : (
             <Loading />
           )}
@@ -71,10 +78,12 @@ function Home() {
               key={prod.id}
               id={prod.id}
               name={prod.name}
-              img={prod.image ? prod.image : img}
+              img={prod.image /* ? prod.image : img*/}
               price={prod.price}
               stock={prod.stock}
               shortDesc={prod.shortDescription}
+              widthCard={375}
+              heightCard={450}
             />
           ))
         ) : (
