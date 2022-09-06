@@ -57,7 +57,7 @@ function Home() {
                     stock={prod.stock}
                     // shortDesc={prod.shortDescription}
                     widthCard={550}
-                    heightCard={300}
+                    heightCard={475}
                   />
                 );
               })}
