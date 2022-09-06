@@ -19,14 +19,14 @@ function Shop() {
 
   return (
     <div>
-      <h2> Carrito de compras</h2>
+      <h2> Tu Carrito </h2>
      
       <h3>PRODUCTOS</h3>
       {/* <h3> carrito</h3> */}
 
       {cartItems?.length ? (
         cartItems.map((p) => (
-          <CartItem key={p.id} name={p.name} price={p.price} id={p.id} />
+          <CartItem key={p.id} name={p.name} price={p.price} id={p.id} img={p.image}/>
         ))
       ) : (
         <spam> Tu carrito esta vacio </spam>

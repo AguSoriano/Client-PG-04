@@ -13,6 +13,8 @@ function CartItem({ price, image, name, id }) {
     <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "1rem"}}>
       <h4> {name}</h4>
       <h5>${price}</h5>
+      
+  
       <button onClick={removeCart}>x</button>
     </div>
   );

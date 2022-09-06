@@ -32,7 +32,8 @@ function NavBar() {
         </Link>
 
         <Link className={style.link} to={"/shop"}>
-          <FaCartArrowDown size="1.5rem" />
+            Carrito <FaCartArrowDown  size="1.2rem" />
+            
         </Link>
         {isAuthenticated ? (
           <>
