@@ -1,9 +1,25 @@
-const CarouselItem = ({ slide, stopSlide, startSlide }) => {
-    return (
-        <div className="carousel-item" onMouseEnter={stopSlide} onMouseOut={startSlide}>
-            <img src={slide} />
+const CarouselItem = ({slide, stopSlide, startSlide, ifCard}) => {
+    if (ifCard) {
+      return (
+        <div
+          className="carousel-item"
+          onMouseEnter={stopSlide}
+          onMouseOut={startSlide}
+        >
+          {slide}
         </div>
-    )
-}
-
-export default CarouselItem
+      );
+    } else {
+      return (
+        <div
+          className="carousel-item"
+          onMouseEnter={stopSlide}
+          onMouseOut={startSlide}
+        >
+          <img src={slide} />
+        </div>
+      );
+    }
+  };
+  
+  export default CarouselItem;

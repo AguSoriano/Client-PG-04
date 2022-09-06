@@ -1,21 +1,24 @@
 .carousel {
   margin: 0 auto;
   overflow: hidden;
-  max-width: 1500px;
+  max-width: 1000px;
   position: relative;
   border-radius: 2rem;
   border: 3rem;
+  justify-content: center;
   
 }
 
 .carousel-inner {
   white-space: nowrap;
   transition: ease 1s;
+  justify-content: center;
 }
 
 .carousel-item {
   display: inline-block;
   width: 100%;
+  justify-content: center;
 }
 
 .carousel-control {
@@ -41,7 +44,6 @@
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
- 
   z-index: 2;
 }
 
@@ -49,8 +51,8 @@
   width: 20px;
   height: 25px;
   border: none;
- 
   cursor: pointer;
+  justify-content: center;
 }
 .active {
   opacity: 1;

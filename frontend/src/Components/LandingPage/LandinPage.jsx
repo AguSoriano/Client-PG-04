@@ -25,7 +25,7 @@ function LandingPage() {
          <p className={style.p2}> Tienda de productos naturales y saludables </p>
        
             <div className={style.img}>
-            <Carousel slides={slides} controls indicators width={1200} />
+            <Carousel slides={slides} controls indicators width={1200} ifCard={false} />
             </div>
         
             <div className={style.footer}>
