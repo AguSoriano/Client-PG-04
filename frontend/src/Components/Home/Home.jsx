@@ -45,9 +45,10 @@ function Home() {
         <h1>DESTACADO DE LA SEMANA</h1>
         <div className={style.img}>
           {weekProds.length > 1 ? (
-            <Carousel slides={
-              weekProds.map((prod) => (
-                <Card
+            <Carousel slides={     
+              weekProds.map(
+                prod => {
+                  return <Card
                   key={prod.id}
                   id={prod.id}
                   name={prod.name}
@@ -56,15 +57,13 @@ function Home() {
                   stock={prod.stock}
                   shortDesc={prod.shortDescription}
                 />
-                
-              )
-              )} controls indicators width={1200} />
+                }
+              )} controls indicators width={1200} ifCard={true} />
           ) : (
             <Loading />
           )}
         </div>
       </section>
-
       <section className={style.prodSection}>
         {products.length > 1 ? (
           prodPage.map((prod) => (
