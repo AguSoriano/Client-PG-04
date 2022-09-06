@@ -1,4 +1,4 @@
-.mainRender{
+.mainRender {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,6 +19,10 @@
   align-items: center;
   height: 6rem;
   text-align: center;
+}
+
+.user > h2 {
+  font-weight: bold;
 }
 
 .user > img {
