@@ -44,21 +44,23 @@ function Home() {
       <section className={style.weekSect}>
         <h1>DESTACADO DE LA SEMANA</h1>
         <div className={style.img}>
-       {weekProds.length > 1 ? (
-        <Carousel slides={weekProds.map((prod) => (
-              <Card
-                key={prod.id}
-                id={prod.id}
-                name={prod.name}
-                img={prod.image ? prod.image : img}
-                price={prod.price}
-                stock={prod.stock}
-                shortDesc={prod.shortDescription}
-              />
-            ))}controls indicators width={1200} />
+          {weekProds.length > 1 ? (
+            <Carousel slides={
+              weekProds.map((prod) => (
+                <Card
+                  key={prod.id}
+                  id={prod.id}
+                  name={prod.name}
+                  img={prod.image ? prod.image : img}
+                  price={prod.price}
+                  stock={prod.stock}
+                  shortDesc={prod.shortDescription}
+                />
+              )
+              )} controls indicators width={1200} />
           ) : (
             <Loading />
-          )} 
+          )}
         </div>
       </section>
 
