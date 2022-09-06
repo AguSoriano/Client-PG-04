@@ -20,7 +20,7 @@ function Shop() {
   return (
     <div>
       <h2> Carrito de compras</h2>
-      <button onClick={clearCart}> Limpiar Carrito</button>
+     
       <h3>PRODUCTOS</h3>
       {/* <h3> carrito</h3> */}
 
@@ -33,6 +33,7 @@ function Shop() {
       )}
 
       {cartItems?.length ? <h3>Total sin impuestos: ${priceTotal()}</h3> : <></>}
+      <button onClick={clearCart}> Limpiar Carrito</button>
     </div>
   );
 }
