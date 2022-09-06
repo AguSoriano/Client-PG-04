@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React /* useEffect */ from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/searchBar";
 import style from "./NavBar.module.css";
@@ -24,13 +24,13 @@ function NavBar() {
         <SearchBar />
       </section>
       <section className={style.links}>
-      <Link className={style.link} to={"/about"}>
+        <Link className={style.link} to={"/about"}>
           Sobre Nosotros
         </Link>
         <Link className={style.link} to={"/home"}>
           Tienda
         </Link>
-        
+
         <Link className={style.link} to={"/shop"}>
           <FaCartArrowDown size="1.5rem" />
         </Link>
@@ -39,7 +39,7 @@ function NavBar() {
             <Link to="/profile" className={style.link}>
               Perfil
             </Link>
-            <Link className={style.link} to={"/favorite"}>
+            <Link className={style.link} to={"/profile/favorite"}>
               Favoritos <FaHeart />
             </Link>
           </>
