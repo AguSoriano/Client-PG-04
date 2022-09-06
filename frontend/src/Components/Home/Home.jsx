@@ -32,10 +32,10 @@ function Home() {
     <div className={style.main}>
       <section>
         {products.length > 1 ? (
-          <>
+          <div className={style.filters}>
             <Filter />
             <Sort setOrder={setOrder} /*setPage={setPage}*/ />
-          </>
+          </div>
         ) : (
           <div></div>
         )}

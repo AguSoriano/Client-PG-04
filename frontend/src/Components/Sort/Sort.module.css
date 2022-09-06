@@ -1,14 +1,15 @@
 .sort{
   display: flex;
-  width: 100%;
-  position: relative;
-  margin-top: 1rem;
+  width: fit-content;
+  /* position: relative; */
+  /* margin-top: 1rem; */
+  margin-right: 1rem;
 }
 
 .sort > section {
   display: flex;
-  position: absolute;
-  right: 1rem;
+  /* position: absolute; */
+  /* right: 1rem; */
   gap: 0.5rem;
 }
 

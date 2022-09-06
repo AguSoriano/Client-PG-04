@@ -32,13 +32,13 @@ function Detail() {
   const favorites = ReactRedux.useSelector((state) => state.favorites);
   const cart = ReactRedux.useSelector((state) => state.cartproduct);
 
-  const addFav = () => {
+  const addFav1 = () => {
     if (product.name) {
       dispatch(addFav(product));
     }
   };
 
-  const removeFav = (id) => {
+  const removeFav1 = (id) => {
     if (product.id) {
       dispatch(removeFav(id));
     }
@@ -92,11 +92,11 @@ function Detail() {
             {!isAuthenticated ? (
               <></>
             ) : prodIsFav(product.id) ? (
-              <button onClick={() => removeFav(product.id)}>
+              <button onClick={() => removeFav1(product.id)}>
                 <FcLike />
               </button>
             ) : (
-              <button onClick={addFav}>
+              <button onClick={addFav1}>
                 <AiOutlineHeart />
               </button>
             )}
