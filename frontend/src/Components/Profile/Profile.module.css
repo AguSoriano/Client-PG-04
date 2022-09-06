@@ -1,0 +1,68 @@
+.mainRender{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainProf {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* border: 1px solid grey; */
+  width: 40%;
+  margin-top: 2rem;
+}
+
+.user {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  height: 6rem;
+  text-align: center;
+}
+
+.user > img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+}
+
+.user > button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.mainProf > section {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-left: 1rem;
+}
+
+.mainProf > section > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+}
+
+.mainProf > section > div > p {
+  font-size: 0.8rem;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.linkP {
+  text-decoration: none;
+  /* border: 1px solid grey; */
+  width: fit-content;
+  height: fit-content;
+  color: black;
+  padding-left: 0.1rem;
+  padding-right: 0.3rem;
+  font-size: 1.5rem;
+}

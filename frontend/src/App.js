@@ -9,6 +9,10 @@ import Profile from "./Components/Profile/Profile";
 import About from "./Components/About/About";
 import Favorite from "./Components/Favorite/Favorite";
 import Shop from "./Components/Shop/Shop";
+import Data from "./Components/Profile/Extras/Data";
+import Cards from "./Components/Profile/Extras/Cards";
+import Adress from "./Components/Profile/Extras/Adress";
+import Ask from "./Components/Profile/Extras/Ask";
 
 function App() {
   return (
@@ -21,7 +25,11 @@ function App() {
         <Route exact path="products/:id" element={<Detail />} />
         <Route path="new" element={<Create />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="favorite" element={<Favorite />} />
+        <Route path="profile/data" element={<Data />} />
+        <Route path="profile/cards" element={<Cards />} />
+        <Route path="profile/favorite" element={<Favorite />} />
+        <Route path="profile/adress" element={<Adress />} />
+        <Route path="profile/ask" element={<Ask />} />
         <Route path="shop" element={<Shop />} />
         <Route path="newproduct" element={<Create />} />
       </Routes>
