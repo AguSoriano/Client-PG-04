@@ -42,7 +42,7 @@ function Home() {
       </section>
 
       <section className={style.weekSect}>
-        <h1>DESTACADO DE LA SEMANA</h1>
+        <h1 className={style.Text}>DESTACADO DE LA SEMANA</h1>
         <div className={style.img}>
           {weekProds.length > 1 ? (
             <Carousel slides={     
