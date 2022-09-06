@@ -56,6 +56,7 @@ function Home() {
                   stock={prod.stock}
                   shortDesc={prod.shortDescription}
                 />
+                
               )
               )} controls indicators width={1200} />
           ) : (
