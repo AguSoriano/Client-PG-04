@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNameProduct, setPageAct } from "../../redux/actions/index";
 import style from "./searchBar.module.css";
+import swal from "sweetalert";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function SearchBar() {
     e.preventDefault();
     dispatch(getNameProduct(name)).then((resp) => {
       if (resp.code && resp.code === "ERR_BAD_REQUEST") {
-        alert("There is not product with that name");
+        swal("There is not product with that name");
       }
     });
     setName("");

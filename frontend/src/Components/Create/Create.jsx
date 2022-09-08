@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 import { createProduct, getCategories } from "../../redux/actions";
 import style from "./Create.module.css";
+import swal from "sweetalert";
 
 function Create() {
   const dispatch = ReactRedux.useDispatch();
@@ -92,7 +93,7 @@ function Create() {
         category: [...input.category, event.target.value],
       });
     } else {
-      alert(validoSelect(input, event.target.value));
+      swal(validoSelect(input, event.target.value));
     }
   };
 
@@ -103,7 +104,7 @@ function Create() {
       dispatch(createProduct(input));
       // alert("Producto creado con exito");
     } else {
-      alert("Hubo un problema al crear el producto, mirar el formulario");
+      swal("Hubo un problema al crear el producto, mirar el formulario");
     }
   };
 
