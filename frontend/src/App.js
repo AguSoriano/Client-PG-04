@@ -13,7 +13,12 @@ import Data from "./Components/Profile/Extras/Data";
 import Cards from "./Components/Profile/Extras/Cards";
 import Adress from "./Components/Profile/Extras/Adress";
 import Ask from "./Components/Profile/Extras/Ask";
-import Mailer from "./Components/Mailer/mailer"
+import Mailer from "./Components/Mailer/mailer";
+import ProfileAdmin from "./Components/Admin/Profile/ProfileAdmin";
+import Users from "./Components/Admin/Users/Users";
+import Products from "./Components/Admin/Products/Products";
+import Categories from "./Components/Admin/Categories/Categories";
+import Orders from "./Components/Admin/Orders/Orders";
 
 function App() {
   return (
@@ -34,6 +39,11 @@ function App() {
         <Route path="profile/ask" element={<Ask />} />
         <Route path="shop" element={<Shop />} />
         <Route path="newproduct" element={<Create />} />
+        <Route path="admin" element={<ProfileAdmin />} />
+        <Route path="admin/users" element={<Users />} />
+        <Route path="admin/products" element={<Products />} />
+        <Route path="admin/categories" element={<Categories />} />
+        <Route path="admin/orders" element={<Orders />} />
       </Routes>
     </div>
   );
