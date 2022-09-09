@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
-import { createProduct, getCategories } from "../../redux/actions";
+import { createProduct } from "../../redux/actions/Products/ProductsAction";
+import { getCategories } from "../../redux/actions/Categories/CategoryAction";
 import style from "./Create.module.css";
 import swal from "sweetalert";
 
@@ -11,7 +12,7 @@ function Create() {
     dispatch(getCategories());
   }, [dispatch]);
 
-  const allCategory = ReactRedux.useSelector((state) => state.categories);
+  const allCategory = ReactRedux.useSelector((state) => state.categoryReducer.categories);
 
   const validador = (input) => {
     let noNumero = /^[A-Za-z]+$/;
