@@ -167,15 +167,16 @@ export default function reducer(state = initialState, { type, payload }) {
       };
       break;
     }
+  
+    case ORDER_PRODUCT: {
+      newState = {};
+      break;
+    }
     case ADD_TO_CART: {
       newState = {
         ...state,
         cartproduct: [...state.cartproduct, payload],
       };
-      break;
-    }
-    case ORDER_PRODUCT: {
-      newState = {};
       break;
     }
     case REMOVE_ONE_FROM_CART: {
