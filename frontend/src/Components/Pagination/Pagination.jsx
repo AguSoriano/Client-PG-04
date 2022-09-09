@@ -1,12 +1,12 @@
 import React from "react";
 import style from "./Pagination.module.css";
 import * as ReactRedux from "react-redux";
-import { setPageAct } from "../../redux/actions";
+import { setPageAct } from "../../redux/actions/Page/PageAction";
 
 function Pagination({ /*page, setPage,*/ products }) {
   const dispatch = ReactRedux.useDispatch();
 
-  const page = ReactRedux.useSelector((state) => state.page);
+  const { page } = ReactRedux.useSelector((state) => state.pageReducer);
 
   const numbers = [];
   for (let i = 0; i < products.length / 6; i++) {

@@ -10,7 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function NavBar() {
   // const dispatch = ReactRedux.useDispatch();
-  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+  const { /*user,*/ loginWithRedirect, isAuthenticated } = useAuth0();
 
   // useEffect(() => {
   //   if (isAuthenticated) {

@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getNameProduct, setPageAct } from "../../redux/actions/index";
+import { getNameProduct } from "../../redux/actions/Products/ProductsAction";
+import { setPageAct } from "../../redux/actions/Page/PageAction";
 import style from "./searchBar.module.css";
 import swal from "sweetalert";
 

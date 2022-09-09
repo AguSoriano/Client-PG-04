@@ -1,8 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import style from "./Sort.module.css";
-
-import { OrderAlphabetical, OrderPrice, setPageAct } from "../../redux/actions";
+import {
+  OrderAlphabetical,
+  OrderPrice,
+} from "../../redux/actions/Products/ProductsAction";
+import { setPageAct } from "../../redux/actions/Page/PageAction";
 
 function Sort({ setOrder /*setPage*/ }) {
   const dispatch = useDispatch();

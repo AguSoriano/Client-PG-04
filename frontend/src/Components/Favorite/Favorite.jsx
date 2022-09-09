@@ -4,7 +4,7 @@ import CardFav from "../Card/CardFav";
 import style from "./Favorite.module.css";
 
 function Favorite() {
-  const favorites = ReactRedux.useSelector((state) => state.favorites);
+  const {favorites} = ReactRedux.useSelector((state) => state.favoriteReducer);
   console.log(favorites);
 
   return (
