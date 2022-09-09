@@ -4,10 +4,11 @@ import * as ReactRedux from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   addFav,
-  addToCart,
+  addToCart, 
   cleanDetail,
   getDetail,
   removeFav,
+  
 } from "../../redux/actions";
 import Loading from "../Loading/Loading";
 import img from "../Img/PG0.png";
@@ -59,25 +60,25 @@ function Detail() {
     return false;
   };
 
-  const addCart = () => {
+   const addCart = () => {
     if (isOnCart()) {
-      return swal({
-        title: "Cuidado",
-        text: "El producto ya esta en el carrito",
-        icon: "error",
-        button: "Aceptar",
-        timer: "2500"
-      });
-    }
-    dispatch(addToCart(product));
-    swal({
-      title: "Exito",
-      text: `${product.name} agregado al carrito`,
-      icon: "success",
-      button: "Aceptar",
-      timer: "2500"
-    });
-  };
+       return swal({
+         title: "Cuidado",
+         text: "El producto ya esta en el carrito",
+         icon: "error",
+         button: "Aceptar",
+         timer: "2500"
+       });
+     }
+     dispatch(addToCart(product));
+     swal({
+       title: "Exito",
+       text: `${product.name} agregado al carrito`,
+       icon: "success",
+       button: "Aceptar",
+       timer: "2500"
+     });
+   };
 
   return (
     <div>
@@ -115,7 +116,7 @@ function Detail() {
                 <AiOutlineHeart />
               </button>
             )}
-            <button className={style.button} onClick={addCart}> Agregar al Carro </button>
+            { <button className={style.button} onClick={addCart}> Agregar al Carro </button> }
             <button className={style.button1}> Comprar </button>
           </section>
         </div>
