@@ -16,6 +16,10 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
+import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate"
+import { Link } from "react-router-dom";
+
+
 
 function Detail() {
   const { isAuthenticated } = useAuth0();
@@ -116,7 +120,10 @@ function Detail() {
               </button>
             )}
             <button className={style.button} onClick={addCart}> Agregar al Carro </button>
-            <button className={style.button1}> Comprar </button>
+            <Link className={style.link} to={"payment"}>
+              Comprar
+            </Link>
+            {/* <button className={style.button1}> Comprar </button> */}
           </section>
         </div>
       ) : (

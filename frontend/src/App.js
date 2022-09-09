@@ -14,6 +14,8 @@ import Cards from "./Components/Profile/Extras/Cards";
 import Adress from "./Components/Profile/Extras/Adress";
 import Ask from "./Components/Profile/Extras/Ask";
 import Mailer from "./Components/Mailer/mailer"
+import PaymentCreate from "./Components/PayMents/PaymentCreate/PaymentCreate"
+import CheckoutSuccess from "./Components/PayMents/CheckoutSuccess/CheckoutSuccess"
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route exact path="about" element={<About />} />
         <Route exact path="home" element={<Home />} />
         <Route exact path="products/:id" element={<Detail />} />
+        <Route exact path="products/:id/payment" element={<PaymentCreate />} />
+        <Route exact path="products/:id/checkout" element={<CheckoutSuccess />} />
         <Route exact path="products/contact" element={<Mailer />} />
         <Route path="new" element={<Create />} />
         <Route path="profile" element={<Profile />} />
