@@ -5,32 +5,24 @@ import { getCategories } from "../../../../redux/actions/Categories/CategoryActi
 import style from "./ProductEdit.module.css";
 import swal from "sweetalert";
 import { useParams } from "react-router-dom";
-import {
-  cleanDetail,
-  getDetail,
-} from "../../../../redux/actions/ProdDetail/ProdDetailAction";
 
 function ProductEdit() {
   const dispatch = ReactRedux.useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(getDetail(id));
     dispatch(getCategories());
-    return () => {
-      dispatch(cleanDetail(dispatch));
-    };
-  }, [dispatch, id]);
+  }, [dispatch]);
 
-  // const allCategory = ReactRedux.useSelector(
-  //   (state) => state.categoryReducer.categories
-  // );
-  const { prodDetail } = ReactRedux.useSelector(
+  const allCategory = ReactRedux.useSelector(
+    (state) => state.categoryReducer.categories
+  );
+  const { prodEditDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
   );
 
   const validador = (input) => {
-    let noNumero = /^[A-Za-z]+$/;
+    let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios
     let error = {};
     if (!noNumero.test(input.name)) {
       error.name = "el nombre solo acepta letras";
@@ -38,33 +30,33 @@ function ProductEdit() {
     if (!input.name) {
       error.name = "el nombre no puede estar vacio";
     }
-    // if (!input.category.length) {
-    //   error.categories = "al menos se necesita una categoria";
-    // }
+    if (!input.category.length) {
+      error.categories = "al menos se necesita una categoria";
+    }
     return error;
   };
 
-  // const validoSelect = (input, event) => {
-  //   let error = "";
-  //   let categories = input.category;
+  const validoSelect = (input, event) => {
+    let error = "";
+    let categories = input.category;
 
-  //   if (categories.length > 0) {
-  //     if (categories.find((p) => p === event)) {
-  //       error = "Categoria ya agregada";
-  //     }
-  //   }
-  //   return error;
-  // };
+    if (categories.length > 0) {
+      if (categories.find((p) => p === event)) {
+        error = "Categoria ya agregada";
+      }
+    }
+    return error;
+  };
 
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
-    name: prodDetail.name,
-    // shortDescription: prodDetail.shortDescription,
-    // description: prodDetail.longDescription,
-    // stock: prodDetail.stock,
-    // price: prodDetail.price,
-    // category: prodDetail.categories,
+    name: prodEditDetail.name,
+    shortDescription: prodEditDetail.shortDescription,
+    description: prodEditDetail.longDescription,
+    stock: prodEditDetail.stock,
+    price: prodEditDetail.price,
+    category: prodEditDetail.categories,
   });
 
   const handleInputChange = (e) => {
@@ -83,43 +75,45 @@ function ProductEdit() {
     });
   };
 
-  // const quitar = (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.value);
-  //   setInput({
-  //     ...input,
-  //     category: input.category.filter((p) => p !== e.target.value),
-  //   });
-  // };
+  const quitar = (e) => {
+    e.preventDefault();
+    // console.log(e.target.value, input.category);
+    setInput({
+      ...input,
+      category: input.category.filter((cat) => cat.id !== JSON.parse(e.target.value)),
+    });
+  };
 
   // console.log(input.category);
 
-  // const handleSelect = (event) => {
-  //   event.preventDefault();
+  const handleSelect = (event) => {
+    // console.log(event.target.value)
+    event.preventDefault();
 
-  //   if (!validoSelect(input, event.target.value)) {
-  //     setErrors(
-  //       validador({
-  //         ...input,
-  //         category: [...input.category, event.target.value],
-  //       })
-  //     );
+    if (!validoSelect(input, JSON.parse(event.target.value))) {
+      setErrors(
+        validador({
+          ...input,
+          category: [...input.category, JSON.parse(event.target.value)],
+        })
+      );
 
-  //     setInput({
-  //       ...input,
-  //       category: [...input.category, event.target.value],
-  //     });
-  //   } else {
-  //     swal(validoSelect(input, event.target.value));
-  //   }
-  // };
+      setInput({
+        ...input,
+        category: [...input.category, JSON.parse(event.target.value)],
+      });
+    } else {
+      swal(validoSelect(input, JSON.parse(event.target.value)));
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!errors.name && !errors.categories) {
-      dispatch(createProduct(input));
+      // dispatch(createProduct(input));
       // alert("Producto creado con exito");
+      alert("Debes crear la action del put antes")
     } else {
       swal("Hubo un problema al crear el producto, mirar el formulario");
     }
@@ -131,7 +125,7 @@ function ProductEdit() {
         handleSubmit(e);
       }}
     >
-      {prodDetail.name ? (
+      {prodEditDetail.name ? (
         <div className={style.divSection}>
           <section>
             <label>nombre</label>
@@ -142,7 +136,7 @@ function ProductEdit() {
               onChange={(e) => handleInputChange(e)}
             />
             {errors.name && <p className={style.errors}>{errors.name}</p>}
-            {/* <label>descripcion corta</label>
+            <label>descripcion corta</label>
             <input
               name="shortDescription"
               value={input.shortDescription}
@@ -169,41 +163,42 @@ function ProductEdit() {
               value={input.price}
               type="number"
               onChange={(e) => handleInputChange(e)}
-            /> */}
+            />
           </section>
-          {/* <section>
-            <label>categorias </label>
+          <section>
+            {/* <label>categorias </label> */}
             <select onChange={(e) => handleSelect(e)}>
-              <option></option>
-              {allCategory.map((p, i) => (
-                <option key={i} value={p.name}>
-                  {p.name.toUpperCase()}
+              <option>CATEGORIAS</option>
+              {allCategory.map((cat) => (
+                <option key={cat.id} value={JSON.stringify(cat)}>
+                  {cat.name.toUpperCase()}
                 </option>
               ))}
             </select>
             <ul className={style.ul}>
-              {input.category.map((category, i) => (
-                <li key={i}>
-                  {category}
-                  <button
-                    className={style.btnx}
-                    value={category}
-                    onClick={(e) => quitar(e)}
-                  >
-                    x
-                  </button>
-                </li>
-              ))}
+              {input.category &&
+                input.category.map((cat) => (
+                  <li key={cat.id}>
+                    {cat.name}
+                    <button
+                      className={style.btnx}
+                      value={JSON.stringify(cat.id)}
+                      onClick={(e) => quitar(e)}
+                    >
+                      x
+                    </button>
+                  </li>
+                ))}
             </ul>
             {errors.categories && (
               <p className={style.errors}>{errors.categories}</p>
             )}
-          </section> */}
+          </section>
         </div>
       ) : (
         "Cargando"
       )}
-      {prodDetail.name ? (
+      {prodEditDetail.name ? (
         <button type="submit" className={style.btn}>
           Editar
         </button>
