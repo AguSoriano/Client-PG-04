@@ -1,8 +1,9 @@
 import React from 'react'
 import emailjs from "emailjs-com";
 import swal from "sweetalert";
+  
+function Mailer() {
 
-function mailer() {
   function sendEmail(e){
     e.preventDefault();
     emailjs.sendForm('service_m7ah49t', 'template_gvdmvwq',e.target,'4qCXZmU-Iq-_Ozseo')
@@ -47,4 +48,4 @@ function mailer() {
   )
 }
 
-export default mailer
+export default Mailer

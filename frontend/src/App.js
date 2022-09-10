@@ -13,7 +13,7 @@ import Data from "./Components/Profile/Extras/Data";
 import Cards from "./Components/Profile/Extras/Cards";
 import Adress from "./Components/Profile/Extras/Adress";
 import Ask from "./Components/Profile/Extras/Ask";
-import Mailer from "./Components/Mailer/mailer";
+import Mailer from "./Components/Mailer/Mailer";
 import ProfileAdmin from "./Components/Admin/Profile/ProfileAdmin";
 import Users from "./Components/Admin/Users/Users";
 import Products from "./Components/Admin/Products/Products";
