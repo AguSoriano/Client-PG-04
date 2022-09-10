@@ -14,7 +14,7 @@ import Cards from "./Components/Profile/Extras/Cards";
 import Adress from "./Components/Profile/Extras/Adress";
 import Ask from "./Components/Profile/Extras/Ask";
 import Mailer from "./Components/Mailer/mailer"
-import PaymentCreate from "./Components/PayMents/PaymentCreate/PaymentCreate"
+import PaymentCreate from "./Components/Payments/PaymentCreate/PaymentCreate"
 import CheckoutSuccess from "./Components/PayMents/CheckoutSuccess/CheckoutSuccess"
 import ProfileAdmin from "./Components/Admin/Profile/ProfileAdmin";
 import Users from "./Components/Admin/Users/Users";
