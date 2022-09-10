@@ -1,17 +1,20 @@
 import React from "react";
 import { useState } from "react";
 import style from "./Category.module.css";
-import { useParams, useNavigate} from "react-router-dom";
-// import * as ReactRedux from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import * as ReactRedux from "react-redux";
 
 function CategoryEdit() {
   // const dispatch = ReactRedux.useDispatch();
-  const { name } = useParams();
+  // const { id } = useParams();
   const navigate = useNavigate();
-  console.log(navigate)
+
+  const { categoryEdit } = ReactRedux.useSelector(
+    (state) => state.categoryReducer
+  );
 
   const [input, setInput] = useState({
-    name,
+    name: categoryEdit.name,
   });
 
   const handleInputChange = (e) => {

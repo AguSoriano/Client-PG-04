@@ -24,6 +24,7 @@ import Orders from "./Components/Admin/Orders/Orders";
 import CategoryCreate from "./Components/Admin/Categories/Create/CategoryCreate";
 import CategoryEdit from "./Components/Admin/Categories/Edit/CategoryEdit";
 import ProductEdit from "./Components/Admin/Products/Edit/ProductEdit";
+import CategoryDetail from "./Components/Admin/Categories/Detail/CategoryDetail";
 
 function App() {
   return (
@@ -53,8 +54,9 @@ function App() {
         <Route path="admin/products/newproduct" element={<ProductCreate />} />
         <Route path="admin/products/edit/:id" element={<ProductEdit />} />
         <Route path="admin/categories" element={<Categories />} />
+        <Route path="admin/categories/detail/:id" element={<CategoryDetail />} />
         <Route path="admin/categories/newcategory" element={<CategoryCreate />} />
-        <Route path="admin/categories/:name" element={<CategoryEdit />} />
+        <Route path="admin/categories/edit/:id" element={<CategoryEdit />} />
         <Route path="admin/orders" element={<Orders />} />
       </Routes>
     </div>
