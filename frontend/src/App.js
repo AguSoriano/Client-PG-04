@@ -21,7 +21,7 @@ import Users from "./Components/Admin/Users/Users";
 import Products from "./Components/Admin/Products/Products";
 import Categories from "./Components/Admin/Categories/Categories";
 import Orders from "./Components/Admin/Orders/Orders";
-import CategoryCreate from "./Components/Admin/Products/Create/CategoryCreate";
+import CategoryCreate from "./Components/Admin/Categories/Create/CategoryCreate";
 
 function App() {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 import { createProduct } from "../../../../redux/actions/Products/ProductsAction";
 import { getCategories } from "../../../../redux/actions/Categories/CategoryAction";
-import style from "./Create.module.css";
+import style from "./ProductCreate.module.css";
 import swal from "sweetalert";
 
 function ProductCreate() {
