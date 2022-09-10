@@ -4,7 +4,7 @@ import style from "./Category.module.css";
 import { useParams, useNavigate} from "react-router-dom";
 // import * as ReactRedux from "react-redux";
 
-function Category() {
+function CategoryEdit() {
   // const dispatch = ReactRedux.useDispatch();
   const { name } = useParams();
   const navigate = useNavigate();
@@ -50,4 +50,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default CategoryEdit;
