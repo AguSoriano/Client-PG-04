@@ -1,0 +1,1 @@
+export const WEEK_PROD = "WEEK_PROD";

@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import Card from "../Card/Card";
 import Footer from "../Footer/Footer";
 import * as ReactRedux from "react-redux";
-import { getProducts, weekProd } from "../../redux/actions";
+import { getProducts } from "../../redux/actions/Products/ProductsAction";
+import { weekProd as destacados } from "../../redux/actions/WeekProducts/WeekProdAction";
 import Sort from "../Sort/Sort";
 import Pagination from "../Pagination/Pagination";
 // import img from "../Img/Logo1V2.png";
@@ -19,19 +20,19 @@ function Home() {
 
   useEffect(() => {
     dispatch(getProducts());
-    dispatch(weekProd());
+    dispatch(destacados());
   }, [dispatch]);
 
-  const products = ReactRedux.useSelector((state) => state.product);
-  const weekProds = ReactRedux.useSelector((state) => state.weekProd);
-  const page = ReactRedux.useSelector((state) => state.page);
+  const { product } = ReactRedux.useSelector((state) => state.productsReducer);
+  const { weekProd } = ReactRedux.useSelector((state) => state.weekProdReducer);
+  const { page } = ReactRedux.useSelector((state) => state.pageReducer);
 
-  const prodPage = products.slice(page, page + 6);
+  const prodPage = product.slice(page, page + 6);
 
   return (
     <div className={style.main}>
       <section>
-        {products.length > 1 ? (
+        {product.length > 1 ? (
           <div className={style.filters}>
             <Filter />
             <Sort setOrder={setOrder} /*setPage={setPage}*/ />
@@ -44,9 +45,9 @@ function Home() {
       <section className={style.weekSect}>
         <h1 className={style.Text}>DESTACADO DE LA SEMANA</h1>
         <div className={style.img}>
-          {weekProds.length > 1 ? (
+          {weekProd.length > 1 ? (
             <Carousel
-              slides={weekProds.map((prod) => {
+              slides={weekProd.map((prod) => {
                 return (
                   <Card
                     key={prod.id}
@@ -72,7 +73,7 @@ function Home() {
         </div>
       </section>
       <section className={style.prodSection}>
-        {products.length > 1 ? (
+        {product.length > 1 ? (
           prodPage.map((prod) => (
             <Card
               key={prod.id}
@@ -91,8 +92,8 @@ function Home() {
         )}
       </section>
       <section>
-        {products.length > 1 ? (
-          <Pagination /*setPage={setPage} page={page}*/ products={products} />
+        {product.length > 1 ? (
+          <Pagination /*setPage={setPage} page={page}*/ products={product} />
         ) : (
           <div></div>
         )}

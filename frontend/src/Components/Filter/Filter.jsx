@@ -4,9 +4,9 @@ import * as ReactRedux from "react-redux";
 import {
   filterBy,
   filterBy2,
-  getCategories,
-  setPageAct,
-} from "../../redux/actions";
+} from "../../redux/actions/Products/ProductsAction";
+import { getCategories } from "../../redux/actions/Categories/CategoryAction";
+import { setPageAct } from "../../redux/actions/Page/PageAction";
 import style from "./Filter.module.css";
 
 function Filter() {

@@ -17,11 +17,10 @@ function Profile() {
           <div className={style.user}>
             <img src={user.picture} alt={user.name} />
             <h2>
-              {user.given_name.toLocaleUpperCase()}{" "}
-              {user.family_name.toLocaleUpperCase()}
+              {user.given_name.toUpperCase()} {user.family_name.toUpperCase()}
             </h2>
             <button onClick={() => logout()}>
-              <IoMdLogOut className={style.icon}/>
+              <IoMdLogOut className={style.icon} />
             </button>
           </div>
           <section>
