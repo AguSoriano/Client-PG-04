@@ -1,7 +1,8 @@
-import { CLEAN_DETAIL, GET_DETAIL } from "../actions/ProdDetail/ActionTypes";
+import { CLEAN_DETAIL, CLEAN_EDIT, GET_DETAIL } from "../actions/ProdDetail/ActionTypes";
 
 const initialState = {
   prodDetail: {},
+  prodEditDetail: {},
 };
 
 export default function prodDetailReducer(
@@ -13,6 +14,7 @@ export default function prodDetailReducer(
       return {
         ...state,
         prodDetail: payload,
+        prodEditDetail: payload,
       };
     }
     case CLEAN_DETAIL: {
