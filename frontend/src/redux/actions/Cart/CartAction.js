@@ -9,7 +9,7 @@ import {
 // export const addToCart = (product, id)=>{
 //   return async (dispatch)=>{
 //     try{
-//       await axios.post(`http://localhost:3001/user/${id}/cart`
+//       await axios.post(`http://localhost:3001/user/${id}/cart`, product
 //       );
 //       return dispatch({
 //         type:ADD_TO_CART,
@@ -28,13 +28,13 @@ export const addToCart = (product) => {
   };
 };
 
-// export const removeOneProducts = (id) => {
+// export const removeOneProducts = (id, userId) => {
 //     return async (dispatch) => {
 //       try {
-//       const { data } = await axios.delete(`http://localhost:3001/user/${id}/cart/delete`);
+//       const { data } = await axios.delete(`http://localhost:3001/user/${userId}/cart/delete?id=${id}``);
 //        return dispatch({
 //        type: REMOVE_ONE_FROM_CART,
-//        payload: data,
+//        payload: id,
 //      });
 //    }catch (error) {
 //      console.log(error);
