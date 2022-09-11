@@ -1,8 +1,13 @@
 import axios from "axios";
+import CategoryCreate from "../../../Components/Admin/Categories/Create/CategoryCreate";
 
-import { GET_CATEGORIES } from "./ActionTypes";
+import {
+  CATEGORY_DETAIL,
+  CLEAN_CAT_DETAIL,
+  GET_CATEGORIES,
+} from "./ActionTypes";
 
-export function getCategories() {
+export const getCategories = () => {
   return function (dispatch) {
     return axios
       .get("https://pf-api-04.up.railway.app/category")
@@ -10,7 +15,30 @@ export function getCategories() {
         dispatch({ type: GET_CATEGORIES, payload: response.data });
       });
   };
-}
+};
+
+export const getCategoryDetail = (id) => {
+  return async (dispatch) => {
+    try {
+      const category = await axios.get(
+        `https://pf-api-04.up.railway.app/category${id}`
+      );
+      return dispatch({
+        type: CATEGORY_DETAIL,
+        payload: category.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const cleanCatDetail = () => {
+  return {
+    type: CLEAN_CAT_DETAIL,
+    payload: {},
+  };
+};
 
 //   export function getProductByCategory(categoryName) {
 //     return function (dispatch) {

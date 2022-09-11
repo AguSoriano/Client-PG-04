@@ -27,6 +27,7 @@ function Detail() {
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
 
+  // const user = 2; 
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -78,6 +79,7 @@ function Detail() {
         timer: "2500",
       });
     }
+    // dispatch(addToCart(prodDetail, user));
     dispatch(addToCart(prodDetail));
     swal({
       title: "Exito",

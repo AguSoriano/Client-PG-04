@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import style from "./CategoryCreate.module.css"
 
 function CategoryCreate() {
   const [input, setInput] = useState({
