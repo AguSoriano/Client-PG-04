@@ -13,18 +13,14 @@ import Data from "./Components/Profile/Extras/Data";
 import Cards from "./Components/Profile/Extras/Cards";
 import Adress from "./Components/Profile/Extras/Adress";
 import Ask from "./Components/Profile/Extras/Ask";
-<<<<<<< HEAD
 import Mailer from "./Components/Mailer/Mailer";
-=======
-import Mailer from "./Components/Mailer/mailer"
-import PaymentCreate from "./Components/PayMents/PaymentCreate/PaymentCreate"
-import CheckoutSuccess from "./Components/PayMents/CheckoutSuccess/CheckoutSuccess"
->>>>>>> 14ba66c9d071c895d1a4600a35ca3bf5de688d0f
 import ProfileAdmin from "./Components/Admin/Profile/ProfileAdmin";
 import Users from "./Components/Admin/Users/Users";
 import Products from "./Components/Admin/Products/Products";
 import Categories from "./Components/Admin/Categories/Categories";
 import Orders from "./Components/Admin/Orders/Orders";
+import PaymentCreate from "./Components/PayMents/PaymentCreate/PaymentCreate"
+import CheckoutSuccess from "./Components/PayMents/CheckoutSuccess/CheckoutSuccess"
 
 function App() {
   return (
