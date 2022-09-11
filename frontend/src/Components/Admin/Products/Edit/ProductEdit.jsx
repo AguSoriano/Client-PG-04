@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
-import { createProduct } from "../../../../redux/actions/Products/ProductsAction";
 import { getCategories } from "../../../../redux/actions/Categories/CategoryAction";
 import style from "./ProductEdit.module.css";
 import swal from "sweetalert";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { editDetail } from "../../../../redux/actions/ProdDetail/ProdDetailAction";
 
 function ProductEdit() {
   const dispatch = ReactRedux.useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getCategories());
@@ -22,11 +23,11 @@ function ProductEdit() {
   );
 
   const validador = (input) => {
-    let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios
+    //let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios
     let error = {};
-    if (!noNumero.test(input.name)) {
-      error.name = "el nombre solo acepta letras";
-    }
+    // if (!noNumero.test(input.name)) {
+    //   error.name = "el nombre solo acepta letras";
+    // }
     if (!input.name) {
       error.name = "el nombre no puede estar vacio";
     }
@@ -52,8 +53,9 @@ function ProductEdit() {
 
   const [input, setInput] = useState({
     name: prodEditDetail.name,
+    image: prodEditDetail.image,
     shortDescription: prodEditDetail.shortDescription,
-    description: prodEditDetail.longDescription,
+    longDescription: prodEditDetail.longDescription,
     stock: prodEditDetail.stock,
     price: prodEditDetail.price,
     category: prodEditDetail.categories,
@@ -80,7 +82,9 @@ function ProductEdit() {
     // console.log(e.target.value, input.category);
     setInput({
       ...input,
-      category: input.category.filter((cat) => cat.id !== JSON.parse(e.target.value)),
+      category: input.category.filter(
+        (cat) => cat.id !== JSON.parse(e.target.value)
+      ),
     });
   };
 
@@ -111,11 +115,11 @@ function ProductEdit() {
     event.preventDefault();
 
     if (!errors.name && !errors.categories) {
-      // dispatch(createProduct(input));
-      // alert("Producto creado con exito");
-      alert("Debes crear la action del put antes")
+      dispatch(editDetail(id, input));
+      alert(`El producto ${input.name} ha sido editado correctamente`);
+      navigate(`/products/${id}`);
     } else {
-      swal("Hubo un problema al crear el producto, mirar el formulario");
+      swal("Hubo un problema al editar el producto, mirar el formulario");
     }
   };
   return (
@@ -136,17 +140,17 @@ function ProductEdit() {
               onChange={(e) => handleInputChange(e)}
             />
             {errors.name && <p className={style.errors}>{errors.name}</p>}
-            <label>descripcion corta</label>
+            <label>breve descripcion</label>
             <input
               name="shortDescription"
               value={input.shortDescription}
               type="textarea"
               onChange={(e) => handleInputChange(e)}
             />
-            <label>descripcion</label>
+            <label>descripcion detallada</label>
             <input
-              name="description"
-              value={input.description}
+              name="longDescription"
+              value={input.longDescription}
               type="textarea"
               onChange={(e) => handleInputChange(e)}
             />
@@ -166,6 +170,16 @@ function ProductEdit() {
             />
           </section>
           <section>
+            <div className={style.imageDiv}>
+              <img alt="imagen" src={input.image} />
+              <input
+                placeholder="URL de la imagen..."
+                name="image"
+                value={input.image}
+                type="text"
+                onChange={(e) => handleInputChange(e)}
+              />
+            </div>
             {/* <label>categorias </label> */}
             <select onChange={(e) => handleSelect(e)}>
               <option>CATEGORIAS</option>
