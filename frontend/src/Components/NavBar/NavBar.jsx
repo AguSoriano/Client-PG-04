@@ -1,4 +1,4 @@
-import React /* useEffect */ from "react";
+// import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/searchBar";
 import style from "./NavBar.module.css";
@@ -6,11 +6,13 @@ import { FaHeart, FaCartArrowDown } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
 // import * as ReactRedux from "react-redux";
-// import { register } from "../../redux/actions";
+// import { register } from "../../redux/actions/Users/UsersActions";
 
 function NavBar() {
   // const dispatch = ReactRedux.useDispatch();
-  const { /*user,*/ loginWithRedirect, isAuthenticated } = useAuth0();
+  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+
+  // console.log(JSON.stringify(user));
 
   // useEffect(() => {
   //   if (isAuthenticated) {

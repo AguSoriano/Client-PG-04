@@ -21,14 +21,14 @@ function Data() {
         <FaRegUser className={style.icon}/>
         <div>
           <h3>Nombre</h3>
-          <p>{user.given_name}</p>
+          <p>{user.given_name ? user.given_name : 'Incompleto'}</p>
         </div>
       </section>
       <section>
         <FaRegUser className={style.icon}/>
         <div>
           <h3>Apellido</h3>
-          <p>{user.family_name}</p>
+          <p>{user.family_name ? user.family_name : 'Incompleto'}</p>
         </div>
       </section>
       <section>
