@@ -12,14 +12,16 @@ function ProductCreate() {
     dispatch(getCategories());
   }, [dispatch]);
 
-  const allCategory = ReactRedux.useSelector((state) => state.categoryReducer.categories);
+  const allCategory = ReactRedux.useSelector(
+    (state) => state.categoryReducer.categories
+  );
 
   const validador = (input) => {
-    let noNumero = /^[A-Za-z]+$/;
+    // let noNumero = /^[A-Za-z]+$/;
     let error = {};
-    if (!noNumero.test(input.name)) {
-      error.name = "el nombre solo acepta letras";
-    }
+    // if (!noNumero.test(input.name)) {
+    //   error.name = "el nombre solo acepta letras";
+    // }
     if (!input.name) {
       error.name = "el nombre no puede estar vacio";
     }
@@ -44,8 +46,9 @@ function ProductCreate() {
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: "",
+    image: "",
     shortDescription: "",
-    description: "",
+    longDescription: "",
     stock: 0,
     price: 0,
     category: [],
@@ -69,32 +72,34 @@ function ProductCreate() {
 
   const quitar = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setInput({
       ...input,
-      category: input.category.filter((p) => p !== e.target.value),
+      category: input.category.filter(
+        (cat) => cat.id !== JSON.parse(e.target.value)
+      ),
     });
   };
 
-  console.log(input.category);
+  // console.log(input.category);
 
   const handleSelect = (event) => {
     event.preventDefault();
 
-    if (!validoSelect(input, event.target.value)) {
+    if (!validoSelect(input, JSON.parse(event.target.value))) {
       setErrors(
         validador({
           ...input,
-          category: [...input.category, event.target.value],
+          category: [...input.category, JSON.parse(event.target.value)],
         })
       );
 
       setInput({
         ...input,
-        category: [...input.category, event.target.value],
+        category: [...input.category, JSON.parse(event.target.value)],
       });
     } else {
-      swal(validoSelect(input, event.target.value));
+      swal(validoSelect(input, JSON.parse(event.target.value)));
     }
   };
 
@@ -103,7 +108,16 @@ function ProductCreate() {
 
     if (!errors.name && !errors.categories) {
       dispatch(createProduct(input));
-      // alert("Producto creado con exito");
+      alert(`El producto ${input.name} se creo correctamente`);
+      setInput({
+        name: "",
+        image: "",
+        shortDescription: "",
+        longDescription: "",
+        stock: 0,
+        price: 0,
+        category: [],
+      });
     } else {
       swal("Hubo un problema al crear el producto, mirar el formulario");
     }
@@ -126,17 +140,17 @@ function ProductCreate() {
             onChange={(e) => handleInputChange(e)}
           />
           {errors.name && <p className={style.errors}>{errors.name}</p>}
-          <label>descripcion corta</label>
+          <label>breve descripcion</label>
           <input
             name="shortDescription"
             value={input.shortDescription}
             type="textarea"
             onChange={(e) => handleInputChange(e)}
           />
-          <label>descripcion</label>
+          <label>descripcion detallada</label>
           <input
-            name="description"
-            value={input.description}
+            name="longDescription"
+            value={input.longDescription}
             type="textarea"
             onChange={(e) => handleInputChange(e)}
           />
@@ -156,28 +170,39 @@ function ProductCreate() {
           />
         </section>
         <section>
-          <label>categorias </label>
+          <div className={style.imageDiv}>
+            <img alt="imagen" src={input.image} />
+            <input
+              placeholder="URL de la imagen..."
+              name="image"
+              value={input.image}
+              type="text"
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          {/* <label>categorias </label> */}
           <select onChange={(e) => handleSelect(e)}>
-            <option></option>
-            {allCategory.map((p, i) => (
-              <option key={i} value={p.name}>
-                {p.name.toUpperCase()}
+            <option>CATEGORIAS</option>
+            {allCategory.map((cat) => (
+              <option key={cat.id} value={JSON.stringify(cat)}>
+                {cat.name.toUpperCase()}
               </option>
             ))}
           </select>
           <ul className={style.ul}>
-            {input.category.map((category, i) => (
-              <li key={i}>
-                {category}
-                <button
-                  className={style.btnx}
-                  value={category}
-                  onClick={(e) => quitar(e)}
-                >
-                  x
-                </button>
-              </li>
-            ))}
+            {input.category &&
+              input.category.map((cat) => (
+                <li key={cat.id}>
+                  {cat.name}
+                  <button
+                    className={style.btnx}
+                    value={JSON.stringify(cat.id)}
+                    onClick={(e) => quitar(e)}
+                  >
+                    x
+                  </button>
+                </li>
+              ))}
           </ul>
           {errors.categories && (
             <p className={style.errors}>{errors.categories}</p>
