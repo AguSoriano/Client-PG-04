@@ -14,6 +14,7 @@ import Cards from "./Components/Profile/Extras/Cards";
 import Adress from "./Components/Profile/Extras/Adress";
 import Ask from "./Components/Profile/Extras/Ask";
 import Mailer from "./Components/Mailer/Mailer";
+import Reviews from "./Components/Reviews/Reviews";
 import ProfileAdmin from "./Components/Admin/Profile/ProfileAdmin";
 import Users from "./Components/Admin/Users/Users";
 import Products from "./Components/Admin/Products/Products";
@@ -40,6 +41,7 @@ function App() {
         <Route exact path="products/:id/payment" element={<PaymentCreate />} />
         <Route exact path="products/:id/checkout" element={<CheckoutSuccess />} />
         <Route exact path="products/contact" element={<Mailer />} />
+        <Route exact path="products/contact/reviews" element={<Reviews />} />
         {/* Profile */}
         <Route path="profile" element={<Profile />} />
         <Route path="profile/data" element={<Data />} />
