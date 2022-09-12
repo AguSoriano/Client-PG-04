@@ -120,7 +120,7 @@ function Detail() {
           
 
             {/* <button className={style.button} onClick={addCart}> Agregar al Carro </button> */}
-            <Link className={style.link} to={"payment"}>
+            <Link className={style.link} to={"/products/payment"}>
             <button className={style.button1}> Comprar </button>
             </Link>
           
