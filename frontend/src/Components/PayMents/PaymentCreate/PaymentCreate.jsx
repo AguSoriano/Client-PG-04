@@ -17,7 +17,7 @@ export default function PaymentCreate({ userId }) {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/create-payment-intent", {
+      .post("https://pf-api-04.up.railway.app/create-payment-intent", {
         userId: userId,
       })
       .then((res) => setClientSecret(res.data.clientSecret));
