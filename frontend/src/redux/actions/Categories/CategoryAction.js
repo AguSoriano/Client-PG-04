@@ -40,6 +40,21 @@ export const cleanCatDetail = () => {
   };
 };
 
+export const createCategory = (data) => {
+  return async () => {
+    const newCategory = {
+      name: data.name.toLowerCase(),
+    };
+    try {
+      await axios.post(
+        "https://pf-api-04.up.railway.app/category",
+        newCategory
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 //   export function getProductByCategory(categoryName) {
 //     return function (dispatch) {
 //       return axios
