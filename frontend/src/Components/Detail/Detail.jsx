@@ -27,7 +27,7 @@ function Detail() {
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
 
-  // const user = 2; 
+  // const user = 2;
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -91,22 +91,24 @@ function Detail() {
   };
 
   return (
-    <div>
+    <div className={style.div}>
       {prodDetail.name ? (
         <div className={style.style}>
-          <h1 className={style.title}>{prodDetail.name}</h1>
+          <h1 >{prodDetail.name}</h1>
+          
 
           <img
-            className={style.img}
             alt={prodDetail.name}
             src={prodDetail.image ? prodDetail.image : img}
           />
-          <div className={style.details}>
-            <p className={style.details}>{prodDetail.longDescription}</p>
+          
+          <p className={style.description}>{prodDetail.longDescription}</p>
+          <span className={style.p}>
             {prodDetail.categories.map((cat) => (
-              <p key={cat.id}>{cat.name}</p>
+              <p  key={cat.id}>{cat.name}</p>
             ))}
-          </div>
+            </span>
+          
 
           <section>
             <h3 className={style.stock}>
@@ -115,25 +117,13 @@ function Detail() {
           </section>
           <section>
             <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
-            {!isAuthenticated ? (
-              <></>
-            ) : prodIsFav(prodDetail.id) ? (
-              <button onClick={() => removeFav1(prodDetail.id)}>
-                <FcLike />
-              </button>
-            ) : (
-              <button className={style.button2} onClick={addFav1}>
-                <AiOutlineHeart />
-              </button>
-            )}
-
+          
 
             {/* <button className={style.button} onClick={addCart}> Agregar al Carro </button> */}
             <Link className={style.link} to={"payment"}>
-              Comprar
+            <button className={style.button1}> Comprar </button>
             </Link>
-            {/* <button className={style.button1}> Comprar </button> */}
-
+          
 
             {
               <button className={style.button} onClick={addCart}>
@@ -141,7 +131,18 @@ function Detail() {
                 Agregar al Carro{" "}
               </button>
             }
-            <button className={style.button1}> Comprar </button>
+              {!isAuthenticated ? (
+              <></>
+            ) : prodIsFav(prodDetail.id) ? (
+              <button onClick={() => removeFav1(prodDetail.id)}>
+                <FcLike size="2rem" color="red"  border="white"/>
+              </button>
+            ) : (
+              <button className={style.b} onClick={addFav1}>
+                <AiOutlineHeart size="2rem" color="red"/>
+              </button>
+            )}
+           
           </section>
         </div>
       ) : (
