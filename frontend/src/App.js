@@ -13,14 +13,15 @@ import Data from "./Components/Profile/Extras/Data";
 import Cards from "./Components/Profile/Extras/Cards";
 import Adress from "./Components/Profile/Extras/Adress";
 import Ask from "./Components/Profile/Extras/Ask";
-import Mailer from "./Components/Mailer/mailer"
-import PaymentCreate from "./Components/PayMents/PaymentCreate/PaymentCreate"
-import CheckoutSuccess from "./Components/PayMents/CheckoutSuccess/CheckoutSuccess"
+import Mailer from "./Components/Mailer/Mailer";
+import Reviews from "./Components/Reviews/Reviews";
 import ProfileAdmin from "./Components/Admin/Profile/ProfileAdmin";
 import Users from "./Components/Admin/Users/Users";
 import Products from "./Components/Admin/Products/Products";
 import Categories from "./Components/Admin/Categories/Categories";
 import Orders from "./Components/Admin/Orders/Orders";
+import PaymentCreate from "./Components/PayMents/PaymentCreate/PaymentCreate"
+import CheckoutSuccess from "./Components/PayMents/CheckoutSuccess/CheckoutSuccess"
 import CategoryCreate from "./Components/Admin/Categories/Create/CategoryCreate";
 import CategoryEdit from "./Components/Admin/Categories/Edit/CategoryEdit";
 import ProductEdit from "./Components/Admin/Products/Edit/ProductEdit";
@@ -40,6 +41,7 @@ function App() {
         <Route exact path="products/:id/payment" element={<PaymentCreate />} />
         <Route exact path="products/:id/checkout" element={<CheckoutSuccess />} />
         <Route exact path="products/contact" element={<Mailer />} />
+        <Route exact path="products/contact/reviews" element={<Reviews />} />
         {/* Profile */}
         <Route path="profile" element={<Profile />} />
         <Route path="profile/data" element={<Data />} />
