@@ -17,11 +17,11 @@ function ProductCreate() {
   );
 
   const validador = (input) => {
-    // let noNumero = /^[A-Za-z]+$/;
+  
     let error = {};
-    // if (!noNumero.test(input.name)) {
-    //   error.name = "el nombre solo acepta letras";
-    // }
+    
+    if(input.name.search("[0-9]") !== -1 ) {
+      error.name = "El nombre no acepta números"};
     if (!input.name) {
       error.name = "el nombre no puede estar vacio";
     }
@@ -119,7 +119,7 @@ function ProductCreate() {
         category: [],
       });
     } else {
-      swal("Hubo un problema al crear el producto, mirar el formulario");
+      swal("Hubo un problema al crear el producto,revisa el formulario");
     }
   };
 
