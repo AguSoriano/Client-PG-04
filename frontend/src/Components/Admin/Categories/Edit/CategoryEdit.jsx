@@ -27,7 +27,7 @@ function CategoryEdit() {
     //check errors first
     // dispatch();
     alert("El nombre de la categoria se edito correctamente");
-    navigate("/admin");
+    navigate("/admin/categories");
   };
   return (
     <form

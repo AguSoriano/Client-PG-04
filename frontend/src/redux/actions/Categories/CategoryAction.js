@@ -21,7 +21,7 @@ export const getCategoryDetail = (id) => {
   return async (dispatch) => {
     try {
       const category = await axios.get(
-        `https://pf-api-04.up.railway.app/category${id}`
+        `https://pf-api-04.up.railway.app/category/${id}`
       );
       return dispatch({
         type: CATEGORY_DETAIL,

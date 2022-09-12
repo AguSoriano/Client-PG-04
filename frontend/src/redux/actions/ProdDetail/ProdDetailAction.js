@@ -24,3 +24,26 @@ export const cleanDetail = () => {
     payload: {},
   };
 };
+
+export const editDetail = (id, data) => {
+  return async () => {
+    const prodEdited = {
+      name: data.name.toLowerCase(),
+      image: data.image,
+      shortDescription: data.shortDescription.toLowerCase(),
+      longDescription: data.longDescription.toLowerCase(),
+      stock: Number(data.stock),
+      price: Number(data.price),
+      category: data.category.map((cat) => cat.name),
+    };
+    // console.log(prodEdited);
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/products/${id}`,
+        prodEdited
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

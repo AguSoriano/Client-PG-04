@@ -74,12 +74,28 @@ export const filterBy2 = (category2) => {
 
 export const createProduct = (data) => {
   return async () => {
+    const newProduct = {
+      name: data.name.toLowerCase(),
+      image: data.image,
+      shortDescription: data.shortDescription.toLowerCase(),
+      longDescription: data.longDescription.toLowerCase(),
+      stock: Number(data.stock),
+      price: Number(data.price),
+      category: data.category.map((cat) => cat.name),
+    };
+    // console.log(newProduct);
     try {
-      const product = await axios.post(
-        "https://pf-api-04.up.railway.app/products",
-        data
-      );
-      alert(`El producto ${data.name} se creo`);
+      await axios.post("https://pf-api-04.up.railway.app/products", newProduct);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteProduct = (id) => {
+  return async () => {
+    try {
+      await axios.delete(`https://pf-api-04.up.railway.app/products/${id}`);
     } catch (error) {
       console.log(error);
     }

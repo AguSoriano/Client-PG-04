@@ -22,9 +22,9 @@ function CategoryDetail() {
     (state) => state.categoryReducer
   );
 
-  return <div>{categoryDetail.length ? <div>
+  return <div>{categoryDetail.name ? <div>
     <h2>Nombre {categoryDetail.name}</h2>
-   <Link to={`admin/categories/edit/${id}`}>Editame</Link>
+   <Link to={`/admin/categories/edit/${id}`}>Editame</Link>
   </div> : "cargando"}</div>;
 }
 

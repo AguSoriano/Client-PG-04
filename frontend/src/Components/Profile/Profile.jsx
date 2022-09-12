@@ -16,9 +16,7 @@ function Profile() {
         <div className={style.mainProf}>
           <div className={style.user}>
             <img src={user.picture} alt={user.name} />
-            <h2>
-              {user.given_name.toUpperCase()} {user.family_name.toUpperCase()}
-            </h2>
+            <h2>{user.nickname.toUpperCase()}</h2>
             <button onClick={() => logout()}>
               <IoMdLogOut className={style.icon} />
             </button>
