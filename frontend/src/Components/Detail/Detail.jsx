@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 
 
 function Detail() {
+  const [quantity, setQuantity] = React.useState(1)
   const { isAuthenticated } = useAuth0();
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
@@ -90,12 +91,22 @@ function Detail() {
     });
   };
 
+
+
+  
+  function change(e) {
+    setQuantity(e.target.value)
+}
+
+
+
+
   return (
     <div>
       {prodDetail.name ? (
         <div className={style.style}>
           <h1 className={style.title}>{prodDetail.name}</h1>
-
+         <h2> {quantity}</h2>
           <img
             className={style.img}
             alt={prodDetail.name}
@@ -143,6 +154,18 @@ function Detail() {
             }
             <button className={style.button1}> Comprar </button>
           </section>
+          <div>
+      <form >
+                        <label  >Cantidad:</label>
+                        <select  name="quantity" id="quantity" onChange={change} >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                       
+          
+                        </form>
+                        </div>
         </div>
       ) : (
         <Loading />
