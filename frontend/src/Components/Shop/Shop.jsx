@@ -3,6 +3,7 @@ import * as ReactRedux from "react-redux";
 // import { removeAllCart } from "../../redux/actions/index";
 import CartItem from "./CartItem";
 import style from "./Shop.module.css";
+import { Link } from "react-router-dom";
 
 function Shop() {
   // const dispatch = ReactRedux.useDispatch();
@@ -41,6 +42,13 @@ function Shop() {
 
       {cartproduct?.length ? (
         <h3>Total sin impuestos: ${priceTotal()}</h3>
+      ) : (
+        <></>
+      )}
+      {cartproduct?.length ? (
+        <Link className={style.link} to={"/products/payment"}>
+          <button className={style.button1}> Comprar </button>
+        </Link>
       ) : (
         <></>
       )}
