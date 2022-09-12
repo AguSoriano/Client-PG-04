@@ -17,13 +17,16 @@ function Categories() {
 
   return (
     <div>
-      {categories.length
-        ? categories.map((cat) => (
-            <Link to={`/admin/categories/detail/${cat.id}`} key={cat.id}>
-              {cat.name}
-            </Link>
-          ))
-        : "cargando"}
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        {categories.length
+          ? categories.map((cat) => (
+              <Link to={`/admin/categories/detail/${cat.id}`} key={cat.id}>
+                {cat.name}
+              </Link>
+            ))
+          : "cargando"}
+        <Link to={"/admin/categories/newcategory"}>Nueva Categoria</Link>
+      </div>
     </div>
   );
 }

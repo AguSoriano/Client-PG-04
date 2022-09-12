@@ -3,10 +3,11 @@ import { useState } from "react";
 import style from "./Category.module.css";
 import { useParams, useNavigate } from "react-router-dom";
 import * as ReactRedux from "react-redux";
+import { editCategory } from "../../../../redux/actions/Categories/CategoryAction";
 
 function CategoryEdit() {
-  // const dispatch = ReactRedux.useDispatch();
-  // const { id } = useParams();
+  const dispatch = ReactRedux.useDispatch();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const { categoryEdit } = ReactRedux.useSelector(
@@ -19,14 +20,17 @@ function CategoryEdit() {
 
   const handleInputChange = (e) => {
     e.preventDefault();
-    setInput(([e.target.name] = e.target.value));
+    setInput({ [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //check errors first
-    // dispatch();
+    //check errors
+    dispatch(editCategory(id, input));
     alert("El nombre de la categoria se edito correctamente");
+    setInput({
+      name: "",
+    });
     navigate("/admin/categories");
   };
   return (

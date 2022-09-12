@@ -19,9 +19,9 @@ function CategoryCreate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(createCategory(input))
-    console.log(input);
-    alert(`La categoria ${input.name}`);
+    dispatch(createCategory(input))
+    // console.log(input);
+    alert(`La categoria ${input.name} se creo correctamente`);
     setInput({
       name: "",
     });
