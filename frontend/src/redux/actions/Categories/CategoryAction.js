@@ -55,6 +55,33 @@ export const createCategory = (data) => {
     }
   };
 };
+
+export const editCategory = (id, data) => {
+  return async () => {
+    const categoryEdited = {
+      name: data.name.toLowerCase(),
+    };
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/category/${id}`,
+        categoryEdited
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteCategory = (id) => {
+  return async () => {
+    try {
+      await axios.delete(`https://pf-api-04.up.railway.app/category/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 //   export function getProductByCategory(categoryName) {
 //     return function (dispatch) {
 //       return axios
