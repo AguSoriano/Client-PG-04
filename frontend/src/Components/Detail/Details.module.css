@@ -1,69 +1,72 @@
-.style{
-    width: 650px;
-    height: 700px;
-    margin-left: 20rem;
-    margin-top: 5rem;
-    padding: 0.5rem;
 
-}
-
-.img{
-    position: absolute;
-    width: 450px;
-    height: 350px;
-    border: 2px solid black ;
-    box-shadow: 5px 3px 3px #000000 ;
-margin-top:-9rem;
-cursor: pointer;
-}
-.img:hover {
-    box-shadow: 20px 20px 20px rgb(0, 0, 0, 0, 4);
-    transform: translateY(-1%);
-  }
-
-.title{
-    width: 50rem;
-    height: 200px;
-    justify-content: center;
-    color:black;
-     font-size: 3.5rem;
-     margin-left: -20rem;
-     font-family: 'Pacifico';
+.div{
     
-  
+    transition: all .6s ease-in-out;
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+    padding: 1.5rem;
+   
+    
 }
-.details{
-  position: relative;
-    gap: 1rem;
-    font-size: 1.2rem;
-    margin-left: -20rem;
-    margin-top: -5rem;
+ .div img{
+    float:left;
+    width:45%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px #000000 
+ }
+ .div h1{
+    font-style: normal;
+    margin-bottom: 2.5px;
+    font-weight: 800;
+    font-size: 150%;
+    line-height: 48px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em; 
+ }
+
+.description{
+    width:30vw;
+    display: contents;
+    text-align: center;
+    margin-bottom: 0.2re;
+    margin-inline: 4rem;
     font-weight: 500;
-    
-    
-    
+    /* color: rgb(0, 0, 0);
+    padding: .4vh;
+   
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px; */
+}
+.p{
+    width:30vw;
+    display: contents;
+    margin-bottom: 2rem;
+    font-weight:600 ;
+    font-variant: small-caps;
    
 }
 .stock{
-    font-size: 1.3rem;
-    color: black;
-    font-weight: 700;
-    margin-left: -25rem;
-    
-    margin-bottom: 1rem;
-    
-}
-.precio{
-    font-size: 1.3rem;
-    color: black;
-    font-weight: 700;
-    margin-left: -25rem;
-    
-    margin-bottom: 1rem;
-    ;
-    
-}
-button {
+  
+     color:#1CBE60;
+     font-weight: 500;
+     font-size:larger;
+ }
+ .precio{
+    color:black;
+    font-size:larger;
+ }
+
+
+
+
+
+
+.button {
     appearance: none;
     background-color: #FAFBFC;
     border: 0.5px solid #E74C3C (27, 31, 35, 0.15);
@@ -234,4 +237,10 @@ button {
    
    .button2:-webkit-details-marker {
     display: none;
+   } 
+
+   .b{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
    }
