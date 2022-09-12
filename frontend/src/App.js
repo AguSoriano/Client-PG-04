@@ -39,7 +39,7 @@ function App() {
         {/* Products */}
         <Route exact path="products/:id" element={<Detail />} />
         <Route exact path="products/:id/payment" element={<PaymentCreate />} />
-        <Route exact path="products/:id/checkout" element={<CheckoutSuccess />} />
+        <Route exact path="products/checkout" element={<CheckoutSuccess />} />
         <Route exact path="products/contact" element={<Mailer />} />
         <Route exact path="products/contact/reviews" element={<Reviews />} />
         {/* Profile */}
