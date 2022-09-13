@@ -14,11 +14,11 @@ function NavBar() {
 
   // console.log(JSON.stringify(user));
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(register(user));
-    }
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     dispatch(register(user));
+  //   }
+  // }, [isAuthenticated]);
 
   return (
     <div className={style.navBar}>
