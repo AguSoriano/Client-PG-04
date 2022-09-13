@@ -5,7 +5,6 @@ import Testimonio from './Testimonio.jsx';
 function App() {
   return (
     <div className={style.App}>
-      <h1>Sobre el proyecto</h1>
       <h5>Canne-Food es nuestro proyecto de graduación en Henry, fue desarrollado bajo la metodología ágil SCRUM que fue monitoriada diariamente por personal de Henry. Cane-Food es un market place para todos los amantes de las comidas y bebidas sanas. Busca a partir de su interface gráfica, jerarquizar los productos y utilizando elementos con fuerte carga semántica, establece un vínculo de pertenencia con el usuario. Funcionalmente posee búsqueda predictiva, sistema de notificaciones, validación de cuenta, métodos ágiles de log-In y todo lo que un market place real requiere para funcionar. Esperamos que les guste el resultado, para nosotros fue todo un desafío poder realizarlo y gracias a él, hoy somos desarrolladores Full Stack en javaScript.</h5>
       <div className={style.contenedor_principal}>
 
