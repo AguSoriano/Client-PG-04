@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 
 
 function Detail() {
+  const [quantity, setQuantity] = React.useState(1)
   const { isAuthenticated } = useAuth0();
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
@@ -38,6 +39,10 @@ function Detail() {
   const { prodDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
   );
+  
+ 
+const data= { prodDetail, quantity}
+
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
   );
@@ -80,7 +85,9 @@ function Detail() {
       });
     }
     // dispatch(addToCart(prodDetail, user));
-    dispatch(addToCart(prodDetail));
+
+    dispatch(addToCart(data));
+    
     swal({
       title: "Exito",
       text: `${prodDetail.name} agregado al carrito`,
@@ -89,6 +96,14 @@ function Detail() {
       timer: "2500",
     });
   };
+
+  function change(e) {
+    setQuantity(e.target.value)
+}
+
+
+
+
 
   return (
     <div className={style.div}>
@@ -144,6 +159,19 @@ function Detail() {
             )}
            
           </section>
+          <label form="quantity">Cantidad:</label>
+          <input
+          type="number"
+          name="cantidad"
+          min= "1"
+          max="50"
+          onChange={change}
+          value={quantity}>
+          
+          
+          
+           </input>
+                        
         </div>
       ) : (
         <Loading />

@@ -6,14 +6,14 @@ import {
   REMOVE_ONE_FROM_CART,
 } from "./ActionTypes";
 
-// export const addToCart = (product, id)=>{
+// export const addToCart = ({data, prodDetail, id})=>{
 //   return async (dispatch)=>{
 //     try{
-//       await axios.post(`http://localhost:3001/user/${id}/cart`, product
+//       await axios.post(`http://localhost:3001/user/${id}/cart`, data
 //       );
 //       return dispatch({
 //         type:ADD_TO_CART,
-//         payload:product
+//         payload:prodDetail
 //       })
 //     }catch(err){
 //       console.log(err)
