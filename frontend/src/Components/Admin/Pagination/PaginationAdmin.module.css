@@ -1,0 +1,23 @@
+.mainP{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 4px;
+}
+
+.mainP > button {
+  border: 2px solid white;
+  background-color: #24A19C;
+  color: black;
+  font-size: 15px;
+  border-radius: 40px;
+}
+
+.mainP > button:hover {
+  background-color: rgb(167, 247, 247);
+}
+
+.numbers {
+  width: 2.5rem;
+  height: 2.5rem;
+}
