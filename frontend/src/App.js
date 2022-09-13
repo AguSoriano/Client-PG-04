@@ -26,6 +26,7 @@ import CategoryCreate from "./Components/Admin/Categories/Create/CategoryCreate"
 import CategoryEdit from "./Components/Admin/Categories/Edit/CategoryEdit";
 import ProductEdit from "./Components/Admin/Products/Edit/ProductEdit";
 import CategoryDetail from "./Components/Admin/Categories/Detail/CategoryDetail";
+import ProductDetail from "./Components/Admin/Products/Detail/ProductDetail";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <Route path="admin" element={<ProfileAdmin />} />
         <Route path="admin/users" element={<Users />} />
         <Route path="admin/products" element={<Products />} />
+        <Route path="admin/products/detail/:id" element={<ProductDetail />} />
         <Route path="admin/products/newproduct" element={<ProductCreate />} />
         <Route path="admin/products/edit/:id" element={<ProductEdit />} />
         <Route path="admin/categories" element={<Categories />} />
