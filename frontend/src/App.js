@@ -7,6 +7,8 @@ import LandingPage from "./Components/LandingPage/LandinPage";
 import ProductCreate from "./Components/Admin/Products/Create/ProductCreate";
 import Profile from "./Components/Profile/Profile";
 import About from "./Components/About/About";
+import Terms from "./Components/Footer/Terms";
+import Privacy from "./Components/Footer/PrivacyTerms";
 import Favorite from "./Components/Favorite/Favorite";
 import Shop from "./Components/Shop/Shop";
 import Data from "./Components/Profile/Extras/Data";
@@ -35,6 +37,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="about" element={<About />} />
+        <Route exact path="terms" element={<Terms />} />
+        <Route exact path="privacy" element={<Privacy />} />
         <Route exact path="home" element={<Home />} />
         <Route path="shop" element={<Shop />} />
         {/* Products */}

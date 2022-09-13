@@ -1,4 +1,4 @@
-import React from 'react'; // esto te permite usar el poder de React
+import React from 'react'; 
 import style from './Testimonio.module.css';
 
 function Testimonio(props) {
@@ -16,7 +16,15 @@ function Testimonio(props) {
           {props.cargo}</p>
         <p className={style.texto_testimonio}>"{props.testimonio}"</p>
       </div>
-    </div> // los ..(dos puntos) de src son para indicar que suba una carpeta
+      <div className={style.redes_sociales}>
+                    <a href={props.linkedin} target="_blank" rel="noopener noreferrer">
+                        <img className={style.img} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="linkedin" />
+                    </a>
+                    <a href={props.github} target="_blank" rel="noopener noreferrer">
+                        <img className={style.img}  src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="gitHub" />
+                    </a>
+                    </div>
+    </div>
   );
   }
   export default Testimonio;

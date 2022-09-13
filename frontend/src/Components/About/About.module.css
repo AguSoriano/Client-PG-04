@@ -11,7 +11,12 @@
     font-weight: 700;
     line-height: 1.1;
     margin: 40px 0; 
-    
+  }
+
+  h5{
+    line-height: 1.5;
+    margin: 10px 20px 20px 20px;
+    color: black;
   }
   
   .App {
