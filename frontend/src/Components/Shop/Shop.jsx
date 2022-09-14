@@ -9,9 +9,9 @@ function Shop() {
   // const dispatch = ReactRedux.useDispatch();
 
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
-  //  const clearCart = () => {
-  //     dispatch(removeAllCart());
-  //   };
+  // const clearCart = (user) => {
+  //      dispatch(removeAllCart(user));
+  //    };
   const priceTotal = () => {
     return cartproduct?.reduce((acc, prod) => acc + prod.price, 0);
   };

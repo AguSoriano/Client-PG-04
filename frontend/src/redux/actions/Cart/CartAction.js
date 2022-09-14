@@ -6,14 +6,14 @@ import {
   REMOVE_ONE_FROM_CART,
 } from "./ActionTypes";
 
-export const addToCart = ({data, prodDetail, id})=>{
+export const addToCart = ({data})=>{
   return async (dispatch)=>{
     try{
-      await axios.post(`https://pf-api-04.up.railway.app/${id}/cart`, data
+      await axios.post(`https://pf-api-04.up.railway.app/user/${data.user.id}/cart`, data
       );
       return dispatch({
         type:ADD_TO_CART,
-        payload:prodDetail
+        payload: data
       })
     }catch(err){
       console.log(err)
@@ -23,10 +23,10 @@ export const addToCart = ({data, prodDetail, id})=>{
 
 
 
-export const removeOneProducts = (id, userId) => {
+export const removeOneProducts = (id, user) => {
     return async (dispatch) => {
       try {
-      const { data } = await axios.delete(`https://pf-api-04.up.railway.app/user/${userId}/cart/delete?id=${id}`);
+      const { data } = await axios.delete(`https://pf-api-04.up.railway.app/user/${user.id}/cart/delete?id=${id}`);
        return dispatch({
        type: REMOVE_ONE_FROM_CART,
        payload: id,
@@ -39,10 +39,10 @@ export const removeOneProducts = (id, userId) => {
 
 
 
-export const removeAllCart = (id) => {
+export const removeAllCart = (user) => {
        return async (dispatch) => {
        try {
-       const { data } = await axios.delete(`https://pf-api-04.up.railway.app/user/${id}/cart`)
+       const { data } = await axios.delete(`https://pf-api-04.up.railway.app/user/${user.id}/cart`)
        return dispatch({
         type: REMOVE_ALL_FROM_CART,
         payload: [],

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { USER_LOGGED } from "./Action.Types";
 
 export const register = (data) => {
   return async () => {
@@ -15,7 +16,12 @@ export const register = (data) => {
       const user = await axios.post(
         "https://pf-api-04.up.railway.app/user",
         newUser
-      );
+      ); 
+      // return dispatch({
+      //   type:USER_LOGGED,
+        // payload: user
+
+      // })
       // console.log("User register on DB", user);
     } catch (error) {
       console.log(error);

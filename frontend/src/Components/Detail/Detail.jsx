@@ -27,8 +27,8 @@ function Detail() {
   const { isAuthenticated } = useAuth0();
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
-
-  // const user = 2;
+//falta usuario logueado
+  
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -41,7 +41,7 @@ function Detail() {
   );
   
  
-const data= { prodDetail, quantity}
+const data= { prodDetail, quantity} //falta usuario logueado
 
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
@@ -84,7 +84,7 @@ const data= { prodDetail, quantity}
         timer: "2500",
       });
     }
-    // dispatch(addToCart(prodDetail, user));
+    
 
     dispatch(addToCart(data));
     
