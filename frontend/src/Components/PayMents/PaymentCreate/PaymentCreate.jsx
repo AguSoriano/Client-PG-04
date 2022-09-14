@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { useAuth0 } from "@auth0/auth0-react";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import axios from "axios";
 import styles from "./PaymentCreate.module.css";
+import { BiUser } from "react-icons/bi";
 
 //clave publica
 const stripePromise = loadStripe(
@@ -11,17 +13,17 @@ const stripePromise = loadStripe(
 );
 
 export default function PaymentCreate({ userId }) {
-  
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
     axios
-      .post("https://pf-api-04.up.railway.app/create-payment-intent", {
-        userId: userId,
+      .post("http://localhost:3001/create-payment-intent", {
+        userId: user.email,
       })
       .then((res) => setClientSecret(res.data.clientSecret));
-  }, [userId]);
+  }, [user]);
 
   const options = {
     clientSecret,
@@ -29,10 +31,18 @@ export default function PaymentCreate({ userId }) {
 
   return (
     <div className={styles.container}>
-      {clientSecret && (
+      {isAuthenticated && clientSecret ? (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
         </Elements>
+      ) : (
+        <button
+            onClick={() => loginWithRedirect()}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
+          >
+            <BiUser size="1.5rem" />
+            Ingresar
+          </button>
       )}
     </div>
   );
