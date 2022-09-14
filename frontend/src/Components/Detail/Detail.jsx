@@ -109,13 +109,14 @@ function Detail() {
   }
 
   return (
-    <div>
+    <div className={buy=== true && style.container}>
       <div className={style.div}>
         {prodDetail.name ? (
           <div className={style.style}>
-            <h1>{prodDetail.name}</h1>
+            <h1 className={style.titulo}>{prodDetail.name}</h1>
 
             <img
+              className={style.img}
               alt={prodDetail.name}
               src={prodDetail.image ? prodDetail.image : img}
             />
