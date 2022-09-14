@@ -1,24 +1,24 @@
-// import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/searchBar";
 import style from "./NavBar.module.css";
 import { FaHeart, FaCartArrowDown } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
-// import * as ReactRedux from "react-redux";
-// import { register } from "../../redux/actions/Users/UsersActions";
+import * as ReactRedux from "react-redux";
+import { register } from "../../redux/actions/Users/UsersActions";
 
 function NavBar() {
-  // const dispatch = ReactRedux.useDispatch();
+  const dispatch = ReactRedux.useDispatch();
   const { user, loginWithRedirect, isAuthenticated } = useAuth0();
 
   // console.log(JSON.stringify(user));
 
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     dispatch(register(user));
-  //   }
-  // }, [isAuthenticated]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(register(user));
+    }
+  }, [isAuthenticated]);
 
   return (
     <div className={style.navBar}>
@@ -52,7 +52,9 @@ function NavBar() {
             {
               /*userLoged.rol === "admin"*/ user.email ===
               "caneapphenry@gmail.com" ? (
-                <Link className={style.link} to={"/admin"}>Panel de administrador</Link>
+                <Link className={style.link} to={"/admin"}>
+                  Panel de administrador
+                </Link>
               ) : (
                 <Link className={style.link} to={"/profile/favorite"}>
                   Favoritos <FaHeart />
