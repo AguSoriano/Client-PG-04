@@ -5,7 +5,7 @@ import styles from "./Loading.module.css"
 function Loading (){
     return(
         <div className={styles.div}>
-        <div className={styles.spinner}>
+        <div className={styles.loader}>
 
         </div>
         </div>
