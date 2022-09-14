@@ -11,7 +11,8 @@ import Pagination from "../Pagination/Pagination";
 import style from "./Home.module.css";
 import Loading from "../Loading/Loading";
 import Filter from "../Filter/Filter";
-import Carousel from "../Carousel/Carousel";
+import { Link } from "react-router-dom";
+// import Carousel from "../Carousel/Carousel";
 
 function Home() {
   const dispatch = ReactRedux.useDispatch();
@@ -44,52 +45,44 @@ function Home() {
 
       <section className={style.weekSect}>
         <h1 className={style.Text}>DESTACADO DE LA SEMANA</h1>
-        <div className={style.img}>
+        <div className={style.weekProd}>
           {weekProd.length > 1 ? (
-            <Carousel
-              slides={weekProd.map((prod) => {
-                return (
-                  <Card
-                    key={prod.id}
-                    id={prod.id}
-                    name={prod.name}
-                    img={prod.image /* ? prod.image : img*/}
-                    price={prod.price}
-                    stock={prod.stock}
-                    // shortDesc={prod.shortDescription}
-                    widthCard={550}
-                    heightCard={475}
-                  />
-                );
-              })}
-              controls
-              indicators
-              width={1200}
-              ifCard={true}
-            />
+            weekProd.map((prod) => (
+              <Link
+                to={`/products/${prod.id}`}
+                key={prod.id}
+                className={style.weekCard}
+              >
+                <img src={prod.image} alt={prod.name} />
+                <p>${prod.price}</p>
+              </Link>
+            ))
           ) : (
             <Loading />
           )}
         </div>
       </section>
       <section className={style.prodSection}>
-        {product.length > 1 ? (
-          prodPage.map((prod) => (
-            <Card
-              key={prod.id}
-              id={prod.id}
-              name={prod.name}
-              img={prod.image /* ? prod.image : img*/}
-              price={prod.price}
-              stock={prod.stock}
-              shortDesc={prod.shortDescription}
-              widthCard={375}
-              heightCard={450}
-            />
-          ))
-        ) : (
-          <Loading />
-        )}
+        <h1 className={style.Text}>PRODUCTOS</h1>
+        <div className={style.prod}>
+          {product.length > 1 ? (
+            prodPage.map((prod) => (
+              <Card
+                key={prod.id}
+                id={prod.id}
+                name={prod.name}
+                img={prod.image /* ? prod.image : img*/}
+                price={prod.price}
+                stock={prod.stock}
+                shortDesc={prod.shortDescription}
+                widthCard={375}
+                heightCard={450}
+              />
+            ))
+          ) : (
+            <Loading />
+          )}
+        </div>
       </section>
       <section>
         {product.length > 1 ? (
