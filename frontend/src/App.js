@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import NavBar from "./Components/NavBar/NavBar";
 import Detail from "./Components/Detail/Detail";
@@ -22,15 +22,28 @@ import Users from "./Components/Admin/Users/Users";
 import Products from "./Components/Admin/Products/Products";
 import Categories from "./Components/Admin/Categories/Categories";
 import Orders from "./Components/Admin/Orders/Orders";
-import PaymentCreate from "./Components/PayMents/PaymentCreate/PaymentCreate"
-import CheckoutSuccess from "./Components/PayMents/CheckoutSuccess/CheckoutSuccess"
+import PaymentCreate from "./Components/PayMents/PaymentCreate/PaymentCreate";
+import CheckoutSuccess from "./Components/PayMents/CheckoutSuccess/CheckoutSuccess";
 import CategoryCreate from "./Components/Admin/Categories/Create/CategoryCreate";
 import CategoryEdit from "./Components/Admin/Categories/Edit/CategoryEdit";
 import ProductEdit from "./Components/Admin/Products/Edit/ProductEdit";
 import CategoryDetail from "./Components/Admin/Categories/Detail/CategoryDetail";
 import ProductDetail from "./Components/Admin/Products/Detail/ProductDetail";
+import { useAuth0 } from "@auth0/auth0-react";
+import ErrorRoute from "./Components/Error Route/ErrorRoute";
+// import { useEffect } from "react";
+// import * as ReactRedux from "react-redux";
 
 function App() {
+  const { isAuthenticated } = useAuth0();
+  // const dispatch = ReactRedux.useDispatch();
+
+  // useEffect(() => {
+  // if (isAuthenticated) {
+  //     dispatch('ACCCION PARA TRAER EL USUARIO A REDUX');
+  // }
+  // }, [isAuthenticated]);
+
   return (
     <div className="App">
       <NavBar path="/" element={NavBar} />
@@ -48,12 +61,30 @@ function App() {
         <Route exact path="products/contact" element={<Mailer />} />
         <Route exact path="products/contact/reviews" element={<Reviews />} />
         {/* Profile */}
-        <Route path="profile" element={<Profile />} />
-        <Route path="profile/data" element={<Data />} />
-        <Route path="profile/cards" element={<Cards />} />
-        <Route path="profile/favorite" element={<Favorite />} />
-        <Route path="profile/adress" element={<Adress />} />
-        <Route path="profile/ask" element={<Ask />} />
+        <Route
+          path="profile"
+          element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
+        />
+        <Route
+          path="profile/data"
+          element={isAuthenticated ? <Data /> : <Navigate to="/" />}
+        />
+        <Route
+          path="profile/cards"
+          element={isAuthenticated ? <Cards /> : <Navigate to="/" />}
+        />
+        <Route
+          path="profile/favorite"
+          element={isAuthenticated ? <Favorite /> : <Navigate to="/" />}
+        />
+        <Route
+          path="profile/adress"
+          element={isAuthenticated ? <Adress /> : <Navigate to="/" />}
+        />
+        <Route
+          path="profile/ask"
+          element={isAuthenticated ? <Ask /> : <Navigate to="/" />}
+        />
         {/* Admin */}
         <Route path="admin" element={<ProfileAdmin />} />
         <Route path="admin/users" element={<Users />} />
@@ -62,10 +93,18 @@ function App() {
         <Route path="admin/products/newproduct" element={<ProductCreate />} />
         <Route path="admin/products/edit/:id" element={<ProductEdit />} />
         <Route path="admin/categories" element={<Categories />} />
-        <Route path="admin/categories/detail/:id" element={<CategoryDetail />} />
-        <Route path="admin/categories/newcategory" element={<CategoryCreate />} />
+        <Route
+          path="admin/categories/detail/:id"
+          element={<CategoryDetail />}
+        />
+        <Route
+          path="admin/categories/newcategory"
+          element={<CategoryCreate />}
+        />
         <Route path="admin/categories/edit/:id" element={<CategoryEdit />} />
         <Route path="admin/orders" element={<Orders />} />
+        {/* Others */}
+        <Route path="/*" element={<ErrorRoute />} />
       </Routes>
     </div>
   );
