@@ -50,7 +50,7 @@ function NavBar() {
             <Link to="/profile" className={style.link}>
               Perfil
             </Link>
-            {loginUser.rol === "admin" ? (
+            {loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
               <Link className={style.link} to={"/admin"}>
                 Panel de administrador
               </Link>
