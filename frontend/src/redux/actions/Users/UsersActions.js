@@ -1,5 +1,27 @@
 import axios from "axios";
-import { CLEAN_USER_LOGIN, GET_USER_LOGIN } from "./ActionType";
+import {
+  CLEAN_USER_DETAIL,
+  CLEAN_USER_LOGIN,
+  GET_ALL_USERS,
+  GET_ONE_USER_DETAIL,
+  GET_USER_LOGIN,
+} from "./ActionType";
+
+export const getAllUsers = () => {
+  return async (dispatch) => {
+    try {
+      const usersOnDb = await axios.get(
+        "https://pf-api-04.up.railway.app/user"
+      );
+      return dispatch({
+        type: GET_ALL_USERS,
+        payload: usersOnDb.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 
 export const register = (data) => {
   return async () => {
@@ -46,5 +68,59 @@ export const cleanUserLogin = () => {
   return {
     type: CLEAN_USER_LOGIN,
     payload: {},
+  };
+};
+
+export const getOneUserDetail = (id) => {
+  return async (dispatch) => {
+    try {
+      const userById = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${id}`
+      );
+      return dispatch({
+        type: GET_ONE_USER_DETAIL,
+        payload: userById.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const cleanUserDetail = () => {
+  return {
+    type: CLEAN_USER_DETAIL,
+    payload: {},
+  };
+};
+
+export const disableUserById = (id, userLoged, isDisable) => {
+  return async () => {
+    try {
+      console.log(userLoged);
+      await axios.put(`https://pf-api-04.up.railway.app/user/${id}`, isDisable);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const editUserData = (id, data) => {
+  return async () => {
+    const userEdited = {
+      given_name: data.given_name.toLowerCase(),
+      family_name: data.family_name.toLowerCase(),
+      email: data.email,
+      picture: data.picture,
+      nickname: data.nickname.toLowerCase(),
+    };
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/user/${id}`,
+        userEdited
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 };

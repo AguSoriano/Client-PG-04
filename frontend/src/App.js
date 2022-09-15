@@ -37,6 +37,8 @@ import {
   cleanUserLogin,
   getUserLogin,
 } from "./redux/actions/Users/UsersActions";
+import UserDetail from "./Components/Admin/Users/Detail/UserDetail";
+import UserEdit from "./Components/Admin/Users/Edit/UserEdit";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -95,6 +97,8 @@ function App() {
         {/* Admin */}
         <Route path="admin" element={<ProfileAdmin />} />
         <Route path="admin/users" element={<Users />} />
+        <Route path="admin/users/detail/:id" element={<UserDetail />} />
+        <Route path="admin/users/edit/:id" element={<UserEdit />} />
         <Route path="admin/products" element={<Products />} />
         <Route path="admin/products/detail/:id" element={<ProductDetail />} />
         <Route path="admin/products/newproduct" element={<ProductCreate />} />
