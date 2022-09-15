@@ -14,6 +14,11 @@ export const register = (data) => {
         picture: data.picture,
       };
       await axios.post("https://pf-api-04.up.railway.app/user", newUser);
+       // return dispatch({
+      //   type:USER_LOGGED,
+        // payload: user
+
+      // })
       // console.log("User register on DB", user);
     } catch (error) {
       console.log(error);
