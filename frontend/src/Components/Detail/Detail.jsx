@@ -36,7 +36,6 @@ function Detail() {
     setBuy(true);
   };
 
-  // const user = 2;
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -46,6 +45,10 @@ function Detail() {
 
   const { prodDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
+  );
+
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.UsersReducer
   );
 
   const data = { prodDetail, quantity };
