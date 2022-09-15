@@ -18,7 +18,7 @@ function NavBar() {
     if (isAuthenticated) {
       dispatch(register(user));
     }
-  }, [isAuthenticated]);
+  }, [dispatch, isAuthenticated, user]);
 
   return (
     <div className={style.navBar}>

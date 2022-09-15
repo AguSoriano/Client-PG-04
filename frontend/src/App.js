@@ -31,18 +31,19 @@ import CategoryDetail from "./Components/Admin/Categories/Detail/CategoryDetail"
 import ProductDetail from "./Components/Admin/Products/Detail/ProductDetail";
 import { useAuth0 } from "@auth0/auth0-react";
 import ErrorRoute from "./Components/Error Route/ErrorRoute";
-// import { useEffect } from "react";
-// import * as ReactRedux from "react-redux";
+import { useEffect } from "react";
+import * as ReactRedux from "react-redux";
+import { getUserLogin } from "./redux/actions/Users/UsersActions";
 
 function App() {
-  const { isAuthenticated } = useAuth0();
-  // const dispatch = ReactRedux.useDispatch();
+  const { user, isAuthenticated } = useAuth0();
+  const dispatch = ReactRedux.useDispatch();
 
-  // useEffect(() => {
-  // if (isAuthenticated) {
-  //     dispatch('ACCCION PARA TRAER EL USUARIO A REDUX');
-  // }
-  // }, [isAuthenticated]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(getUserLogin(user.email));
+    }
+  }, [dispatch, isAuthenticated]);
 
   return (
     <div className="App">

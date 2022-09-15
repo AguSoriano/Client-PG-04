@@ -6,6 +6,7 @@ import pageReducer from "./PageReducer";
 import prodDetailReducer from "./ProdDetailReducer";
 import productsReducer from "./ProductsReducer";
 import weekProdReducer from "./WeekProdReducer";
+import usersReducer from "./UsersReducer";
 
 // const initialState = JSON.parse(
 //   window.localStorage.getItem("reduxStore") ||
@@ -27,6 +28,7 @@ export const rootReducer = combineReducers(
     prodDetailReducer,
     productsReducer,
     weekProdReducer,
+    usersReducer,
   }
   // saveState(newState);
   // return newState;
