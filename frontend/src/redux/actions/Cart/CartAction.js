@@ -6,7 +6,7 @@ import {
   REMOVE_ONE_FROM_CART,
 } from "./ActionTypes";
 
-export const addToCart = ({data})=>{
+export const addToCart = (data)=>{
   return async (dispatch)=>{
     try{
       await axios.post(`https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`, data
