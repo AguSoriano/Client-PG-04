@@ -36,7 +36,6 @@ function Detail() {
     setBuy(true);
   };
 
-  // const user = 2;
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
