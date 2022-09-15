@@ -1,8 +1,8 @@
 
-.container {
+/* .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-}
+} */
 
 .div{
     
@@ -248,4 +248,29 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+   }
+
+   /* payment */
+
+   .payment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   }
+
+   .imgPayment {
+    width: 25vw;
+    float:left;
+    display: flex;
+    flex-direction: row;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px #000000 
+   }
+
+   .descriptionPay{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20%;
+    gap: 10px
    }

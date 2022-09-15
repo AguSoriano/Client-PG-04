@@ -109,77 +109,95 @@ function Detail() {
   }
 
   return (
-    <div className={buy=== true && style.container}>
-      <div className={style.div}>
-        {prodDetail.name ? (
-          <div className={style.style}>
-            <h1 className={style.titulo}>{prodDetail.name}</h1>
+    <div className={style.container}>
+      {buy === false && (
+        <div className={style.div}>
+          {prodDetail.name ? (
+            <div className={style.style}>
+              <h1 className={style.titulo}>{prodDetail.name}</h1>
 
+              <img
+                className={style.img}
+                alt={prodDetail.name}
+                src={prodDetail.image ? prodDetail.image : img}
+              />
+
+              <p className={style.description}>{prodDetail.longDescription}</p>
+              <span className={style.p}>
+                {prodDetail.categories.map((cat) => (
+                  <p key={cat.id}>{cat.name}</p>
+                ))}
+              </span>
+
+              <section>
+                <h3 className={style.stock}>
+                  Stock disponible:{prodDetail.stock} unidades
+                </h3>
+              </section>
+              <section>
+                <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
+
+                {/* <button className={style.button} onClick={addCart}> Agregar al Carro </button> */}
+                {/* <Link className={style.link} to={"/products/payment"}> */}
+                {buy === false && (
+                  <button className={style.button1} onClick={payment}>
+                    {" "}
+                    Comprar{" "}
+                  </button>
+                )}
+                {/* </Link> */}
+
+                {
+                  <button className={style.button} onClick={addCart}>
+                    {" "}
+                    Agregar al Carro{" "}
+                  </button>
+                }
+                {!isAuthenticated ? (
+                  <></>
+                ) : prodIsFav(prodDetail.id) ? (
+                  <button onClick={() => removeFav1(prodDetail.id)}>
+                    <FcLike size="2rem" color="red" border="white" />
+                  </button>
+                ) : (
+                  <button className={style.b} onClick={addFav1}>
+                    <AiOutlineHeart size="2rem" color="red" />
+                  </button>
+                )}
+              </section>
+              <label form="quantity">Cantidad:</label>
+              <input
+                type="number"
+                name="cantidad"
+                min="1"
+                max="50"
+                onChange={change}
+                value={quantity}
+              ></input>
+            </div>
+          ) : (
+            <Loading />
+          )}
+        </div>
+      )}
+
+      {buy === true && isAuthenticated && (
+        <div className={style.payment}>
+          <div className={style.descriptionPay}>
             <img
-              className={style.img}
+              className={style.imgPayment}
               alt={prodDetail.name}
               src={prodDetail.image ? prodDetail.image : img}
             />
-
-            <p className={style.description}>{prodDetail.longDescription}</p>
-            <span className={style.p}>
-              {prodDetail.categories.map((cat) => (
-                <p key={cat.id}>{cat.name}</p>
-              ))}
-            </span>
-
-            <section>
-              <h3 className={style.stock}>
-                Stock disponible:{prodDetail.stock} unidades
-              </h3>
-            </section>
-            <section>
-              <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
-
-              {/* <button className={style.button} onClick={addCart}> Agregar al Carro </button> */}
-              {/* <Link className={style.link} to={"/products/payment"}> */}
-              {buy === false && (
-                <button className={style.button1} onClick={payment}>
-                  {" "}
-                  Comprar{" "}
-                </button>
-              )}
-              {/* </Link> */}
-
-              {
-                <button className={style.button} onClick={addCart}>
-                  {" "}
-                  Agregar al Carro{" "}
-                </button>
-              }
-              {!isAuthenticated ? (
-                <></>
-              ) : prodIsFav(prodDetail.id) ? (
-                <button onClick={() => removeFav1(prodDetail.id)}>
-                  <FcLike size="2rem" color="red" border="white" />
-                </button>
-              ) : (
-                <button className={style.b} onClick={addFav1}>
-                  <AiOutlineHeart size="2rem" color="red" />
-                </button>
-              )}
-            </section>
-            <label form="quantity">Cantidad:</label>
-            <input
-              type="number"
-              name="cantidad"
-              min="1"
-              max="50"
-              onChange={change}
-              value={quantity}
-            ></input>
+            <p>{prodDetail.longDescription}</p>
+            <b> Cantidad: {quantity}</b>
+            <b> Total: ${quantity * prodDetail.price}</b>
           </div>
-        ) : (
-          <Loading />
-        )}
-      </div>
-
-      {buy === true && isAuthenticated && <PaymentCreate user={user.email} productId={id} />}
+          <div>
+            <PaymentCreate user={user.email} productId={id} />
+          </div>
+        </div>
+      )}
 
       {buy === true && !isAuthenticated && (
         <>
