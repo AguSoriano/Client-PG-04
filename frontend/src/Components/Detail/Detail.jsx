@@ -51,7 +51,7 @@ function Detail() {
     (state) => state.UsersReducer
   );
 
-  const data = { prodDetail, quantity };
+  const data = { prodDetail, quantity, loginUser };
 
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
