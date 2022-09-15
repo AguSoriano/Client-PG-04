@@ -6,18 +6,19 @@
 }
 
 .mainP > button {
-  border: 2px solid white;
-  background-color: #24A19C;
-  color: black;
-  font-size: 15px;
-  border-radius: 40px;
+  border-radius: .25rem;
+  border: none;
+  min-width: 2.25rem;
+  text-align: center;
+  color: #4f5464
 }
 
 .mainP > button:hover {
-  background-color: rgb(167, 247, 247);
+  background-color: #24A19C !important;
+  color: #fff;
 }
 
 .numbers {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
 }
