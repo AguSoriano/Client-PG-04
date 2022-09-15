@@ -33,7 +33,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import ErrorRoute from "./Components/Error Route/ErrorRoute";
 import { useEffect } from "react";
 import * as ReactRedux from "react-redux";
-import { getUserLogin } from "./redux/actions/Users/UsersActions";
+import {
+  cleanUserLogin,
+  getUserLogin,
+} from "./redux/actions/Users/UsersActions";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -43,7 +46,10 @@ function App() {
     if (isAuthenticated) {
       dispatch(getUserLogin(user.email));
     }
-  }, [dispatch, isAuthenticated]);
+    if (!isAuthenticated) {
+      dispatch(cleanUserLogin());
+    }
+  }, [dispatch, isAuthenticated, user]);
 
   return (
     <div className="App">

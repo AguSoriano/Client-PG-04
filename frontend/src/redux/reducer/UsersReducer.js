@@ -1,20 +1,38 @@
-import { GET_USER_LOGIN } from "../actions/Users/ActionType";
+import { CLEAN_USER_LOGIN, GET_USER_LOGIN } from "../actions/Users/ActionType";
 
-const initialState = {
-  loginUser: {},
+const initialState = JSON.parse(
+  window.localStorage.getItem("usersState") ||
+    JSON.stringify({
+      loginUser: {},
+    })
+);
+
+const saveState = (state) => {
+  window.localStorage.setItem("usersState", JSON.stringify(state));
 };
 
-export default function usersReducer(
-  state = initialState,
-  { type, payload }
-) {
+export default function usersReducer(state = initialState, { type, payload }) {
+  let newState;
   switch (type) {
-    case GET_USER_LOGIN:
-      return {
+    case GET_USER_LOGIN: {
+      newState = {
         ...state,
         loginUser: payload,
       };
+      break;
+    }
+
+    case CLEAN_USER_LOGIN: {
+      newState = {
+        ...state,
+        loginUser: payload,
+      };
+      break;
+    }
+
     default:
-      return state;
+      newState = state;
   }
+  saveState(newState);
+  return newState;
 }
