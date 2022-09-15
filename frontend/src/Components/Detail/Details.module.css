@@ -1,4 +1,9 @@
 
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .div{
     
     transition: all .6s ease-in-out;
@@ -9,7 +14,7 @@
    
     
 }
- .div img{
+ .img{
     float:left;
     width:45%;
     display: flex;
@@ -17,7 +22,7 @@
     border-radius: 1rem;
     box-shadow: 2px 2px 2px #000000 
  }
- .div h1{
+ .titulo{
     font-style: normal;
     margin-bottom: 2.5px;
     font-weight: 800;

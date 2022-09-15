@@ -1,5 +1,7 @@
 import axios from "axios";
+
 import { USER_LOGGED } from "./Action.Types";
+
 
 export const register = (data) => {
   return async () => {
@@ -13,6 +15,7 @@ export const register = (data) => {
         email: data.email,
         picture: data.picture,
       };
+
       const user = await axios.post(
         "https://pf-api-04.up.railway.app/user",
         newUser
@@ -22,7 +25,25 @@ export const register = (data) => {
         // payload: user
 
       // })
+
+
       // console.log("User register on DB", user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getUserLogin = (email) => {
+  return async (dispatch) => {
+    try {
+      const loginUser = await axios.get(
+        `https://pf-api-04.up.railway.app/user?email=${email}`
+      );
+      return dispatch({
+        type: GET_USER_LOGIN,
+        payload: loginUser.data,
+      });
     } catch (error) {
       console.log(error);
     }

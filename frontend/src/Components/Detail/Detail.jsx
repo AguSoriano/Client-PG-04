@@ -18,17 +18,27 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
-import { Link } from "react-router-dom";
-
-
+// import { Link } from "react-router-dom";
+import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
+import { useState } from "react";
+import { BiUser } from "react-icons/bi";
 
 function Detail() {
-  const [quantity, setQuantity] = React.useState(1)
-  const { isAuthenticated } = useAuth0();
+  const [quantity, setQuantity] = React.useState(1);
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
-//falta usuario logueado
-  
+
+
+  // integracion de la pasarela de pago
+  const [buy, setBuy] = useState(false);
+
+  const payment = () => {
+    setBuy(true);
+  };
+
+  // const user = 2;
+
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -39,9 +49,12 @@ function Detail() {
   const { prodDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
   );
+
   
  
 const data= { prodDetail, quantity} //falta usuario logueado
+
+
 
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
@@ -87,7 +100,7 @@ const data= { prodDetail, quantity} //falta usuario logueado
     
 
     dispatch(addToCart(data));
-    
+
     swal({
       title: "Exito",
       text: `${prodDetail.name} agregado al carrito`,
@@ -98,83 +111,92 @@ const data= { prodDetail, quantity} //falta usuario logueado
   };
 
   function change(e) {
-    setQuantity(e.target.value)
-}
-
-
-
-
+    setQuantity(e.target.value);
+  }
 
   return (
-    <div className={style.div}>
-      {prodDetail.name ? (
-        <div className={style.style}>
-          <h1 >{prodDetail.name}</h1>
-          
+    <div className={buy=== true && style.container}>
+      <div className={style.div}>
+        {prodDetail.name ? (
+          <div className={style.style}>
+            <h1 className={style.titulo}>{prodDetail.name}</h1>
 
-          <img
-            alt={prodDetail.name}
-            src={prodDetail.image ? prodDetail.image : img}
-          />
-          
-          <p className={style.description}>{prodDetail.longDescription}</p>
-          <span className={style.p}>
-            {prodDetail.categories.map((cat) => (
-              <p  key={cat.id}>{cat.name}</p>
-            ))}
+            <img
+              className={style.img}
+              alt={prodDetail.name}
+              src={prodDetail.image ? prodDetail.image : img}
+            />
+
+            <p className={style.description}>{prodDetail.longDescription}</p>
+            <span className={style.p}>
+              {prodDetail.categories.map((cat) => (
+                <p key={cat.id}>{cat.name}</p>
+              ))}
             </span>
-          
 
-          <section>
-            <h3 className={style.stock}>
-              Stock disponible:{prodDetail.stock} unidades
-            </h3>
-          </section>
-          <section>
-            <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
-          
+            <section>
+              <h3 className={style.stock}>
+                Stock disponible:{prodDetail.stock} unidades
+              </h3>
+            </section>
+            <section>
+              <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
 
-            {/* <button className={style.button} onClick={addCart}> Agregar al Carro </button> */}
-            <Link className={style.link} to={"/products/payment"}>
-            <button className={style.button1}> Comprar </button>
-            </Link>
-          
+              {/* <button className={style.button} onClick={addCart}> Agregar al Carro </button> */}
+              {/* <Link className={style.link} to={"/products/payment"}> */}
+              {buy === false && (
+                <button className={style.button1} onClick={payment}>
+                  {" "}
+                  Comprar{" "}
+                </button>
+              )}
+              {/* </Link> */}
 
-            {
-              <button className={style.button} onClick={addCart}>
-                {" "}
-                Agregar al Carro{" "}
-              </button>
-            }
+              {
+                <button className={style.button} onClick={addCart}>
+                  {" "}
+                  Agregar al Carro{" "}
+                </button>
+              }
               {!isAuthenticated ? (
-              <></>
-            ) : prodIsFav(prodDetail.id) ? (
-              <button onClick={() => removeFav1(prodDetail.id)}>
-                <FcLike size="2rem" color="red"  border="white"/>
-              </button>
-            ) : (
-              <button className={style.b} onClick={addFav1}>
-                <AiOutlineHeart size="2rem" color="red"/>
-              </button>
-            )}
-           
-          </section>
-          <label form="quantity">Cantidad:</label>
-          <input
-          type="number"
-          name="cantidad"
-          min= "1"
-          max="50"
-          onChange={change}
-          value={quantity}>
-          
-          
-          
-           </input>
-                        
-        </div>
-      ) : (
-        <Loading />
+                <></>
+              ) : prodIsFav(prodDetail.id) ? (
+                <button onClick={() => removeFav1(prodDetail.id)}>
+                  <FcLike size="2rem" color="red" border="white" />
+                </button>
+              ) : (
+                <button className={style.b} onClick={addFav1}>
+                  <AiOutlineHeart size="2rem" color="red" />
+                </button>
+              )}
+            </section>
+            <label form="quantity">Cantidad:</label>
+            <input
+              type="number"
+              name="cantidad"
+              min="1"
+              max="50"
+              onChange={change}
+              value={quantity}
+            ></input>
+          </div>
+        ) : (
+          <Loading />
+        )}
+      </div>
+
+      {buy === true && isAuthenticated && <PaymentCreate user={user.email} productId={id} />}
+
+      {buy === true && !isAuthenticated && (
+        <>
+          <button
+            onClick={() => loginWithRedirect()}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
+          >
+            <BiUser size="1.5rem" />
+            Login
+          </button>
+        </>
       )}
     </div>
   );
