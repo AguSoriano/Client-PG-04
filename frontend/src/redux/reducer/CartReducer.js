@@ -5,38 +5,50 @@ import {
   REMOVE_ONE_FROM_CART,
 } from "../actions/Cart/ActionTypes";
 
-const initialState = {
-  cartproduct: [],
+const initialState = JSON.parse(
+  window.localStorage.getItem("cartState") ||
+    JSON.stringify({
+      cartproduct: [],
+    })
+);
+
+const saveState = (state) => {
+  window.localStorage.setItem("cartState", JSON.stringify(state));
 };
 
 export default function cartReducer(state = initialState, { type, payload }) {
+  let newState;
   switch (type) {
     case ORDER_PRODUCT: {
-      return {};
+      newState = {};
+      break;
     }
-
     case ADD_TO_CART: {
-      return {
+      newState = {
         ...state,
         cartproduct: [...state.cartproduct, payload],
       };
+      break;
     }
     case REMOVE_ONE_FROM_CART: {
-      return {
+      newState = {
         ...state,
         cartproduct: state.cartproduct.filter(
           (product) => product.id !== payload
         ),
       };
+      break;
     }
     case REMOVE_ALL_FROM_CART: {
-      return {
+      newState = {
         ...state,
         cartproduct: payload,
       };
+      break;
     }
-
     default:
-      return state;
+      newState = state;
   }
+  saveState(newState);
+  return newState;
 }

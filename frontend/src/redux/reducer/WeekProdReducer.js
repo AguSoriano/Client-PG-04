@@ -1,22 +1,33 @@
 import { WEEK_PROD } from "../actions/WeekProducts/ActionTypes";
 
-const initialState = {
-  weekProd: [],
+const initialState = JSON.parse(
+  window.localStorage.getItem("weekProdState") ||
+    JSON.stringify({
+      weekProd: [],
+    })
+);
+
+const saveState = (state) => {
+  window.localStorage.setItem("weekProdState", JSON.stringify(state));
 };
 
 export default function weekProdReducer(
   state = initialState,
   { type, payload }
 ) {
+  let newState;
   switch (type) {
     case WEEK_PROD: {
-      return {
+      newState = {
         ...state,
         weekProd: payload,
       };
+      break;
     }
 
     default:
-      return state;
+      newState = state;
   }
+  saveState(newState);
+  return newState;
 }

@@ -4,34 +4,50 @@ import {
   GET_CATEGORIES,
 } from "../actions/Categories/ActionTypes";
 
-const initialState = {
-  categories: [],
-  categoryDetail: {},
-  categoryEdit: {},
+const initialState = JSON.parse(
+  window.localStorage.getItem("categoryState") ||
+    JSON.stringify({
+      categories: [],
+      categoryDetail: {},
+      categoryEdit: {},
+    })
+);
+
+const saveState = (state) => {
+  window.localStorage.setItem("categoryState", JSON.stringify(state));
 };
 
 export default function categoryReducer(
   state = initialState,
   { type, payload }
 ) {
+  let newState;
   switch (type) {
-    case GET_CATEGORIES:
-      return {
+    case GET_CATEGORIES: {
+      newState = {
         ...state,
         categories: payload,
       };
-    case CATEGORY_DETAIL:
-      return {
+      break;
+    }
+    case CATEGORY_DETAIL: {
+      newState = {
         ...state,
         categoryDetail: payload,
         categoryEdit: payload,
       };
-    case CLEAN_CAT_DETAIL:
-      return {
+      break;
+    }
+    case CLEAN_CAT_DETAIL: {
+      newState = {
         ...state,
         categoryDetail: payload,
       };
+      break;
+    }
     default:
-      return state;
+      newState = state;
   }
+  saveState(newState);
+  return newState;
 }
