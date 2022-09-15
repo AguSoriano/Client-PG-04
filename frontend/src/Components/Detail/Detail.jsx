@@ -48,6 +48,10 @@ function Detail() {
     (state) => state.prodDetailReducer
   );
 
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.UsersReducer
+  );
+
   const data = { prodDetail, quantity };
 
   const { favorites } = ReactRedux.useSelector(
