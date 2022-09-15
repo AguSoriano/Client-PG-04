@@ -9,7 +9,7 @@ import {
 export const addToCart = ({data})=>{
   return async (dispatch)=>{
     try{
-      await axios.post(`https://pf-api-04.up.railway.app/user/${data.user.id}/cart`, data
+      await axios.post(`https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`, data
       );
       return dispatch({
         type:ADD_TO_CART,
