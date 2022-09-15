@@ -49,7 +49,7 @@ function App() {
     if (!isAuthenticated) {
       dispatch(cleanUserLogin());
     }
-  }, [dispatch, isAuthenticated]);
+  }, [dispatch, isAuthenticated, user]);
 
   return (
     <div className="App">

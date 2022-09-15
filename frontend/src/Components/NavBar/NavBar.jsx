@@ -13,6 +13,7 @@ function NavBar() {
   const { user, loginWithRedirect, isAuthenticated } = useAuth0();
 
   // console.log(JSON.stringify(user));
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -36,7 +37,7 @@ function NavBar() {
         <Link className={style.link} to={"/shop"}>
           <FaCartArrowDown size="1.5rem" />
         </Link>
-        {!isAuthenticated ? (
+        {!isAuthenticated || !loginUser.email ? (
           <button
             onClick={() => loginWithRedirect()}
             style={{ background: "none", border: "none", cursor: "pointer" }}
@@ -49,18 +50,15 @@ function NavBar() {
             <Link to="/profile" className={style.link}>
               Perfil
             </Link>
-            {
-              /*userLoged.rol === "admin"*/ user.email ===
-              "caneapphenry@gmail.com" ? (
-                <Link className={style.link} to={"/admin"}>
-                  Panel de administrador
-                </Link>
-              ) : (
-                <Link className={style.link} to={"/profile/favorite"}>
-                  Favoritos <FaHeart />
-                </Link>
-              )
-            }
+            {loginUser.rol === "admin" ? (
+              <Link className={style.link} to={"/admin"}>
+                Panel de administrador
+              </Link>
+            ) : (
+              <Link className={style.link} to={"/profile/favorite"}>
+                Favoritos <FaHeart />
+              </Link>
+            )}
           </>
         )}
       </section>
