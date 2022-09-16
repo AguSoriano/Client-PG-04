@@ -1,5 +1,6 @@
 import {
   ADD_TO_CART,
+  GET_ALL_ORDERS,
   ORDER_PRODUCT,
   REMOVE_ALL_FROM_CART,
   REMOVE_ONE_FROM_CART,
@@ -8,6 +9,7 @@ import {
 const initialState = JSON.parse(
   window.localStorage.getItem("cartState") ||
     JSON.stringify({
+      allOrders: [],
       cartproduct: [],
     })
 );
@@ -43,6 +45,13 @@ export default function cartReducer(state = initialState, { type, payload }) {
       newState = {
         ...state,
         cartproduct: payload,
+      };
+      break;
+    }
+    case GET_ALL_ORDERS: {
+      newState = {
+        ...state,
+        allOrders: payload,
       };
       break;
     }
