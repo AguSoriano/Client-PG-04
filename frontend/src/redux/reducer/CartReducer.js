@@ -1,6 +1,7 @@
 import {
   ADD_TO_CART,
   CLEAN_ORDER_DETAIL,
+  FILTER_ORDER_BY,
   GET_ALL_ORDERS,
   GET_ORDER_DETAIL,
   ORDER_PRODUCT,
@@ -12,6 +13,7 @@ const initialState = JSON.parse(
   window.localStorage.getItem("cartState") ||
     JSON.stringify({
       allOrders: [],
+      allOrdersCopy: [],
       cartproduct: [],
       orderDetail: {},
     })
@@ -55,6 +57,7 @@ export default function cartReducer(state = initialState, { type, payload }) {
       newState = {
         ...state,
         allOrders: payload,
+        allOrdersCopy: payload,
       };
       break;
     }
@@ -69,6 +72,16 @@ export default function cartReducer(state = initialState, { type, payload }) {
       newState = {
         ...state,
         orderDetail: payload,
+      };
+      break;
+    }
+    case FILTER_ORDER_BY: {
+      newState = {
+        ...state,
+        allOrders:
+          payload === "all"
+            ? state.allOrdersCopy
+            : state.allOrdersCopy.filter((ord) => ord.status === payload),
       };
       break;
     }
