@@ -2,7 +2,9 @@ import axios from "axios";
 
 import {
   ADD_TO_CART,
+  CLEAN_ORDER_DETAIL,
   GET_ALL_ORDERS,
+  GET_ORDER_DETAIL,
   REMOVE_ALL_FROM_CART,
   REMOVE_ONE_FROM_CART,
 } from "./ActionTypes";
@@ -73,5 +75,32 @@ export const getAllOrders = (loginUser) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const getOrderDetail = (id, loginUser) => {
+  return async (dispatch) => {
+    const user = {
+      loginUser,
+    };
+    try {
+      const { data } = await axios.put(
+        `https://pf-api-04.up.railway.app/order/${id}`,
+        user
+      );
+      return dispatch({
+        type: GET_ORDER_DETAIL,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const cleanOrderDetail = () => {
+  return {
+    type: CLEAN_ORDER_DETAIL,
+    payload: {},
   };
 };
