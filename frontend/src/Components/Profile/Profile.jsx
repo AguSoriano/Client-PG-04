@@ -1,4 +1,5 @@
 import React from "react";
+import * as ReactRedux from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import style from "./Profile.module.css";
@@ -8,15 +9,16 @@ import { HiOutlineCreditCard, HiHeart, HiOutlineMap } from "react-icons/hi";
 import { GrContact } from "react-icons/gr";
 
 function Profile() {
-  const { user, logout, isAuthenticated } = useAuth0();
+  const { logout } = useAuth0();
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   return (
     <div className={style.mainRender}>
-      {isAuthenticated ? (
+      {loginUser.email ? (
         <div className={style.mainProf}>
           <div className={style.user}>
-            <img src={user.picture} alt={user.name} />
-            <h2>{user.nickname.toUpperCase()}</h2>
+            <img src={loginUser.picture} alt={loginUser.id} />
+            <h2>{loginUser.nickname.toUpperCase()}</h2>
             <button onClick={() => logout()}>
               <IoMdLogOut className={style.icon} />
             </button>
@@ -66,7 +68,6 @@ function Profile() {
               <p>Realiza consultas al administrador</p>
             </div>
           </section>
-          {/* <pre>{JSON.stringify(user)}</pre> */}
         </div>
       ) : (
         "NECESITAS LOGEARTE ANTES DE ACCEDER A ESTA SECCION"
