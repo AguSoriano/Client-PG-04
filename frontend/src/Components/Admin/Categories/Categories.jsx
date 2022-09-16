@@ -4,6 +4,7 @@ import * as ReactRedux from "react-redux";
 import { Link } from "react-router-dom";
 import { getCategories } from "../../../redux/actions/Categories/CategoryAction";
 import Pagination from "../Pagination/PaginationAdmin";
+import style from "./Categories.module.css";
 
 function Categories() {
   const dispatch = ReactRedux.useDispatch();
@@ -17,23 +18,30 @@ function Categories() {
     (state) => state.categoryReducer
   );
 
-  const categPerPage = categories.slice(page, page + 12);
+  const categPerPage = categories
+    .sort((a, b) => a.id - b.id)
+    .slice(page, page + 12);
 
   return (
     <div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <div className={style.categDiv}>
         <Link to={"/admin/categories/newcategory"}>Nueva Categoria</Link>
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div>
           {categories.length
             ? categPerPage.map((cat) => (
-                <Link to={`/admin/categories/detail/${cat.id}`} key={cat.id}>
-                  {cat.name}
+                <Link
+                  to={`/admin/categories/detail/${cat.id}`}
+                  key={cat.id}
+                  className={style.linkCat}
+                >
+                  <p>{cat.id}</p>
+                  <p>{cat.name}</p>
                 </Link>
               ))
             : "cargando"}
         </div>
-        <Pagination setPage={setPage} page={page} products={categories} />
       </div>
+      <Pagination setPage={setPage} page={page} products={categories} />
     </div>
   );
 }
