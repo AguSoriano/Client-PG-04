@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   ADD_TO_CART,
   CLEAN_ORDER_DETAIL,
+  FILTER_ORDER_BY,
   GET_ALL_ORDERS,
   GET_ORDER_DETAIL,
   REMOVE_ALL_FROM_CART,
@@ -121,5 +122,12 @@ export const editStatusOrder = (id, loginUser, status) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const filterOrderBy = (status) => {
+  return {
+    type: FILTER_ORDER_BY,
+    payload: status,
   };
 };
