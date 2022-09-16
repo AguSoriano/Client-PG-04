@@ -1,23 +1,42 @@
 .mainData {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: 40%;
-  margin-top: 2rem;
-  margin-left: 30%;
+  gap: 0.2rem;
+  width: 100%;
+  margin-top: 4rem;
+  /* margin-left: 30%; */
+  align-items: center;
+  justify-content: center;
 }
 
-.mainData > h2 {
+.titleDiv {
   display: flex;
-  margin-left: 6rem;
+  gap: 5rem;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 4rem;
+  text-align: center;
+}
+
+.linkEdit{
+  width: 3rem;
+  height: 3rem;
+  color: black;
+}
+
+.titleDiv > h2 {
   font-weight: bold;
+  font-size: 2.5rem;
 }
 
 .mainData > section {
   display: flex;
   align-items: center;
-  gap: 3rem;
-  margin-left: 1rem;
+  gap: 5rem;
+  margin-top: 2rem;
+  width: 100%;
+  justify-content: center;
 }
 
 .mainData > section > div {
@@ -25,17 +44,22 @@
   flex-direction: column;
   justify-content: left;
   text-align: left;
+  width: 15%;
 }
 
 .mainData > section > div > p {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
-.mainData > section > div > h3{
-  font-size: 1.5rem;
+.mainData > section > div > h3 {
+  font-size: 1.7rem;
 }
 
 .icon {
   width: 2rem;
   height: 2rem;
+}
+
+.personalData {
+  text-transform: capitalize;
 }

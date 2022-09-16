@@ -1,17 +1,24 @@
 import React from "react";
-// import { useAuth0 } from "@auth0/auth0-react";
 import * as ReactRedux from "react-redux";
 import style from "./Data.module.css";
 import { FaRegUser } from "react-icons/fa";
 import { RiFileUserLine } from "react-icons/ri";
 import { MdAlternateEmail, MdOutlinePlaylistAddCheck } from "react-icons/md";
+import { FaUserEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Data() {
-  // const { user } = useAuth0();
+  const { user } = useAuth0();
   const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
   return (
     <div className={style.mainData}>
-      <h2>Mis datos</h2>
+      <div className={style.titleDiv}>
+        <h2>Mis datos</h2>
+        <Link to={`/profile/data/edit/${loginUser.id}`}>
+          <FaUserEdit className={style.linkEdit} />
+        </Link>
+      </div>
       <section>
         <RiFileUserLine className={style.icon} />
         <div>
@@ -23,14 +30,18 @@ function Data() {
         <FaRegUser className={style.icon} />
         <div>
           <h3>Nombre</h3>
-          <p>{loginUser.given_name ? loginUser.given_name : "Incompleto"}</p>
+          <p className={style.personalData}>
+            {loginUser.given_name ? loginUser.given_name : "Incompleto"}
+          </p>
         </div>
       </section>
       <section>
         <FaRegUser className={style.icon} />
         <div>
           <h3>Apellido</h3>
-          <p>{loginUser.family_name ? loginUser.family_name : "Incompleto"}</p>
+          <p className={style.personalData}>
+            {loginUser.family_name ? loginUser.family_name : "Incompleto"}
+          </p>
         </div>
       </section>
       <section>
@@ -44,7 +55,7 @@ function Data() {
         <MdOutlinePlaylistAddCheck className={style.icon} />
         <div>
           <h3>Email Verificado</h3>
-          <p>{loginUser.email_verified ? "Si" : "No"}</p>
+          <p>{user.email_verified ? "Si" : "No"}</p>
         </div>
       </section>
     </div>

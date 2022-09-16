@@ -40,6 +40,7 @@ import {
 import UserDetail from "./Components/Admin/Users/Detail/UserDetail";
 import UserEdit from "./Components/Admin/Users/Edit/UserEdit";
 import UserDisable from "./Components/UserDisable/UserDisable";
+import EditData from "./Components/Profile/Extras/EditData";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -150,6 +151,18 @@ function App() {
               <Navigate to="/" />
             ) : !loginUser.isDisable ? (
               <Data />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="profile/data/edit/:id"
+          element={
+            !isAuthenticated ? (
+              <Navigate to="/" />
+            ) : !loginUser.isDisable ? (
+              <EditData />
             ) : (
               <Navigate to="/userdisable" />
             )
