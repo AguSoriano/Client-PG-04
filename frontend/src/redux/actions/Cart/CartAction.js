@@ -40,11 +40,11 @@ export const removeOneProducts = (data) => {
   };
 };
 
-export const removeAllCart = (user) => {
+export const removeAllCart = (loginUser) => {
   return async (dispatch) => {
     try {
       await axios.delete(
-        `https://pf-api-04.up.railway.app/user/${user.id}/cart`
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}/cart`
       );
       return dispatch({
         type: REMOVE_ALL_FROM_CART,
