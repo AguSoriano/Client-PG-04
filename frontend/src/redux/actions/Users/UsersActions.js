@@ -97,8 +97,65 @@ export const cleanUserDetail = () => {
 export const disableUserById = (id, userLoged, isDisable) => {
   return async () => {
     try {
-      console.log(userLoged);
-      await axios.put(`https://pf-api-04.up.railway.app/user/${id}`, isDisable);
+      const data = {
+        rol: userLoged.rol,
+        isDisable,
+      };
+      await axios.put(
+        `https://pf-api-04.up.railway.app/user/change/${id}`,
+        data
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const eneableUserById = (id, userLoged, isDisable) => {
+  return async () => {
+    const data = {
+      rol: userLoged.rol,
+      isDisable,
+    };
+    // console.log(data);
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/user/change/${id}`,
+        data
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const doAdminUserById = (id, userLoged) => {
+  return async () => {
+    const data = {
+      rol: userLoged.rol,
+    };
+    console.log(data);
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/user/change/${id}?rol=admin`,
+        data
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const doUserById = (id, userLoged) => {
+  return async () => {
+    const data = {
+      rol: userLoged.rol,
+    };
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/user/change/${id}?rol=user`,
+        data
+      );
     } catch (error) {
       console.log(error);
     }
