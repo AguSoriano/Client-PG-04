@@ -41,6 +41,7 @@ import UserDetail from "./Components/Admin/Users/Detail/UserDetail";
 import UserEdit from "./Components/Admin/Users/Edit/UserEdit";
 import UserDisable from "./Components/UserDisable/UserDisable";
 import EditData from "./Components/Profile/Extras/EditData";
+import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -388,6 +389,20 @@ function App() {
               <ErrorRoute />
             ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
               <Orders />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/orders/detail/:id"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <OrderDetail />
             ) : (
               <ErrorRoute />
             )
