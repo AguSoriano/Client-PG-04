@@ -38,6 +38,7 @@ function Orders() {
             >
               <p>{i + 1}</p>
               <p>{order.status}</p>
+              <p>{order.userId}</p>
             </Link>
           ))}
         </div>

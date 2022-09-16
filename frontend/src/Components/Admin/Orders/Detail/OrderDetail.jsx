@@ -49,6 +49,7 @@ function OrderDetail() {
     <form onSubmit={(e) => handleSubmit(e)}>
       {orderDetail.status ? (
         <div >
+          <h2>Usuario: {orderDetail.userId}</h2>
           <h2>Estado: {orderDetail.status}</h2>
           <section>
             {/* <label>Modificar estado</label> */}
