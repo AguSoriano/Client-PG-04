@@ -99,8 +99,8 @@ export const deleteProduct = (id, loginUser) => {
       loginUser,
     };
     try {
-      await axios.delete(
-        `https://pf-api-04.up.railway.app/products/${id}`,
+      await axios.put(
+        `https://pf-api-04.up.railway.app/products/delete/${id}`,
         user
       );
     } catch (error) {

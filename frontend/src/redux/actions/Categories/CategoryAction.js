@@ -79,8 +79,8 @@ export const deleteCategory = (id, loginUser) => {
       loginUser,
     };
     try {
-      await axios.delete(
-        `https://pf-api-04.up.railway.app/category/${id}`,
+      await axios.put(
+        `https://pf-api-04.up.railway.app/category/delete/${id}`,
         user
       );
     } catch (error) {
