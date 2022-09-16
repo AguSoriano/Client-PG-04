@@ -29,15 +29,6 @@ function ProfileAdmin() {
           </button>
         </div>
         <section>
-          <FaUsers className={style.icon} />
-          <div>
-            <Link to="/admin/users" className={style.linkP}>
-              Usuarios
-            </Link>
-            <p>Gestiona los usuarios registrados</p>
-          </div>
-        </section>
-        <section>
           <GrProductHunt className={style.icon} />
           <div>
             <Link to="/admin/products" className={style.linkP}>
@@ -62,6 +53,15 @@ function ProfileAdmin() {
               Ordenes
             </Link>
             <p>Gestiona todas las ordenes</p>
+          </div>
+        </section>
+        <section>
+          <FaUsers className={style.icon} />
+          <div>
+            <Link to="/admin/users" className={style.linkP}>
+              Usuarios
+            </Link>
+            <p>Gestiona los usuarios registrados</p>
           </div>
         </section>
       </div>

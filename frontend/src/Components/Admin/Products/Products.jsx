@@ -7,6 +7,7 @@ import { getProducts } from "../../../redux/actions/Products/ProductsAction";
 import imgCane from "../../Img/Logo1V2.png";
 import Loading from "../../Loading/Loading";
 import Pagination from "../Pagination/PaginationAdmin";
+import style from "./Products.module.css";
 
 function Products() {
   const dispatch = ReactRedux.useDispatch();
@@ -22,64 +23,22 @@ function Products() {
   const prodPage = product.slice(page, page + 12);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "1rem",
-        marginTop: "1.5rem",
-      }}
-    >
+    <div className={style.mainProdDiv}>
       <section>
         <Link to={"/admin/products/newproduct"}>Nuevo Producto</Link>
       </section>
-      <section
-        /*className={style.prodSection}*/ style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          alignItems: "center",
-          justifyContent: "left",
-          width: "fit-content",
-        }}
-      >
+      <section className={style.prodSection}>
         {product.length > 1 ? (
           prodPage.map((prod) => (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                height: "2.5rem",
-                width: "100%",
-                gap: "1rem",
-                whiteSpace: "nowrap",
-                textAlign: "center",
-              }}
-            >
+            <div className={style.prodRender}>
               <Link
                 to={`/admin/products/detail/${prod.id}`}
                 key={prod.id}
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  height: "2rem",
-                  width: "100%",
-                  gap: "2rem",
-                  whiteSpace: "nowrap",
-                  textAlign: "center",
-                }}
+                className={style.linkProd}
               >
                 {/* id={prod.id} */}
-                <img
-                  src={prod.image ? prod.image : imgCane}
-                  alt={prod.id}
-                  style={{ height: "2rem", width: "2rem" }}
-                />
-                <p>{prod.name}</p>
+                <img src={prod.image ? prod.image : imgCane} alt={prod.id} />
+                <span className={style.linkPName}>{prod.name}</span>
                 <p>$ {prod.price}</p>
                 <p>{prod.stock} U</p>
                 {/* shortDesc={prod.shortDescription}
