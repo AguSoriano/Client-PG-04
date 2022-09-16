@@ -18,14 +18,15 @@ function CategoryDetail() {
     return () => {
       dispatch(cleanCatDetail());
     };
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const { categoryDetail } = ReactRedux.useSelector(
     (state) => state.categoryReducer
   );
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   const deleteCat = () => {
-    dispatch(deleteCategory(id));
+    dispatch(deleteCategory(id, loginUser));
     alert(`La categoria ${categoryDetail.name} se borro correctamente`);
     navigate(-1);
   };

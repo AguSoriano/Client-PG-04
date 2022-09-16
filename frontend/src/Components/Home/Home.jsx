@@ -28,7 +28,7 @@ function Home() {
   const { weekProd } = ReactRedux.useSelector((state) => state.weekProdReducer);
   const { page } = ReactRedux.useSelector((state) => state.pageReducer);
 
-  const prodPage = product.slice(page, page + 6);
+  const prodPage = product.filter((p) => p.stock > 0).slice(page, page + 6);
 
   return (
     <div className={style.main}>

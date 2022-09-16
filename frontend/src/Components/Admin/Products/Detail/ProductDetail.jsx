@@ -6,7 +6,7 @@ import {
   getDetail,
 } from "../../../../redux/actions/ProdDetail/ProdDetailAction";
 import * as ReactRedux from "react-redux";
-import style from "./ProductDetail.module.css";
+// import style from "./ProductDetail.module.css";
 import { deleteProduct } from "../../../../redux/actions/Products/ProductsAction";
 
 function ProductDetail() {
@@ -24,9 +24,10 @@ function ProductDetail() {
   const { prodDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
   );
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   const deleteProd = () => {
-    dispatch(deleteProduct(id));
+    dispatch(deleteProduct(id, loginUser));
     alert(`El producto ${prodDetail.name} fue borrado`);
     navigate(-1);
   };
