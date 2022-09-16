@@ -4,7 +4,10 @@ import * as ReactRedux from "react-redux";
 import imgCane from "../../../Img/Logo1V2.png";
 import {
   cleanUserDetail,
-  // disableUserById,
+  disableUserById,
+  doAdminUserById,
+  doUserById,
+  eneableUserById,
   getOneUserDetail,
 } from "../../../../redux/actions/Users/UsersActions";
 
@@ -23,11 +26,31 @@ function UserDetail() {
   const { oneUserDetail } = ReactRedux.useSelector(
     (state) => state.usersReducer
   );
-  // const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   const disableUser = () => {
-    // dispatch(disableUserById(id, loginUser, true));
+    dispatch(disableUserById(id, loginUser, true));
     alert(`El usuario ${oneUserDetail.email} fue desabilitado`);
+    navigate("/admin/users");
+  };
+
+  const eneableUser = () => {
+    dispatch(eneableUserById(id, loginUser, false));
+    alert(`El usuario ${oneUserDetail.email} fue habilitado`);
+    navigate("/admin/users");
+  };
+
+  const doAdmin = () => {
+    dispatch(doAdminUserById(id, loginUser));
+    alert(`El usuario ${oneUserDetail.email} ahora es administrador`);
+    navigate("/admin/users");
+  };
+
+  const doUser = () => {
+    dispatch(doUserById(id, loginUser));
+    alert(
+      `El usuario ${oneUserDetail.email} ya no es administrador y volvio a ser un usuario`
+    );
     navigate("/admin/users");
   };
 
@@ -41,7 +64,16 @@ function UserDetail() {
             alt={oneUserDetail.id}
           />
           <Link to={`/admin/users/edit/${id}`}>Editar</Link>
-          <button onClick={() => disableUser()}>Desabilitar Usuario</button>
+          {oneUserDetail.rol === "user" ? (
+            <button onClick={() => doAdmin()}>Hacer Admin</button>
+          ) : (
+            <button onClick={() => doUser()}>Sacar Admin</button>
+          )}
+          {oneUserDetail.isDisable ? (
+            <button onClick={() => eneableUser()}>Habilitar Usuario</button>
+          ) : (
+            <button onClick={() => disableUser()}>Desabilitar Usuario</button>
+          )}
         </div>
       ) : (
         "Cargando"

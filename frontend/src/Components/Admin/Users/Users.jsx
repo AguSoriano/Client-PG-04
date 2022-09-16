@@ -57,10 +57,10 @@ function Users() {
                 whiteSpace: "nowrap",
                 textAlign: "center",
               }}
+              key={us.id}
             >
               <Link
                 to={`/admin/users/detail/${us.id}`}
-                key={us.id}
                 style={{
                   display: "flex",
                   flexDirection: "row",
@@ -87,6 +87,8 @@ function Users() {
                 >
                   {us.nickname}
                 </p>
+                <p style={{ textAlign: "left", height: "2rem", width: "8rem" }}>{us.isDisable ? "Desabilitado" : "Activo"}</p>
+                <p>{us.rol}</p>
               </Link>
             </div>
           ))
