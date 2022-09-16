@@ -24,15 +24,15 @@ export const addToCart = (data) => {
   };
 };
 
-export const removeOneProducts = (id, user) => {
+export const removeOneProducts = (data) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(
-        `https://pf-api-04.up.railway.app/user/${user.id}/cart/delete?id=${id}`
+      await axios.delete(
+        `https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart/delete?id=${data.id}`
       );
       return dispatch({
         type: REMOVE_ONE_FROM_CART,
-        payload: id,
+        payload: data.id,
       });
     } catch (error) {
       console.log(error);
@@ -43,7 +43,7 @@ export const removeOneProducts = (id, user) => {
 export const removeAllCart = (user) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(
+      await axios.delete(
         `https://pf-api-04.up.railway.app/user/${user.id}/cart`
       );
       return dispatch({

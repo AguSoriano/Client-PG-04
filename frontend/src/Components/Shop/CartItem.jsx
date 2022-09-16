@@ -4,8 +4,10 @@ import { removeOneProducts } from "../../redux/actions/Cart/CartAction";
 import style from "./Shop.module.css";
 function CartItem({ price, image, name, id }) {
   const dispatch = ReactRedux.useDispatch();
-  //un ID de usuario temporal hasta que solucionemos eso
-  // const userId = 2 
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.usersReducer
+  );
+  const data = {id, loginUser}
   const removeCart = () => {
     dispatch(removeOneProducts(id));
     // dispatch(removeOneProducts(id, userId));
