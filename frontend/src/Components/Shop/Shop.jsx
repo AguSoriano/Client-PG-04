@@ -1,17 +1,18 @@
 import React from "react";
 import * as ReactRedux from "react-redux";
-// import { removeAllCart } from "../../redux/actions/index";
+import { removeAllCart } from "../../redux/actions/Cart/CartAction";
 import CartItem from "./CartItem";
 import style from "./Shop.module.css";
 import { Link } from "react-router-dom";
 
 function Shop() {
-  // const dispatch = ReactRedux.useDispatch();
-
+  const dispatch = ReactRedux.useDispatch();
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
-  //  const clearCart = (user) => {
-  //     dispatch(removeAllCart(user));
-  //   };
+
+  const clearCart = (loginUser) => {
+    dispatch(removeAllCart(loginUser));
+  };
+
   const priceTotal = () => {
     return cartproduct?.reduce((acc, prod) => acc + prod.price, 0);
   };
@@ -46,9 +47,15 @@ function Shop() {
         <></>
       )}
       {cartproduct?.length ? (
-        <Link className={style.link} to={"/products/payment"}>
-          <button className={style.button1}> Comprar </button>
-        </Link>
+        <div>
+          <Link className={style.link} to={"/products/payment"}>
+            <button className={style.button1}> Comprar </button>
+          </Link>
+          <button className={style.button1} onClick={clearCart}>
+            {" "}
+            VACIAR CARRITO
+          </button>
+        </div>
       ) : (
         <></>
       )}
