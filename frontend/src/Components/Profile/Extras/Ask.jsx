@@ -6,7 +6,7 @@ function Ask() {
       <span>
         Para contactar al administrador envia un mail a la siguiente direccion
       </span>
-      <p>administrador@canefood.com</p>
+      <p>caneapphenry@gmail.com</p>
     </div>
   );
 }

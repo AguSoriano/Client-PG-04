@@ -5,35 +5,26 @@ import { IoMdLogOut } from "react-icons/io";
 import { FaUsers } from "react-icons/fa";
 import { GrProductHunt } from "react-icons/gr";
 import { MdCategory, MdShoppingCart } from "react-icons/md";
-// import { HiOutlineCreditCard, HiHeart, HiOutlineMap } from "react-icons/hi";
+import * as ReactRedux from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import adminpic from "../../Img/adminpicture.png";
 
-/*debe contener ademas de las opciones comunes poder crear, editar o borrar:
- - Productos
- - Categorias
- - Usuarios
- - Ordenes
-*/
-
-let user = {
-  name: "Administrador",
-  given_name: "Tu eres",
-  family_name: "admin",
-  picture:
-    "https://www.softzone.es/app/uploads-softzone.es/2021/06/Ejecutar-aplicaciones-como-administrador-al-iniciar-Windows.jpg?x=480&y=375&quality=40",
-};
 function ProfileAdmin() {
-  const logout = () => {
-    alert("No te vayas admin");
-  };
+  const { logout } = useAuth0();
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+
   return (
     <div className={style.mainRender}>
       <div className={style.mainProf}>
         <div className={style.user}>
-          <img src={user.picture} alt={user.name} />
+          <img
+            src={loginUser.picture ? loginUser.picture : adminpic}
+            alt={loginUser.id}
+          />
           <h2>
-            {user.given_name.toUpperCase()} {user.family_name.toUpperCase()}
+            {loginUser.nickname.toUpperCase()} {loginUser.rol.toUpperCase()}
           </h2>
-          <button onClick={() => logout()}>
+          <button onClick={logout}>
             <IoMdLogOut className={style.icon} />
           </button>
         </div>
@@ -73,15 +64,6 @@ function ProfileAdmin() {
             <p>Gestiona todas las ordenes</p>
           </div>
         </section>
-        {/* <section>
-          <GrContact className={style.icon} />
-          <div>
-            <Link to="/profile/ask" className={style.linkP}>
-              Contactar al administrador
-            </Link>
-            <p>Realiza consultas al administrador</p>
-          </div>
-        </section> */}
       </div>
     </div>
   );
