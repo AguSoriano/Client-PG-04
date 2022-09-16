@@ -12,7 +12,6 @@ function NavBar() {
   const dispatch = ReactRedux.useDispatch();
   const { user, loginWithRedirect, isAuthenticated } = useAuth0();
 
-  // console.log(JSON.stringify(user));
   const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   useEffect(() => {
@@ -50,7 +49,9 @@ function NavBar() {
             <Link to="/profile" className={style.link}>
               Perfil
             </Link>
-            {loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+            {loginUser.isDisable ? (
+              <></>
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
               <Link className={style.link} to={"/admin"}>
                 Panel de administrador
               </Link>

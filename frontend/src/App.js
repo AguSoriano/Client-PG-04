@@ -39,10 +39,12 @@ import {
 } from "./redux/actions/Users/UsersActions";
 import UserDetail from "./Components/Admin/Users/Detail/UserDetail";
 import UserEdit from "./Components/Admin/Users/Edit/UserEdit";
+import UserDisable from "./Components/UserDisable/UserDisable";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = ReactRedux.useDispatch();
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -57,64 +59,331 @@ function App() {
     <div className="App">
       <NavBar path="/" element={NavBar} />
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
-        <Route exact path="about" element={<About />} />
+        <Route
+          path="/"
+          element={
+            !isAuthenticated ? (
+              <LandingPage />
+            ) : !loginUser.isDisable ? (
+              <LandingPage />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="about"
+          element={
+            !isAuthenticated ? (
+              <About />
+            ) : !loginUser.isDisable ? (
+              <About />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="home"
+          element={
+            !isAuthenticated ? (
+              <Home />
+            ) : !loginUser.isDisable ? (
+              <Home />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="shop"
+          element={
+            !isAuthenticated ? (
+              <Shop />
+            ) : !loginUser.isDisable ? (
+              <Shop />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
         <Route exact path="terms" element={<Terms />} />
         <Route exact path="privacy" element={<Privacy />} />
-        <Route exact path="home" element={<Home />} />
-        <Route path="shop" element={<Shop />} />
+
+        {/*---------------------------------------------------------------------------*/}
         {/* Products */}
-        <Route exact path="products/:id" element={<Detail />} />
+        <Route
+          path="products/:id"
+          element={
+            !isAuthenticated ? (
+              <Detail />
+            ) : !loginUser.isDisable ? (
+              <Detail />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
         <Route exact path="products/payment" element={<PaymentCreate />} />
         <Route exact path="products/checkout" element={<CheckoutSuccess />} />
         <Route exact path="products/contact" element={<Mailer />} />
         <Route exact path="products/contact/reviews" element={<Reviews />} />
+
+        {/*---------------------------------------------------------------------------*/}
         {/* Profile */}
         <Route
           path="profile"
-          element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
+          element={
+            !isAuthenticated ? (
+              <Navigate to="/" />
+            ) : !loginUser.isDisable ? (
+              <Profile />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
         />
         <Route
           path="profile/data"
-          element={isAuthenticated ? <Data /> : <Navigate to="/" />}
+          element={
+            !isAuthenticated ? (
+              <Navigate to="/" />
+            ) : !loginUser.isDisable ? (
+              <Data />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
         />
         <Route
           path="profile/cards"
-          element={isAuthenticated ? <Cards /> : <Navigate to="/" />}
+          element={
+            !isAuthenticated ? (
+              <Navigate to="/" />
+            ) : !loginUser.isDisable ? (
+              <Cards />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
         />
         <Route
           path="profile/favorite"
-          element={isAuthenticated ? <Favorite /> : <Navigate to="/" />}
+          element={
+            !isAuthenticated ? (
+              <Navigate to="/" />
+            ) : !loginUser.isDisable ? (
+              <Favorite />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
         />
         <Route
           path="profile/adress"
-          element={isAuthenticated ? <Adress /> : <Navigate to="/" />}
+          element={
+            !isAuthenticated ? (
+              <Navigate to="/" />
+            ) : !loginUser.isDisable ? (
+              <Adress />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
         />
         <Route
           path="profile/ask"
           element={isAuthenticated ? <Ask /> : <Navigate to="/" />}
         />
+
+        {/*--------------------------------------------------------------------------*/}
         {/* Admin */}
-        <Route path="admin" element={<ProfileAdmin />} />
-        <Route path="admin/users" element={<Users />} />
-        <Route path="admin/users/detail/:id" element={<UserDetail />} />
-        <Route path="admin/users/edit/:id" element={<UserEdit />} />
-        <Route path="admin/products" element={<Products />} />
-        <Route path="admin/products/detail/:id" element={<ProductDetail />} />
-        <Route path="admin/products/newproduct" element={<ProductCreate />} />
-        <Route path="admin/products/edit/:id" element={<ProductEdit />} />
-        <Route path="admin/categories" element={<Categories />} />
+        <Route
+          path="admin"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ProfileAdmin />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/users"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Users />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/users/detail/:id"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <UserDetail />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/users/edit/:id"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <UserEdit />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/products"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Products />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/products/detail/:id"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ProductDetail />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/products/newproduct"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ProductCreate />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/products/edit/:id"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ProductEdit />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/categories"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Categories />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
         <Route
           path="admin/categories/detail/:id"
-          element={<CategoryDetail />}
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <CategoryDetail />
+            ) : (
+              <ErrorRoute />
+            )
+          }
         />
         <Route
           path="admin/categories/newcategory"
-          element={<CategoryCreate />}
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <CategoryCreate />
+            ) : (
+              <ErrorRoute />
+            )
+          }
         />
-        <Route path="admin/categories/edit/:id" element={<CategoryEdit />} />
-        <Route path="admin/orders" element={<Orders />} />
+        <Route
+          path="admin/categories/edit/:id"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <CategoryEdit />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="admin/orders"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Orders />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+
+        {/*--------------------------------------------------------------------------*/}
         {/* Others */}
+        <Route path="/userdisable" element={<UserDisable />} />
         <Route path="/*" element={<ErrorRoute />} />
       </Routes>
     </div>

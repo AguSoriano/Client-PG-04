@@ -7,6 +7,11 @@ import {
   GET_USER_LOGIN,
 } from "./ActionType";
 
+export const userDisableAlert = (cb) => {
+  alert();
+  cb();
+};
+
 export const getAllUsers = () => {
   return async (dispatch) => {
     try {
