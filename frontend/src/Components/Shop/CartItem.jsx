@@ -9,7 +9,7 @@ function CartItem({ price, image, name, id }) {
   );
   const data = {id, loginUser}
   const removeCart = () => {
-    dispatch(removeOneProducts(id));
+    dispatch(removeOneProducts(data));
     // dispatch(removeOneProducts(id, userId));
   };
 
