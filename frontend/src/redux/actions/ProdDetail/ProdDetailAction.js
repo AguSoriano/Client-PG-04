@@ -25,9 +25,10 @@ export const cleanDetail = () => {
   };
 };
 
-export const editDetail = (id, data) => {
+export const editDetail = (id, loginUser, data) => {
   return async () => {
     const prodEdited = {
+      loginUser,
       name: data.name.toLowerCase(),
       image: data.image,
       shortDescription: data.shortDescription.toLowerCase(),
@@ -36,7 +37,7 @@ export const editDetail = (id, data) => {
       price: Number(data.price),
       category: data.category.map((cat) => cat.name),
     };
-    // console.log(prodEdited);
+    console.log(prodEdited);
     try {
       await axios.put(
         `https://pf-api-04.up.railway.app/products/${id}`,

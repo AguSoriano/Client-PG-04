@@ -72,9 +72,10 @@ export const filterBy2 = (category2) => {
   };
 };
 
-export const createProduct = (data) => {
+export const createProduct = (loginUser, data) => {
   return async () => {
     const newProduct = {
+      loginUser,
       name: data.name.toLowerCase(),
       image: data.image,
       shortDescription: data.shortDescription.toLowerCase(),
@@ -92,10 +93,16 @@ export const createProduct = (data) => {
   };
 };
 
-export const deleteProduct = (id) => {
+export const deleteProduct = (id, loginUser) => {
   return async () => {
+    const user = {
+      loginUser,
+    };
     try {
-      await axios.delete(`https://pf-api-04.up.railway.app/products/${id}`);
+      await axios.delete(
+        `https://pf-api-04.up.railway.app/products/${id}`,
+        user
+      );
     } catch (error) {
       console.log(error);
     }

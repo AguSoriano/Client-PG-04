@@ -21,6 +21,7 @@ function ProductEdit() {
   const { prodEditDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
   );
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   const validador = (input) => {
     //let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios
@@ -115,7 +116,7 @@ function ProductEdit() {
     event.preventDefault();
 
     if (!errors.name && !errors.categories) {
-      dispatch(editDetail(id, input));
+      dispatch(editDetail(id, loginUser, input));
       alert(`El producto ${input.name} ha sido editado correctamente`);
       navigate(`/products/${id}`);
     } else {

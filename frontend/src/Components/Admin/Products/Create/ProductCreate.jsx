@@ -15,13 +15,14 @@ function ProductCreate() {
   const allCategory = ReactRedux.useSelector(
     (state) => state.categoryReducer.categories
   );
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   const validador = (input) => {
-  
     let error = {};
-    
-    if(input.name.search("[0-9]") !== -1 ) {
-      error.name = "El nombre no acepta números"};
+
+    if (input.name.search("[0-9]") !== -1) {
+      error.name = "El nombre no acepta números";
+    }
     if (!input.name) {
       error.name = "el nombre no puede estar vacio";
     }
@@ -107,7 +108,7 @@ function ProductCreate() {
     event.preventDefault();
 
     if (!errors.name && !errors.categories) {
-      dispatch(createProduct(input));
+      dispatch(createProduct(loginUser, input));
       alert(`El producto ${input.name} se creo correctamente`);
       setInput({
         name: "",

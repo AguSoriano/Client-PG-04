@@ -1,5 +1,4 @@
 import axios from "axios";
-import CategoryCreate from "../../../Components/Admin/Categories/Create/CategoryCreate";
 
 import {
   CATEGORY_DETAIL,
@@ -40,9 +39,10 @@ export const cleanCatDetail = () => {
   };
 };
 
-export const createCategory = (data) => {
+export const createCategory = (data, loginUser) => {
   return async () => {
     const newCategory = {
+      loginUser,
       name: data.name.toLowerCase(),
     };
     try {
@@ -56,9 +56,10 @@ export const createCategory = (data) => {
   };
 };
 
-export const editCategory = (id, data) => {
+export const editCategory = (id, loginUser, data) => {
   return async () => {
     const categoryEdited = {
+      loginUser,
       name: data.name.toLowerCase(),
     };
     try {
@@ -72,10 +73,16 @@ export const editCategory = (id, data) => {
   };
 };
 
-export const deleteCategory = (id) => {
+export const deleteCategory = (id, loginUser) => {
   return async () => {
+    const user = {
+      loginUser,
+    };
     try {
-      await axios.delete(`https://pf-api-04.up.railway.app/category/${id}`);
+      await axios.delete(
+        `https://pf-api-04.up.railway.app/category/${id}`,
+        user
+      );
     } catch (error) {
       console.log(error);
     }

@@ -13,6 +13,7 @@ function CategoryEdit() {
   const { categoryEdit } = ReactRedux.useSelector(
     (state) => state.categoryReducer
   );
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
   const [input, setInput] = useState({
     name: categoryEdit.name,
@@ -26,7 +27,7 @@ function CategoryEdit() {
   const handleSubmit = (e) => {
     e.preventDefault();
     //check errors
-    dispatch(editCategory(id, input));
+    dispatch(editCategory(id, loginUser, input));
     alert("El nombre de la categoria se edito correctamente");
     setInput({
       name: "",

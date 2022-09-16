@@ -5,6 +5,8 @@ import { createCategory } from "../../../../redux/actions/Categories/CategoryAct
 
 function CategoryCreate() {
   const dispatch = ReactRedux.useDispatch();
+  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+
   const [input, setInput] = useState({
     name: "",
   });
@@ -19,7 +21,7 @@ function CategoryCreate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createCategory(input))
+    dispatch(createCategory(input, loginUser));
     // console.log(input);
     alert(`La categoria ${input.name} se creo correctamente`);
     setInput({

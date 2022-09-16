@@ -56,10 +56,10 @@ export const removeAllCart = (user) => {
   };
 };
 
-export const getAllOrders = (userLoged) => {
+export const getAllOrders = (loginUser) => {
   return async (dispatch) => {
     const user = {
-      rol: userLoged.rol,
+      loginUser,
     };
     try {
       const { data } = await axios.put(
