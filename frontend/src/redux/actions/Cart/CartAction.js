@@ -104,3 +104,22 @@ export const cleanOrderDetail = () => {
     payload: {},
   };
 };
+
+export const editStatusOrder = (id, loginUser, status) => {
+  return async () => {
+    const data = {
+      loginUser,
+      status,
+    };
+    // console.log(data)
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/order/editstatus/${id}`,
+        data
+      );
+      alert(`La orden se modifico a ${status}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

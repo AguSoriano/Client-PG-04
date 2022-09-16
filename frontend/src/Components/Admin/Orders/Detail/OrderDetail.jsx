@@ -1,15 +1,19 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as ReactRedux from "react-redux";
 import { useEffect } from "react";
 import {
   cleanOrderDetail,
+  editStatusOrder,
   getOrderDetail,
 } from "../../../../redux/actions/Cart/CartAction";
+import { useState } from "react";
 
 function OrderDetail() {
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
   const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
 
@@ -32,16 +36,19 @@ function OrderDetail() {
 
   const handleSelect = (e) => {
     e.preventDefault();
+    setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(editStatusOrder(id, loginUser, input));
+    navigate(-1);
   };
 
   return (
-    <div>
+    <form onSubmit={(e) => handleSubmit(e)}>
       {orderDetail.status ? (
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <div >
           <h2>Estado: {orderDetail.status}</h2>
           <section>
             {/* <label>Modificar estado</label> */}
@@ -49,17 +56,19 @@ function OrderDetail() {
               <option value={orderDetail.status}>{orderDetail.status}</option>
               {estados
                 .filter((e) => e !== orderDetail.status)
-                .map((e) => (
-                  <option value={e}>{e}</option>
+                .map((e, i) => (
+                  <option value={e} key={i}>
+                    {e}
+                  </option>
                 ))}
             </select>
           </section>
-          <button>modificar</button>
-        </form>
+          <button type="submit">modificar</button>
+        </div>
       ) : (
         "cargando"
       )}
-    </div>
+    </form>
   );
 }
 
