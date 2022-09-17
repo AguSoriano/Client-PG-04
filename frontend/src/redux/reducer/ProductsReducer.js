@@ -7,40 +7,44 @@ import {
   ORDER_PRICE,
 } from "../actions/Products/ActionTypes";
 
-const initialState = JSON.parse(
-  window.localStorage.getItem("productsState") ||
-    JSON.stringify({
-      product: [],
-      productCopy: [],
-      productCopy2: [],
-    })
-);
+// const initialState = JSON.parse(
+//   window.localStorage.getItem("productsState") ||
+//     JSON.stringify({
+//       product: [],
+//       productCopy: [],
+//       productCopy2: [],
+//     })
+// );
 
-const saveState = (state) => {
-  window.localStorage.setItem("productsState", JSON.stringify(state));
+// const saveState = (state) => {
+//   window.localStorage.setItem("productsState", JSON.stringify(state));
+// };
+
+const initialState = {
+  product: [],
+  productCopy: [],
+  productCopy2: [],
 };
 
 export default function productsReducer(
   state = initialState,
   { type, payload }
 ) {
-  let newState;
+  // let newState;
   switch (type) {
     case GET_NAME_PRODUCT: {
-      newState = {
+      return {
         ...state,
         product: payload,
       };
-      break;
     }
 
     case GET_PRODUCTS: {
-      newState = {
+      return {
         ...state,
         product: payload,
         productCopy: payload,
       };
-      break;
     }
 
     case ORDER_ALPHABETICAL: {
@@ -64,11 +68,10 @@ export default function productsReducer(
               }
               return 0;
             });
-      newState = {
+      return {
         ...state,
         product: sortedName,
       };
-      break;
     }
 
     case ORDER_PRICE: {
@@ -76,15 +79,14 @@ export default function productsReducer(
         payload === "min_price"
           ? state.product.sort((a, b) => parseInt(a.price) - parseInt(b.price))
           : state.product.sort((a, b) => parseInt(b.price) - parseInt(a.price));
-      newState = {
+      return {
         ...state,
         product: sortedPrice,
       };
-      break;
     }
 
     case FILTER_BY: {
-      newState = {
+      return {
         ...state,
         product:
           payload === "all"
@@ -99,11 +101,10 @@ export default function productsReducer(
                 prod.categories.some((cat) => cat.name === payload)
               ),
       };
-      break;
     }
 
     case FILTER_BY2: {
-      newState = {
+      return {
         ...state,
         product:
           payload === "all"
@@ -112,12 +113,11 @@ export default function productsReducer(
                 prod.categories.some((cat) => cat.name === payload)
               ),
       };
-      break;
     }
 
     default:
-      newState = state;
+      return state;
   }
-  saveState(newState);
-  return newState;
+  // saveState(newState);
+  // return newState;
 }

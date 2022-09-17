@@ -26,7 +26,7 @@ function UserDetail() {
   const { oneUserDetail } = ReactRedux.useSelector(
     (state) => state.usersReducer
   );
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   const disableUser = () => {
     dispatch(disableUserById(id, loginUser, true));

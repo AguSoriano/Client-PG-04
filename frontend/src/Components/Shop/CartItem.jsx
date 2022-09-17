@@ -10,7 +10,7 @@ function CartItem({ price, image, name, id }) {
 
   const dispatch = ReactRedux.useDispatch();
   const { loginUser } = ReactRedux.useSelector(
-    (state) => state.usersReducer
+    (state) => state.userLoginReducer
   );
   const data = {id, loginUser}
   const removeCart = () => {

@@ -12,7 +12,7 @@ function NavBar() {
   const dispatch = ReactRedux.useDispatch();
   const { user, loginWithRedirect, isAuthenticated } = useAuth0();
 
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   useEffect(() => {
     if (isAuthenticated) {

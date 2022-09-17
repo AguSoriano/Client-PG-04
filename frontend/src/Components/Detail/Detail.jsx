@@ -47,7 +47,7 @@ function Detail() {
   );
 
   const { loginUser } = ReactRedux.useSelector(
-    (state) => state.usersReducer
+    (state) => state.userLoginReducer
   );
 
   const data = { prodDetail, quantity, loginUser };

@@ -21,7 +21,7 @@ function ProductEdit() {
   const { prodEditDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
   );
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   const validador = (input) => {
     //let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios

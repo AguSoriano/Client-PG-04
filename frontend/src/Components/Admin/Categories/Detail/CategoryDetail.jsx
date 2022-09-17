@@ -23,7 +23,7 @@ function CategoryDetail() {
   const { categoryDetail } = ReactRedux.useSelector(
     (state) => state.categoryReducer
   );
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   const deleteCat = () => {
     dispatch(deleteCategory(id, loginUser));

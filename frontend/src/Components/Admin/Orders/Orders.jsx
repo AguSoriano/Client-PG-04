@@ -8,14 +8,14 @@ import FilterOrders from "./Filter/FilterOrders";
 
 function Orders() {
   const dispatch = ReactRedux.useDispatch();
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     dispatch(getAllOrders(loginUser));
   }, [dispatch, loginUser]);
 
-  const { allOrders } = ReactRedux.useSelector((state) => state.cartReducer);
+  const { allOrders } = ReactRedux.useSelector((state) => state.ordersReducer);
   const ordersPerPage = allOrders.slice(page, page + 12);
 
   return (
