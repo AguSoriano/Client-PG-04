@@ -1,43 +1,46 @@
 import { CLEAN_DETAIL, GET_DETAIL } from "../actions/ProdDetail/ActionTypes";
 
-const initialState = JSON.parse(
-  window.localStorage.getItem("prodDetailState") ||
-    JSON.stringify({
-      prodDetail: {},
-      prodEditDetail: {},
-    })
-);
+// const initialState = JSON.parse(
+//   window.localStorage.getItem("prodDetailState") ||
+//     JSON.stringify({
+//       prodDetail: {},
+//       prodEditDetail: {},
+//     })
+// );
 
-const saveState = (state) => {
-  window.localStorage.setItem("prodDetailState", JSON.stringify(state));
+// const saveState = (state) => {
+//   window.localStorage.setItem("prodDetailState", JSON.stringify(state));
+// };
+
+const initialState = {
+  prodDetail: {},
+  prodEditDetail: {},
 };
 
 export default function prodDetailReducer(
   state = initialState,
   { type, payload }
 ) {
-  let newState;
+  // let newState;
   switch (type) {
     case GET_DETAIL: {
-      newState = {
+      return {
         ...state,
         prodDetail: payload,
         prodEditDetail: payload,
       };
-      break;
     }
     case CLEAN_DETAIL: {
-      newState = {
+      return {
         ...state,
         prodDetail: payload,
       };
-      break;
     }
 
     default:
-      newState = state;
+      return state;
   }
 
-  saveState(newState);
-  return newState;
+  // saveState(newState);
+  // return newState;
 }

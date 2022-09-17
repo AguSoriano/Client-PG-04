@@ -10,7 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function Data() {
   const { user } = useAuth0();
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
   return (
     <div className={style.mainData}>
       <div className={style.titleDiv}>

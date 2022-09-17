@@ -15,7 +15,7 @@ function ProductCreate() {
   const allCategory = ReactRedux.useSelector(
     (state) => state.categoryReducer.categories
   );
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   const validador = (input) => {
     let error = {};

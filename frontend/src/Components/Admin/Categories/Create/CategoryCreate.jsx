@@ -5,7 +5,7 @@ import { createCategory } from "../../../../redux/actions/Categories/CategoryAct
 
 function CategoryCreate() {
   const dispatch = ReactRedux.useDispatch();
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   const [input, setInput] = useState({
     name: "",

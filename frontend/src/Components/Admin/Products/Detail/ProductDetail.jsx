@@ -24,7 +24,7 @@ function ProductDetail() {
   const { prodDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
   );
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   const deleteProd = () => {
     dispatch(deleteProduct(id, loginUser));

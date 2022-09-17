@@ -46,7 +46,7 @@ import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
 function App() {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = ReactRedux.useDispatch();
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   useEffect(() => {
     if (isAuthenticated) {

@@ -14,7 +14,7 @@ const stripePromise = loadStripe(
 
 export default function PaymentCreate({ email, productId }) {
 
-  const userId = useSelector((state) => state.usersReducer.loginUser.id);
+  const userId = useSelector((state) => state.userLoginReducer.loginUser.id);
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {

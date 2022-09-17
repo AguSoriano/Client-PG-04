@@ -10,7 +10,7 @@ import { GrContact } from "react-icons/gr";
 
 function Profile() {
   const { logout } = useAuth0();
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   return (
     <div className={style.mainRender}>

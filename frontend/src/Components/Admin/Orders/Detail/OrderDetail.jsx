@@ -15,7 +15,7 @@ function OrderDetail() {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
 
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   useEffect(() => {
     dispatch(getOrderDetail(id, loginUser));
@@ -24,7 +24,7 @@ function OrderDetail() {
     };
   }, [dispatch, id, loginUser]);
 
-  const { orderDetail } = ReactRedux.useSelector((state) => state.cartReducer);
+  const { orderDetail } = ReactRedux.useSelector((state) => state.ordersReducer);
 
   const estados = [
     "carrito",
