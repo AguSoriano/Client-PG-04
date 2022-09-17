@@ -29,7 +29,6 @@ function Detail() {
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
 
-  // integracion de la pasarela de pago
   const [buy, setBuy] = useState(false);
 
   const payment = () => {
@@ -140,15 +139,12 @@ function Detail() {
               <section>
                 <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
 
-                {/* <button className={style.button} onClick={addCart}> Agregar al Carro </button> */}
-                {/* <Link className={style.link} to={"/products/payment"}> */}
                 {buy === false && (
                   <button className={style.button1} onClick={payment}>
                     {" "}
                     Comprar{" "}
                   </button>
                 )}
-                {/* </Link> */}
 
                 {
                   <button className={style.button} onClick={addCart}>
@@ -197,7 +193,7 @@ function Detail() {
             <b> Total: ${quantity * prodDetail.price}</b>
           </div>
           <div>
-            <PaymentCreate user={user.email} productId={id} />
+            <PaymentCreate email={user.email} productId={id} />
           </div>
         </div>
       )}
