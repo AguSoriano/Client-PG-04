@@ -46,7 +46,9 @@ import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
 function App() {
   const { user, isAuthenticated } = useAuth0();
   const dispatch = ReactRedux.useDispatch();
-  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -66,6 +68,8 @@ function App() {
           element={
             !isAuthenticated ? (
               <LandingPage />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Navigate to="/admin" />
             ) : !loginUser.isDisable ? (
               <LandingPage />
             ) : (
@@ -90,6 +94,8 @@ function App() {
           element={
             !isAuthenticated ? (
               <Home />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Navigate to="/admin" />
             ) : !loginUser.isDisable ? (
               <Home />
             ) : (
@@ -102,6 +108,8 @@ function App() {
           element={
             !isAuthenticated ? (
               <Shop />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Navigate to="/admin" />
             ) : !loginUser.isDisable ? (
               <Shop />
             ) : (
