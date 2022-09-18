@@ -21,16 +21,18 @@ function HistoryOrders() {
   return (
     <div>
       {oneUserOrders.length
-        ? oneUserOrders.map((order) => (
-            <div key={order.id}>
-              <p>
-                {order.createdAt.slice(8, 10)}/
-                {order.createdAt.slice(5, 7) /*== "09" ? "Septiembre" : ""*/}/
-                {order.createdAt.slice(0, 4)}
-              </p>
-              <p>{order.status}</p>
-            </div>
-          ))
+        ? oneUserOrders
+            .filter((ord) => ord.status !== "carrito")
+            .map((order) => (
+              <div key={order.id}>
+                <p>
+                  {order.createdAt.slice(8, 10)}/
+                  {order.createdAt.slice(5, 7) /*== "09" ? "Septiembre" : ""*/}/
+                  {order.createdAt.slice(0, 4)}
+                </p>
+                <p>{order.status}</p>
+              </div>
+            ))
         : "No hay ordenes para mostrar"}
     </div>
   );
