@@ -30,7 +30,6 @@ function Detail() {
   const dispatch = ReactRedux.useDispatch();
   const [buy, setBuy] = useState(false);
 
-  
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -45,14 +44,15 @@ function Detail() {
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
-
-  const data = { prodDetail, quantity, loginUser };
+  console.log("userrrr", loginUser)
+  const prodTotal = { quantity, prodDetail };
+  const data = { prodTotal, loginUser };
 
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
   );
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
-
+console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
   const addFav1 = () => {
     if (prodDetail.name) {
       dispatch(addFav(prodDetail));
@@ -74,7 +74,7 @@ function Detail() {
 
   const isOnCart = () => {
     if (cartproduct?.length) {
-      return cartproduct.find((p) => p.id === prodDetail.id) ? true : false;
+      return cartproduct.find((p) => p.prodDetail.id === prodDetail.id) ? true : false;
     }
     return false;
   };
@@ -107,7 +107,7 @@ function Detail() {
   }
 
   const payment = () => {
-    dispatch(getClientSecret(loginUser.id, +id, prodDetail.price, quantity))
+    dispatch(getClientSecret(loginUser.id, +id, prodDetail.price, quantity));
     setBuy(true);
   };
 
@@ -193,15 +193,11 @@ function Detail() {
             <b> Cantidad: {quantity}</b>
             <b> Total: ${quantity * prodDetail.price}</b>
           </div>
-          <div>
-            {buy === true ? (
-              <PaymentCreate/>
-            ) : null}
-          </div>
+          <div>{buy === true ? <PaymentCreate /> : null}</div>
         </div>
       )}
 
-      {(buy === true && !isAuthenticated) ? (
+      {buy === true && !isAuthenticated ? (
         <>
           <button
             onClick={() => loginWithRedirect()}
@@ -210,9 +206,8 @@ function Detail() {
             <BiUser size="1.5rem" />
             Login
           </button>
-        </>)
-        : null
-      }
+        </>
+      ) : null}
     </div>
   );
 }

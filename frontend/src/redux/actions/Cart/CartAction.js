@@ -12,6 +12,7 @@ import {
 
 export const addToCart = (data) => {
   return async (dispatch) => {
+    console.log("IDDDD", data.loginUser.id)
     try {
       await axios.post(
         `https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`,
@@ -28,6 +29,7 @@ export const addToCart = (data) => {
 };
 
 export const removeOneProducts = (data) => {
+  console.log("dataaa", data)
   return async (dispatch) => {
     try {
       await axios.delete(
