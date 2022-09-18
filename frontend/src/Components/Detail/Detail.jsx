@@ -71,7 +71,7 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
     }
     return false;
   };
-  console.log("prodDetails",cartproduct.prodTotal.prodDetail)
+  console.log("prodDetailss",cartproduct.prodTotal.prodDetail)
   const isOnCart = () => {
     if (cartproduct?.length) {
       return cartproduct.find((p) => p.prodDetail.id === prodDetail.id) ? true : false;
