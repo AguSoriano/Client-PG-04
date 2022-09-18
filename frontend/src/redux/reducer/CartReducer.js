@@ -26,7 +26,7 @@ export default function cartReducer(state = initialState, { type, payload }) {
     case ADD_TO_CART: {
       newState = {
         ...state,
-        cartproduct: [...state.cartproduct, payload.prodDetail],
+        cartproduct: [...state.cartproduct, payload.prodTotal],
       };
       break;
     }
@@ -34,7 +34,7 @@ export default function cartReducer(state = initialState, { type, payload }) {
       newState = {
         ...state,
         cartproduct: state.cartproduct.filter(
-          (product) => product.id !== payload
+          (product) => product.prodDetail.id !== payload
         ),
       };
       break;

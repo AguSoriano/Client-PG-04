@@ -15,69 +15,72 @@ function Shop() {
   const userId = useSelector((state) => state.userLoginReducer.loginUser.id);
   const [buy, setBuy] = useState(false);
 
-  
   const dispatch = ReactRedux.useDispatch();
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
-
-  const clearCart = (loginUser) => {
+  console.log("cartttt", cartproduct)
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
+  const clearCart = () => {
     dispatch(removeAllCart(loginUser));
   };
 
   const priceTotal = () => {
-    return cartproduct?.reduce((acc, prod) => acc + prod.price, 0);
+    return cartproduct?.reduce((acc, prod) => acc + prod.prodDetail.price, 0);
   };
 
   const payment = () => {
-    dispatch(getClientSecret(userId))
+    dispatch(getClientSecret(userId));
     setBuy(true);
   };
 
   return (
     <div>
       {buy === false && (
-      <div className={style.container}>
-        <h2> Tu carrito de compras</h2>
-        <div>
+        <div className={style.container}>
+          <h2> Tu carrito de compras</h2>
           <div>
-            {cartproduct?.length ? (
-              cartproduct.map((p) => (
-                <CartItem
-                  className={style.cardDiv}
-                  key={p.id}
-                  name={p.name}
-                  price={p.price}
-                  id={p.id}
-                  image={p.image}
-                />
-              ))
-            ) : (
-              <div>
-                <spam> Tu carrito esta vacio </spam>
-              </div>
-            )}
+            <div>
+              {cartproduct?.length ? (
+                cartproduct.map((p) => (
+                  <CartItem
+                    className={style.cardDiv}
+                    key={p.prodDetail.id}
+                    name={p.prodDetail.name}
+                    price={p.prodDetail.price}
+                    quantity={p.quantity}
+                    id={p.prodDetail.id}
+                    image={p.prodDetail.image}
+                  />
+                ))
+              ) : (
+                <div>
+                  <spam> Tu carrito esta vacio </spam>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
 
-        {cartproduct?.length ? (
-          <h3>Total sin impuestos: ${priceTotal()}</h3>
-        ) : (
-          <></>
-        )}
-        {cartproduct?.length ? (
-          <div>
-            {buy === false && (
-              <button className={style.button1} onClick={payment}>
-                Comprar
+          {cartproduct?.length ? (
+            <h3>Total sin impuestos: ${priceTotal()}</h3>
+          ) : (
+            <></>
+          )}
+          {cartproduct?.length ? (
+            <div>
+              {buy === false && (
+                <button className={style.button1} onClick={payment}>
+                  Comprar
+                </button>
+              )}
+              <button className={style.button1} onClick={clearCart}>
+                VACIAR CARRITO
               </button>
-            )}
-            <button className={style.button1} onClick={clearCart}>
-              VACIAR CARRITO
-            </button>
-          </div>
-        ) : (
-          <></>
-        )}
-      </div>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
       )}
 
       {buy === true && isAuthenticated && (
@@ -88,7 +91,7 @@ function Shop() {
         </div>
       )}
 
-      {(buy === true && !isAuthenticated) ? (
+      {buy === true && !isAuthenticated ? (
         <>
           <button
             onClick={() => loginWithRedirect()}
@@ -99,7 +102,6 @@ function Shop() {
           </button>
         </>
       ) : null}
-      
     </div>
   );
 }
