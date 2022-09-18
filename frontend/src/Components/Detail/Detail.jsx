@@ -18,23 +18,19 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
-// import { Link } from "react-router-dom";
 import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
+import { getClientSecret } from "../../redux/actions/Stripe/Stripe";
 
 function Detail() {
   const [quantity, setQuantity] = React.useState(1);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
-
   const [buy, setBuy] = useState(false);
 
-  const payment = () => {
-    setBuy(true);
-  };
-
+  
   useEffect(() => {
     dispatch(getDetail(id));
     return () => {
@@ -109,6 +105,11 @@ function Detail() {
   function change(e) {
     setQuantity(e.target.value);
   }
+
+  const payment = () => {
+    dispatch(getClientSecret(loginUser.id, +id, prodDetail.price, quantity))
+    setBuy(true);
+  };
 
   return (
     <div className={style.container}>
@@ -193,12 +194,14 @@ function Detail() {
             <b> Total: ${quantity * prodDetail.price}</b>
           </div>
           <div>
-            <PaymentCreate email={user.email} productId={id} />
+            {buy === true ? (
+              <PaymentCreate/>
+            ) : null}
           </div>
         </div>
       )}
 
-      {buy === true && !isAuthenticated && (
+      {(buy === true && !isAuthenticated) ? (
         <>
           <button
             onClick={() => loginWithRedirect()}
@@ -207,8 +210,9 @@ function Detail() {
             <BiUser size="1.5rem" />
             Login
           </button>
-        </>
-      )}
+        </>)
+        : null
+      }
     </div>
   );
 }

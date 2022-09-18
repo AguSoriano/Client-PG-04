@@ -9,6 +9,7 @@ import weekProdReducer from "./WeekProdReducer";
 import usersReducer from "./UsersReducer";
 import ordersReducer from "./OrdersReducer";
 import userLoginReducer from "./UserLoginReducer";
+import stripeReducer from "./StripeReducer";
 
 export const rootReducer = combineReducers({
   cartReducer,
@@ -21,4 +22,5 @@ export const rootReducer = combineReducers({
   usersReducer,
   ordersReducer,
   userLoginReducer,
+  stripeReducer
 });

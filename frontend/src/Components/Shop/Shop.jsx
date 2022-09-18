@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
 import { BiUser } from "react-icons/bi";
+import { useSelector } from "react-redux";
+import { getClientSecret } from "../../redux/actions/Stripe/Stripe";
 
 function Shop() {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const userId = useSelector((state) => state.userLoginReducer.loginUser.id);
   const [buy, setBuy] = useState(false);
 
-  const payment = () => {
-    setBuy(true);
-  };
-
+  
   const dispatch = ReactRedux.useDispatch();
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
 
@@ -25,6 +25,11 @@ function Shop() {
 
   const priceTotal = () => {
     return cartproduct?.reduce((acc, prod) => acc + prod.price, 0);
+  };
+
+  const payment = () => {
+    dispatch(getClientSecret(userId))
+    setBuy(true);
   };
 
   return (
@@ -65,10 +70,6 @@ function Shop() {
                 Comprar
               </button>
             )}
-
-            {/* <Link className={style.link} to={"/products/payment"}>
-              <button className={style.button1}> Comprar </button>
-            </Link> */}
             <button className={style.button1} onClick={clearCart}>
               VACIAR CARRITO
             </button>
@@ -82,12 +83,12 @@ function Shop() {
       {buy === true && isAuthenticated && (
         <div className={style.payment}>
           <div>
-            <PaymentCreate email={user.email} />
+            <PaymentCreate userId={userId} />
           </div>
         </div>
       )}
 
-      {buy === true && !isAuthenticated && (
+      {(buy === true && !isAuthenticated) ? (
         <>
           <button
             onClick={() => loginWithRedirect()}
@@ -97,7 +98,7 @@ function Shop() {
             Login
           </button>
         </>
-      )}
+      ) : null}
       
     </div>
   );
