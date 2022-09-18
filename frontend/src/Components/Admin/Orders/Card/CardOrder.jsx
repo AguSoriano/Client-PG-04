@@ -11,7 +11,7 @@ function CardOrder({ order }) {
         <p>creada: {order.createdAt.slice(0, 10)}</p>
         <p>{order.email}</p>
         <p>{order.status}</p>
-        <p>$ {order.products.reduce((acc, prod) => acc + prod.price, 0)}</p>
+        <p>$ {order.products.reduce((acc, prod) => acc + prod.price * prod.quantity, 0)}</p>
         <p>modificada: {order.updatedAt.slice(0, 10)}</p>
       </Link>
     </div>
