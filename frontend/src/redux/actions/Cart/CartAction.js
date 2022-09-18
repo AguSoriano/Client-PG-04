@@ -81,6 +81,8 @@ export const getAllOrders = (loginUser) => {
             id: or.id,
             status: or.status,
             userId: or.userId,
+            createdAt: or.createdAt,
+            updatedAt: or.updatedAt,
             products: allItems.data,
           };
         })
@@ -94,6 +96,8 @@ export const getAllOrders = (loginUser) => {
           return {
             id: or.id,
             status: or.status,
+            createdAt: or.createdAt,
+            updatedAt: or.updatedAt,
             products: or.products,
             email: user.data.email,
           };
@@ -116,10 +120,45 @@ export const getOrderDetail = (id, loginUser) => {
       loginUser,
     };
     try {
-      const { data } = await axios.put(
+      const order = await axios.put(
         `https://pf-api-04.up.railway.app/order/${id}`,
         user
       );
+
+      const user2 = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}`
+      );
+
+      const products = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}/order?id=${id}`
+      );
+
+      const allProductsDetail = await Promise.all(
+        products.data.map(async (prod) => {
+          let prodDetail = await axios.get(
+            `https://pf-api-04.up.railway.app/products/${prod.productId}`
+          );
+          return {
+            quantity: prod.quantity,
+            name: prodDetail.data.name,
+            longDescription: prodDetail.data.longDescription,
+            shortDescription: prodDetail.data.shortDescription,
+            image: prodDetail.data.image ? prodDetail.data.image : "",
+            price: prodDetail.data.price,
+            stock: prodDetail.data.stock,
+            status: prodDetail.data.status,
+          };
+        })
+      );
+
+      const data = {
+        order: order.data,
+        user: user2.data,
+        allProductsDetail: allProductsDetail,
+      };
+
+      // console.log(order.data, user2.data, products.data, allProductsDetail);
+
       return dispatch({
         type: GET_ORDER_DETAIL,
         payload: data,
