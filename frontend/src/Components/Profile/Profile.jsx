@@ -4,13 +4,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import style from "./Profile.module.css";
 import { IoMdLogOut } from "react-icons/io";
+import { IoBagHandleOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
-import { HiOutlineCreditCard, HiHeart, HiOutlineMap } from "react-icons/hi";
+import { HiOutlineCreditCard, HiOutlineMap } from "react-icons/hi";
 import { GrContact } from "react-icons/gr";
 
 function Profile() {
   const { logout } = useAuth0();
-  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
 
   return (
     <div className={style.mainRender}>
@@ -42,12 +45,12 @@ function Profile() {
             </div>
           </section>
           <section>
-            <HiHeart className={style.icon} />
+            <IoBagHandleOutline className={style.icon} />
             <div>
-              <Link to="/profile/favorite" className={style.linkP}>
-                Favoritos
+              <Link to="/profile/historyorders" className={style.linkP}>
+                Mis Compras
               </Link>
-              <p>Gestiona toda tu lista de productos favoritos</p>
+              <p>Consulta todas tus compras</p>
             </div>
           </section>
           <section>

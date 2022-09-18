@@ -5,6 +5,7 @@ import {
   GET_ALL_USERS,
   GET_ONE_USER_DETAIL,
   GET_USER_LOGIN,
+  GET_USER_ORDERS,
 } from "./ActionType";
 
 export const userDisableAlert = (cb) => {
@@ -181,6 +182,22 @@ export const editUserData = (id, data) => {
         `https://pf-api-04.up.railway.app/user/${id}`,
         userEdited
       );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getUserOrders = (user) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${user.id}/orders`
+      );
+      return dispatch({
+        type: GET_USER_ORDERS,
+        payload: data,
+      });
     } catch (error) {
       console.log(error);
     }

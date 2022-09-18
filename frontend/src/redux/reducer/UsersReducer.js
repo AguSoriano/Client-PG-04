@@ -2,6 +2,7 @@ import {
   CLEAN_USER_DETAIL,
   GET_ALL_USERS,
   GET_ONE_USER_DETAIL,
+  GET_USER_ORDERS,
 } from "../actions/Users/ActionType";
 
 // const initialState = JSON.parse(
@@ -21,6 +22,7 @@ const initialState = {
   allUsersOnDb: [],
   oneUserDetail: {},
   oneUserDetailEdit: {},
+  oneUserOrders: [],
 };
 
 export default function usersReducer(state = initialState, { type, payload }) {
@@ -45,6 +47,13 @@ export default function usersReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         oneUserDetail: payload,
+      };
+    }
+
+    case GET_USER_ORDERS: {
+      return {
+        ...state,
+        oneUserOrders: payload,
       };
     }
 
