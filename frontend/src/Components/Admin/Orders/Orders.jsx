@@ -38,7 +38,8 @@ function Orders() {
             >
               <p>{i + 1}</p>
               <p>{order.status}</p>
-              <p>{order.userId}</p>
+              <p>{order.email}</p>
+              <p>$ {order.products.reduce((acc, prod) => acc + prod.price, 0)}</p>
             </Link>
           ))}
         </div>
