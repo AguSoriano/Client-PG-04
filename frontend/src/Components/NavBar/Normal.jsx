@@ -8,7 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import * as ReactRedux from "react-redux";
 
 function Normal() {
-  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );

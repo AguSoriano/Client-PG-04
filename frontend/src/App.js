@@ -42,6 +42,7 @@ import UserEdit from "./Components/Admin/Users/Edit/UserEdit";
 import UserDisable from "./Components/UserDisable/UserDisable";
 import EditData from "./Components/Profile/Extras/EditData";
 import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
+import HistoryOrders from "./Components/History Orders/HistoryOrders";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -196,6 +197,18 @@ function App() {
               <Navigate to="/" />
             ) : !loginUser.isDisable ? (
               <Favorite />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="profile/historyorders"
+          element={
+            !isAuthenticated ? (
+              <Navigate to="/" />
+            ) : !loginUser.isDisable ? (
+              <HistoryOrders />
             ) : (
               <Navigate to="/userdisable" />
             )
