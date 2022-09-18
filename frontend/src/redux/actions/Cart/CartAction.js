@@ -65,13 +65,42 @@ export const getAllOrders = (loginUser) => {
       loginUser,
     };
     try {
-      const { data } = await axios.put(
+      const orders = await axios.put(
         "https://pf-api-04.up.railway.app/order",
         user
       );
+
+      const orders2 = await Promise.all(
+        orders.data.map(async (or) => {
+          let allItems = await axios.get(
+            `https://pf-api-04.up.railway.app/user/${or.userId}/order?id=${or.id}`
+          );
+          return {
+            id: or.id,
+            status: or.status,
+            userId: or.userId,
+            products: allItems.data,
+          };
+        })
+      );
+
+      const orders3 = await Promise.all(
+        orders2.map(async (or) => {
+          let user = await axios.get(
+            `https://pf-api-04.up.railway.app/user/${or.userId}`
+          );
+          return {
+            id: or.id,
+            status: or.status,
+            products: or.products,
+            email: user.data.email,
+          };
+        })
+      );
+
       return dispatch({
         type: GET_ALL_ORDERS,
-        payload: data,
+        payload: orders3,
       });
     } catch (error) {
       console.log(error);
