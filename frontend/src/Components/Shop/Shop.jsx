@@ -26,7 +26,7 @@ function Shop() {
   };
 
   const priceTotal = () => {
-    return cartproduct?.reduce((acc, prod) => acc + prod.prodDetail.price, 0);
+    return cartproduct?.reduce((acc, prod) => acc + prod.prodDetail.price * prod.quantity, 0);
   };
 
   const payment = () => {

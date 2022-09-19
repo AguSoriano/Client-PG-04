@@ -12,7 +12,7 @@ import {
 
 export const addToCart = (data) => {
   return async (dispatch) => {
-    console.log("IDDDD", data.loginUser.id)
+    console.log("IDDDD", data.loginUser.id);
     try {
       await axios.post(
         `https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`,
@@ -29,7 +29,7 @@ export const addToCart = (data) => {
 };
 
 export const removeOneProducts = (data) => {
-  console.log("dataaa", data)
+  console.log("dataaa", data);
   return async (dispatch) => {
     try {
       await axios.delete(
@@ -139,6 +139,7 @@ export const getOrderDetail = (id, loginUser) => {
             `https://pf-api-04.up.railway.app/products/${prod.productId}`
           );
           return {
+            id: prod.productId,
             quantity: prod.quantity,
             name: prodDetail.data.name,
             longDescription: prodDetail.data.longDescription,
@@ -158,6 +159,51 @@ export const getOrderDetail = (id, loginUser) => {
       };
 
       // console.log(order.data, user2.data, products.data, allProductsDetail);
+
+      return dispatch({
+        type: GET_ORDER_DETAIL,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getOrderDetailUser = (id, loginUser) => {
+  return async (dispatch) => {
+    try {
+      const order = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}/orders`
+      );
+
+      const products = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}/order?id=${id}`
+      );
+
+      const allProductsDetail = await Promise.all(
+        products.data.map(async (prod) => {
+          let prodDetail = await axios.get(
+            `https://pf-api-04.up.railway.app/products/${prod.productId}`
+          );
+          return {
+            id: prod.productId,
+            quantity: prod.quantity,
+            name: prodDetail.data.name,
+            longDescription: prodDetail.data.longDescription,
+            shortDescription: prodDetail.data.shortDescription,
+            image: prodDetail.data.image ? prodDetail.data.image : "",
+            price: prodDetail.data.price,
+            stock: prodDetail.data.stock,
+            status: prodDetail.data.status,
+          };
+        })
+      );
+
+      const data = {
+        order: order.data.find((o) => o.id == id),
+        allProductsDetail: allProductsDetail,
+      };
 
       return dispatch({
         type: GET_ORDER_DETAIL,
