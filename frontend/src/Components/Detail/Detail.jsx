@@ -109,8 +109,10 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
   }
 
   const payment = () => {
+    if (loginUser.id && id && prodDetail.price && quantity) {
     dispatch(getClientSecret(loginUser.id, +id, prodDetail.price, quantity));
     setBuy(true);
+    }
   };
 
   return (
@@ -183,7 +185,7 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
         </div>
       )}
 
-      {buy === true && isAuthenticated && (
+      {(buy === true && isAuthenticated && loginUser.id) ? (
         <div className={style.payment}>
           <div className={style.descriptionPay}>
             <img
@@ -197,9 +199,9 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
           </div>
           <div>{buy === true ? <PaymentCreate /> : null}</div>
         </div>
-      )}
+      ) : null }
 
-      {buy === true && !isAuthenticated ? (
+      {(buy === true && !isAuthenticated && !loginUser.id) ? (
         <>
           <button
             onClick={() => loginWithRedirect()}
@@ -210,8 +212,10 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
           </button>
         </>
       ) : null}
+
       <ShowReviews 
       prodDetail={prodDetail}/>
+
     </div>
   );
 }
