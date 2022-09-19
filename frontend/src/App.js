@@ -42,6 +42,7 @@ import UserEdit from "./Components/Admin/Users/Edit/UserEdit";
 import UserDisable from "./Components/UserDisable/UserDisable";
 import EditData from "./Components/Profile/Extras/EditData";
 import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
+import Newsletter from "./Components/Newsletter/Newsletter";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -110,6 +111,7 @@ function App() {
           }
         />
         <Route exact path="terms" element={<Terms />} />
+        <Route exact path="newsletter" element={<Newsletter />} />
         <Route exact path="privacy" element={<Privacy />} />
 
         {/*---------------------------------------------------------------------------*/}
