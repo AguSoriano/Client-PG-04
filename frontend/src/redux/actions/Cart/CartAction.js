@@ -139,6 +139,7 @@ export const getOrderDetail = (id, loginUser) => {
             `https://pf-api-04.up.railway.app/products/${prod.productId}`
           );
           return {
+            id: prod.productId,
             quantity: prod.quantity,
             name: prodDetail.data.name,
             longDescription: prodDetail.data.longDescription,
@@ -186,6 +187,7 @@ export const getOrderDetailUser = (id, loginUser) => {
             `https://pf-api-04.up.railway.app/products/${prod.productId}`
           );
           return {
+            id: prod.productId,
             quantity: prod.quantity,
             name: prodDetail.data.name,
             longDescription: prodDetail.data.longDescription,

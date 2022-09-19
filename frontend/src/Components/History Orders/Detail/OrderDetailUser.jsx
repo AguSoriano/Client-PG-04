@@ -33,12 +33,13 @@ function OrderDetailUser() {
           <section>
             <h2>Orden N: {orderDetail.order.id}</h2>
             <h2>Estado: {orderDetail.order.status}</h2>
+            <h2>Fecha: {orderDetail.order.createdAt.slice(0, 10)}</h2>
           </section>
           <section>
             <h1>Detalle de la compra</h1>
             <h2>
-              Total:{" "}
-              $ {orderDetail.allProductsDetail.reduce(
+              Total: ${" "}
+              {orderDetail.allProductsDetail.reduce(
                 (acc, prod) => acc + prod.price * prod.quantity,
                 0
               )}
