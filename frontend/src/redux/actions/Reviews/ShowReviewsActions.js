@@ -4,7 +4,7 @@ import { GET_REVIEWS_BY_PRODUCT, GET_ALL_REVIEWS } from "./ActionTypes";
 export function getReviewsProd(product) {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`http://localhost:3001/review/${product}`);
+      let json = await axios.get(`https://pf-api-04.up.railway.app/review/${product}`);
       console.log(json.data)
       return dispatch({
         type: GET_REVIEWS_BY_PRODUCT,
@@ -20,7 +20,7 @@ export function getReviewsProd(product) {
 export function getAllReviews() {
   return async function (dispatch) {
     try {
-      let json = await axios.get(`http://localhost:3001:review`);
+      let json = await axios.get(`https://pf-api-04.up.railway.app/review`);
       return dispatch({
         type: GET_ALL_REVIEWS,
         payload: json.data,
@@ -42,7 +42,7 @@ export const createShowReviews = (data) => {
     };
     // console.log(newProduct);
     try {
-      await axios.post("http://localhost:3001/review", newReview);
+      await axios.post("https://pf-api-04.up.railway.app/review", newReview);
     } catch (error) {
       console.log(error);
     }
