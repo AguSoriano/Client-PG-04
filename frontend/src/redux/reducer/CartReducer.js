@@ -3,6 +3,7 @@ import {
   ORDER_PRODUCT,
   REMOVE_ALL_FROM_CART,
   REMOVE_ONE_FROM_CART,
+  CLEAR_CART,
 } from "../actions/Cart/ActionTypes";
 
 const initialState = JSON.parse(
@@ -37,6 +38,13 @@ export default function cartReducer(state = initialState, { type, payload }) {
           (product) => product.prodDetail.id !== payload
         ),
       };
+      break;
+    }
+    case CLEAR_CART:{
+      newState ={
+        ...state,
+        cartproduct: payload,
+      }
       break;
     }
     case REMOVE_ALL_FROM_CART: {

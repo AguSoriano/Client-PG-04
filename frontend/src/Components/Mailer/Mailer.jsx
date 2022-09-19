@@ -1,9 +1,19 @@
 import React from "react";
 import emailjs from "emailjs-com";
+import * as ReactRedux from "react-redux";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import { clearOnlyCart
+ } from "../../redux/actions/Cart/CartAction";
 
 export default function Mailer() {
+  const dispatch = ReactRedux.useDispatch();
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
+  const clearCart = () => {
+    dispatch(clearOnlyCart(loginUser));
+  };
   const navigate = useNavigate();
   function sendEmail(e) {
     e.preventDefault();
@@ -57,12 +67,16 @@ export default function Mailer() {
         <input type="number" name="number" className="form-control" />
         <label>Mensaje</label>
         <textarea name="message" rows="4" className="form-control" />
-        <input
+        
+        <button onClick={clearCart}>
+          <input
+       
           type="submit"
           value="Enviar"
           className="form-control btn btn-primary"
           style={{ marginTop: "30px" }}
         />
+        </button>
       </form>
     </div>
   );
