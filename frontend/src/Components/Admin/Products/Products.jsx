@@ -24,10 +24,22 @@ function Products() {
 
   return (
     <div className={style.mainProdDiv}>
-      <section>
-        <Link to={"/admin/products/newproduct"}>Nuevo Producto</Link>
+      <section className={style.newProd}>
+        <Link to={"/admin/products/newproduct"} className={style.linkNewP}>
+          Añadir  Nuevo Producto
+        </Link>
       </section>
+      <div><h2>Lista de Productos</h2></div>
       <section className={style.prodSection}>
+        <div className={style.prodRender}>
+          <div className={style.linkProd}>
+            <p>ID</p>
+            <span className={style.linkPName}>Nombre del producto</span>
+            <p>Precio</p>
+            <p>Stock</p>
+            <p>Estado</p>
+          </div>
+        </div>
         {product.length > 1 ? (
           prodPage.map((prod) => (
             <div className={style.prodRender}>
@@ -36,11 +48,12 @@ function Products() {
                 key={prod.id}
                 className={style.linkProd}
               >
-                {/* id={prod.id} */}
-                <img src={prod.image ? prod.image : imgCane} alt={prod.id} />
+                <p>{prod.id}</p>
+                {/* <img src={prod.image ? prod.image : imgCane} alt={prod.id} /> */}
                 <span className={style.linkPName}>{prod.name}</span>
                 <p>$ {prod.price}</p>
                 <p>{prod.stock} U</p>
+                <p>{prod.status ? "No disp." : "Disp."}</p>
                 {/* shortDesc={prod.shortDescription}
               widthCard={375}
             heightCard={450} */}
@@ -51,7 +64,7 @@ function Products() {
           <Loading />
         )}
       </section>
-      <section>
+      <section className={style.pag}>
         {product.length > 1 ? (
           <Pagination setPage={setPage} page={page} products={product} />
         ) : (
