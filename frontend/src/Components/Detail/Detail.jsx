@@ -22,6 +22,8 @@ import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { getClientSecret } from "../../redux/actions/Stripe/Stripe";
+import ShowReviews from "../Reviews/ShowReviews";
+
 
 function Detail() {
   const [quantity, setQuantity] = React.useState(1);
@@ -208,6 +210,8 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
           </button>
         </>
       ) : null}
+      <ShowReviews 
+      prodDetail={prodDetail}/>
     </div>
   );
 }
