@@ -12,12 +12,11 @@ import { getClientSecret } from "../../redux/actions/Stripe/Stripe";
 
 function Shop() {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-  const userId = useSelector((state) => state.userLoginReducer.loginUser.id);
   const [buy, setBuy] = useState(false);
 
   const dispatch = ReactRedux.useDispatch();
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
-  console.log("cartttt", cartproduct)
+  console.log("cartttt", cartproduct);
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
@@ -26,12 +25,17 @@ function Shop() {
   };
 
   const priceTotal = () => {
-    return cartproduct?.reduce((acc, prod) => acc + prod.prodDetail.price * prod.quantity, 0);
+    return cartproduct?.reduce(
+      (acc, prod) => acc + prod.prodDetail.price * prod.quantity,
+      0
+    );
   };
 
   const payment = () => {
-    dispatch(getClientSecret(userId));
-    setBuy(true);
+    if (loginUser.id && isAuthenticated && cartproduct?.length > 0) {
+      dispatch(getClientSecret(loginUser.id));
+      setBuy(true);
+    }
   };
 
   return (
@@ -83,15 +87,21 @@ function Shop() {
         </div>
       )}
 
-      {buy === true && isAuthenticated && (
+      {buy === true &&
+      isAuthenticated &&
+      loginUser.id &&
+      cartproduct?.length > 0 ? (
         <div className={style.payment}>
           <div>
-            <PaymentCreate userId={userId} />
+            <PaymentCreate userId={loginUser.id} />
           </div>
         </div>
-      )}
+      ) : null}
 
-      {buy === true && !isAuthenticated ? (
+      {buy === true &&
+      !isAuthenticated &&
+      !loginUser.id &&
+      cartproduct?.length > 0 ? (
         <>
           <button
             onClick={() => loginWithRedirect()}
