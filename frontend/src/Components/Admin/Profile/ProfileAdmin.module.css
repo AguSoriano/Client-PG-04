@@ -1,28 +1,38 @@
 .mainRender {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 }
 
 .mainProf {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  /* border: 1px solid grey; */
-  width: 40%;
-  margin-top: 2rem;
+  flex-direction: row;
+  gap: 5rem;
+  justify-content: center;
+  width: 100%;
 }
 
 .user {
   display: flex;
+  flex-direction: row;
   gap: 1rem;
   align-items: center;
-  height: 6rem;
-  text-align: center;
+  margin-top: 1rem;
+  height: 7rem;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid black; */
 }
 
 .user > h2 {
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 5rem;
+  margin-top: 0.9rem;
 }
 
 .user > img {
@@ -32,27 +42,62 @@
 }
 
 .user > button {
+  display: flex;
+  align-items: center;
   border: none;
   background: none;
   cursor: pointer;
+  height: 4rem;
+  width: 4rem;
 }
 
-.mainProf > section {
+.prodAndCat,
+.ordAndUser {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.sectionAdm {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   margin-left: 1rem;
+  /* border: 1px solid black; */
+  padding: 1rem;
+  background-color: #ffff;
+  width: 32rem;
 }
 
-.mainProf > section > div {
+.sectionAdm > img {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 9999px;
+  border: 5px solid grey;
+}
+
+.sectionAdm > div {
   display: flex;
   flex-direction: column;
   justify-content: left;
   text-align: left;
 }
 
-.mainProf > section > div > p {
-  font-size: 0.8rem;
+.sectionAdm > div > p {
+  display: none;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.sectionAdm:hover{
+  scale: 1.2;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  transition: 1s;
+}
+.sectionAdm:hover > div > p{
+  display: flex;
+  transition: 1s;
 }
 
 .icon {
@@ -61,12 +106,12 @@
 }
 
 .linkP {
-  text-decoration: none;
+  /* text-decoration: none; */
   /* border: 1px solid grey; */
   width: fit-content;
   height: fit-content;
-  color: black;
+  color: rgba(68, 185, 218, 0.877);
   padding-left: 0.1rem;
   padding-right: 0.3rem;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
