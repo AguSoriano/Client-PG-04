@@ -42,6 +42,7 @@ import UserEdit from "./Components/Admin/Users/Edit/UserEdit";
 import UserDisable from "./Components/UserDisable/UserDisable";
 import EditData from "./Components/Profile/Extras/EditData";
 import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
+import Newsletter from "./Components/Newsletter/Newsletter";
 import HistoryOrders from "./Components/History Orders/HistoryOrders";
 import OrderDetailUser from "./Components/History Orders/Detail/OrderDetailUser";
 
@@ -120,6 +121,7 @@ function App() {
           }
         />
         <Route exact path="terms" element={<Terms />} />
+        <Route exact path="newsletter" element={<Newsletter />} />
         <Route exact path="privacy" element={<Privacy />} />
 
         {/*---------------------------------------------------------------------------*/}

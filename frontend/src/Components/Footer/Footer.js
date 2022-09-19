@@ -96,6 +96,7 @@ const StyledText = styled.a`
     color: #FFF;
     margin: 0 4px;
     margin-bottom: 20px;
+    padding-top: 10px;
     &:hover {
       color: #7ECAFF;
       transition: 0.1s ease-in;
@@ -148,6 +149,8 @@ const Footer = () => {
                 <Container maxWidth="sm" className={classes.contenedor}>
                     <Typography variant="body1">Canne-Food</Typography>
                     <Copyright />
+                    <br></br>
+                    <StyledText href="/newsletter">NEWSLETTER</StyledText>
                 </Container>
                     <FooterColumn>
                     <FooterTitle>Acerca de</FooterTitle>
