@@ -18,23 +18,19 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
 import { useAuth0 } from "@auth0/auth0-react";
 import swal from "sweetalert";
-// import { Link } from "react-router-dom";
 import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
+import { getClientSecret } from "../../redux/actions/Stripe/Stripe";
+import ShowReviews from "../Reviews/ShowReviews";
+
 
 function Detail() {
   const [quantity, setQuantity] = React.useState(1);
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
-
-  // integracion de la pasarela de pago
   const [buy, setBuy] = useState(false);
-
-  const payment = () => {
-    setBuy(true);
-  };
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -48,16 +44,17 @@ function Detail() {
   );
 
   const { loginUser } = ReactRedux.useSelector(
-    (state) => state.usersReducer
+    (state) => state.userLoginReducer
   );
-
-  const data = { prodDetail, quantity, loginUser };
+  console.log("userrrr", loginUser)
+  const prodTotal = { quantity, prodDetail };
+  const data = { prodTotal, loginUser };
 
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
   );
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
-
+console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
   const addFav1 = () => {
     if (prodDetail.name) {
       dispatch(addFav(prodDetail));
@@ -79,7 +76,7 @@ function Detail() {
 
   const isOnCart = () => {
     if (cartproduct?.length) {
-      return cartproduct.find((p) => p.id === prodDetail.id) ? true : false;
+      return cartproduct.find((p) => p.prodDetail.id === prodDetail.id) ? true : false;
     }
     return false;
   };
@@ -111,6 +108,11 @@ function Detail() {
     setQuantity(e.target.value);
   }
 
+  const payment = () => {
+    dispatch(getClientSecret(loginUser.id, +id, prodDetail.price, quantity));
+    setBuy(true);
+  };
+
   return (
     <div className={style.container}>
       {buy === false && (
@@ -140,15 +142,12 @@ function Detail() {
               <section>
                 <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
 
-                {/* <button className={style.button} onClick={addCart}> Agregar al Carro </button> */}
-                {/* <Link className={style.link} to={"/products/payment"}> */}
                 {buy === false && (
                   <button className={style.button1} onClick={payment}>
                     {" "}
                     Comprar{" "}
                   </button>
                 )}
-                {/* </Link> */}
 
                 {
                   <button className={style.button} onClick={addCart}>
@@ -196,13 +195,11 @@ function Detail() {
             <b> Cantidad: {quantity}</b>
             <b> Total: ${quantity * prodDetail.price}</b>
           </div>
-          <div>
-            <PaymentCreate user={user.email} productId={id} />
-          </div>
+          <div>{buy === true ? <PaymentCreate /> : null}</div>
         </div>
       )}
 
-      {buy === true && !isAuthenticated && (
+      {buy === true && !isAuthenticated ? (
         <>
           <button
             onClick={() => loginWithRedirect()}
@@ -212,7 +209,9 @@ function Detail() {
             Login
           </button>
         </>
-      )}
+      ) : null}
+      <ShowReviews 
+      prodDetail={prodDetail}/>
     </div>
   );
 }

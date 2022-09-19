@@ -5,6 +5,7 @@ import {
   GET_ALL_USERS,
   GET_ONE_USER_DETAIL,
   GET_USER_LOGIN,
+  GET_USER_ORDERS,
 } from "./ActionType";
 
 export const userDisableAlert = (cb) => {
@@ -181,6 +182,39 @@ export const editUserData = (id, data) => {
         `https://pf-api-04.up.railway.app/user/${id}`,
         userEdited
       );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getUserOrders = (user) => {
+  return async (dispatch) => {
+    try {
+      const orders = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${user.id}/orders`
+      );
+
+      const orders2 = await Promise.all(
+        orders.data.map(async (or) => {
+          let prods = await axios.get(
+            `https://pf-api-04.up.railway.app/user/${user.id}/order?id=${or.id}`
+          );
+          return {
+            id: or.id,
+            status: or.status,
+            userId: or.userId,
+            createdAt: or.createdAt,
+            updatedAt: or.updatedAt,
+            products: prods.data,
+          };
+        })
+      );
+
+      return dispatch({
+        type: GET_USER_ORDERS,
+        payload: orders2,
+      });
     } catch (error) {
       console.log(error);
     }

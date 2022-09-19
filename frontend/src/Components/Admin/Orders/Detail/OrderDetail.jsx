@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as ReactRedux from "react-redux";
 import { useEffect } from "react";
 import {
@@ -15,7 +15,9 @@ function OrderDetail() {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
 
-  const { loginUser } = ReactRedux.useSelector((state) => state.usersReducer);
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
 
   useEffect(() => {
     dispatch(getOrderDetail(id, loginUser));
@@ -24,15 +26,11 @@ function OrderDetail() {
     };
   }, [dispatch, id, loginUser]);
 
-  const { orderDetail } = ReactRedux.useSelector((state) => state.cartReducer);
+  const { orderDetail } = ReactRedux.useSelector(
+    (state) => state.ordersReducer
+  );
 
-  const estados = [
-    "carrito",
-    "procesando",
-    "completada",
-    "rechazada",
-    "entregada",
-  ];
+  const estados = ["procesando", "completada", "rechazada", "entregada"];
 
   const handleSelect = (e) => {
     e.preventDefault();
@@ -47,23 +45,38 @@ function OrderDetail() {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      {orderDetail.status ? (
-        <div >
-          <h2>Estado: {orderDetail.status}</h2>
+      {orderDetail.order ? (
+        <div>
           <section>
-            {/* <label>Modificar estado</label> */}
+            <h2>Orden N: {orderDetail.order.id}</h2>
+            <h2>Estado: {orderDetail.order.status}</h2>
+            <h2>Usuario: {orderDetail.user.email}</h2>
             <select onChange={(e) => handleSelect(e)}>
-              <option value={orderDetail.status}>{orderDetail.status}</option>
+              <option value={orderDetail.order.status}>
+                {orderDetail.order.status}
+              </option>
               {estados
-                .filter((e) => e !== orderDetail.status)
+                .filter((e) => e !== orderDetail.order.status)
                 .map((e, i) => (
                   <option value={e} key={i}>
                     {e}
                   </option>
                 ))}
             </select>
+            <button type="submit">modificar</button>
           </section>
-          <button type="submit">modificar</button>
+          <section>
+            <h1>Detalle de la compra</h1>
+            {orderDetail.allProductsDetail.map((p) => (
+              <Link to={`/products/${p.id}`} key={p.id}>
+                <img alt={p.id} src={p.image} />
+                <p>{p.name}</p>
+                <p>{p.price}</p>
+                <p>{p.quantity}</p>
+                <p>{p.status ? "No disponible" : "Disponible"}</p>
+              </Link>
+            ))}
+          </section>
         </div>
       ) : (
         "cargando"

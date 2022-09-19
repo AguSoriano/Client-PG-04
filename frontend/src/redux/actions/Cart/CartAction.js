@@ -12,6 +12,7 @@ import {
 
 export const addToCart = (data) => {
   return async (dispatch) => {
+    console.log("IDDDD", data.loginUser.id);
     try {
       await axios.post(
         `https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`,
@@ -28,6 +29,7 @@ export const addToCart = (data) => {
 };
 
 export const removeOneProducts = (data) => {
+  console.log("dataaa", data);
   return async (dispatch) => {
     try {
       await axios.delete(
@@ -65,13 +67,46 @@ export const getAllOrders = (loginUser) => {
       loginUser,
     };
     try {
-      const { data } = await axios.put(
+      const orders = await axios.put(
         "https://pf-api-04.up.railway.app/order",
         user
       );
+
+      const orders2 = await Promise.all(
+        orders.data.map(async (or) => {
+          let allItems = await axios.get(
+            `https://pf-api-04.up.railway.app/user/${or.userId}/order?id=${or.id}`
+          );
+          return {
+            id: or.id,
+            status: or.status,
+            userId: or.userId,
+            createdAt: or.createdAt,
+            updatedAt: or.updatedAt,
+            products: allItems.data,
+          };
+        })
+      );
+
+      const orders3 = await Promise.all(
+        orders2.map(async (or) => {
+          let user = await axios.get(
+            `https://pf-api-04.up.railway.app/user/${or.userId}`
+          );
+          return {
+            id: or.id,
+            status: or.status,
+            createdAt: or.createdAt,
+            updatedAt: or.updatedAt,
+            products: or.products,
+            email: user.data.email,
+          };
+        })
+      );
+
       return dispatch({
         type: GET_ALL_ORDERS,
-        payload: data,
+        payload: orders3,
       });
     } catch (error) {
       console.log(error);
@@ -85,10 +120,91 @@ export const getOrderDetail = (id, loginUser) => {
       loginUser,
     };
     try {
-      const { data } = await axios.put(
+      const order = await axios.put(
         `https://pf-api-04.up.railway.app/order/${id}`,
         user
       );
+
+      const user2 = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}`
+      );
+
+      const products = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}/order?id=${id}`
+      );
+
+      const allProductsDetail = await Promise.all(
+        products.data.map(async (prod) => {
+          let prodDetail = await axios.get(
+            `https://pf-api-04.up.railway.app/products/${prod.productId}`
+          );
+          return {
+            id: prod.productId,
+            quantity: prod.quantity,
+            name: prodDetail.data.name,
+            longDescription: prodDetail.data.longDescription,
+            shortDescription: prodDetail.data.shortDescription,
+            image: prodDetail.data.image ? prodDetail.data.image : "",
+            price: prodDetail.data.price,
+            stock: prodDetail.data.stock,
+            status: prodDetail.data.status,
+          };
+        })
+      );
+
+      const data = {
+        order: order.data,
+        user: user2.data,
+        allProductsDetail: allProductsDetail,
+      };
+
+      // console.log(order.data, user2.data, products.data, allProductsDetail);
+
+      return dispatch({
+        type: GET_ORDER_DETAIL,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getOrderDetailUser = (id, loginUser) => {
+  return async (dispatch) => {
+    try {
+      const order = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}/orders`
+      );
+
+      const products = await axios.get(
+        `https://pf-api-04.up.railway.app/user/${loginUser.id}/order?id=${id}`
+      );
+
+      const allProductsDetail = await Promise.all(
+        products.data.map(async (prod) => {
+          let prodDetail = await axios.get(
+            `https://pf-api-04.up.railway.app/products/${prod.productId}`
+          );
+          return {
+            id: prod.productId,
+            quantity: prod.quantity,
+            name: prodDetail.data.name,
+            longDescription: prodDetail.data.longDescription,
+            shortDescription: prodDetail.data.shortDescription,
+            image: prodDetail.data.image ? prodDetail.data.image : "",
+            price: prodDetail.data.price,
+            stock: prodDetail.data.stock,
+            status: prodDetail.data.status,
+          };
+        })
+      );
+
+      const data = {
+        order: order.data.find((o) => o.id == id),
+        allProductsDetail: allProductsDetail,
+      };
+
       return dispatch({
         type: GET_ORDER_DETAIL,
         payload: data,

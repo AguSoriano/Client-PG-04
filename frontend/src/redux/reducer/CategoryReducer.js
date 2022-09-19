@@ -4,50 +4,53 @@ import {
   GET_CATEGORIES,
 } from "../actions/Categories/ActionTypes";
 
-const initialState = JSON.parse(
-  window.localStorage.getItem("categoryState") ||
-    JSON.stringify({
-      categories: [],
-      categoryDetail: {},
-      categoryEdit: {},
-    })
-);
+// const initialState = JSON.parse(
+//   window.localStorage.getItem("categoryState") ||
+//     JSON.stringify({
+//       categories: [],
+//       categoryDetail: {},
+//       categoryEdit: {},
+//     })
+// );
 
-const saveState = (state) => {
-  window.localStorage.setItem("categoryState", JSON.stringify(state));
+// const saveState = (state) => {
+//   window.localStorage.setItem("categoryState", JSON.stringify(state));
+// };
+
+const initialState = {
+  categories: [],
+  categoryDetail: {},
+  categoryEdit: {},
 };
 
 export default function categoryReducer(
   state = initialState,
   { type, payload }
 ) {
-  let newState;
+  // let newState;
   switch (type) {
     case GET_CATEGORIES: {
-      newState = {
+      return {
         ...state,
         categories: payload,
       };
-      break;
     }
     case CATEGORY_DETAIL: {
-      newState = {
+      return {
         ...state,
         categoryDetail: payload,
         categoryEdit: payload,
       };
-      break;
     }
     case CLEAN_CAT_DETAIL: {
-      newState = {
+      return {
         ...state,
         categoryDetail: payload,
       };
-      break;
     }
     default:
-      newState = state;
+      return state;
   }
-  saveState(newState);
-  return newState;
+  // saveState(newState);
+  // return newState;
 }

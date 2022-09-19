@@ -7,29 +7,20 @@ import prodDetailReducer from "./ProdDetailReducer";
 import productsReducer from "./ProductsReducer";
 import weekProdReducer from "./WeekProdReducer";
 import usersReducer from "./UsersReducer";
+import ordersReducer from "./OrdersReducer";
+import userLoginReducer from "./UserLoginReducer";
+import stripeReducer from "./StripeReducer";
 
-// const initialState = JSON.parse(
-//   window.localStorage.getItem("reduxStore") ||
-//     JSON.stringify({
-//       cartproduct: [],
-//     })
-// );
-
-// const saveState = (state) => {
-//   window.localStorage.setItem("reduxStore", JSON.stringify(state));
-// };
-
-export const rootReducer = combineReducers(
-  {
-    cartReducer,
-    categoryReducer,
-    favoriteReducer,
-    pageReducer,
-    prodDetailReducer,
-    productsReducer,
-    weekProdReducer,
-    usersReducer,
-  }
-  // saveState(newState);
-  // return newState;
-);
+export const rootReducer = combineReducers({
+  cartReducer,
+  categoryReducer,
+  favoriteReducer,
+  pageReducer,
+  prodDetailReducer,
+  productsReducer,
+  weekProdReducer,
+  usersReducer,
+  ordersReducer,
+  userLoginReducer,
+  stripeReducer
+});
