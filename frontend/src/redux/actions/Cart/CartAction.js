@@ -8,6 +8,7 @@ import {
   GET_ORDER_DETAIL,
   REMOVE_ALL_FROM_CART,
   REMOVE_ONE_FROM_CART,
+  CLEAR_CART,
 } from "./ActionTypes";
 
 export const addToCart = (data) => {
@@ -60,6 +61,15 @@ export const removeAllCart = (loginUser) => {
     }
   };
 };
+
+ export const clearOnlyCart =()=>{
+  return{
+    type: CLEAR_CART,
+    payload:[],
+  }
+
+}
+
 
 export const getAllOrders = (loginUser) => {
   return async (dispatch) => {
