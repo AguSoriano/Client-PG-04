@@ -3,7 +3,12 @@ import styled from "styled-components";
 import UiComponents from "./UiComponents";
 import db from "./Firebase";
 import firebase from "firebase/app";
+import emailjs from "emailjs-com";
+import swal from "sweetalert";
+import {useNavigate} from "react-router-dom";
+
 function App() {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [message, setMessage] = useState("");
   const inputHandler = (e) => {
@@ -24,6 +29,18 @@ function App() {
         setMessage("");
       }, 3000);
     }
+    emailjs.sendForm('service_m7ah49t', 'template_iz4axxm',e.target,'4qCXZmU-Iq-_Ozseo')
+    .then(res=>{
+      console.log(res);
+    }).catch(err=> console.log(err));
+    navigate("/home")
+    swal({
+      title: "Guardado",
+      text: "Muchas gracias, será redirigido a la tienda",
+      icon: "success",
+      button: "Aceptar",
+      timer: "3000"
+    });
   };
   return (
     <Div className="App">
@@ -31,7 +48,7 @@ function App() {
         <UiComponents />
         <Form onSubmit={submitHandler}>
           <H2>Subscribete a nuestro Newsletter</H2>
-          <Input type="email" onChange={inputHandler} value={input} />
+          <Input type="email" onChange={inputHandler} value={input} name= 'message' />
           <Button type="submit">Enviar</Button>
         </Form>
         {message && <Alert>{message}</Alert>}
