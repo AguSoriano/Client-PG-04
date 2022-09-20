@@ -138,9 +138,13 @@ function Detail() {
               <section>
                 <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
 
-                <Link onClick={addCart} to={"/shop"}>
-                  <button className={style.button1}> Comprar </button>
-                </Link>
+                {!isAuthenticated || !loginUser.email ? (
+                  <></>
+                ) : (
+                  <Link onClick={addCart} to={"/shop"}>
+                    <button className={style.button1}> Comprar </button>
+                  </Link>
+                )}
 
                 {
                   <button className={style.button} onClick={addCart}>

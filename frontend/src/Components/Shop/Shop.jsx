@@ -72,10 +72,19 @@ function Shop() {
           )}
           {cartproduct?.length ? (
             <div>
-              {buy === false && (
-                <button className={style.button1} onClick={payment}>
+              {!isAuthenticated || !loginUser.email ? (
+                <button
+                  className={style.button1}
+                  onClick={() => loginWithRedirect()}
+                >
                   Comprar
                 </button>
+              ) : (
+                buy === false && (
+                  <button className={style.button1} onClick={payment}>
+                    Comprar
+                  </button>
+                )
               )}
               <button className={style.button1} onClick={clearCart}>
                 VACIAR CARRITO
