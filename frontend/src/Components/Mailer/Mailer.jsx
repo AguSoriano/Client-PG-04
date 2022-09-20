@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { clearOnlyCart
  } from "../../redux/actions/Cart/CartAction";
 
+
+
 export default function Mailer() {
   const dispatch = ReactRedux.useDispatch();
   const { loginUser } = ReactRedux.useSelector(
@@ -14,6 +16,7 @@ export default function Mailer() {
   const clearCart = () => {
     dispatch(clearOnlyCart(loginUser));
   };
+  console.log(clearCart())
   const navigate = useNavigate();
   function sendEmail(e) {
     e.preventDefault();
@@ -51,29 +54,32 @@ export default function Mailer() {
     >
       <h1 style={{ marginTop: "25px" }}>Contacto</h1>
       <form
-        className="row"
+        
         style={{ margin: "25px 85px 75px 100px" }}
         onSubmit={sendEmail}
       >
-       
-        <label>Email</label>
-        <input type="email" name="user_email" className="form-control" placeholder="a que direccion notificar..." required/>
+        
         <label>Direccion de envio</label>
         <input type="text" name="address" className="form-control" placeholder="recibe en..." required/>
         <label>Telefono</label>
         <input type="number" name="number" className="form-control" placeholder="contacto..." required/>
+        <label>Apellido y Nombre</label>
+        <textarea name="lastname" className="form-control">
+        {loginUser.family_name+" "+loginUser.given_name}
+        </textarea>
+        <label>Correo</label>
+        <textarea name="user_email" className="form-control">
+        {loginUser.email}
+        </textarea>
         <label>Mensaje</label>
-        <textarea name="message" rows="4" className="form-control" placeholder="informacion extra..." />
-        
-        <button onClick={clearCart}>
+        <textarea name="message" className="form-control" placeholder="informacion extra..." />
           <input
-       
+          onClick={clearCart}
           type="submit"
           value="Enviar"
           className="form-control btn btn-primary"
           style={{ marginTop: "30px" }}
         />
-        </button>
       </form>
     </div>
   );
