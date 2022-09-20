@@ -23,7 +23,7 @@ import { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { getClientSecret } from "../../redux/actions/Stripe/Stripe";
 import ShowReviews from "../Reviews/ShowReviews";
-
+import { Link } from "react-router-dom";
 
 function Detail() {
   const [quantity, setQuantity] = React.useState(1);
@@ -144,12 +144,12 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
               <section>
                 <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
 
-                {buy === false && (
-                  <button className={style.button1} onClick={payment}>
+             <Link onClick={addCart} to={"/shop"}>
+                  <button className={style.button1} >
                     {" "}
                     Comprar{" "}
                   </button>
-                )}
+                  </Link>
 
                 {
                   <button className={style.button} onClick={addCart}>
