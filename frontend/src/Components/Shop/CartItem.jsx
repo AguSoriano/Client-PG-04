@@ -19,10 +19,10 @@ function CartItem({ price, image, name, id, quantity }) {
       <h4 className={style.name}> {name}</h4>
       <img className={style.img} src={image} alt={name} />
       <h5>Precio: ${price}</h5>
-      <h4>Cantidad: {quantity}</h4>
-      <h5>Total: ${price}</h5>
+      <h5>Cantidad: {quantity}</h5>
+      <h5>Total: ${(price*quantity)}</h5>
 
-      <button onClick={removeCart}>x</button>
+      <button onClick={removeCart}>No lo quiero</button>
     </div>
   );
 }
