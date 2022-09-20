@@ -18,8 +18,9 @@ function CartItem({ price, image, name, id, quantity }) {
     <div className={style.items}>
       <h4 className={style.name}> {name}</h4>
       <img className={style.img} src={image} alt={name} />
-      <h4>{quantity}</h4>
-      <h5>${price}</h5>
+      <h5>Precio: ${price}</h5>
+      <h4>Cantidad: {quantity}</h4>
+      <h5>Total: ${price}</h5>
 
       <button onClick={removeCart}>x</button>
     </div>
