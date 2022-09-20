@@ -1,27 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./ProfileAdmin.module.css";
-import { IoMdLogOut } from "react-icons/io";
+// import { IoMdLogOut } from "react-icons/io";
 // import { FaUsers } from "react-icons/fa";
 // import { GrProductHunt } from "react-icons/gr";
 // import { MdCategory, MdShoppingCart } from "react-icons/md";
-import * as ReactRedux from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import adminpic from "../../Img/adminpicture.png";
+// import * as ReactRedux from "react-redux";
+// import { useAuth0 } from "@auth0/auth0-react";
+// import adminpic from "../../Img/adminpicture.png";
 import usersImg from "../../Img/usersImg.png";
 import ordersImg from "../../Img/ordersImg.png";
 import productsImg from "../../Img/productsImg.jpg";
 import categoriesImg from "../../Img/categoriesImg.jpg";
+import thinking from "../../Img/thinking.png";
 
 function ProfileAdmin() {
-  const { logout } = useAuth0();
-  const { loginUser } = ReactRedux.useSelector(
-    (state) => state.userLoginReducer
-  );
+  // const { logout } = useAuth0();
+  // const { loginUser } = ReactRedux.useSelector(
+  //   (state) => state.userLoginReducer
+  // );
 
   return (
     <div className={style.mainRender}>
-      <div className={style.user}>
+      {/* <div className={style.user}>
         <img
           src={loginUser.picture ? loginUser.picture : adminpic}
           alt={loginUser.id}
@@ -30,9 +31,10 @@ function ProfileAdmin() {
         <button onClick={logout}>
           <IoMdLogOut className={style.icon} />
         </button>
-      </div>
-      <div>
+      </div> */}
+      <div className={style.thinking}>
         <h1>¿Sobre que le gustaria trabajar?</h1>
+        <img alt="?" src={thinking} />
       </div>
       <div className={style.mainProf}>
         <div className={style.prodAndCat}>
