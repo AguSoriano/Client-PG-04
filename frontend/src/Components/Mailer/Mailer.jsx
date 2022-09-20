@@ -55,18 +55,15 @@ export default function Mailer() {
         style={{ margin: "25px 85px 75px 100px" }}
         onSubmit={sendEmail}
       >
-        <label>Nombre</label>
-        <input type="text" name="name" className="form-control" />
-        <label>Apellido</label>
-        <input type="text" name="lastname" className="form-control" />
+       
         <label>Email</label>
-        <input type="email" name="user_email" className="form-control" />
+        <input type="email" name="user_email" className="form-control" placeholder="a que direccion notificar..." required/>
         <label>Direccion de envio</label>
-        <input type="text" name="address" className="form-control" />
+        <input type="text" name="address" className="form-control" placeholder="recibe en..." required/>
         <label>Telefono</label>
-        <input type="number" name="number" className="form-control" />
+        <input type="number" name="number" className="form-control" placeholder="contacto..." required/>
         <label>Mensaje</label>
-        <textarea name="message" rows="4" className="form-control" />
+        <textarea name="message" rows="4" className="form-control" placeholder="informacion extra..." />
         
         <button onClick={clearCart}>
           <input
