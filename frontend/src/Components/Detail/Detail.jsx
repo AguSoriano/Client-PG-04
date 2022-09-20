@@ -21,7 +21,6 @@ import swal from "sweetalert";
 import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
-import { getClientSecret } from "../../redux/actions/Stripe/Stripe";
 import ShowReviews from "../Reviews/ShowReviews";
 import { Link } from "react-router-dom";
 
