@@ -46,7 +46,7 @@ function Detail() {
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
-  console.log("userrrr", loginUser)
+
   const prodTotal = { quantity, prodDetail };
   const data = { prodTotal, loginUser };
 
@@ -54,7 +54,7 @@ function Detail() {
     (state) => state.favoriteReducer
   );
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
-console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
+
   const addFav1 = () => {
     if (prodDetail.name) {
       dispatch(addFav(prodDetail));
@@ -76,7 +76,9 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
 
   const isOnCart = () => {
     if (cartproduct?.length) {
-      return cartproduct.find((p) => p.prodDetail.id === prodDetail.id) ? true : false;
+      return cartproduct.find((p) => p.prodDetail.id === prodDetail.id)
+        ? true
+        : false;
     }
     return false;
   };
@@ -108,13 +110,6 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
     setQuantity(e.target.value);
   }
 
-  const payment = () => {
-    if (loginUser.id && id && prodDetail.price && quantity) {
-    dispatch(getClientSecret(loginUser.id, +id, prodDetail.price, quantity));
-    setBuy(true);
-    }
-  };
-
   return (
     <div className={style.container}>
       {buy === false && (
@@ -144,12 +139,9 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
               <section>
                 <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
 
-             <Link onClick={addCart} to={"/shop"}>
-                  <button className={style.button1} >
-                    {" "}
-                    Comprar{" "}
-                  </button>
-                  </Link>
+                <Link onClick={addCart} to={"/shop"}>
+                  <button className={style.button1}> Comprar </button>
+                </Link>
 
                 {
                   <button className={style.button} onClick={addCart}>
@@ -185,7 +177,7 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
         </div>
       )}
 
-      {(buy === true && isAuthenticated && loginUser.id) ? (
+      {buy === true && isAuthenticated && loginUser.id ? (
         <div className={style.payment}>
           <div className={style.descriptionPay}>
             <img
@@ -199,9 +191,9 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
           </div>
           <div>{buy === true ? <PaymentCreate /> : null}</div>
         </div>
-      ) : null }
+      ) : null}
 
-      {(buy === true && !isAuthenticated && !loginUser.id) ? (
+      {buy === true && !isAuthenticated && !loginUser.id ? (
         <>
           <button
             onClick={() => loginWithRedirect()}
@@ -213,9 +205,7 @@ console.log("carrrrrrrrrrrrrrrrrrrrrrrrrrr", cartproduct)
         </>
       ) : null}
 
-      <ShowReviews 
-      prodDetail={prodDetail}/>
-
+      <ShowReviews prodDetail={prodDetail} />
     </div>
   );
 }
