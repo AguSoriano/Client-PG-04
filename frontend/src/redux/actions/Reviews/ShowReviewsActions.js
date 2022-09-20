@@ -5,7 +5,6 @@ export function getReviewsProd(product) {
   return async function (dispatch) {
     try {
       let json = await axios.get(`https://pf-api-04.up.railway.app/review/${product}`);
-      console.log(json.data)
       return dispatch({
         type: GET_REVIEWS_BY_PRODUCT,
         payload: json.data,
@@ -32,7 +31,6 @@ export function getAllReviews() {
 }
 
 export const createShowReviews = (data) => {
-  console.log(data)
   return async () => {
     const newReview = {
       description: data.description,
@@ -40,7 +38,6 @@ export const createShowReviews = (data) => {
       productId: data.productId,
       userId: data.userId,
     };
-    // console.log(newProduct);
     try {
       await axios.post("https://pf-api-04.up.railway.app/review", newReview);
     } catch (error) {
