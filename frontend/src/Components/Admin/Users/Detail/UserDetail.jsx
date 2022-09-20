@@ -26,7 +26,9 @@ function UserDetail() {
   const { oneUserDetail } = ReactRedux.useSelector(
     (state) => state.usersReducer
   );
-  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
 
   const disableUser = () => {
     dispatch(disableUserById(id, loginUser, true));
@@ -64,10 +66,14 @@ function UserDetail() {
             alt={oneUserDetail.id}
           />
           <Link to={`/admin/users/edit/${id}`}>Editar</Link>
-          {oneUserDetail.rol === "user" ? (
-            <button onClick={() => doAdmin()}>Hacer Admin</button>
+          {loginUser.rol === "mododios" ? (
+            oneUserDetail.rol === "user" ? (
+              <button onClick={() => doAdmin()}>Hacer Admin</button>
+            ) : (
+              <button onClick={() => doUser()}>Sacar Admin</button>
+            )
           ) : (
-            <button onClick={() => doUser()}>Sacar Admin</button>
+            <></>
           )}
           {oneUserDetail.isDisable ? (
             <button onClick={() => eneableUser()}>Habilitar Usuario</button>

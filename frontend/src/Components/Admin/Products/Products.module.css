@@ -26,7 +26,7 @@
   /* margin-right: 3rem; */
 }
 
-.linkNewP{
+.linkNewP {
   /* width: 5rem;
   height: 3rem; */
   font-size: 1.5rem;
@@ -79,16 +79,32 @@
 }
 
 .linkPName {
-    /* margin-left: 1rem; */
-    width: 25rem;
-    height: 2rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    border: 1px solid black;
-    padding-left: 1rem;
+  /* margin-left: 1rem; */
+  width: 25rem;
+  height: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  padding-left: 1rem;
 }
 
 .pag {
   margin-top: 1.5rem;
+}
+
+.tableAntD {
+  width: 70%;
+  margin-right: 10%;
+}
+
+.tableAntD > div > div > div > div > div > table > thead > tr > th {
+  border: 1px solid black;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.tableAntD > div > div > div > div > div > table > tbody > tr > td {
+  border: 1px solid black;
+  text-transform: capitalize;
+  font-size: 1.2rem;
 }

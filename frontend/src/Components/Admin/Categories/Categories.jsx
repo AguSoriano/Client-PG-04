@@ -154,6 +154,14 @@ function Categories() {
         return 0;
       },
     },
+    {
+      title: "Detalle",
+      key: "operation",
+      width: '10%',
+      render: (key) => (
+        <Link to={`/admin/categories/detail/${key.id}`}>Ver</Link>
+      ),
+    },
   ];
 
   return (
@@ -164,7 +172,9 @@ function Categories() {
             Añadir Nueva Categoria
           </Link>
         </section>
-        <div><h2>Lista de Categorias</h2></div>
+        <div>
+          <h2>Lista de Categorias</h2>
+        </div>
         <div>
           {categories.length ? (
             <Table
