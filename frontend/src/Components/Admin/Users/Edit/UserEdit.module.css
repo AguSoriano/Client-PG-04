@@ -16,6 +16,23 @@
   gap: 5rem;
 }
 
+.listName {
+  width: 3rem;
+  height: 2.5rem;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  /* padding: 0.6rem; */
+  background-color: #ffff;
+}
+
+.listName:hover {
+  color: red;
+  cursor: pointer;
+  transition: 1s;
+}
+
 .divSection > section {
   display: flex;
   flex-direction: column;

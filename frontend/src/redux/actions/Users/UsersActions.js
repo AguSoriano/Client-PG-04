@@ -101,7 +101,7 @@ export const cleanUserDetail = () => {
 };
 
 export const disableUserById = (id, userLoged, isDisable) => {
-  return async () => {
+  return async (dispatch) => {
     try {
       const data = {
         rol: userLoged.rol,
@@ -111,6 +111,7 @@ export const disableUserById = (id, userLoged, isDisable) => {
         `https://pf-api-04.up.railway.app/user/change/${id}`,
         data
       );
+      dispatch(getAllUsers());
     } catch (error) {
       console.log(error);
     }
@@ -118,7 +119,7 @@ export const disableUserById = (id, userLoged, isDisable) => {
 };
 
 export const eneableUserById = (id, userLoged, isDisable) => {
-  return async () => {
+  return async (dispatch) => {
     const data = {
       rol: userLoged.rol,
       isDisable,
@@ -129,6 +130,7 @@ export const eneableUserById = (id, userLoged, isDisable) => {
         `https://pf-api-04.up.railway.app/user/change/${id}`,
         data
       );
+      dispatch(getAllUsers());
     } catch (error) {
       console.log(error);
     }
@@ -136,16 +138,17 @@ export const eneableUserById = (id, userLoged, isDisable) => {
 };
 
 export const doAdminUserById = (id, userLoged) => {
-  return async () => {
+  return async (dispatch) => {
     const data = {
       rol: userLoged.rol,
     };
-    console.log(data);
+    // console.log(data);
     try {
       await axios.put(
         `https://pf-api-04.up.railway.app/user/change/${id}?rol=admin`,
         data
       );
+      dispatch(getAllUsers());
     } catch (error) {
       console.log(error);
     }
@@ -153,7 +156,7 @@ export const doAdminUserById = (id, userLoged) => {
 };
 
 export const doUserById = (id, userLoged) => {
-  return async () => {
+  return async (dispatch) => {
     const data = {
       rol: userLoged.rol,
     };
@@ -162,6 +165,7 @@ export const doUserById = (id, userLoged) => {
         `https://pf-api-04.up.railway.app/user/change/${id}?rol=user`,
         data
       );
+      dispatch(getAllUsers());
     } catch (error) {
       console.log(error);
     }

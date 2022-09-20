@@ -34,7 +34,7 @@
   display: flex;
   align-items: center;
 }
-.link:hover {
+.link:hover > h3 {
   color: beige;
 }
 
@@ -46,4 +46,9 @@
   width: 4rem;
   display: flex;
   align-content: center;
+}
+
+.btn:hover {
+  background: none;
+  color: red;
 }

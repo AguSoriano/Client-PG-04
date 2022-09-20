@@ -5,22 +5,18 @@ import * as ReactRedux from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 // import { editUserData } from "../../../../redux/actions/Users/UsersActions";
 import style from "./UserEdit.module.css";
+import { MdArrowBack } from "react-icons/md";
 
 function UserEdit() {
   // const dispatch = ReactRedux.useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   dispatch(getCategories());
-  // }, [dispatch]);
-
-  // const allCategory = ReactRedux.useSelector(
-  //   (state) => state.categoryReducer.categories
-  // );
-  const { oneUserDetailEdit } = ReactRedux.useSelector(
+  const { allUsersOnDb } = ReactRedux.useSelector(
     (state) => state.usersReducer
   );
+
+  const user = allUsersOnDb.find((us) => us.id == id);
 
   // const validador = (input) => {
   //   //let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios
@@ -52,11 +48,11 @@ function UserEdit() {
   // const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
-    given_name: oneUserDetailEdit.given_name,
-    family_name: oneUserDetailEdit.family_name,
-    email: oneUserDetailEdit.email,
-    picture: oneUserDetailEdit.picture,
-    nickname: oneUserDetailEdit.nickname,
+    given_name: user.given_name,
+    family_name: user.family_name,
+    email: user.email,
+    picture: user.picture,
+    nickname: user.nickname,
   });
 
   const handleInputChange = (e) => {
@@ -74,40 +70,6 @@ function UserEdit() {
       [e.target.name]: e.target.value,
     });
   };
-
-  // const quitar = (e) => {
-  //   e.preventDefault();
-  //   // console.log(e.target.value, input.category);
-  //   setInput({
-  //     ...input,
-  //     category: input.category.filter(
-  //       (cat) => cat.id !== JSON.parse(e.target.value)
-  //     ),
-  //   });
-  // };
-
-  // console.log(input.category);
-
-  // const handleSelect = (event) => {
-  //   // console.log(event.target.value)
-  //   event.preventDefault();
-
-  //   if (!validoSelect(input, JSON.parse(event.target.value))) {
-  //     setErrors(
-  //       validador({
-  //         ...input,
-  //         category: [...input.category, JSON.parse(event.target.value)],
-  //       })
-  //     );
-
-  //     setInput({
-  //       ...input,
-  //       category: [...input.category, JSON.parse(event.target.value)],
-  //     });
-  //   } else {
-  //     swal(validoSelect(input, JSON.parse(event.target.value)));
-  //   }
-  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -131,10 +93,11 @@ function UserEdit() {
         handleSubmit(e);
       }}
     >
-      {oneUserDetailEdit.email ? (
+      <MdArrowBack onClick={() => navigate(-1)} className={style.listName} />
+      {user.email ? (
         <div className={style.divSection}>
           <section>
-            <label>nombre</label>
+            <label>nombre*</label>
             <input
               name="given_name"
               value={input.given_name}
@@ -142,27 +105,28 @@ function UserEdit() {
               onChange={(e) => handleInputChange(e)}
             />
             {/* {errors.name && <p className={style.errors}>{errors.name}</p>} */}
-            <label>apellido</label>
+            <label>apellido*</label>
             <input
               name="family_name"
               value={input.family_name}
               type="text"
               onChange={(e) => handleInputChange(e)}
             />
-            <label>email</label>
+            <label>email*</label>
             <input
               name="email"
               value={input.email}
               type="email"
               onChange={(e) => handleInputChange(e)}
             />
-            <label>usuario</label>
+            <label>usuario*</label>
             <input
               name="nickname"
               value={input.nickname}
               type="text"
               onChange={(e) => handleInputChange(e)}
             />
+            <div>Los campos marcados con * son obligatorios</div>
           </section>
           <section>
             <div className={style.imageDiv}>
@@ -180,7 +144,7 @@ function UserEdit() {
       ) : (
         "Cargando"
       )}
-      {oneUserDetailEdit.email ? (
+      {user.email ? (
         <button type="submit" className={style.btn}>
           Editar
         </button>

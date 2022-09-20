@@ -1,9 +1,10 @@
 .categDiv {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  /* gap: 1rem; */
   justify-content: center;
   position: relative;
+  margin-top: 1.5rem;
 }
 
 .newCat {
@@ -29,16 +30,17 @@
 
 .tableAntD {
   width: 60%;
-  font-size: 1.5rem;
 }
 
 .tableAntD > div > div > div > div > div > table > thead > tr > th{
   border: 1px solid black;
   font-weight: bold;
+  font-size: 1.5rem;
 }
 .tableAntD > div > div > div > div > div > table > tbody > tr > td{
   border: 1px solid black;
   text-transform: capitalize;
+  font-size: 1.3rem;
 }
 
 .categDiv > div {
