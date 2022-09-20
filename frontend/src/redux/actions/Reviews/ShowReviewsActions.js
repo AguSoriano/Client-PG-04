@@ -32,7 +32,6 @@ export function getAllReviews() {
 }
 
 export const createShowReviews = (data) => {
-  console.log(data)
   return async () => {
     const newReview = {
       description: data.description,
