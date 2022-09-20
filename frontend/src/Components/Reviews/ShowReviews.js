@@ -5,9 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Rating from "./Rating";
 import moment from "moment";
 import swal from "sweetalert";
-// import { getOneUserDetail} from "../../redux/actions/Users/UsersActions"
-
-
+import {useNavigate} from "react-router-dom";
 import style from "./Reviews.module.css";
 import { createShowReviews } from "../../redux/actions/Reviews/ShowReviewsActions";
 
@@ -26,6 +24,7 @@ const validador = (input) => {
 };
 
 export default function ShowReviews(prodDetailReviews) {
+  const navigate = useNavigate();
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0);
@@ -39,20 +38,20 @@ export default function ShowReviews(prodDetailReviews) {
  
   };
 
-  // useEffect(() => {
-  //   dispatch(getOneUserDetail(prodDetailReviews.id));
-  // }, [prodDetailReviews.id]);
 
-  const {  isAuthenticated } = useAuth0();
+  const {   isAuthenticated } = useAuth0();
 
-  const { prodDetail } = ReactRedux.useSelector(
-    (state) => state.prodDetailReducer
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
   );
-   
- 
+
+   const { prodDetail } = ReactRedux.useSelector(
+     (state) => state.prodDetailReducer
+     );
+     
+     const dispatch = ReactRedux.useDispatch();
 
   const handleMouseOver = newHoverValue => {
-    console.log(currentValue)
     setHoverValue(newHoverValue)
   };
 
@@ -78,6 +77,8 @@ export default function ShowReviews(prodDetailReviews) {
     setInput({
       ...input,
       [evento.target.name]: evento.target.value,
+      productId: prodDetailReviews.prodDetail.id,
+        userId: loginUser.id
     });
   };
  
@@ -89,10 +90,11 @@ export default function ShowReviews(prodDetailReviews) {
       setInput({
         description: "",
         ranking: "",
-        productId: "",
-        userId:""
+        productId:"", //prodDetailReviews.prodDetail.id,
+        userId: "" //loginUser.id
       });
     }
+    navigate("/home")
     swal({
       title: "Guardado",
       text: "Muchas gracias, será redirigido a la tienda",
@@ -105,23 +107,16 @@ export default function ShowReviews(prodDetailReviews) {
   const reviews = prodDetailReviews.prodDetail.reviews;
   const totalreviews = reviews?.length
   function prom (reviews){
-    let a = 0
-    for(var i=0; i<= totalreviews; i++){
-       a = reviews[i]?.ranking + a
-       
-      } 
-      
-    return a;
+    let summ = 0
+    var i =0
+    while (i < Number(totalreviews)) {
+      summ = summ + Number(reviews[i++]?.ranking)
+    }
+    return parseInt(summ/totalreviews);
   }
+    let value = prom(reviews)
+ 
 
-  console.log( prom(reviews))
-
-  //  const  reviewsByProd = ReactRedux.useSelector((state)=> state.reviewsByProd)
-
-  const dispatch = ReactRedux.useDispatch();
-  // useEffect(() => {
-  //   dispatch(getReviewsProd(prodDetailId));
-  // }, [dispatch, prodDetailId]);
 
   return (
     <div className={style.container} key={prodDetail.id}>
@@ -129,7 +124,7 @@ export default function ShowReviews(prodDetailReviews) {
         <div className={style.headReviews}>
             <h5><strong>{ totalreviews } - Reviews</strong> </h5>
             <h5 className={style.title}><strong>{prodDetail.name}</strong>{" "} </h5>
-            <h5 className={style.starsProm}><Rating rating={4} /></h5>
+            <h5 className={style.starsProm}><Rating rating={value} /></h5>
         </div>
          <hr />
         {reviews?.map((r) => {
