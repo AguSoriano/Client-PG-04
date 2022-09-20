@@ -136,11 +136,11 @@ export const getOrderDetail = (id, loginUser) => {
       );
 
       const user2 = await axios.get(
-        `https://pf-api-04.up.railway.app/user/${loginUser.id}`
+        `https://pf-api-04.up.railway.app/user/${order.data.userId}`
       );
 
       const products = await axios.get(
-        `https://pf-api-04.up.railway.app/user/${loginUser.id}/order?id=${id}`
+        `https://pf-api-04.up.railway.app/user/${order.data.userId}/order?id=${id}`
       );
 
       const allProductsDetail = await Promise.all(
@@ -233,7 +233,7 @@ export const cleanOrderDetail = () => {
 };
 
 export const editStatusOrder = (id, loginUser, status) => {
-  return async () => {
+  return async (dispatch) => {
     const data = {
       loginUser,
       status,
@@ -245,6 +245,7 @@ export const editStatusOrder = (id, loginUser, status) => {
         data
       );
       alert(`La orden se modifico a ${status}`);
+      dispatch(getAllOrders(loginUser))
     } catch (error) {
       console.log(error);
     }
