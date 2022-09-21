@@ -12,13 +12,16 @@ import {
 } from "./ActionTypes";
 
 export const addToCart = (data) => {
+  
   return async (dispatch) => {
-    console.log("IDDDD", data.loginUser.id);
+
     try {
+      if(data.loginUser.id){
       await axios.post(
         `https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`,
         data
       );
+    }
       return dispatch({
         type: ADD_TO_CART,
         payload: data,
@@ -28,6 +31,18 @@ export const addToCart = (data) => {
     }
   };
 };
+
+export const cartLogin = ()=>{
+  const items = JSON.parse(window.localStorage.getItem("cartState"))
+  try{
+    return async(dispatch) =>{
+      items.map((e=>{
+      dispatch(addToCart(e))
+    }))
+  }
+}catch(error){
+  console.log(error)
+}}
 
 export const removeOneProducts = (data) => {
   console.log("dataaa", data);
@@ -62,14 +77,12 @@ export const removeAllCart = (loginUser) => {
   };
 };
 
- export const clearOnlyCart =()=>{
-  return{
+export const clearOnlyCart = () => {
+  return {
     type: CLEAR_CART,
-    payload:[],
-  }
-
-}
-
+    payload: [],
+  };
+};
 
 export const getAllOrders = (loginUser) => {
   return async (dispatch) => {
@@ -245,7 +258,7 @@ export const editStatusOrder = (id, loginUser, status) => {
         data
       );
       alert(`La orden se modifico a ${status}`);
-      dispatch(getAllOrders(loginUser))
+      dispatch(getAllOrders(loginUser));
     } catch (error) {
       console.log(error);
     }
