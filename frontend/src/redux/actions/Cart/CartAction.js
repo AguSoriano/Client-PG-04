@@ -12,10 +12,11 @@ import {
 } from "./ActionTypes";
 
 export const addToCart = (data) => {
-  
+  console.log("dataDispatcj", data)
   return async (dispatch) => {
 
     try {
+        console.log("dataDispatcj11", data)
       if(data.loginUser.id){
       await axios.post(
         `https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`,

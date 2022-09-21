@@ -31,7 +31,7 @@ import CategoryDetail from "./Components/Admin/Categories/Detail/CategoryDetail"
 import ProductDetail from "./Components/Admin/Products/Detail/ProductDetail";
 import { useAuth0 } from "@auth0/auth0-react";
 import ErrorRoute from "./Components/Error Route/ErrorRoute";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as ReactRedux from "react-redux";
 import {
   cleanUserLogin,
@@ -45,6 +45,7 @@ import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
 import Newsletter from "./Components/Newsletter/Newsletter";
 import HistoryOrders from "./Components/History Orders/HistoryOrders";
 import OrderDetailUser from "./Components/History Orders/Detail/OrderDetailUser";
+import { addToCart } from "./redux/actions/Cart/CartAction";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -52,6 +53,7 @@ function App() {
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
+  const { isLogin, setIsLogin } = useState(true)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -61,6 +63,31 @@ function App() {
       dispatch(cleanUserLogin());
     }
   }, [dispatch, isAuthenticated, user]);
+
+  // useEffect(()=>{
+  //   if (isAuthenticated) {
+  //     if(isLogin){
+  //       console.log("LOGIN", isLogin)
+  //       console.log("voy a ejecutar cartLogin")
+  //       cartLogin();
+  //       setIsLogin(false)}}
+  // }, [dispatch, isAuthenticated, user])
+
+  // const cartLogin = () => {
+  //   console.log("estoy en cartLogin")
+  //   const items = JSON.parse(window.localStorage.getItem("cartState"));
+  //   console.log("USER", loginUser)
+  //   try {
+  //     return async (dispatch) => {
+  //       items.cartproduct.map((e) => {
+  //         let data = { e, loginUser };
+  //         dispatch(addToCart(data));
+  //       });
+  //     };
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="App">
