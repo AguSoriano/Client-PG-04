@@ -1,8 +1,9 @@
+import style from "./Carousel.module.css"
 const CarouselItem = ({slide, stopSlide, startSlide, ifCard}) => {
     if (ifCard) {
       return (
         <div
-          className="carousel-item"
+          className={style.carousel_item}
           onMouseEnter={stopSlide}
           onMouseOut={startSlide}
         >
@@ -12,7 +13,7 @@ const CarouselItem = ({slide, stopSlide, startSlide, ifCard}) => {
     } else {
       return (
         <div
-          className="carousel-item"
+          className={style.carousel_item}
           onMouseEnter={stopSlide}
           onMouseOut={startSlide}
         >
