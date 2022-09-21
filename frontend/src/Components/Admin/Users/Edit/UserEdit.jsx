@@ -59,7 +59,13 @@ function UserEdit() {
     event.preventDefault();
     if (!validador(input)) {
       dispatch(editUserData(id, input));
-      alert(`El usuario ${input.email} ha sido editado correctamente`);
+      swal({
+        title: "Exito",
+        text: `El usuario ${input.email} ha sido editado correctamente`,
+        icon: "success",
+        button: "Aceptar",
+        timer: "2500",
+      });
       navigate(`/admin/users`);
     } else {
       swal("Hubo un problema al editar el perfil, mirar el formulario");

@@ -57,7 +57,7 @@ export const createCategory = (data, loginUser) => {
 };
 
 export const editCategory = (id, loginUser, data) => {
-  return async () => {
+  return async (dispatch) => {
     const categoryEdited = {
       loginUser,
       name: data.name.toLowerCase(),
@@ -67,6 +67,7 @@ export const editCategory = (id, loginUser, data) => {
         `https://pf-api-04.up.railway.app/category/${id}`,
         categoryEdited
       );
+      dispatch(getCategories());
     } catch (error) {
       console.log(error);
     }

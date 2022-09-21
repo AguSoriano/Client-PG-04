@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import CardOrder from "./Card/CardOrder";
 import { CgMoreR } from "react-icons/cg";
+import swal from "sweetalert";
 
 function Orders() {
   const dispatch = ReactRedux.useDispatch();
@@ -38,6 +39,13 @@ function Orders() {
   const handleSubmit = (e, id) => {
     e.preventDefault();
     dispatch(editStatusOrder(id, loginUser, input));
+    swal({
+      title: "Exito",
+      text: `La orden se actualizo completamente`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
   };
 
   const dataSource = allOrders
