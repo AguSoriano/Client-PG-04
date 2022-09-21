@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* gap: 0.5rem; */
   margin-top: 1.5rem;
   position: relative;
 }
@@ -20,77 +19,33 @@
   align-items: center;
   padding: 0.6rem;
   background-color: #ffff;
-  /* width: 62%;
-  display: flex;
-  justify-content: right; */
-  /* margin-right: 3rem; */
 }
 
 .linkNewP {
-  /* width: 5rem;
-  height: 3rem; */
   font-size: 1.5rem;
-  /* padding: 0.5rem; */
 }
 
-.prodSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: left;
-  width: fit-content;
-  /* gap: 1rem; */
-}
-
-.prodRender {
+.list {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  height: 2.5rem;
-  width: 100%;
-  /* gap: 1rem; */
-  white-space: nowrap;
-  text-align: center;
-}
-
-.linkProd {
-  display: flex;
-  flex-direction: row;
+  gap: 3rem;
   align-content: center;
-  height: 2rem;
-  width: 100%;
-  /* gap: 2rem; */
-  white-space: nowrap;
-  text-align: center;
-  border: 1px solid black;
 }
 
-/* .linkProd > h3 {
-  height: 2rem;
-  width: 2rem;
-} */
-
-.linkProd > p {
-  width: 5rem;
-  text-align: right;
-  padding-right: 1rem;
-  border: 1px solid black;
-  height: 2rem;
-}
-
-.linkPName {
-  /* margin-left: 1rem; */
-  width: 25rem;
-  height: 2rem;
-  text-align: center;
+.listName {
+  width: 3rem;
+  height: 2.5rem;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
-  border: 1px solid black;
-  padding-left: 1rem;
+  background-color: #ffff;
 }
 
-.pag {
-  margin-top: 1.5rem;
+.listName:hover {
+  color: red;
+  cursor: pointer;
+  transition: 1s;
 }
 
 .tableAntD {
@@ -107,4 +62,56 @@
   border: 1px solid black;
   text-transform: capitalize;
   font-size: 1.2rem;
+}
+
+.mas {
+  display: flex;
+  gap: 1rem;
+  align-content: center;
+}
+
+.icon,
+.iconD,
+.iconE,
+.iconEd,
+.iconUs,
+.iconAD {
+  height: 1.4rem;
+  width: 1.4rem;
+}
+.icon {
+  color: rgb(65, 191, 245);
+}
+.iconD {
+  color: red;
+}
+.iconE {
+  color: rgb(75, 223, 6);
+}
+.iconEd {
+  color: rgb(104, 103, 103);
+}
+.iconAD {
+  color: rgb(27, 130, 248);
+}
+
+.iconD:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+.iconE:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+.icon:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+.iconEd:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+.iconAD:hover {
+  cursor: pointer;
+  scale: 1.2;
 }

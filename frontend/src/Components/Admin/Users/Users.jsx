@@ -189,6 +189,7 @@ function Users() {
       title: "Id",
       dataIndex: "id",
       key: "id",
+      ...getColumnSearchProps("id"),
       defaultSortOrder: "descend",
       width: "8%",
       sorter: (a, b) => a.id - b.id,
@@ -196,6 +197,7 @@ function Users() {
     {
       title: "Correo",
       dataIndex: "email",
+      defaultSortOrder: "descend",
       key: "email",
       ...getColumnSearchProps("email"),
       sorter: (a, b) => {
@@ -233,6 +235,7 @@ function Users() {
     {
       title: "Des",
       dataIndex: "isDisable",
+      defaultSortOrder: "descend",
       key: "isDisable",
       width: "10%",
       ...getColumnSearchProps("isDisable"),
