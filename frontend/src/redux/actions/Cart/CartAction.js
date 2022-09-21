@@ -36,7 +36,7 @@ export const cartLogin = ()=>{
   const items = JSON.parse(window.localStorage.getItem("cartState"))
   try{
     return async(dispatch) =>{
-      items.map((e=>{
+      items.cartproduct.map((e=>{
       dispatch(addToCart(e))
     }))
   }
