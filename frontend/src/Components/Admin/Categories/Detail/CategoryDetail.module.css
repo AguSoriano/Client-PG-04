@@ -1,11 +1,12 @@
-.mainD {
+.mainCat {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  padding-top: 20%;
 }
 
-.mainD > div > div {
+.mainCat > div > div {
   font-weight: bold;
   font-size: 1.5rem;
   text-transform: capitalize;
@@ -20,8 +21,8 @@
   align-items: center;
   background-color: #ffff;
   position: absolute;
-  top: 1rem;
-  left: 15%;
+  top: 25%;
+  left: 40%;
 }
 
 .listName:hover {
@@ -40,20 +41,20 @@
 .iconD {
   color: red;
   position: absolute;
-  top: 1rem;
-  right: 8%;
+  top: 22%;
+  right: 38%;
 }
 .iconE {
   color: rgb(75, 223, 6);
   position: absolute;
-  top: 1rem;
+  top: 22%;
   right: 8%;
 }
 .iconEd {
   color: rgb(104, 103, 103);
   position: absolute;
-  top: 1rem;
-  right: 15%;
+  top: 22%;
+  right: 45%;
 }
 
 .iconD:hover {
