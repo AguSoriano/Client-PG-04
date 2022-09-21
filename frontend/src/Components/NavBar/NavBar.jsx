@@ -4,7 +4,7 @@ import * as ReactRedux from "react-redux";
 import { register } from "../../redux/actions/Users/UsersActions";
 import Normal from "./Normal";
 import Admin from "./Admin";
-import { cartLogin } from "../../redux/actions/Cart/CartAction";
+// import { cartLogin } from "../../redux/actions/Cart/CartAction";
 
 function NavBar() {
   const dispatch = ReactRedux.useDispatch();
@@ -20,6 +20,20 @@ function NavBar() {
       dispatch(cartLogin());
     }
   }, [dispatch, isAuthenticated, user]);
+
+  const cartLogin = () => {
+    const items = JSON.parse(window.localStorage.getItem("cartState"));
+    try {
+      return async (dispatch) => {
+        items.cartproduct.map((e) => {
+          let data={e, userLogin}
+          dispatch(addToCart(data));
+        });
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 
   return (
