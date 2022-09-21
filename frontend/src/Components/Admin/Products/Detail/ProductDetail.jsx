@@ -60,7 +60,7 @@ function ProductDetail() {
             title={prodDetail.name}
             bordered={false}
             style={{
-              width: "55%",
+              width: "42rem",
               height: "50rem",
               border: "1px solid grey",
             }}
@@ -68,6 +68,10 @@ function ProductDetail() {
               <img
                 src={prodDetail.image ? prodDetail.image : imgDefault}
                 alt={prodDetail.id}
+                style={{
+                  width: "42rem",
+                  height: "27.8rem",
+                }}
               />
             }
           >
