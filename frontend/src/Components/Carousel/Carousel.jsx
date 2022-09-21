@@ -1,10 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import CarouselItem from "./CarouselItem"
 import CarouselControls from "./CarouselControls";
-import CarouselIndicators from "./CarouselIndicators";
-import "./Carousel.css"
+import style from "./Carousel.module.css"
 
-const Carousel = ({ slides, interval = 5000, controls = false, indicators = false, autoPlay = true, width = 1000, ifCard }) => {
+const Carousel = ({ slides, interval = 3500, controls = false, indicators = false, autoPlay = true, width = 1000, ifCard }) => {
     const [currentSlide, setCurrentSlide] = useState(0)
     const slideInterval = useRef()
 
@@ -17,11 +16,6 @@ const Carousel = ({ slides, interval = 5000, controls = false, indicators = fals
     const next = () => {
         startSlideTimer()
         const index = currentSlide < slides.length - 1 ? currentSlide + 1 : 0
-        setCurrentSlide(index)
-    }
-
-    const switchIndex = (index) => {
-        startSlideTimer()
         setCurrentSlide(index)
     }
 
@@ -47,16 +41,15 @@ const Carousel = ({ slides, interval = 5000, controls = false, indicators = fals
     }, [])
 
     return (
-        <div className="carousel" style={{ maxWidth : width }}>
+        <div className={style.carousel} style={{ maxWidth : width }}>
             <div 
-                className="carousel-inner"
+                className={style.carousel_inner}
                 style={{ transform: `translateX(${-currentSlide * 100}%)`}}
             >
             {slides.map((slide, index) => (
                 <CarouselItem slide={slide} key={index} stopSlide={stopSlideTimer} startSlide={startSlideTimer} ifCard={ifCard} />
             ))}
             </div>
-            {indicators && <CarouselIndicators slides={slides} currentIndex={currentSlide} switchIndex={switchIndex} />}
             {controls && <CarouselControls prev={prev} next={next} />}
         </div>
     )

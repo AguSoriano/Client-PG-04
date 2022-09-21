@@ -9,20 +9,20 @@
   
 }
 
-.carousel-inner {
+.carousel_inner {
   white-space: nowrap;
   transition: ease 1s;
   justify-content: center;
 }
 
-.carousel-item {
+.carousel_item {
   display: inline-flex;
   align-items: center;
   width: 100%;
   justify-content: center;
 }
 
-.carousel-control {
+.carousel_control_left {
   background-color:transparent;
   border: none;
   display: inline-block;
@@ -32,23 +32,29 @@
   top: calc(50% - 25px);
   color:black;
   cursor: pointer;
-  
-}
-.left {
   left: 0;
 }
-.right {
-  right: 0;
-}
+.carousel_control_right {
+    background-color:transparent;
+    border: none;
+    display: inline-block;
+    position: absolute;
+    height: 70px;
+    width: 100px;
+    top: calc(50% - 25px);
+    color:black;
+    cursor: pointer;
+    right: 0;
+  }
 
-.carousel-indicators {
+.carousel_indicators {
   position: absolute;
   transform: translateX(-50%);
   left: 50%;
   z-index: 2;
 }
 
-.carousel-indicator-item {
+.carousel_indicator_item {
   width: 20px;
   height: 25px;
   border: none;
