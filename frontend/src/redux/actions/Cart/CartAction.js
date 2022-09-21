@@ -32,17 +32,17 @@ export const addToCart = (data) => {
   };
 };
 
-export const cartLogin = ()=>{
-  const items = JSON.parse(window.localStorage.getItem("cartState"))
-  try{
-    return async(dispatch) =>{
-      items.cartproduct.map((e=>{
-      dispatch(addToCart(e))
-    }))
-  }
-}catch(error){
-  console.log(error)
-}}
+// export const cartLogin = ()=>{
+//   const items = JSON.parse(window.localStorage.getItem("cartState"))
+//   try{
+//     return async(dispatch) =>{
+//       items.cartproduct.map((e=>{
+//       dispatch(addToCart(e))
+//     }))
+//   }
+// }catch(error){
+//   console.log(error)
+// }}
 
 export const removeOneProducts = (data) => {
   console.log("dataaa", data);
