@@ -154,7 +154,7 @@ function Detail() {
                 )}
 
                 {!isAuthenticated || !loginUser.email ? (
-                  <button className={style.button} onClick={payment}>
+                  <button className={style.button} onClick={() => loginWithRedirect()}>
                     {" "}
                     Agregar al Carro{" "}
                   </button>
