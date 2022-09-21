@@ -1,19 +1,42 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import * as ReactRedux from "react-redux";
-import { Link } from "react-router-dom";
-import { getCategories } from "../../../redux/actions/Categories/CategoryAction";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  disableCategory,
+  enableCategory,
+  getCategories,
+} from "../../../redux/actions/Categories/CategoryAction";
 import style from "./Categories.module.css";
 import { Button, Input, Space, Table } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
+import Loading from "../../Loading/Loading";
+import { MdArrowBack, MdOutlineRestoreFromTrash } from "react-icons/md";
+import { CgMoreR } from "react-icons/cg";
+import { TiEdit } from "react-icons/ti";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 function Categories() {
   const dispatch = ReactRedux.useDispatch();
+  const navigate = useNavigate();
+
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
 
   useEffect(() => {
     dispatch(getCategories());
   }, [dispatch]);
+
+  const disableCat = (key) => {
+    dispatch(disableCategory(key.id, loginUser));
+    alert(`La categoria ${key.name} se deshabilito`);
+  };
+  const enableCat = (key) => {
+    dispatch(enableCategory(key.id, loginUser));
+    alert(`La categoria ${key.name} se restauro`);
+  };
 
   const { categories } = ReactRedux.useSelector(
     (state) => state.categoryReducer
@@ -24,6 +47,7 @@ function Categories() {
       key: cat.id,
       id: cat.id,
       name: cat.name,
+      status: cat.status ? "No" : "Si",
     };
   });
 
@@ -139,13 +163,15 @@ function Categories() {
       title: "Id",
       dataIndex: "id",
       key: "id",
+      ...getColumnSearchProps("id"),
       defaultSortOrder: "descend",
-      width: "20%",
+      width: "10%",
       sorter: (a, b) => a.id - b.id,
     },
     {
       title: "Nombre",
       dataIndex: "name",
+      defaultSortOrder: "descend",
       key: "name",
       ...getColumnSearchProps("name"),
       sorter: (a, b) => {
@@ -155,11 +181,44 @@ function Categories() {
       },
     },
     {
-      title: "Detalle",
+      title: "Disp",
+      dataIndex: "status",
+      defaultSortOrder: "descend",
+      key: "status",
+      width: "10%",
+      ...getColumnSearchProps("status"),
+      sorter: (a, b) => {
+        if (a.status < b.status) return -1;
+        if (a.status > b.status) return 1;
+        return 0;
+      },
+    },
+    {
+      title: "Mas",
       key: "operation",
-      width: '10%',
+      width: "10%",
       render: (key) => (
-        <Link to={`/admin/categories/detail/${key.id}`}>Ver</Link>
+        <div className={style.mas}>
+          <CgMoreR
+            className={style.icon}
+            onClick={() => navigate(`/admin/products/detail/${key.id}`)}
+          />
+          <TiEdit
+            className={style.iconEd}
+            onClick={() => navigate(`/admin/products/edit/${key.id}`)}
+          />
+          {key.status === "Si" ? (
+            <RiDeleteBinLine
+              onClick={() => disableCat(key)}
+              className={style.iconD}
+            />
+          ) : (
+            <MdOutlineRestoreFromTrash
+              onClick={() => enableCat(key)}
+              className={style.iconE}
+            />
+          )}
+        </div>
       ),
     },
   ];
@@ -172,22 +231,22 @@ function Categories() {
             Añadir Nueva Categoria
           </Link>
         </section>
-        <div>
+        <div className={style.list}>
           <h2>Lista de Categorias</h2>
+          <MdArrowBack
+            onClick={() => navigate(-1)}
+            className={style.listName}
+          />
         </div>
-        <div>
-          {categories.length ? (
-            <Table
-              dataSource={dataSource}
-              columns={columns}
-              className={style.tableAntD}
-              // style={{ width: "70%", fontSize: '1rem' }}
-              // onCell={{fontSize: '2rem'}}
-            />
-          ) : (
-            "cargando"
-          )}
-        </div>
+        {categories.length ? (
+          <Table
+            dataSource={dataSource}
+            columns={columns}
+            className={style.tableAntD}
+          />
+        ) : (
+          <Loading />
+        )}
       </div>
     </div>
   );

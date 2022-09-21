@@ -2,28 +2,43 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import * as ReactRedux from "react-redux";
-import { Link } from "react-router-dom";
-import { getProducts } from "../../../redux/actions/Products/ProductsAction";
-import imgCane from "../../Img/Logo1V2.png";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  deleteProduct,
+  eneableProduct,
+  getProducts,
+} from "../../../redux/actions/Products/ProductsAction";
 import Loading from "../../Loading/Loading";
-import Pagination from "../Pagination/PaginationAdmin";
 import style from "./Products.module.css";
 import { Button, Input, Space, Table } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
+import { MdArrowBack, MdOutlineRestoreFromTrash } from "react-icons/md";
+import { TiEdit } from "react-icons/ti";
+import { CgMoreR } from "react-icons/cg";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 function Products() {
   const dispatch = ReactRedux.useDispatch();
+  const navigate = useNavigate();
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
 
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
 
+  const deleteProd = (key) => {
+    dispatch(deleteProduct(key.id, loginUser));
+    alert(`El producto ${key.name} fue desactivado`);
+  };
+  const eneableProd = (key) => {
+    dispatch(eneableProduct(key.id, loginUser));
+    alert(`El producto ${key.name} fue restaurado`);
+  };
+
   const { product } = ReactRedux.useSelector((state) => state.productsReducer);
-
-  // const [page, setPage] = useState(0);
-
-  // const prodPage = product.slice(page, page + 12);
 
   const dataSource = product.map((prod) => {
     return {
@@ -148,6 +163,7 @@ function Products() {
       title: "Id",
       dataIndex: "id",
       key: "id",
+      ...getColumnSearchProps("id"),
       defaultSortOrder: "descend",
       width: "10%",
       sorter: (a, b) => a.id - b.id,
@@ -155,6 +171,7 @@ function Products() {
     {
       title: "Nombre",
       dataIndex: "name",
+      defaultSortOrder: "descend",
       key: "name",
       ...getColumnSearchProps("name"),
       sorter: (a, b) => {
@@ -167,6 +184,7 @@ function Products() {
       title: "$",
       dataIndex: "price",
       key: "price",
+      ...getColumnSearchProps("price"),
       defaultSortOrder: "descend",
       width: "10%",
       sorter: (a, b) => a.price - b.price,
@@ -175,6 +193,7 @@ function Products() {
       title: "Unid.",
       dataIndex: "stock",
       key: "stock",
+      ...getColumnSearchProps("stock"),
       defaultSortOrder: "descend",
       width: "10%",
       sorter: (a, b) => a.stock - b.stock,
@@ -182,7 +201,9 @@ function Products() {
     {
       title: "Disp",
       dataIndex: "status",
+      defaultSortOrder: "descend",
       key: "status",
+      ...getColumnSearchProps("status"),
       sorter: (a, b) => {
         if (a.status < b.status) return -1;
         if (a.status > b.status) return 1;
@@ -190,10 +211,32 @@ function Products() {
       },
     },
     {
-      title: "Extra",
+      title: "Mas",
       key: "operation",
       width: "10%",
-      render: (key) => <Link to={`/admin/products/detail/${key.id}`}>Ver</Link>,
+      render: (key) => (
+        <div className={style.mas}>
+          <CgMoreR
+            className={style.icon}
+            onClick={() => navigate(`/admin/products/detail/${key.id}`)}
+          />
+          <TiEdit
+            className={style.iconEd}
+            onClick={() => navigate(`/admin/products/edit/${key.id}`)}
+          />
+          {key.status === "Si" ? (
+            <RiDeleteBinLine
+              onClick={() => deleteProd(key)}
+              className={style.iconD}
+            />
+          ) : (
+            <MdOutlineRestoreFromTrash
+              onClick={() => eneableProd(key)}
+              className={style.iconE}
+            />
+          )}
+        </div>
+      ),
     },
   ];
 
@@ -204,59 +247,19 @@ function Products() {
           Añadir Nuevo Producto
         </Link>
       </section>
-      <div>
+      <div className={style.list}>
         <h2>Lista de Productos</h2>
+        <MdArrowBack onClick={() => navigate(-1)} className={style.listName} />
       </div>
-      {/* <section className={style.prodSection}> */}
-      {/* <div className={style.prodRender}>
-          <div className={style.linkProd}>
-            <p>ID</p>
-            <span className={style.linkPName}>Nombre del producto</span>
-            <p>Precio</p>
-            <p>Stock</p>
-            <p>Estado</p>
-          </div>
-        </div> */}
       {product.length > 1 ? (
         <Table
           dataSource={dataSource}
           columns={columns}
           className={style.tableAntD}
-          // style={{ width: "70%", fontSize: '1rem' }}
-          // onCell={{fontSize: '2rem'}}
         />
       ) : (
-        // (
-        //   prodPage.map((prod) => (
-        //     <div className={style.prodRender}>
-        //       <Link
-        //         to={`/admin/products/detail/${prod.id}`}
-        //         key={prod.id}
-        //         className={style.linkProd}
-        //       >
-        //         <p>{prod.id}</p>
-        //         {/* <img src={prod.image ? prod.image : imgCane} alt={prod.id} /> */}
-        //         <span className={style.linkPName}>{prod.name}</span>
-        //         <p>$ {prod.price}</p>
-        //         <p>{prod.stock} U</p>
-        //         <p>{prod.status ? "No disp." : "Disp."}</p>
-        //         {/* shortDesc={prod.shortDescription}
-        //       widthCard={375}
-        //     heightCard={450} */}
-        //       </Link>
-        //     </div>
-        //   ))
-        // )
         <Loading />
       )}
-      {/* </section>
-      <section className={style.pag}>
-        {product.length > 1 ? (
-          <Pagination setPage={setPage} page={page} products={product} />
-        ) : (
-          <div></div>
-        )}
-      </section> */}
     </div>
   );
 }

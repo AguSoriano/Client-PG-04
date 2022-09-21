@@ -94,15 +94,29 @@ export const createProduct = (loginUser, data) => {
 };
 
 export const deleteProduct = (id, loginUser) => {
-  return async () => {
+  return async (dispatch) => {
     const user = {
       loginUser,
+      status: true,
     };
     try {
-      await axios.put(
-        `https://pf-api-04.up.railway.app/products/delete/${id}`,
-        user
-      );
+      await axios.put(`https://pf-api-04.up.railway.app/products/${id}`, user);
+      dispatch(getProducts());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const eneableProduct = (id, loginUser) => {
+  return async (dispatch) => {
+    const user = {
+      loginUser,
+      status: false,
+    };
+    try {
+      await axios.put(`https://pf-api-04.up.railway.app/products/${id}`, user);
+      dispatch(getProducts());
     } catch (error) {
       console.log(error);
     }

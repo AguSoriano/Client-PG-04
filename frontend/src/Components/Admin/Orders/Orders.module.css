@@ -1,4 +1,4 @@
-.categDiv {
+.mainOrders {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,26 +8,9 @@
   position: relative;
 }
 
-.newCat {
-  position: absolute;
-  right: 2rem;
-  top: 0.5rem;
-  width: 12rem;
-  height: 6rem;
-  border: 1px solid grey;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  padding: 0.6rem;
-  background-color: #ffff;
-}
-
-.linkNewC {
-  font-size: 1.5rem;
-}
-
 .tableAntD {
-  width: 60%;
+  width: 90%;
+  /* margin-right: 10%; */
 }
 
 .tableAntD > div > div > div > div > div > table > thead > tr > th {
@@ -38,7 +21,7 @@
 .tableAntD > div > div > div > div > div > table > tbody > tr > td {
   border: 1px solid black;
   text-transform: capitalize;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .list {
@@ -55,6 +38,7 @@
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
+  /* padding: 0.6rem; */
   background-color: #ffff;
 }
 

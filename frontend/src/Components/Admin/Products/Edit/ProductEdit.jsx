@@ -18,10 +18,15 @@ function ProductEdit() {
   const allCategory = ReactRedux.useSelector(
     (state) => state.categoryReducer.categories
   );
-  const { prodEditDetail } = ReactRedux.useSelector(
-    (state) => state.prodDetailReducer
+  const { product } = ReactRedux.useSelector((state) => state.productsReducer);
+
+  const prodEditDetail = product.find((p) => p.id == id);
+  // const { prodEditDetail } = ReactRedux.useSelector(
+  //   (state) => state.prodDetailReducer
+  // );
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
   );
-  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
 
   const validador = (input) => {
     //let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios
