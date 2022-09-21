@@ -105,6 +105,13 @@ function Detail() {
     });
   };
 
+  const payment = () => {
+    if (loginUser.id && isAuthenticated && cartproduct?.length > 0) {
+      dispatch(getClientSecret(loginUser.id));
+      setBuy(true);
+    }
+  };
+
   function change(e) {
     setQuantity(e.target.value);
   }
@@ -146,12 +153,17 @@ function Detail() {
                   </Link>
                 )}
 
-                {
+                {!isAuthenticated || !loginUser.email ? (
+                  <button className={style.button} onClick={payment}>
+                    {" "}
+                    Agregar al Carro{" "}
+                  </button>
+                ) : (
                   <button className={style.button} onClick={addCart}>
                     {" "}
                     Agregar al Carro{" "}
                   </button>
-                }
+                )}
                 {!isAuthenticated ? (
                   <></>
                 ) : prodIsFav(prodDetail.id) ? (
