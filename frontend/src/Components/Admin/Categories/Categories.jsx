@@ -201,11 +201,11 @@ function Categories() {
         <div className={style.mas}>
           <CgMoreR
             className={style.icon}
-            onClick={() => navigate(`/admin/products/detail/${key.id}`)}
+            onClick={() => navigate(`/admin/categories/detail/${key.id}`)}
           />
           <TiEdit
             className={style.iconEd}
-            onClick={() => navigate(`/admin/products/edit/${key.id}`)}
+            onClick={() => navigate(`/admin/categories/edit/${key.id}`)}
           />
           {key.status === "Si" ? (
             <RiDeleteBinLine

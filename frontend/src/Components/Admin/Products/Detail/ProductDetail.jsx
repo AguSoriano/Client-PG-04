@@ -1,13 +1,22 @@
 import React from "react";
 import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   cleanDetail,
   getDetail,
 } from "../../../../redux/actions/ProdDetail/ProdDetailAction";
 import * as ReactRedux from "react-redux";
-// import style from "./ProductDetail.module.css";
-import { deleteProduct } from "../../../../redux/actions/Products/ProductsAction";
+import style from "./ProductDetail.module.css";
+import {
+  deleteProduct,
+  eneableProduct,
+} from "../../../../redux/actions/Products/ProductsAction";
+import Loading from "../../../Loading/Loading";
+import { Card } from "antd";
+import { MdArrowBack, MdOutlineRestoreFromTrash } from "react-icons/md";
+import imgDefault from "../../../Img/Logo1V2.png";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { TiEdit } from "react-icons/ti";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -24,25 +33,75 @@ function ProductDetail() {
   const { prodDetail } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
   );
-  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
 
   const deleteProd = () => {
     dispatch(deleteProduct(id, loginUser));
-    alert(`El producto ${prodDetail.name} fue borrado`);
+    alert(`El producto ${prodDetail.name} fue desactivado`);
+    navigate(-1);
+  };
+  const eneableProd = () => {
+    dispatch(eneableProduct(id, loginUser));
+    alert(`El producto ${prodDetail.name} fue restaurado`);
     navigate(-1);
   };
 
   return (
     <div>
       {prodDetail.name ? (
-        <div>
-          <h1>{prodDetail.name}</h1>
-          <img src={prodDetail.image} alt={prodDetail.id} />
-          <Link to={`/admin/products/edit/${id}`}>Editar</Link>
-          <button onClick={() => deleteProd()}>Borrar</button>
+        <div className={style.mainD}>
+          <MdArrowBack
+            onClick={() => navigate(-1)}
+            className={style.listName}
+          />
+          <Card
+            title={prodDetail.name}
+            bordered={false}
+            style={{
+              width: "55%",
+              height: "50rem",
+              border: "1px solid grey",
+            }}
+            cover={
+              <img
+                src={prodDetail.image ? prodDetail.image : imgDefault}
+                alt={prodDetail.id}
+              />
+            }
+          >
+            <p>{prodDetail.shortDescription}</p>
+            <p>Descripcion: {prodDetail.longDescription}</p>
+            {prodDetail.status ? (
+              <p>No disponible</p>
+            ) : (
+              <p>
+                ${prodDetail.price} la unidad -{" "}
+                {prodDetail.stock > 0
+                  ? `${prodDetail.stock} unidades disponibles`
+                  : "Sin stock"}
+              </p>
+            )}
+          </Card>
+          <TiEdit
+            className={style.iconEd}
+            onClick={() => navigate(`/admin/products/edit/${id}`)}
+          />
+          {prodDetail.status ? (
+            <MdOutlineRestoreFromTrash
+              onClick={() => eneableProd()}
+              className={style.iconE}
+            />
+          ) : (
+            <RiDeleteBinLine
+              onClick={() => deleteProd()}
+              className={style.iconD}
+            />
+          )}
         </div>
       ) : (
-        "Cargando"
+        <Loading />
       )}
     </div>
   );
