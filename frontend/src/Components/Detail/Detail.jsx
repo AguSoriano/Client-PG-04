@@ -111,7 +111,7 @@ function Detail() {
   }
 
   return (
-    <div className={style.container}>
+    <div>
       {buy === false && (
         <div className={style.div}>
           {prodDetail.name ? (
@@ -138,10 +138,11 @@ function Detail() {
               </section>
               <section>
                 <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
-
+                  <div className={style.context}>
                 {!isAuthenticated || !loginUser.email ? (
                   <></>
                 ) : (
+
                   <Link onClick={addCart} to={"/shop"}>
                     <button className={style.button1}> Comprar </button>
                   </Link>
@@ -158,6 +159,7 @@ function Detail() {
                     Agregar al Carro{" "}
                   </button>
                 )}
+                </div>
                 {!isAuthenticated ? (
                   <></>
                 ) : prodIsFav(prodDetail.id) ? (

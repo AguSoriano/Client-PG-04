@@ -1,4 +1,5 @@
 .container {
+    
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: #000000 1px solid;
     width: 60%;
@@ -26,56 +27,59 @@
 }
 
 
-.container h4{
-color:black;
-width: 30%;
-font-family:Arial, Helvetica, sans-serif;
-font-weight: 500;
-font-size:1.2rem;
-margin-top: 1.5rem;
-text-transform: capitalize;
+.container h4 {
+    color: black;
+    width: 30%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    text-transform: capitalize;
 }
-.container1 h5{
+
+.container1 h5 {
     text-align: center;
     align-self: center;
     align-content: center;
     font-size: 1rem !important;
- 
+
 }
-.container1 img{
-    width: 70px;
+
+.container1 img {
+    width: 80px;
+    height: 70px;
     border-radius: 3.5%;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 1);
-   margin-left: 1rem;
+    margin-left: 1rem;
 
 }
 
-.container h2{
+.container h2 {
     font-family: "Trebuchet MS", Verdana, sans-serif;
     color: rgb(0, 0, 0);
     font-size: 2.3rem;
 }
 
-.container div{
+.container div {
     display: flex;
     flex-direction: column;
-    
+
 }
 
-.delete{
+.delete {
     background-color: transparent;
     width: 30px;
     border: none;
     margin-right: 2rem;
     cursor: pointer;
- 
-    }
-    
 
-.total{
+}
+
+
+.total {
     font-weight: 500;
-font-size: 1.5rem;
-background-color:#EDEFF2
+    font-size: 1.5rem;
+    background-color: #EDEFF2
 }
 
 
@@ -86,7 +90,7 @@ background-color:#EDEFF2
     margin-left: 2rem;
     appearance: none;
     background-color: #FAFBFC;
-    border:#82E0AA 1.5px solid;
+    border: #82E0AA 1.5px solid;
     border-radius: 6px;
     box-sizing: border-box;
     cursor: pointer;
@@ -98,23 +102,23 @@ background-color:#EDEFF2
     list-style: none;
     padding: 6px 16px;
     position: relative;
-    
-    
-   }
-   
-   .button1:hover {
-    background-color:#F8F9F9;
+
+
+}
+
+.button1:hover {
+    background-color: #F8F9F9;
     text-decoration: none;
     transition-duration: 0.1s;
-   }
-   
-   .button2 {
+}
+
+.button2 {
     width: 15rem;
     margin-bottom: 0.5rem;
     margin-left: 2rem;
     appearance: none;
     background-color: #FAFBFC;
-    border:#E74C3C  1.5px solid;
+    border: #E74C3C 1.5px solid;
     border-radius: 6px;
     box-sizing: border-box;
     cursor: pointer;
@@ -126,23 +130,24 @@ background-color:#EDEFF2
     list-style: none;
     padding: 6px 16px;
     position: relative;
-    
-    
-   }
-   
-   .button2:hover {
-    background-color:#F8F9F9;
+
+
+}
+
+.button2:hover {
+    background-color: #F8F9F9;
     text-decoration: none;
     transition-duration: 0.1s;
-   }
-   .button3 {
+}
+
+.button3 {
     text-decoration: none;
     width: 15rem;
     margin-bottom: 0.5rem;
     margin-left: 2rem;
     appearance: none;
     background-color: #FAFBFC;
-    border:#F39C12 1.5px solid;
+    border: #F39C12 1.5px solid;
     border-radius: 6px;
     box-sizing: border-box;
     cursor: pointer;
@@ -154,22 +159,24 @@ background-color:#EDEFF2
     list-style: none;
     padding: 6px 16px;
     position: relative;
-    
+
     margin-left: -30rem;
-    
-    
-   }
-   
-   .button3:hover {
-    background-color:#F8F9F9;
+
+
+}
+
+.button3:hover {
+    background-color: #F8F9F9;
     text-decoration: none;
     transition-duration: 0.1s;
-   }
-   .link{
+}
+
+.link {
     text-decoration: none;
     color: #000000;
 
-   }
-   .link:hover{
+}
+
+.link:hover {
     color: #000000;
-   }
+}

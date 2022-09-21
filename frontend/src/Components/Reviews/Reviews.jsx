@@ -45,7 +45,7 @@ export default function App() {
   return (
     <div style={styles.container}>
         <h1>Gracias por su compra</h1>
-      <h2> Tu opinion nos ayuda mucho a mejorar </h2>
+      <h2> Tu opinion nos ayuda y mucho. </h2>
       <div style={styles.stars}>
         {stars.map((_, index) => {
           return (
