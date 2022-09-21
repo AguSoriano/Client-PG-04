@@ -9,6 +9,13 @@ import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
 import { BiUser } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { getClientSecret } from "../../redux/actions/Stripe/Stripe";
+import { BsFillCartCheckFill  } from "react-icons/bs";
+import { BsArrowReturnLeft } from "react-icons/bs";
+
+
+
+
+
 
 function Shop() {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
@@ -42,9 +49,9 @@ function Shop() {
     <div>
       {buy === false && (
         <div className={style.container}>
-          <h2> Tu carrito de compras</h2>
+          <h2> Tu carrito de compras <BsFillCartCheckFill size="1.5rem" color="black"/></h2>
           <div>
-            <div>
+            <div >
               {cartproduct?.length ? (
                 cartproduct.map((p) => (
                   <CartItem
@@ -66,7 +73,7 @@ function Shop() {
           </div>
 
           {cartproduct?.length ? (
-            <h3>Total sin impuestos: ${priceTotal()}</h3>
+            <h3 className={style.total}>Total sin costo de envío: ${priceTotal()}</h3>
           ) : (
             <></>
           )}
@@ -82,13 +89,18 @@ function Shop() {
               ) : (
                 buy === false && (
                   <button className={style.button1} onClick={payment}>
-                    Comprar
+                    Comprar 
                   </button>
                 )
               )}
-              <button className={style.button1} onClick={clearCart}>
+              <>
+              <button className={style.button2} onClick={clearCart}>
                 VACIAR CARRITO
               </button>
+              </>
+              <Link   className={style.link} to={"/home"}>
+              <button className={style.button3}>  <BsArrowReturnLeft/> TIENDA</button>
+              </Link>
             </div>
           ) : (
             <></>
