@@ -4,10 +4,8 @@ import * as ReactRedux from "react-redux";
 import { useEffect } from "react";
 import {
   cleanOrderDetail,
-  editStatusOrder,
   getOrderDetail,
 } from "../../../../redux/actions/Cart/CartAction";
-import { useState } from "react";
 import style from "./OrderDetail.module.css";
 import { Card } from "antd";
 import { MdArrowBack } from "react-icons/md";
@@ -16,7 +14,6 @@ import Loading from "../../../Loading/Loading";
 function OrderDetail() {
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
-  const [input, setInput] = useState("");
   const navigate = useNavigate();
 
   const { loginUser } = ReactRedux.useSelector(

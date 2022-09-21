@@ -132,7 +132,13 @@ function ProductEdit() {
 
     if (!validador(input)) {
       dispatch(editDetail(id, loginUser, input));
-      alert(`El producto ${input.name} ha sido editado correctamente`);
+      swal({
+        title: "Exito",
+        text: `El producto ${input.name} ha sido editado correctamente`,
+        icon: "success",
+        button: "Aceptar",
+        timer: "2500",
+      });
       navigate(`/products/${id}`);
     } else {
       swal("Hubo un problema al editar el producto, mirar el formulario");

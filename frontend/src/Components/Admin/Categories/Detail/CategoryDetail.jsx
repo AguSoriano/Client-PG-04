@@ -14,6 +14,7 @@ import { MdArrowBack, MdOutlineRestoreFromTrash } from "react-icons/md";
 import { TiEdit } from "react-icons/ti";
 import { RiDeleteBinLine } from "react-icons/ri";
 import Loading from "../../../Loading/Loading";
+import swal from "sweetalert";
 
 function CategoryDetail() {
   const { id } = useParams();
@@ -36,12 +37,12 @@ function CategoryDetail() {
 
   const disableCat = () => {
     dispatch(disableCategory(id, loginUser));
-    alert(`La categoria ${categoryDetail.name} se deshabilito`);
+    swal(`La categoria ${categoryDetail.name} se deshabilito`);
     navigate(-1);
   };
   const enableCat = () => {
     dispatch(enableCategory(id, loginUser));
-    alert(`La categoria ${categoryDetail.name} se restauro`);
+    swal(`La categoria ${categoryDetail.name} se restauro`);
     navigate(-1);
   };
 
@@ -75,9 +76,6 @@ function CategoryDetail() {
               className={style.iconE}
             />
           )}
-          {/* <h2>Nombre {categoryDetail.name}</h2>
-          <Link to={`/admin/categories/edit/${id}`}>Editame</Link>
-          <button onClick={() => deleteCat()}>Borrame</button> */}
         </div>
       ) : (
         <Loading/>

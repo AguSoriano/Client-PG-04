@@ -24,6 +24,7 @@ import {
 import { CgMoreR } from "react-icons/cg";
 import { BsPersonCheck } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
+import swal from "sweetalert";
 
 function Users() {
   const dispatch = ReactRedux.useDispatch();
@@ -38,22 +39,34 @@ function Users() {
 
   const disableUser = (key) => {
     dispatch(disableUserById(key.id, loginUser, true));
-    alert(`El usuario ${key.email} fue desabilitado`);
+    swal(`El usuario ${key.email} fue desabilitado`);
   };
 
   const eneableUser = (key) => {
     dispatch(eneableUserById(key.id, loginUser, false));
-    alert(`El usuario ${key.email} fue habilitado`);
+    swal({
+      title: "Exito",
+      text: `El usuario ${key.email} fue habilitado`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
   };
 
   const doAdmin = (key) => {
     dispatch(doAdminUserById(key.id, loginUser));
-    alert(`El usuario ${key.email} ahora es administrador`);
+    swal({
+      title: "Exito",
+      text: `El usuario ${key.email} ahora es administrador`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
   };
 
   const doUser = (key) => {
     dispatch(doUserById(key.id, loginUser));
-    alert(
+    swal(
       `El usuario ${key.email} ya no es administrador y volvio a ser un usuario`
     );
   };

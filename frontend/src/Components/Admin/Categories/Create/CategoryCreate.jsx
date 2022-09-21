@@ -5,6 +5,7 @@ import { createCategory } from "../../../../redux/actions/Categories/CategoryAct
 import { Form, Input, Button } from "antd";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 function CategoryCreate() {
   const dispatch = ReactRedux.useDispatch();
@@ -28,7 +29,13 @@ function CategoryCreate() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createCategory(input, loginUser));
-    alert(`La categoria ${input.name} se creo correctamente`);
+    swal({
+      title: "Exito",
+      text: `La categoria ${input.name} se creo correctamente`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
     setInput({
       name: "",
     });

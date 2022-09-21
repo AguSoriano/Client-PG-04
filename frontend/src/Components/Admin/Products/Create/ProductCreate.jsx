@@ -126,7 +126,13 @@ function ProductCreate() {
 
     if (!validador(input)) {
       dispatch(createProduct(loginUser, input));
-      alert(`El producto ${input.name} se creo correctamente`);
+      swal({
+        title: "Exito",
+        text: `El producto ${input.name} se creo correctamente`,
+        icon: "success",
+        button: "Aceptar",
+        timer: "2500",
+      });
       setInput({
         name: "",
         image: "",

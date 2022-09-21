@@ -17,6 +17,7 @@ import { MdArrowBack, MdOutlineRestoreFromTrash } from "react-icons/md";
 import { TiEdit } from "react-icons/ti";
 import { CgMoreR } from "react-icons/cg";
 import { RiDeleteBinLine } from "react-icons/ri";
+import swal from "sweetalert";
 
 function Products() {
   const dispatch = ReactRedux.useDispatch();
@@ -31,11 +32,11 @@ function Products() {
 
   const deleteProd = (key) => {
     dispatch(deleteProduct(key.id, loginUser));
-    alert(`El producto ${key.name} fue desactivado`);
+    swal(`El producto ${key.name} fue desactivado`);
   };
   const eneableProd = (key) => {
     dispatch(eneableProduct(key.id, loginUser));
-    alert(`El producto ${key.name} fue restaurado`);
+    swal(`El producto ${key.name} fue restaurado`);
   };
 
   const { product } = ReactRedux.useSelector((state) => state.productsReducer);
