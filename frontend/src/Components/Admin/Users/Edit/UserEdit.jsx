@@ -1,14 +1,15 @@
 import React, { /* useEffect,*/ useState } from "react";
 import * as ReactRedux from "react-redux";
-// import { getCategories } from "../../../../redux/actions/Categories/CategoryAction";
-// import swal from "sweetalert";
+import swal from "sweetalert";
 import { useNavigate, useParams } from "react-router-dom";
-// import { editUserData } from "../../../../redux/actions/Users/UsersActions";
+import { editUserData } from "../../../../redux/actions/Users/UsersActions";
 import style from "./UserEdit.module.css";
+import { Form, Input, Button, Upload } from "antd";
 import { MdArrowBack } from "react-icons/md";
+import { PlusOutlined } from "@ant-design/icons";
 
 function UserEdit() {
-  // const dispatch = ReactRedux.useDispatch();
+  const dispatch = ReactRedux.useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -18,35 +19,6 @@ function UserEdit() {
 
   const user = allUsersOnDb.find((us) => us.id == id);
 
-  // const validador = (input) => {
-  //   //let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios
-  //   let error = {};
-  //   // if (!noNumero.test(input.name)) {
-  //   //   error.name = "el nombre solo acepta letras";
-  //   // }
-  //   if (!input.name) {
-  //     error.name = "el nombre no puede estar vacio";
-  //   }
-  //   // if (!input.category.length) {
-  //   //   error.categories = "al menos se necesita una categoria";
-  //   // }
-  //   return error;
-  // };
-
-  // const validoSelect = (input, event) => {
-  //   let error = "";
-  //   let categories = input.category;
-
-  //   if (categories.length > 0) {
-  //     if (categories.find((p) => p === event)) {
-  //       error = "Categoria ya agregada";
-  //     }
-  //   }
-  //   return error;
-  // };
-
-  // const [errors, setErrors] = useState({});
-
   const [input, setInput] = useState({
     given_name: user.given_name,
     family_name: user.family_name,
@@ -55,15 +27,27 @@ function UserEdit() {
     nickname: user.nickname,
   });
 
+  const validador = (input) => {
+    let error;
+    if (!input.given_name) {
+      error = "no puede estar vacio";
+    }
+    if (!input.family_name) {
+      error = "no puede estar vacio";
+    }
+    if (!input.email) {
+      error = "no puede estar vacio";
+    }
+    if (!input.nickname) {
+      error = "no puede estar vacio";
+    }
+    return error;
+  };
+
+  console.log(validador(input));
+
   const handleInputChange = (e) => {
     e.preventDefault();
-
-    // setErrors(
-    //   validador({
-    //     ...input,
-    //     [e.target.name]: e.target.value,
-    //   })
-    // );
 
     setInput({
       ...input,
@@ -73,85 +57,138 @@ function UserEdit() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!validador(input)) {
+      dispatch(editUserData(id, input));
+      alert(`El usuario ${input.email} ha sido editado correctamente`);
+      navigate(`/admin/users`);
+    } else {
+      swal("Hubo un problema al editar el perfil, mirar el formulario");
+    }
+  };
 
-    // dispatch(editUserData(id, input));
-    alert(`El usuario ${input.email} ha sido editado correctamente`);
-    navigate(`/admin/users/detail/${id}`);
+  const cloudinary = "https://api.cloudinary.com/v1_1/dxmuv4sl0/auto/upload";
 
-    // if (!errors.name && !errors.categories) {
-    //   dispatch(editDetail(id, input));
-    //   alert(`El producto ${input.name} ha sido editado correctamente`);
-    //   navigate(`/products/${id}`);
-    // } else {
-    //   swal("Hubo un problema al editar el producto, mirar el formulario");
-    // }
+  const data = {
+    upload_preset: "dw5pvlez",
   };
   return (
-    <form
-      className={style.formPrincipal}
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <MdArrowBack onClick={() => navigate(-1)} className={style.listName} />
-      {user.email ? (
-        <div className={style.divSection}>
-          <section>
-            <label>nombre*</label>
-            <input
-              name="given_name"
-              value={input.given_name}
-              type="text"
-              onChange={(e) => handleInputChange(e)}
-            />
-            {/* {errors.name && <p className={style.errors}>{errors.name}</p>} */}
-            <label>apellido*</label>
-            <input
-              name="family_name"
-              value={input.family_name}
-              type="text"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label>email*</label>
-            <input
-              name="email"
-              value={input.email}
-              type="email"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label>usuario*</label>
-            <input
-              name="nickname"
-              value={input.nickname}
-              type="text"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <div>Los campos marcados con * son obligatorios</div>
-          </section>
-          <section>
-            <div className={style.imageDiv}>
-              <img alt="imagen" src={input.picture} />
-              <input
-                placeholder="URL de la imagen..."
-                name="picture"
-                value={input.picture}
-                type="text"
-                onChange={(e) => handleInputChange(e)}
-              />
+    <div className={style.mainDi}>
+      <div className={style.list}>
+        <h2>Editar perfil de usuario</h2>
+        <MdArrowBack onClick={() => navigate(-1)} className={style.listName} />
+      </div>
+      <Form
+        labelCol={{
+          span: 4,
+        }}
+        wrapperCol={{
+          span: 14,
+        }}
+        layout="horizontal"
+        size="middle"
+      >
+        <Form.Item
+          name="name"
+          label="Nombre"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <Input
+            name="given_name"
+            value={user.given_name}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.given_name}
+          />
+        </Form.Item>
+        <Form.Item
+          name="surname"
+          label="Apellido"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <Input
+            name="family_name"
+            value={input.family_name}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.family_name}
+          />
+        </Form.Item>
+        <Form.Item
+          name="nickname"
+          label="Usuario"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <Input
+            name="nickname"
+            value={input.nickname}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.nickname}
+          />
+        </Form.Item>
+        <Form.Item
+          name="email"
+          label="Email"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <Input
+            name="email"
+            value={input.email}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.email}
+          />
+        </Form.Item>
+        <Form.Item label="Foto (url)">
+          <Input
+            name="picture"
+            value={input.picture}
+            onChange={(e) => handleInputChange(e)}
+            placeholder="Coloque la url de su foto..."
+            defaultValue={input.picture}
+          />
+        </Form.Item>
+        <Form.Item label="Foto" valuePropName="fileList">
+          <Upload action={cloudinary} data={data} listType="picture-card">
+            <div>
+              <PlusOutlined />
+              <div
+                style={{
+                  marginTop: 8,
+                }}
+              >
+                Subir
+              </div>
             </div>
-          </section>
-        </div>
-      ) : (
-        "Cargando"
-      )}
-      {user.email ? (
-        <button type="submit" className={style.btn}>
-          Editar
-        </button>
-      ) : (
-        <></>
-      )}
-    </form>
+          </Upload>
+        </Form.Item>
+        <Form.Item label="Guardar Cambios">
+          <Button
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            Editar
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }
 

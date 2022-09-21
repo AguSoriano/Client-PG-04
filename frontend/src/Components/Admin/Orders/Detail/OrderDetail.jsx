@@ -88,7 +88,9 @@ function OrderDetail() {
                         alt={p.id}
                         src={p.image}
                         style={{
-                          width: "350px",
+                          display: "flex",
+                          margin: "auto",
+                          width: "340px",
                           height: "230px",
                         }}
                       />

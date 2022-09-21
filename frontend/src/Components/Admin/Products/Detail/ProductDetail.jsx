@@ -69,7 +69,9 @@ function ProductDetail() {
                 src={prodDetail.image ? prodDetail.image : imgDefault}
                 alt={prodDetail.id}
                 style={{
-                  width: "42rem",
+                  display: "flex",
+                  margin: "auto",
+                  width: "41rem",
                   height: "27.8rem",
                 }}
               />
