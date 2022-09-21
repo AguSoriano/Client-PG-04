@@ -4,7 +4,7 @@ import CarouselControls from "./CarouselControls";
 import CarouselIndicators from "./CarouselIndicators";
 import "./Carousel.css"
 
-const Carousel = ({ slides, interval = 5000, controls = false, indicators = false, autoPlay = true, width = 1000, ifCard }) => {
+const Carousel = ({ slides, interval = 5000, controls = false, indicators = false, autoPlay = true, width = 1000 }) => {
     const [currentSlide, setCurrentSlide] = useState(0)
     const slideInterval = useRef()
 
@@ -13,7 +13,7 @@ const Carousel = ({ slides, interval = 5000, controls = false, indicators = fals
         const index = currentSlide > 0 ? currentSlide - 1 : slides.length - 1
         setCurrentSlide(index)
     }
-    
+
     const next = () => {
         startSlideTimer()
         const index = currentSlide < slides.length - 1 ? currentSlide + 1 : 0
@@ -53,7 +53,7 @@ const Carousel = ({ slides, interval = 5000, controls = false, indicators = fals
                 style={{ transform: `translateX(${-currentSlide * 100}%)`}}
             >
             {slides.map((slide, index) => (
-                <CarouselItem slide={slide} key={index} stopSlide={stopSlideTimer} startSlide={startSlideTimer} ifCard={ifCard} />
+                <CarouselItem slide={slide} key={index} stopSlide={stopSlideTimer} startSlide={startSlideTimer} />
             ))}
             </div>
             {indicators && <CarouselIndicators slides={slides} currentIndex={currentSlide} switchIndex={switchIndex} />}
