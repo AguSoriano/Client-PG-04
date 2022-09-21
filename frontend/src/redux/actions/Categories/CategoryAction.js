@@ -73,6 +73,36 @@ export const editCategory = (id, loginUser, data) => {
   };
 };
 
+export const disableCategory = (id, loginUser) => {
+  return async (dispatch) => {
+    const user = {
+      loginUser,
+      status: true,
+    };
+    try {
+      await axios.put(`https://pf-api-04.up.railway.app/category/${id}`, user);
+      dispatch(getCategories());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const enableCategory = (id, loginUser) => {
+  return async (dispatch) => {
+    const user = {
+      loginUser,
+      status: false,
+    };
+    try {
+      await axios.put(`https://pf-api-04.up.railway.app/category/${id}`, user);
+      dispatch(getCategories());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const deleteCategory = (id, loginUser) => {
   return async () => {
     const user = {
@@ -88,14 +118,3 @@ export const deleteCategory = (id, loginUser) => {
     }
   };
 };
-
-//   export function getProductByCategory(categoryName) {
-//     return function (dispatch) {
-//       return axios
-//         .get(`/products/category/${categoryName}`)
-//         .then((products) => {
-//           dispatch({ type: GET_PRODUCT_BY_CATEGORY, payload: products.data });
-//         })
-//         .catch((err) => console.log(err));
-//     };
-//   }

@@ -236,7 +236,7 @@ export const editStatusOrder = (id, loginUser, status) => {
   return async (dispatch) => {
     const data = {
       loginUser,
-      status,
+      status: status.toLowerCase(),
     };
     // console.log(data)
     try {
