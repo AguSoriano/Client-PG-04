@@ -5,6 +5,11 @@ import style from "./ProductEdit.module.css";
 import swal from "sweetalert";
 import { useNavigate, useParams } from "react-router-dom";
 import { editDetail } from "../../../../redux/actions/ProdDetail/ProdDetailAction";
+import { Form, Input, Button, InputNumber, Upload, List } from "antd";
+import { MdArrowBack } from "react-icons/md";
+import { PlusOutlined } from "@ant-design/icons";
+
+const { TextArea } = Input;
 
 function ProductEdit() {
   const dispatch = ReactRedux.useDispatch();
@@ -21,24 +26,33 @@ function ProductEdit() {
   const { product } = ReactRedux.useSelector((state) => state.productsReducer);
 
   const prodEditDetail = product.find((p) => p.id == id);
-  // const { prodEditDetail } = ReactRedux.useSelector(
-  //   (state) => state.prodDetailReducer
-  // );
+
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
 
   const validador = (input) => {
-    //let noNumero = /^[A-Za-z]+$/; //corregir esto para que pueda tener espacios
     let error = {};
-    // if (!noNumero.test(input.name)) {
-    //   error.name = "el nombre solo acepta letras";
-    // }
+    if (input.name.search("[0-9]") !== -1) {
+      error = "El nombre no acepta números";
+    }
     if (!input.name) {
-      error.name = "el nombre no puede estar vacio";
+      error = "el nombre no puede estar vacio";
+    }
+    if (!input.price) {
+      error = "el nombre no puede estar vacio";
+    }
+    if (!input.stock) {
+      error = "el nombre no puede estar vacio";
+    }
+    if (!input.longDescription) {
+      error = "el nombre no puede estar vacio";
+    }
+    if (!input.shortDescription) {
+      error = "el nombre no puede estar vacio";
     }
     if (!input.category.length) {
-      error.categories = "al menos se necesita una categoria";
+      error = "al menos se necesita una categoria";
     }
     return error;
   };
@@ -85,7 +99,6 @@ function ProductEdit() {
 
   const quitar = (e) => {
     e.preventDefault();
-    // console.log(e.target.value, input.category);
     setInput({
       ...input,
       category: input.category.filter(
@@ -94,10 +107,7 @@ function ProductEdit() {
     });
   };
 
-  // console.log(input.category);
-
   const handleSelect = (event) => {
-    // console.log(event.target.value)
     event.preventDefault();
 
     if (!validoSelect(input, JSON.parse(event.target.value))) {
@@ -120,7 +130,7 @@ function ProductEdit() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!errors.name && !errors.categories) {
+    if (!validador(input)) {
       dispatch(editDetail(id, loginUser, input));
       alert(`El producto ${input.name} ha sido editado correctamente`);
       navigate(`/products/${id}`);
@@ -128,104 +138,188 @@ function ProductEdit() {
       swal("Hubo un problema al editar el producto, mirar el formulario");
     }
   };
+  const cloudinary = "https://api.cloudinary.com/v1_1/dxmuv4sl0/auto/upload";
+
+  const data = {
+    upload_preset: "dw5pvlez",
+  };
+
   return (
-    <form
-      className={style.formPrincipal}
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      {prodEditDetail.name ? (
-        <div className={style.divSection}>
-          <section>
-            <label>nombre</label>
-            <input
-              name="name"
-              value={input.name}
-              type="text"
-              onChange={(e) => handleInputChange(e)}
-            />
-            {errors.name && <p className={style.errors}>{errors.name}</p>}
-            <label>breve descripcion</label>
-            <input
-              name="shortDescription"
-              value={input.shortDescription}
-              type="textarea"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label>descripcion detallada</label>
-            <input
-              name="longDescription"
-              value={input.longDescription}
-              type="textarea"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label>stock</label>
-            <input
-              name="stock"
-              value={input.stock}
-              type="number"
-              onChange={(e) => handleInputChange(e)}
-            />
-            <label>precio</label>
-            <input
-              name="price"
-              value={input.price}
-              type="number"
-              onChange={(e) => handleInputChange(e)}
-            />
-          </section>
-          <section>
-            <div className={style.imageDiv}>
-              <img alt="imagen" src={input.image} />
-              <input
-                placeholder="URL de la imagen..."
-                name="image"
-                value={input.image}
-                type="text"
-                onChange={(e) => handleInputChange(e)}
-              />
+    <div className={style.mainDi}>
+      <div className={style.list}>
+        <h2>Estas modificando un producto</h2>
+        <MdArrowBack onClick={() => navigate(-1)} className={style.listName} />
+      </div>
+      <Form
+        labelCol={{
+          span: 4,
+        }}
+        wrapperCol={{
+          span: 14,
+        }}
+        layout="horizontal"
+        size="middle"
+      >
+        <Form.Item
+          name="name"
+          label="Nombre"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <Input
+            name="name"
+            value={input.name}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.name}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Introduccion"
+          name="intro"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <TextArea
+            rows={4}
+            name="shortDescription"
+            value={input.shortDescription}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.shortDescription}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Descripcion"
+          name="description"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <TextArea
+            rows={4}
+            name="longDescription"
+            value={input.longDescription}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.longDescription}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Stock"
+          name="stock"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <InputNumber
+            name="stock"
+            value={input.stock}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.stock}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Precio"
+          name="price"
+          rules={[
+            {
+              required: true,
+              message: "Este campo es requerido",
+            },
+          ]}
+        >
+          <InputNumber
+            name="price"
+            value={input.price}
+            onChange={(e) => handleInputChange(e)}
+            defaultValue={input.price}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Categorias"
+          name="category"
+          rules={[
+            {
+              required: true,
+              message: "Al menos 1 es requerida",
+            },
+          ]}
+        >
+          <select onChange={(e) => handleSelect(e)} className={style.selectD}>
+            <option></option>
+            {allCategory.map((cat) => (
+              <option key={cat.id} value={JSON.stringify(cat)}>
+                {cat.name.toUpperCase()}
+              </option>
+            ))}
+          </select>
+        </Form.Item>
+
+        <List
+          size="small"
+          bordered
+          dataSource={input.category}
+          renderItem={(item) => (
+            <List.Item style={{ display: "flex", alignItems: "center" }}>
+              {item.name.toUpperCase()}{" "}
+              <button
+                className={style.btnx}
+                value={JSON.stringify(item.id)}
+                onClick={(e) => quitar(e)}
+              >
+                x
+              </button>
+            </List.Item>
+          )}
+          style={{ width: "450px", marginLeft: "30%", marginBottom: "2rem" }}
+        />
+
+        <Form.Item label="Foto (url)">
+          <Input
+            name="image"
+            value={input.image}
+            onChange={(e) => handleInputChange(e)}
+            placeholder="Coloque la url de su foto..."
+            defaultValue={input.image}
+          />
+        </Form.Item>
+        <Form.Item label="Fotos" valuePropName="fileList">
+          <Upload action={cloudinary} data={data} listType="picture-card">
+            <div>
+              <PlusOutlined />
+              <div
+                style={{
+                  marginTop: 8,
+                }}
+              >
+                Subir
+              </div>
             </div>
-            {/* <label>categorias </label> */}
-            <select onChange={(e) => handleSelect(e)}>
-              <option>CATEGORIAS</option>
-              {allCategory.map((cat) => (
-                <option key={cat.id} value={JSON.stringify(cat)}>
-                  {cat.name.toUpperCase()}
-                </option>
-              ))}
-            </select>
-            <ul className={style.ul}>
-              {input.category &&
-                input.category.map((cat) => (
-                  <li key={cat.id}>
-                    {cat.name}
-                    <button
-                      className={style.btnx}
-                      value={JSON.stringify(cat.id)}
-                      onClick={(e) => quitar(e)}
-                    >
-                      x
-                    </button>
-                  </li>
-                ))}
-            </ul>
-            {errors.categories && (
-              <p className={style.errors}>{errors.categories}</p>
-            )}
-          </section>
-        </div>
-      ) : (
-        "Cargando"
-      )}
-      {prodEditDetail.name ? (
-        <button type="submit" className={style.btn}>
-          Editar
-        </button>
-      ) : (
-        <></>
-      )}
-    </form>
+          </Upload>
+        </Form.Item>
+        <Form.Item label="Modificar Producto">
+          <Button
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            Editar
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 }
 

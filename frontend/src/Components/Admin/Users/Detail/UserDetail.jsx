@@ -88,7 +88,9 @@ function UserDetail() {
                 src={oneUserDetail.picture ? oneUserDetail.picture : imgCane}
                 alt={oneUserDetail.id}
                 style={{
-                  width: "45rem",
+                  display: "flex",
+                  margin: "auto",
+                  width: "44rem",
                   height: "40rem",
                 }}
               />
