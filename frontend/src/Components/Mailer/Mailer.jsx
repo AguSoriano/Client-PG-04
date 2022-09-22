@@ -27,6 +27,7 @@ export default function Mailer() {
       console.log("IDSTOCK", id)
       let data = { stock, id };
       dispatch(editStock(data));
+
       dispatch(getProducts())
     });
   };
