@@ -283,7 +283,7 @@ export const setLogin = (data) => {
 
 export const editStock = () => {
   return async () => {
-    console.log("dataSTOCKKK", data);
+    console.log("dataSTOCKK", data);
     try {
       await axios.put(`https://pf-api-04.up.railway.app/payment/prod`, data);
       alert(`El  stock del producto n° ${id} se modifico a ${stock}`);
