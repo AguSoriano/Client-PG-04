@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import * as ReactRedux from "react-redux";
-import { removeAllCart, setLogin, addToCart } from "../../redux/actions/Cart/CartAction";
+import {
+  removeAllCart,
+  setLogin,
+  addToCart,
+} from "../../redux/actions/Cart/CartAction";
 import CartItem from "./CartItem";
 import style from "./Shop.module.css";
 import { Link } from "react-router-dom";
@@ -22,13 +26,7 @@ function Shop() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log("CARTTTLOGIN", cartLoginRed)
       if (cartLoginRed) {
-        console.log("acaestoy");
-        // console.log("LOGIN", isLogin);
-        console.log("USER", user);
-        console.log("LOGINUSER", loginUser);
-        console.log("voy a ejecutar cartLogin");
         cartLogin();
         dispatch(setLogin(false));
       }
@@ -54,15 +52,10 @@ function Shop() {
   };
 
   const cartLogin = () => {
-    console.log("estoy en cartLogin");
     const items = JSON.parse(window.localStorage.getItem("cartState"));
-    console.log("ITEMS", items);
-    console.log("USER", loginUser);
-
     items.cartproduct.map((e) => {
       let prodTotal = e;
       let data = { prodTotal, loginUser };
-      console.log("cartloginDATA", data);
       dispatch(addToCart(data));
     });
   };
