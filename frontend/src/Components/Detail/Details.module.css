@@ -34,12 +34,13 @@
  }
 
 .description{
-    width:30vw;
+    width:40vw;
     display: contents;
     text-align: center;
     margin-bottom: 0.2re;
     margin-inline: 4rem;
     font-weight: 500;
+    
     /* color: rgb(0, 0, 0);
     padding: .4vh;
    
@@ -59,10 +60,14 @@
      color:#1CBE60;
      font-weight: 500;
      font-size:larger;
+     margin-bottom: 3rem;
+     margin-top: 5rem;
  }
  .precio{
     color:black;
     font-size:larger;
+    margin-left: 33rem;
+    margin-bottom: 5rem;
  }
 
 

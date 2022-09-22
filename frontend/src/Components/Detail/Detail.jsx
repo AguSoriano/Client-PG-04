@@ -22,6 +22,8 @@ import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import ShowReviews from "../Reviews/ShowReviews";
+import { BsCheck2Circle} from "react-icons/bs";
+
 import { Link } from "react-router-dom";
 
 function Detail() {
@@ -132,12 +134,23 @@ function Detail() {
               </span>
 
               <section>
+              <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
                 <h3 className={style.stock}>
-                  Stock disponible:{prodDetail.stock} unidades
+                  Stock disponible. <BsCheck2Circle/>
+
                 </h3>
+                <label form="quantity">Cantidad:</label>
+              <input
+                type="number"
+                name="cantidad"
+                min="1"
+                max="50"
+                onChange={change}
+                value={quantity}
+              ></input>
               </section>
               <section>
-                <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
+                
                   <div className={style.context}>
                 {!isAuthenticated || !loginUser.email ? (
                   <></>
@@ -172,15 +185,7 @@ function Detail() {
                   </button>
                 )}
               </section>
-              <label form="quantity">Cantidad:</label>
-              <input
-                type="number"
-                name="cantidad"
-                min="1"
-                max="50"
-                onChange={change}
-                value={quantity}
-              ></input>
+             
             </div>
           ) : (
             <Loading />
