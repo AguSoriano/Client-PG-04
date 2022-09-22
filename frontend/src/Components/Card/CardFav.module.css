@@ -1,15 +1,43 @@
 .mainCardFav {
   display: flex;
-  width: 100%;
-  height: 250px;
+  width: 800px;
+  height: 300px;
   gap: 3rem;
   align-items: center;
   color: black;
 }
 
+.mainCard {
+  position: relative;
+  border: 2px solid grey;
+}
+
+.b {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  right: 0px;
+  top: -5px;
+  z-index: 2;
+}
+
+.mainCard:hover > .b {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+}
+
 .mainCardFav > img {
   width: 350px;
-  height: 250px;
+  height: 300px;
+  border: 2px solid grey;
 }
 
 .mainCardFav > section {

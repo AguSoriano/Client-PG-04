@@ -16,20 +16,20 @@ text-align: justify;
 const Terms = () => {
     return(
         <StyledContainer>
-            <h2>Términos y condiciones de uso de Canne-Food</h2>
+            <h2>Términos y condiciones de uso de Cane-Food</h2>
             <StyledTextBox>
                 En este documento se describen todos los términos que el Usuario debe cumplir de forma obligatoria para hacer uso del sitio. En caso de no aceptar los términos, el Usuario quedará imposibilitado del uso del mismo. Al aceptar los mismos acepta, asimismo, como inapelables aquellas medidas que la Administración considere pertinentes sobre su comportamiento futuro.
 
                 <br/><br/><strong>01 - Alcance</strong><br/><br/>
-                Los servicios brindados por Canne-Food están únicamente disponibles para personas mayores de 18 (dieciocho) años de edad y/o aquellas tiendas oficiales que acrediten ante la Administración la documentación correspondiente.
+                Los servicios brindados por Cane-Food están únicamente disponibles para personas mayores de 18 (dieciocho) años de edad y/o aquellas tiendas oficiales que acrediten ante la Administración la documentación correspondiente.
 
                 <br/><br/><strong>02 - Registro</strong><br/><br/>
-                El Usuario deberá completar todos los campos requeridos en el formulario de registro con información real y se compromete a actualizar los mismos oportunamente. Canne-Food no se responsabiliza por la certeza de los datos provistos por el Usuario, siendo ésta expresa responsabilidad suya.
+                El Usuario deberá completar todos los campos requeridos en el formulario de registro con información real y se compromete a actualizar los mismos oportunamente. Cane-Food no se responsabiliza por la certeza de los datos provistos por el Usuario, siendo ésta expresa responsabilidad suya.
                 En caso de la inhabilitación del Usuario, se darán de baja todas las publicaciones que el mismo haya realizado.
-                La cuenta de Canne-Food tiene carácter de única e intransferible, por lo que el Usuario podrá poseer únicamente UNA, quedando penada la ruptura de esta norma con la inhabilitación (por tiempo indeterminado) del Usuario.  
+                La cuenta de Cane-Food tiene carácter de única e intransferible, por lo que el Usuario podrá poseer únicamente UNA, quedando penada la ruptura de esta norma con la inhabilitación (por tiempo indeterminado) del Usuario.  
 
                 <br/><br/><strong>03 - Modificaciones del Acuerdo</strong><br/><br/>
-                Canne-Food podrá modificar en cualquier momento el contenido de sus términos y condiciones de uso, quedando exento de cualquier reclamo al respecto y teniendo la obligación de comunicarlo a sus Usuarios a través de los canales de comunicación propios del sitio.
+                Cane-Food podrá modificar en cualquier momento el contenido de sus términos y condiciones de uso, quedando exento de cualquier reclamo al respecto y teniendo la obligación de comunicarlo a sus Usuarios a través de los canales de comunicación propios del sitio.
 
                 <br/><br/><strong>04 - Listado de Bienes</strong><br/><br/>
                 4.1 Utilización de Stripe
@@ -41,13 +41,13 @@ const Terms = () => {
                 4.3 Artículos Prohibidos
                 Sólo podrán ser publicados aquellos productos que no atenten contra la vigencia de las normas dispuestas por el Código Civil y Comercial y la Constitución Nacional de la República Argentina.
                 <br/><br/><strong>05 - Prohibiciones</strong><br/><br/>
-                Los Usuarios no podrán: 1- mantener diálogos por canales ajenos al sitio, de lo contrario se procederá a la inhabilitación de los Usuarios parte y no existirá garantía alguna sobre la transacción en cuestión; 2- dar a conocer sus datos personales o de otros usuarios a través de los canales propios del sitio y sus redes sociales; 3- publicar o vender artículos prohibidos por la sección anterior; 4- insultar, discriminar o agredir a otros Usuarios o Administradores de Canne-Food; 5- publicar artículos repetidos con distintos precios.
+                Los Usuarios no podrán: 1- mantener diálogos por canales ajenos al sitio, de lo contrario se procederá a la inhabilitación de los Usuarios parte y no existirá garantía alguna sobre la transacción en cuestión; 2- dar a conocer sus datos personales o de otros usuarios a través de los canales propios del sitio y sus redes sociales; 3- publicar o vender artículos prohibidos por la sección anterior; 4- insultar, discriminar o agredir a otros Usuarios o Administradores de Cane-Food; 5- publicar artículos repetidos con distintos precios.
 
                 <br/><br/><strong>09 - Sanciones. Suspensión de operaciones</strong><br/><br/>
-                En caso de que se incumpliesen cualquiera de las normas anteriores, Canne-Food estará facultado para proceder con la inhabilitación (por tiempo indeterminado) del Usuario, e iniciar las acciones que considere pertinentes contra el mismo.
+                En caso de que se incumpliesen cualquiera de las normas anteriores, Cane-Food estará facultado para proceder con la inhabilitación (por tiempo indeterminado) del Usuario, e iniciar las acciones que considere pertinentes contra el mismo.
 
                 <br/><br/><strong>10 - Responsabilidad</strong><br/><br/>
-                Canne-Food no se responsabiliza por ningún inconveniente surgido de la compra/venta de los bienes publicados, siendo el sitio únicamente un espacio de encuentro entre compradores y vendedores. Asimismo, el sitio no se hace responsable de los posibles perjuicios a raíz de fallas técnicas o de Internet, siendo estos factores de riesgo a asumir enteramente por los Usuarios, tanto compradores como vendedores.
+                Cane-Food no se responsabiliza por ningún inconveniente surgido de la compra/venta de los bienes publicados, siendo el sitio únicamente un espacio de encuentro entre compradores y vendedores. Asimismo, el sitio no se hace responsable de los posibles perjuicios a raíz de fallas técnicas o de Internet, siendo estos factores de riesgo a asumir enteramente por los Usuarios, tanto compradores como vendedores.
             </StyledTextBox>
         </StyledContainer>
     )

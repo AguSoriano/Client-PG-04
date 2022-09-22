@@ -7,10 +7,21 @@
 .mainProf {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  /* gap: 1rem; */
   /* border: 1px solid grey; */
   width: 40%;
   margin-top: 2rem;
+}
+
+.optionsDiv{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border: 2px solid grey;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
 }
 
 .user {
@@ -37,22 +48,22 @@
   cursor: pointer;
 }
 
-.mainProf > section {
+.optionsDiv > section {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 5rem;
   margin-left: 1rem;
 }
 
-.mainProf > section > div {
+.optionsDiv > section > div {
   display: flex;
   flex-direction: column;
   justify-content: left;
   text-align: left;
 }
 
-.mainProf > section > div > p {
-  font-size: 0.8rem;
+.optionsDiv > section > div > p {
+  font-size: 0.9rem;
 }
 
 .icon {
@@ -68,5 +79,5 @@
   color: black;
   padding-left: 0.1rem;
   padding-right: 0.3rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }

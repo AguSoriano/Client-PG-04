@@ -44,7 +44,7 @@ function UserEdit() {
     return error;
   };
 
-  console.log(validador(input));
+  // console.log(validador(input));
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -59,7 +59,13 @@ function UserEdit() {
     event.preventDefault();
     if (!validador(input)) {
       dispatch(editUserData(id, input));
-      alert(`El usuario ${input.email} ha sido editado correctamente`);
+      swal({
+        title: "Exito",
+        text: `El usuario ${input.email} ha sido editado correctamente`,
+        icon: "success",
+        button: "Aceptar",
+        timer: "2500",
+      });
       navigate(`/admin/users`);
     } else {
       swal("Hubo un problema al editar el perfil, mirar el formulario");
@@ -99,7 +105,7 @@ function UserEdit() {
         >
           <Input
             name="given_name"
-            value={user.given_name}
+            value={input.given_name}
             onChange={(e) => handleInputChange(e)}
             defaultValue={input.given_name}
           />

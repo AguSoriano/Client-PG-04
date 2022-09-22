@@ -33,6 +33,7 @@ function Detail() {
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
   const [buy, setBuy] = useState(false);
+  const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -55,7 +56,6 @@ function Detail() {
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
   );
-  const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
 
   const addFav1 = () => {
     if (prodDetail.name) {
@@ -97,6 +97,8 @@ function Detail() {
       
     }
 
+    // dispatch(addToCart(prodDetail, user));
+
     dispatch(addToCart(data));
 
     swal({
@@ -108,10 +110,13 @@ function Detail() {
     });
   };
 
-
   function change(e) {
     setQuantity(e.target.value);
   }
+
+  const disCart = (data) => {
+    dispatch(addToCart(data));
+  };
 
   return (
     <div>
@@ -167,11 +172,12 @@ function Detail() {
                   </Link>
                 )}
 
-                {!isAuthenticated || !loginUser.email ? (
+                {/* {!isAuthenticated || !loginUser.email ? (
                   <button className={style.button} onClick={() => loginWithRedirect()}>
                     {" "}
                     Agregar al Carro{" "}
                   </button>
+
                 ) : (
                   <button className={style.button} onClick={addCart}>
                     {" "}
@@ -179,6 +185,8 @@ function Detail() {
                   </button>
                 )}
                 </div>
+
+
                 {!isAuthenticated ? (
                   <></>
                 ) : prodIsFav(prodDetail.id) ? (
@@ -191,7 +199,24 @@ function Detail() {
                   </button>
                 )}
               </section>
+
              
+
+
+              <label form="quantity">Cantidad:</label>
+              {!prodDetail.stock > 0 ? (
+                <h2>Sin Stock</h2>
+              ) : (
+                <input
+                  type="number"
+                  name="cantidad"
+                  min="1"
+                  max={prodDetail.stock}
+                  onChange={change}
+                  value={quantity}
+                ></input>
+              )}
+
             </div>
           ) : (
             <Loading />

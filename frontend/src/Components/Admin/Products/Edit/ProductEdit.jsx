@@ -32,7 +32,7 @@ function ProductEdit() {
   );
 
   const validador = (input) => {
-    let error = {};
+    let error;
     if (input.name.search("[0-9]") !== -1) {
       error = "El nombre no acepta números";
     }
@@ -40,9 +40,6 @@ function ProductEdit() {
       error = "el nombre no puede estar vacio";
     }
     if (!input.price) {
-      error = "el nombre no puede estar vacio";
-    }
-    if (!input.stock) {
       error = "el nombre no puede estar vacio";
     }
     if (!input.longDescription) {
@@ -127,13 +124,47 @@ function ProductEdit() {
     }
   };
 
+  const handleStock = (evento) => {
+    setErrors(
+      validador({
+        ...input,
+        stock: evento,
+      })
+    );
+
+    setInput({
+      ...input,
+      stock: evento,
+    });
+  };
+
+  const handlePrice = (evento) => {
+    setErrors(
+      validador({
+        ...input,
+        stock: evento,
+      })
+    );
+
+    setInput({
+      ...input,
+      price: evento,
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!validador(input)) {
       dispatch(editDetail(id, loginUser, input));
-      alert(`El producto ${input.name} ha sido editado correctamente`);
-      navigate(`/products/${id}`);
+      swal({
+        title: "Exito",
+        text: `El producto ${input.name} ha sido editado correctamente`,
+        icon: "success",
+        button: "Aceptar",
+        timer: "2500",
+      });
+      navigate(-1);
     } else {
       swal("Hubo un problema al editar el producto, mirar el formulario");
     }
@@ -226,7 +257,7 @@ function ProductEdit() {
           <InputNumber
             name="stock"
             value={input.stock}
-            onChange={(e) => handleInputChange(e)}
+            onChange={(e) => handleStock(e)}
             defaultValue={input.stock}
           />
         </Form.Item>
@@ -243,7 +274,7 @@ function ProductEdit() {
           <InputNumber
             name="price"
             value={input.price}
-            onChange={(e) => handleInputChange(e)}
+            onChange={(e) => handlePrice(e)}
             defaultValue={input.price}
           />
         </Form.Item>

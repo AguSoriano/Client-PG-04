@@ -6,6 +6,7 @@ import * as ReactRedux from "react-redux";
 import { editCategory } from "../../../../redux/actions/Categories/CategoryAction";
 import { Form, Input, Button } from "antd";
 import { MdArrowBack } from "react-icons/md";
+import swal from "sweetalert";
 
 function CategoryEdit() {
   const dispatch = ReactRedux.useDispatch();
@@ -34,9 +35,14 @@ function CategoryEdit() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //check errors
     dispatch(editCategory(id, loginUser, input));
-    alert("El nombre de la categoria se edito correctamente");
+    swal({
+      title: "Exito",
+      text: `El nombre de la categoria se edito correctamente`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
     setInput({
       name: "",
     });
@@ -81,7 +87,7 @@ function CategoryEdit() {
           }}
           className={style.btn}
         >
-          Crear
+          Editar
         </Button>
       </Form>
     </div>

@@ -45,7 +45,11 @@ import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
 import Newsletter from "./Components/Newsletter/Newsletter";
 import HistoryOrders from "./Components/History Orders/HistoryOrders";
 import OrderDetailUser from "./Components/History Orders/Detail/OrderDetailUser";
-import { addToCart } from "./redux/actions/Cart/CartAction";
+import ToDo from "./Components/Profile/Extras Admin/ToDo";
+import ReportBug from "./Components/Profile/Extras Admin/ReportBug";
+import ContactAdmin from "./Components/Profile/Extras Admin/ContactAdmin";
+import Comments from "./Components/Profile/Extras Admin/Comments";
+import { addToCart, setLogin } from "./redux/actions/Cart/CartAction";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -53,38 +57,51 @@ function App() {
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
-  const { isLogin, setIsLogin } = useState(true)
+
+  const  [isLogin, setIsLogin ] = useState(true)
 
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(getUserLogin(user.email));
+      // console.log("acaestoy")
+      // console.log("LOGIN", isLogin)
+      // console.log("USER", user)
+      // console.log("LOGINUSER", loginUser)
+      // console.log("voy a ejecutar cartLogin")
+      // cartLogin(loginUser);
+      // setIsLogin(false)
     }
     if (!isAuthenticated) {
       dispatch(cleanUserLogin());
+      dispatch(setLogin(true));
     }
   }, [dispatch, isAuthenticated, user]);
 
   // useEffect(()=>{
   //   if (isAuthenticated) {
-  //     if(isLogin){
+  //     console.log("acaestoy")
+
   //       console.log("LOGIN", isLogin)
   //       console.log("voy a ejecutar cartLogin")
   //       cartLogin();
-  //       setIsLogin(false)}}
+  //       setIsLogin(false)}
   // }, [dispatch, isAuthenticated, user])
 
-  // const cartLogin = () => {
+  // const cartLogin =  (loginUser) => {
   //   console.log("estoy en cartLogin")
   //   const items = JSON.parse(window.localStorage.getItem("cartState"));
+  //   console.log("ITEMS", items)
   //   console.log("USER", loginUser)
   //   try {
-  //     return async (dispatch) => {
+  //     return (dispatch) => {
   //       items.cartproduct.map((e) => {
   //         let data = { e, loginUser };
+  //         console.log("cartloginDATA", Data)
   //         dispatch(addToCart(data));
   //       });
   //     };
   //   } catch (error) {
+  //     console.log("soy un error")
   //     console.log(error);
   //   }
   // };
@@ -244,7 +261,7 @@ function App() {
             )
           }
         />
-         <Route
+        <Route
           path="profile/historyorders/detail/:id"
           element={
             !isAuthenticated ? (
@@ -284,6 +301,62 @@ function App() {
               <ErrorRoute />
             ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
               <ProfileAdmin />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="profile/admin/todo"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ToDo />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="profile/admin/reportbug"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ReportBug />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="profile/admin/contactowner"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ContactAdmin />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="profile/admin/comments"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Comments />
             ) : (
               <ErrorRoute />
             )

@@ -4,12 +4,14 @@ import {
   REMOVE_ALL_FROM_CART,
   REMOVE_ONE_FROM_CART,
   CLEAR_CART,
+  SET_LOGIN,
 } from "../actions/Cart/ActionTypes";
 
 const initialState = JSON.parse(
   window.localStorage.getItem("cartState") ||
     JSON.stringify({
       cartproduct: [],
+      cartLoginRed: [],
     })
 );
 
@@ -40,17 +42,24 @@ export default function cartReducer(state = initialState, { type, payload }) {
       };
       break;
     }
-    case CLEAR_CART:{
-      newState ={
+    case CLEAR_CART: {
+      newState = {
         ...state,
         cartproduct: payload,
-      }
+      };
       break;
     }
     case REMOVE_ALL_FROM_CART: {
       newState = {
         ...state,
         cartproduct: payload,
+      };
+      break;
+    }
+    case SET_LOGIN: {
+      newState = {
+        ...state,
+        cartLoginRed: payload,
       };
       break;
     }

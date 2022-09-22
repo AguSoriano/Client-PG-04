@@ -173,7 +173,7 @@ export const doUserById = (id, userLoged) => {
 };
 
 export const editUserData = (id, data) => {
-  return async () => {
+  return async (dispatch) => {
     const userEdited = {
       given_name: data.given_name.toLowerCase(),
       family_name: data.family_name.toLowerCase(),
@@ -186,6 +186,28 @@ export const editUserData = (id, data) => {
         `https://pf-api-04.up.railway.app/user/${id}`,
         userEdited
       );
+      dispatch(getAllUsers());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const editUserData2 = (id, data) => {
+  return async (dispatch) => {
+    const userEdited = {
+      given_name: data.given_name.toLowerCase(),
+      family_name: data.family_name.toLowerCase(),
+      email: data.email,
+      picture: data.picture,
+      nickname: data.nickname.toLowerCase(),
+    };
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/user/${id}`,
+        userEdited
+      );
+      dispatch(getUserLogin(userEdited.email));
     } catch (error) {
       console.log(error);
     }
@@ -210,7 +232,22 @@ export const getUserOrders = (user) => {
             userId: or.userId,
             createdAt: or.createdAt,
             updatedAt: or.updatedAt,
-            products: prods.data,
+            products: await Promise.all(
+              prods.data.map(async (p) => {
+                let prods = await axios.get(
+                  `https://pf-api-04.up.railway.app/products/${p.productId}`
+                );
+                return {
+                  id: p.productId,
+                  name: prods.data.name,
+                  image: prods.data.image ? prods.data.image : "",
+                  quantity: p.quantity,
+                  price: prods.data.price,
+                  stock: prods.data.stock,
+                  status: prods.data.status,
+                };
+              })
+            ),
           };
         })
       );

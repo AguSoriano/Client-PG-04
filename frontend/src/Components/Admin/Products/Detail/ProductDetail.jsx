@@ -17,6 +17,7 @@ import { MdArrowBack, MdOutlineRestoreFromTrash } from "react-icons/md";
 import imgDefault from "../../../Img/Logo1V2.png";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
+import swal from "sweetalert";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -39,12 +40,12 @@ function ProductDetail() {
 
   const deleteProd = () => {
     dispatch(deleteProduct(id, loginUser));
-    alert(`El producto ${prodDetail.name} fue desactivado`);
+    swal(`El producto ${prodDetail.name} fue desactivado`);
     navigate(-1);
   };
   const eneableProd = () => {
     dispatch(eneableProduct(id, loginUser));
-    alert(`El producto ${prodDetail.name} fue restaurado`);
+    swal(`El producto ${prodDetail.name} fue restaurado`);
     navigate(-1);
   };
 

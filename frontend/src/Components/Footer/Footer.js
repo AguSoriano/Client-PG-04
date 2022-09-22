@@ -147,10 +147,10 @@ const Footer = () => {
             <StyledContainer>
                 <FooterRow>
                 <Container maxWidth="sm" className={classes.contenedor}>
-                    <Typography variant="body1">Canne-Food</Typography>
+                    <Typography variant="body1">Cane-Food</Typography>
                     <Copyright />
                     <br></br>
-                    <StyledText href="/newsletter">NEWSLETTER</StyledText>
+                    <StyledText href="/newsletter">BOLETÍN</StyledText>
                 </Container>
                     <FooterColumn>
                     <FooterTitle>Acerca de</FooterTitle>
