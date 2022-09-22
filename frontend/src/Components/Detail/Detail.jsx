@@ -166,24 +166,32 @@ function Detail() {
                     onChange={change}
                     value={quantity}
                     ></input>
+                    
+                  {prodDetail.stock <= 0 ? (
+                  <></>
+                ) 
+                : (
+                   <h3 className={style.stock}>
+                    Stock disponible:{prodDetail.stock} <BsCheck2Circle />
+                  </h3>
+                )}
                     </label>
                 )}
 
-                {/* <h3 className={style.stock}>
+              {/* <h5 className={style.stock}>
                Stock disponible:{prodDetail.stock} <BsCheck2Circle />
-               </h3> */}
+               </h5> */}
 
 
                
                   {/* {prodDetail.stock <= 0 ? (
-                //   <></>
-                // ) 
-                // : (
-                //    <></> 
-                //    <h3 className={style.stock}>
-                //     Stock disponible:{prodDetail.stock} <BsCheck2Circle />
-                //   </h3>
-                // )} */}
+                  <></>
+                ) 
+                : (
+                   <h3 className={style.stock}>
+                    Stock disponible:{prodDetail.stock} <BsCheck2Circle />
+                  </h3>
+                )}  */}
 
                 <Link className={style.link} to={"/home"}>
                   <button className={style.button3}>
@@ -209,20 +217,20 @@ function Detail() {
                 No hay Stock{" "}
                 </button>
                   ) : 
-                  !isAuthenticated || !loginUser.email ? (
-                    <button
-                      className={style.button}
-                      onClick={() => loginWithRedirect()}
-                    >
-                      {" "}
-                      Agregar al Carrito{" "}
-                    </button>
-                  ) : prodDetail.stock <= 0 ? (
-                    <button type="button" className={style.button} disabled="disabled">
-                    {" "}
+                  // !isAuthenticated || !loginUser.email ? (
+                  //   <button
+                  //     className={style.button}
+                  //     onClick={() => loginWithRedirect()}
+                  //   >
+                  //     {" "}
+                  //     Agregar al Carrito{" "}
+                  //   </button>
+                  // ) : prodDetail.stock <= 0 ? (
+                  //   <button type="button" className={style.button} disabled="disabled">
+                  //   {" "}
 
-                    No hay Stock{" "}
-                    </button>):
+                  //   No hay Stock{" "}
+                  //   </button>):
                     (
                       <Link onClick={addCart} to={"/shop"}>
                       <button className={style.button}>
@@ -284,7 +292,7 @@ function Detail() {
             Login
           </button>
         </>
-      ) : null}
+      ) : null} 
 
       <ShowReviews prodDetail={prodDetail} />
     </div>

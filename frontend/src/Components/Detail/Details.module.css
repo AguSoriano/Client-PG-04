@@ -59,14 +59,12 @@
    
 }
 .stock{
-  
-    color:#1CBE60;
-    font-weight: 500;
-    font-size:larger;
-    margin-bottom: -1rem;
-    margin-top: -7rem;
-     display: block;
- }
+    color: #1CBE60;
+    font-weight: 300;
+    font-size: 20px;
+    margin-left: 20rem;
+    display: block;
+}
  .precio{
     color:black;
     font-size:larger;
