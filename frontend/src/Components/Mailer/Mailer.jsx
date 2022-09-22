@@ -17,7 +17,7 @@ export default function Mailer() {
     refreshStock();
   }, [dispatch]);
 
-  
+
   const refreshStock = () => {
     // const items = JSON.parse(window.localStorage.getItem("cartState"));
     cartproduct.map((e) => {
@@ -34,7 +34,7 @@ export default function Mailer() {
   const clearCart = () => {
     dispatch(clearOnlyCart(loginUser));
   };
-  console.log(clearCart());
+  // console.log(clearCart());
   const navigate = useNavigate();
   function sendEmail(e) {
     e.preventDefault();
