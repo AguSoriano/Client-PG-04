@@ -75,11 +75,11 @@ function Users() {
     (state) => state.usersReducer
   );
 
-  const usersWithoutLogin = allUsersOnDb.filter(
-    (us) => us.email !== loginUser.email
+  const usersWithoutLoginOrAdmin = allUsersOnDb.filter(
+    (us) => us.email !== loginUser.email && us.rol !== "mododios"
   );
 
-  const dataSource = usersWithoutLogin.map((us) => {
+  const dataSource = usersWithoutLoginOrAdmin.map((us) => {
     return {
       key: us.id,
       id: us.id,
@@ -277,11 +277,13 @@ function Users() {
               onClick={() => eneableUser(key)}
               className={style.iconE}
             />
-          ) : (
+          ) : loginUser.rol === "mododios" || key.rol === "user" ? (
             <MdOutlinePersonOff
               onClick={() => disableUser(key)}
               className={style.iconD}
             />
+          ) : (
+            <></>
           )}
           {loginUser.rol === "mododios" ? (
             key.rol === "user" ? (

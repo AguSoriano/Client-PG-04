@@ -73,7 +73,7 @@ export const filterBy2 = (category2) => {
 };
 
 export const createProduct = (loginUser, data) => {
-  return async () => {
+  return async (dispatch) => {
     const newProduct = {
       loginUser,
       name: data.name.toLowerCase(),
@@ -87,6 +87,7 @@ export const createProduct = (loginUser, data) => {
     // console.log(newProduct);
     try {
       await axios.post("https://pf-api-04.up.railway.app/products", newProduct);
+      dispatch(getProducts());
     } catch (error) {
       console.log(error);
     }

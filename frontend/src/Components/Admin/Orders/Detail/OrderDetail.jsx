@@ -31,7 +31,12 @@ function OrderDetail() {
     (state) => state.ordersReducer
   );
 
-  const estados = ["procesando", "completada", "rechazada", "entregada"];
+  const color = (p) => {
+    if (p) {
+      return "red";
+    }
+    return "green";
+  };
 
   return (
     <div>
@@ -72,7 +77,7 @@ function OrderDetail() {
                   className={style.linkToDetail}
                 >
                   <Card
-                    title={p.name}
+                    title={p.name.toUpperCase()}
                     bordered={false}
                     style={{
                       width: "350px",
@@ -99,7 +104,9 @@ function OrderDetail() {
                         : `${p.quantity} unidades`}
                     </p>
                     <p>Total: $ {p.price * p.quantity}</p>
-                    <p>{p.status ? "No disponible" : "Disponible"}</p>
+                    <p style={{ color: color(p.status), fontWeight: "bold" }}>
+                      {p.status ? "No disponible" : "Disponible"}
+                    </p>
                   </Card>
                 </Link>
               ))}
