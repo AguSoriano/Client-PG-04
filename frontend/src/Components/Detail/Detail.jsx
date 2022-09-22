@@ -139,13 +139,15 @@ function Detail() {
               </span>
 
               <section>
+
+
                 <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
-                <label className={style.p} form="quantity">
-                  Cantidad:
-                </label>
-                {!prodDetail.stock > 0 ? (
+                {prodDetail.stock <= 0 ? (
+
                   <></>
                 ) : (
+                <label className={style.p} form="quantity">
+                  Cantidad:
                   <input
                     className={style.input}
                     type="number"
@@ -154,15 +156,19 @@ function Detail() {
                     max={prodDetail.stock}
                     onChange={change}
                     value={quantity}
-                  ></input>
+                    ></input>
+                    </label>
                 )}
-                {!prodDetail.stock > 0 ? (
-                  <h2>SIN STOCK</h2>
-                ) : (
-                  <h3 className={style.stock}>
-                    Stock disponible:{prodDetail.stock} <BsCheck2Circle />
-                  </h3>
-                )}
+                {/* {prodDetail.stock <= 0 ? (
+                  <></>
+                ) 
+                : (
+                   <></> 
+                  //  <h3 className={style.stock}>
+                  //   Stock disponible:{prodDetail.stock} <BsCheck2Circle />
+                  // </h3>
+                )} */}
+
                 <Link className={style.link} to={"/home"}>
                   <button className={style.button3}>
                     {" "}
@@ -170,31 +176,51 @@ function Detail() {
                   </button>
                 </Link>
               </section>
+
               <section>
                 <div className={style.context}>
-                  {!isAuthenticated || !loginUser.email || !prodDetail.stock > 0 ? (
+                  {/* {!isAuthenticated || !loginUser.email || !prodDetail.stock > 0 ? (
                     <></>
                   ) : (
                     <Link onClick={addCart} to={"/shop"}>
                       <button className={style.button1}> Comprar </button>
                     </Link>
-                  )}
+                  )} */}
 
-                  {!prodDetail.stock > 0 ? (<></>) : 
+                {prodDetail.stock <= 0 ? (
+                <button type="button" className={style.button} disabled="disabled">
+                {" "}
+                No hay Stock{" "}
+                </button>
+                  ) : 
                   !isAuthenticated || !loginUser.email ? (
                     <button
                       className={style.button}
                       onClick={() => loginWithRedirect()}
                     >
                       {" "}
-                      Agregar al Carro{" "}
+                      Agregar al Carrito{" "}
                     </button>
-                  ) : (
-                    <button className={style.button} onClick={addCart}>
+                  ) : prodDetail.stock <= 0 ? (
+                    <button type="button" className={style.button} disabled="disabled">
+                    {" "}
+
+                    No hay Stock{" "}
+                    </button>):
+                    (
+                      <Link onClick={addCart} to={"/shop"}>
+                      <button className={style.button}>
                       {" "}
-                      Agregar al Carro{" "}
+                      Agregar al Carrito{" "}
                     </button>
-                  )}
+                    </Link>
+                  )} 
+
+               
+                      
+               
+
+
                 </div>
 
                 {!isAuthenticated ? (

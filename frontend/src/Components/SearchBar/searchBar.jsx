@@ -5,10 +5,13 @@ import { getNameProduct } from "../../redux/actions/Products/ProductsAction";
 import { setPageAct } from "../../redux/actions/Page/PageAction";
 import style from "./searchBar.module.css";
 import swal from "sweetalert";
+import { BsSearch } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -23,6 +26,7 @@ function SearchBar() {
       }
     });
     setName("");
+    navigate("/homesearch");
     dispatch(setPageAct(0));
   }
 
@@ -34,13 +38,9 @@ function SearchBar() {
           placeholder="Buscar..."
           onChange={(e) => handleInputChange(e)}
         />
-        <div className={style.btn}>
-          <i
-            class="fas fa-search icon"
-            type="submit"
-            onClick={(e) => handleSubmit(e)}
-          ></i>
-        </div>
+        <button type="submit" className={style.btn}>
+          <BsSearch />
+        </button>
       </form>
     </div>
   );

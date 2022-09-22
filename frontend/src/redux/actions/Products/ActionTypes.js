@@ -4,3 +4,4 @@ export const ORDER_ALPHABETICAL = "ORDER_ALPHABETICAL";
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_BY = "FILTER_BY";
 export const FILTER_BY2 = "FILTER_BY2";
+export const CLEAR_SEARCH = "CLEAR_SEARCH";

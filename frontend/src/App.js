@@ -50,6 +50,8 @@ import ReportBug from "./Components/Profile/Extras Admin/ReportBug";
 import ContactAdmin from "./Components/Profile/Extras Admin/ContactAdmin";
 import Comments from "./Components/Profile/Extras Admin/Comments";
 import { addToCart, setLogin } from "./redux/actions/Cart/CartAction";
+import HomeSearch from "./Components/Home for Search/HomeSearch";
+import HistoryView from "./Components/History View/HistoryView";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -58,7 +60,7 @@ function App() {
     (state) => state.userLoginReducer
   );
 
-  const  [isLogin, setIsLogin ] = useState(true)
+  const [isLogin, setIsLogin] = useState(true);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -151,6 +153,48 @@ function App() {
           }
         />
         <Route
+          path="homesearch"
+          element={
+            !isAuthenticated ? (
+              <HomeSearch />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Navigate to="/admin" />
+            ) : !loginUser.isDisable ? (
+              <HomeSearch />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="profile/favorite"
+          element={
+            !isAuthenticated ? (
+              <Favorite />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Navigate to="/admin" />
+            ) : !loginUser.isDisable ? (
+              <Favorite />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="history"
+          element={
+            !isAuthenticated ? (
+              <HistoryView />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Navigate to="/admin" />
+            ) : !loginUser.isDisable ? (
+              <HistoryView />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
           path="shop"
           element={
             !isAuthenticated ? (
@@ -232,18 +276,6 @@ function App() {
               <Navigate to="/" />
             ) : !loginUser.isDisable ? (
               <Cards />
-            ) : (
-              <Navigate to="/userdisable" />
-            )
-          }
-        />
-        <Route
-          path="profile/favorite"
-          element={
-            !isAuthenticated ? (
-              <Navigate to="/" />
-            ) : !loginUser.isDisable ? (
-              <Favorite />
             ) : (
               <Navigate to="/userdisable" />
             )
