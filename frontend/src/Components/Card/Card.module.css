@@ -1,0 +1,24 @@
+.mainCard{
+  position: relative;
+  /* border: 1px solid black; */
+}
+
+.b{
+  display: none ;
+  border: none;
+  background: none;
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  right: 5px;
+  top: 5px;
+  z-index: 2;
+}
+
+.mainCard:hover > .b{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+}

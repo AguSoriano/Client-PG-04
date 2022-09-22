@@ -28,7 +28,7 @@ function Home() {
   const { weekProd } = ReactRedux.useSelector((state) => state.weekProdReducer);
   const { page } = ReactRedux.useSelector((state) => state.pageReducer);
 
-  const prodPage = product.filter((p) => p.stock > 0).slice(page, page + 6);
+  const prodPage = product.filter((p) => !p.status).slice(page, page + 6);
 
   return (
     <div className={style.main}>
@@ -47,16 +47,18 @@ function Home() {
         <h1 className={style.Text}>DESTACADO DE LA SEMANA</h1>
         <div className={style.weekProd}>
           {weekProd.length > 1 ? (
-            weekProd.map((prod) => (
-              <Link
-                to={`/products/${prod.id}`}
-                key={prod.id}
-                className={style.weekCard}
-              >
-                <img src={prod.image} alt={prod.name} />
-                <p>${prod.price}</p>
-              </Link>
-            ))
+            weekProd
+              .filter((p) => !p.status)
+              .map((prod) => (
+                <Link
+                  to={`/products/${prod.id}`}
+                  key={prod.id}
+                  className={style.weekCard}
+                >
+                  <img src={prod.image} alt={prod.name} />
+                  <p>${prod.price}</p>
+                </Link>
+              ))
           ) : (
             <Loading />
           )}
@@ -77,6 +79,7 @@ function Home() {
                 shortDesc={prod.shortDescription}
                 widthCard={375}
                 heightCard={450}
+                prodDetail={prod}
               />
             ))
           ) : (
