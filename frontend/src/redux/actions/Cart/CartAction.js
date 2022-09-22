@@ -9,20 +9,21 @@ import {
   REMOVE_ALL_FROM_CART,
   REMOVE_ONE_FROM_CART,
   CLEAR_CART,
+  SET_LOGIN,
 } from "./ActionTypes";
 
 export const addToCart = (data) => {
-  console.log("dataDispatcj", data)
+  console.log("dataDispatcj", data);
   return async (dispatch) => {
-
     try {
-        console.log("dataDispatcj11", data)
-      if(data.loginUser.id){
-      await axios.post(
-        `https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`,
-        data
-      );
-    }
+      console.log("dataDispatcj11", data);
+      if (data.loginUser.id) {
+        console.log("ENTRODISPATCH", data);
+        await axios.post(
+          `https://pf-api-04.up.railway.app/user/${data.loginUser.id}/cart`,
+          data
+        );
+      }
       return dispatch({
         type: ADD_TO_CART,
         payload: data,
@@ -270,5 +271,12 @@ export const filterOrderBy = (status) => {
   return {
     type: FILTER_ORDER_BY,
     payload: status,
+  };
+};
+
+export const setLogin = (data) => {
+  return {
+    type: SET_LOGIN,
+    payload: data,
   };
 };
