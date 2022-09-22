@@ -9,6 +9,17 @@
   justify-content: center;
 }
 
+.dataSect {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 40%;
+  /* align-items: center;
+  justify-content: center; */
+  border: 2px solid grey;
+  border-radius: 1rem;
+}
+
 .titleDiv {
   display: flex;
   gap: 5rem;
@@ -19,7 +30,7 @@
   text-align: center;
 }
 
-.linkEdit{
+.linkEdit {
   width: 3rem;
   height: 3rem;
   color: black;
@@ -30,28 +41,27 @@
   font-size: 2.5rem;
 }
 
-.mainData > section {
+.dataSect > section {
   display: flex;
   align-items: center;
-  gap: 5rem;
+  gap: 6rem;
   margin-top: 2rem;
   width: 100%;
-  justify-content: center;
+  margin-left: 20%;
 }
 
-.mainData > section > div {
+.dataSect > section > div {
   display: flex;
   flex-direction: column;
   justify-content: left;
   text-align: left;
-  width: 15%;
 }
 
-.mainData > section > div > p {
+.dataSect > section > div > p {
   font-size: 1rem;
 }
 
-.mainData > section > div > h3 {
+.dataSect > section > div > h3 {
   font-size: 1.7rem;
 }
 

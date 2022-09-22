@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getProducts } from "../Products/ProductsAction";
 import { CLEAN_DETAIL, GET_DETAIL } from "./ActionTypes";
 
 export const getDetail = (id) => {
@@ -26,7 +27,7 @@ export const cleanDetail = () => {
 };
 
 export const editDetail = (id, loginUser, data) => {
-  return async () => {
+  return async (dispatch) => {
     const prodEdited = {
       loginUser,
       name: data.name.toLowerCase(),
@@ -43,6 +44,7 @@ export const editDetail = (id, loginUser, data) => {
         `https://pf-api-04.up.railway.app/products/${id}`,
         prodEdited
       );
+      dispatch(getProducts())
     } catch (error) {
       console.log(error);
     }

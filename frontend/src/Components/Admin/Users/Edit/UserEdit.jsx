@@ -44,7 +44,7 @@ function UserEdit() {
     return error;
   };
 
-  console.log(validador(input));
+  // console.log(validador(input));
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -105,7 +105,7 @@ function UserEdit() {
         >
           <Input
             name="given_name"
-            value={user.given_name}
+            value={input.given_name}
             onChange={(e) => handleInputChange(e)}
             defaultValue={input.given_name}
           />

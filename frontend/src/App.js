@@ -46,6 +46,10 @@ import Newsletter from "./Components/Newsletter/Newsletter";
 import HistoryOrders from "./Components/History Orders/HistoryOrders";
 import OrderDetailUser from "./Components/History Orders/Detail/OrderDetailUser";
 import { addToCart } from "./redux/actions/Cart/CartAction";
+import ToDo from "./Components/Profile/Extras Admin/ToDo";
+import ReportBug from "./Components/Profile/Extras Admin/ReportBug";
+import ContactAdmin from "./Components/Profile/Extras Admin/ContactAdmin";
+import Comments from "./Components/Profile/Extras Admin/Comments";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -53,7 +57,7 @@ function App() {
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
-  const { isLogin, setIsLogin } = useState(true)
+  const { isLogin, setIsLogin } = useState(true);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -244,7 +248,7 @@ function App() {
             )
           }
         />
-         <Route
+        <Route
           path="profile/historyorders/detail/:id"
           element={
             !isAuthenticated ? (
@@ -284,6 +288,62 @@ function App() {
               <ErrorRoute />
             ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
               <ProfileAdmin />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="profile/admin/todo"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ToDo />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="profile/admin/reportbug"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ReportBug />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="profile/admin/contactowner"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <ContactAdmin />
+            ) : (
+              <ErrorRoute />
+            )
+          }
+        />
+        <Route
+          path="profile/admin/comments"
+          element={
+            !isAuthenticated ? (
+              <ErrorRoute />
+            ) : loginUser.isDisable ? (
+              <ErrorRoute />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Comments />
             ) : (
               <ErrorRoute />
             )
