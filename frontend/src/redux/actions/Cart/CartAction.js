@@ -288,7 +288,7 @@ export const editStock = (stock, id) => {
       stock,
       id
     };
-    // console.log(data)
+    console.log("dataSTOCKKK",data)
     try {
       await axios.put(
         `https://pf-api-04.up.railway.app/payment/prod`,
