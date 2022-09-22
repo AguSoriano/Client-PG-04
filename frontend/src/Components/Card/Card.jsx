@@ -64,7 +64,7 @@ function CardP({
         <Card
           hoverable
           style={{ width: widthCard, height: heightCard }}
-          cover={<img alt={name} src={img ? img : imgFake} />}
+          cover={<img alt={name} src={img ? img : imgFake} style={{width: widthCard, height: '255px'}}/>}
         >
           <Meta
             title={newP}
