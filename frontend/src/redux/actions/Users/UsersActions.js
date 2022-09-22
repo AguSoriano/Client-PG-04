@@ -193,6 +193,27 @@ export const editUserData = (id, data) => {
   };
 };
 
+export const editUserData2 = (id, data) => {
+  return async (dispatch) => {
+    const userEdited = {
+      given_name: data.given_name.toLowerCase(),
+      family_name: data.family_name.toLowerCase(),
+      email: data.email,
+      picture: data.picture,
+      nickname: data.nickname.toLowerCase(),
+    };
+    try {
+      await axios.put(
+        `https://pf-api-04.up.railway.app/user/${id}`,
+        userEdited
+      );
+      dispatch(getUserLogin(userEdited.email));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const getUserOrders = (user) => {
   return async (dispatch) => {
     try {
