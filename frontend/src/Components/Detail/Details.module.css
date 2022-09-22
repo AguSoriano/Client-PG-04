@@ -64,8 +64,8 @@
     font-weight: 500;
     font-size:larger;
     margin-bottom: -1rem;
-    margin-top: 1rem;
-     position: relative;
+    margin-top: -3.5rem;
+     display: block;
  }
  .precio{
     color:black;
@@ -79,7 +79,10 @@
    background-color: #FAFBFC;
    border-radius: 10px;
    align-items: inherit;
-   position: relative;
+   position:relative;
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+   align-items: center;
 
  }
 
@@ -112,6 +115,8 @@
   
    
    .button1 {
+    align-items: center;
+    justify-items: center;
     margin-bottom: 1rem;
     background-color: #FAFBFC;
     position:absolute;
@@ -161,7 +166,9 @@
    .button1:-webkit-details-marker {
     display: none;
    }
-   .button1 {
+   .button1 { 
+    align-items: center;
+    justify-items: center;
     appearance: none;
     position:relative;
     margin-left: 35rem;
@@ -202,8 +209,7 @@
    }
 
    .button3 {
-    align-items: center;
-    -webkit-appearance: none;
+    align-items: center; 
     appearance: none;
     background-color: #fafbfc;
     border: 1.5px solid #f39c12;

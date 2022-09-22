@@ -139,8 +139,11 @@ function Detail() {
               </span>
 
               <section>
+
+
                 <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
                 {prodDetail.stock <= 0 ? (
+
                   <></>
                 ) : (
                 <label className={style.p} form="quantity">
@@ -201,6 +204,7 @@ function Detail() {
                   ) : prodDetail.stock <= 0 ? (
                     <button type="button" className={style.button} disabled="disabled">
                     {" "}
+
                     No hay Stock{" "}
                     </button>):
                     (
@@ -215,6 +219,7 @@ function Detail() {
                
                       
                
+
 
                 </div>
 
