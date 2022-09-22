@@ -10,7 +10,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function Data() {
   const { user } = useAuth0();
-  const { loginUser } = ReactRedux.useSelector((state) => state.userLoginReducer);
+  const { loginUser } = ReactRedux.useSelector(
+    (state) => state.userLoginReducer
+  );
   return (
     <div className={style.mainData}>
       <div className={style.titleDiv}>
@@ -19,45 +21,47 @@ function Data() {
           <FaUserEdit className={style.linkEdit} />
         </Link>
       </div>
-      <section>
-        <RiFileUserLine className={style.icon} />
-        <div>
-          <h3>Usuario</h3>
-          <p>{loginUser.nickname}</p>
-        </div>
-      </section>
-      <section>
-        <FaRegUser className={style.icon} />
-        <div>
-          <h3>Nombre</h3>
-          <p className={style.personalData}>
-            {loginUser.given_name ? loginUser.given_name : "Incompleto"}
-          </p>
-        </div>
-      </section>
-      <section>
-        <FaRegUser className={style.icon} />
-        <div>
-          <h3>Apellido</h3>
-          <p className={style.personalData}>
-            {loginUser.family_name ? loginUser.family_name : "Incompleto"}
-          </p>
-        </div>
-      </section>
-      <section>
-        <MdAlternateEmail className={style.icon} />
-        <div>
-          <h3>Email</h3>
-          <p>{loginUser.email}</p>
-        </div>
-      </section>
-      <section>
-        <MdOutlinePlaylistAddCheck className={style.icon} />
-        <div>
-          <h3>Email Verificado</h3>
-          <p>{user.email_verified ? "Si" : "No"}</p>
-        </div>
-      </section>
+      <div className={style.dataSect}>
+        <section>
+          <RiFileUserLine className={style.icon} />
+          <div>
+            <h3>Usuario</h3>
+            <p>{loginUser.nickname}</p>
+          </div>
+        </section>
+        <section>
+          <FaRegUser className={style.icon} />
+          <div>
+            <h3>Nombre</h3>
+            <p className={style.personalData}>
+              {loginUser.given_name ? loginUser.given_name : "Incompleto"}
+            </p>
+          </div>
+        </section>
+        <section>
+          <FaRegUser className={style.icon} />
+          <div>
+            <h3>Apellido</h3>
+            <p className={style.personalData}>
+              {loginUser.family_name ? loginUser.family_name : "Incompleto"}
+            </p>
+          </div>
+        </section>
+        <section>
+          <MdAlternateEmail className={style.icon} />
+          <div>
+            <h3>Email</h3>
+            <p>{loginUser.email}</p>
+          </div>
+        </section>
+        <section>
+          <MdOutlinePlaylistAddCheck className={style.icon} />
+          <div>
+            <h3>Email Verificado</h3>
+            <p>{user.email_verified ? "Si" : "No"}</p>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

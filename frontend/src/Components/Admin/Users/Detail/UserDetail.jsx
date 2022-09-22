@@ -21,6 +21,7 @@ import { BsPersonCheck } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 import { Card } from "antd";
 import style from "./UserDetail.module.css";
+import swal from "sweetalert";
 
 function UserDetail() {
   const { id } = useParams();
@@ -43,25 +44,37 @@ function UserDetail() {
 
   const disableUser = () => {
     dispatch(disableUserById(id, loginUser, true));
-    alert(`El usuario ${oneUserDetail.email} fue desabilitado`);
+    swal(`El usuario ${oneUserDetail.email} fue desabilitado`);
     navigate(-1);
   };
 
   const eneableUser = () => {
     dispatch(eneableUserById(id, loginUser, false));
-    alert(`El usuario ${oneUserDetail.email} fue habilitado`);
+    swal({
+      title: "Exito",
+      text: `El usuario ${oneUserDetail.email} fue habilitado`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
     navigate(-1);
   };
 
   const doAdmin = () => {
     dispatch(doAdminUserById(id, loginUser));
-    alert(`El usuario ${oneUserDetail.email} ahora es administrador`);
+    swal({
+      title: "Exito",
+      text: `El usuario ${oneUserDetail.email} ahora es administrador`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
     navigate(-1);
   };
 
   const doUser = () => {
     dispatch(doUserById(id, loginUser));
-    alert(
+    swal(
       `El usuario ${oneUserDetail.email} ya no es administrador y volvio a ser un usuario`
     );
     navigate(-1);

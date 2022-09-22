@@ -40,7 +40,7 @@ export const cleanCatDetail = () => {
 };
 
 export const createCategory = (data, loginUser) => {
-  return async () => {
+  return async (dispatch) => {
     const newCategory = {
       loginUser,
       name: data.name.toLowerCase(),
@@ -50,6 +50,7 @@ export const createCategory = (data, loginUser) => {
         "https://pf-api-04.up.railway.app/category",
         newCategory
       );
+      dispatch(getCategories());
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +58,7 @@ export const createCategory = (data, loginUser) => {
 };
 
 export const editCategory = (id, loginUser, data) => {
-  return async () => {
+  return async (dispatch) => {
     const categoryEdited = {
       loginUser,
       name: data.name.toLowerCase(),
@@ -67,6 +68,7 @@ export const editCategory = (id, loginUser, data) => {
         `https://pf-api-04.up.railway.app/category/${id}`,
         categoryEdited
       );
+      dispatch(getCategories());
     } catch (error) {
       console.log(error);
     }

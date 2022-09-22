@@ -16,6 +16,7 @@ import { MdArrowBack, MdOutlineRestoreFromTrash } from "react-icons/md";
 import { CgMoreR } from "react-icons/cg";
 import { TiEdit } from "react-icons/ti";
 import { RiDeleteBinLine } from "react-icons/ri";
+import swal from "sweetalert";
 
 function Categories() {
   const dispatch = ReactRedux.useDispatch();
@@ -31,11 +32,23 @@ function Categories() {
 
   const disableCat = (key) => {
     dispatch(disableCategory(key.id, loginUser));
-    alert(`La categoria ${key.name} se deshabilito`);
+    swal({
+      title: "Exito",
+      text: `La categoria ${key.name} se deshabilito`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
   };
   const enableCat = (key) => {
     dispatch(enableCategory(key.id, loginUser));
-    alert(`La categoria ${key.name} se restauro`);
+    swal({
+      title: "Exito",
+      text: `La categoria ${key.name} se restauro`,
+      icon: "success",
+      button: "Aceptar",
+      timer: "2500",
+    });
   };
 
   const { categories } = ReactRedux.useSelector(

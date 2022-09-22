@@ -7,3 +7,4 @@ export const GET_ORDER_DETAIL = "GET_ORDER_DETAIL";
 export const CLEAN_ORDER_DETAIL = "CLEAN_ORDER_DETAIL";
 export const FILTER_ORDER_BY = "FILTER_ORDER_BY";
 export const CLEAR_CART = "CLEAR_CART";
+export const SET_LOGIN = "SET_LOGIN"

@@ -27,7 +27,7 @@ function ProductCreate() {
   );
 
   const validador = (input) => {
-    let error = {};
+    let error;
     if (input.name.search("[0-9]") !== -1) {
       error = "El nombre no acepta números";
     }
@@ -91,6 +91,34 @@ function ProductCreate() {
     });
   };
 
+  const handleStock = (evento) => {
+    setErrors(
+      validador({
+        ...input,
+        stock: evento,
+      })
+    );
+
+    setInput({
+      ...input,
+      stock: evento,
+    });
+  };
+
+  const handlePrice = (evento) => {
+    setErrors(
+      validador({
+        ...input,
+        stock: evento,
+      })
+    );
+
+    setInput({
+      ...input,
+      price: evento,
+    });
+  };
+
   const quitar = (e) => {
     e.preventDefault();
     setInput({
@@ -126,7 +154,13 @@ function ProductCreate() {
 
     if (!validador(input)) {
       dispatch(createProduct(loginUser, input));
-      alert(`El producto ${input.name} se creo correctamente`);
+      swal({
+        title: "Exito",
+        text: `El producto ${input.name} se creo correctamente`,
+        icon: "success",
+        button: "Aceptar",
+        timer: "2500",
+      });
       setInput({
         name: "",
         image: "",
@@ -136,6 +170,7 @@ function ProductCreate() {
         price: 0,
         category: [],
       });
+      navigate(-1);
     } else {
       swal("Hubo un problema al crear el producto, revisa el formulario");
     }
@@ -223,11 +258,7 @@ function ProductCreate() {
             },
           ]}
         >
-          <InputNumber
-            name="stock"
-            value={input.stock}
-            onChange={(e) => handleInputChange(e)}
-          />
+          <InputNumber value={input.stock} onChange={(e) => handleStock(e)} />
         </Form.Item>
         <Form.Item
           label="Precio"
@@ -239,11 +270,7 @@ function ProductCreate() {
             },
           ]}
         >
-          <InputNumber
-            name="price"
-            value={input.price}
-            onChange={(e) => handleInputChange(e)}
-          />
+          <InputNumber value={input.price} onChange={(e) => handlePrice(e)} />
         </Form.Item>
         <Form.Item
           label="Categorias"
