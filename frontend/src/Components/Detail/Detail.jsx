@@ -142,6 +142,9 @@ function Detail() {
               <section>
               <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
               <label className={style.p} form="quantity">Cantidad:</label>
+              {!prodDetail.stock > 0 ? (
+                <h2>Sin Stock</h2>
+              ) : (
               <input
               className={style.input}
                 type="number"
@@ -151,6 +154,7 @@ function Detail() {
                 onChange={change}
                 value={quantity}
               ></input>
+              )}
                 <h3 className={style.stock}>
                   Stock disponible:{prodDetail.stock} <BsCheck2Circle/>
 
@@ -172,18 +176,12 @@ function Detail() {
                   </Link>
                 )}
 
-                
-                  <button className={style.button} onClick={() => loginWithRedirect()}>
-                    {" "}
-                    Agregar al Carro{" "}
-                  </button>
-                
-             
+            
                   <button className={style.button} onClick={addCart}>
                     {" "}
                     Agregar al Carro{" "}
                   </button>
-                
+          
                 </div>
       
 
@@ -202,20 +200,6 @@ function Detail() {
 
              
 
-
-              <label form="quantity">Cantidad:</label>
-              {!prodDetail.stock > 0 ? (
-                <h2>Sin Stock</h2>
-              ) : (
-                <input
-                  type="number"
-                  name="cantidad"
-                  min="1"
-                  max={prodDetail.stock}
-                  onChange={change}
-                  value={quantity}
-                ></input>
-              )}
 
             </div>
           ) : (
