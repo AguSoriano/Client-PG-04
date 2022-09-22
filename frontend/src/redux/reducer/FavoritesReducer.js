@@ -1,9 +1,15 @@
-import { ADD_FAV, REMOVE_FAV } from "../actions/Favorites/ActionTypes";
+import {
+  ADD_FAV,
+  ADD_HISTORY,
+  CLEAR_HIST,
+  REMOVE_FAV,
+} from "../actions/Favorites/ActionTypes";
 
 const initialState = JSON.parse(
   window.localStorage.getItem("favoriteState") ||
     JSON.stringify({
       favorites: [],
+      history: [],
     })
 );
 
@@ -31,6 +37,15 @@ export default function favoriteReducer(
       };
       break;
     }
+
+    case ADD_HISTORY: {
+      newState = {
+        ...state,
+        history: [...state.history, payload],
+      };
+      break;
+    }
+   
     default:
       newState = state;
   }
