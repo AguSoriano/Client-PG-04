@@ -6,7 +6,7 @@ import { Avatar, List } from "antd";
 import defaultCane from "../Img/Logo1V2.png";
 import style from "./HistoryOrders.module.css";
 import { MdArrowBack } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function HistoryOrders() {
   const dispatch = ReactRedux.useDispatch();
@@ -50,10 +50,10 @@ function HistoryOrders() {
                   />
                 }
                 title={
-                  <a href={`/profile/historyorders/detail/${item.id}`}>
+                  <Link to={`/profile/historyorders/detail/${item.id}`}>
                     {item.createdAt.slice(8, 10)}/{item.createdAt.slice(5, 7)}/
                     {item.createdAt.slice(0, 4)}
-                  </a>
+                  </Link>
                 }
                 description={`Estado: ${
                   item.status
