@@ -106,7 +106,7 @@ function Detail() {
       text: `${prodDetail.name} agregado al carrito`,
       icon: "success",
       button: "Aceptar",
-      timer: "2500",
+      timer: "2600",
     });
   };
 
