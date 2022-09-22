@@ -281,7 +281,7 @@ export const setLogin = (data) => {
   };
 };
 
-export const editStock = () => {
+export const editStock = (data) => {
   return async () => {
     console.log("dataSTOCKK", data);
     try {
