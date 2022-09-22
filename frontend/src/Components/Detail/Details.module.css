@@ -60,14 +60,23 @@
      color:#1CBE60;
      font-weight: 500;
      font-size:larger;
-     margin-bottom: 3rem;
-     margin-top: 5rem;
+     margin-bottom: 2rem;
+     margin-top: 1rem;
+     position: relative;
  }
  .precio{
     color:black;
     font-size:larger;
     margin-left: 33rem;
     margin-bottom: 5rem;
+ }
+ .input{
+    width: 6rem;
+   background-color: #FAFBFC;
+   border-radius: 10px;
+   align-items: inherit;
+   position: relative;
+
  }
 
 
@@ -76,65 +85,41 @@
 
 
 .button {
-    appearance: none;
+    
     background-color: #FAFBFC;
-    border: 0.5px solid #E74C3C (27, 31, 35, 0.15);
+    border: 0.2px solid #E74C3C (27, 31, 35, 0.15);
     border-radius: 6px;
-    box-shadow: #E74C3C (27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    margin-inline: 0.5rem;
+   
     color: #E74C3C ;
     cursor: pointer;
-    display: inline-block;
+    display: inline;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-size: 14px;
+    width: 12rem;
     font-weight: 500;
-    line-height: 20px;
-    list-style: none;
+   
+   
     padding: 6px 16px;
     position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
+    
    }
    
    button:hover {
     background-color: #F3F4F6;
     text-decoration: none;
-    transition-duration: 0.1s;
+    transition-duration: 0.5s;
    }
    
-   button:disabled {
-    background-color: #FAFBFC;
-    border-color: rgba(27, 31, 35, 0.15);
-    color: #959DA5;
-    cursor: default;
-   }
    
-   button:active {
-    background-color: #EDEFF2;
-    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-    transition: none 0s;
-   }
    
-   button:focus {
-    outline: 1px transparent;
-   }
    
-   button:before {
-    display: none;
-   }
-   
-   button:-webkit-details-marker {
-    display: none;
-   }
    .button1 {
-    appearance: none;
+    
     background-color: #FAFBFC;
-    border: 1px solid #1E8449(27, 31, 35, 0.15);
+    position:absolute;
     border-radius: 6px;
     box-shadow: #1E8449(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
     box-sizing: border-box;
@@ -147,15 +132,9 @@
     line-height: 20px;
     list-style: none;
     padding: 6px 16px;
+    width: 12rem;
     position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
-    position: relative;
+   
     
    }
    
@@ -191,6 +170,7 @@
    }
    .button1 {
     appearance: none;
+    position:absolute;
     background-color: #FAFBFC;
     border: 1px solid #000000(27, 31, 35, 0.15);
     border-radius: 6px;
@@ -206,14 +186,7 @@
     list-style: none;
     padding: 6px 16px;
     position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
-    position: relative;
+    
     
    }
    
@@ -223,36 +196,60 @@
     transition-duration: 0.1s;
    }
    
-   .button2:disabled {
-    background-color: #FAFBFC;
-    border-color: rgba(27, 31, 35, 0.15);
-    color: #959DA5;
-    cursor: default;
-   }
    
-   .button2:active {
-    background-color: #EDEFF2;
-    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-    transition: none 0s;
-   }
-   
-   .button2:focus {
-    outline: 1px transparent;
-   }
-   
-   .button2:before {
-    display: none;
-   }
-   
-   .button2:-webkit-details-marker {
-    display: none;
-   } 
-
    .b{
     background-color: transparent;
     border: none;
     cursor: pointer;
+    float:right;
+    margin-top: -3.5rem;
+    margin-right: 4rem;
    }
+
+   .button3 {
+   display: flexbox;
+
+    margin-right: -30rem;
+    text-decoration: none;
+    width: 15rem;
+    margin-bottom:1rem;
+    margin-top: -4rem;
+    
+    appearance: none;
+    background-color: #FAFBFC;
+    border: #F39C12 1.5px solid;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+   
+
+    margin-left: -30rem;
+
+
+}
+
+.link {
+    text-decoration: none;
+    color: #000000;
+
+}
+
+.link:hover {
+    color: #000000;
+}
+
+.button3:hover {
+    background-color: #F8F9F9;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
 
    /* payment */
 

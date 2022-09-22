@@ -23,6 +23,7 @@ import { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import ShowReviews from "../Reviews/ShowReviews";
 import { BsCheck2Circle} from "react-icons/bs";
+import { BsArrowReturnLeft } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
@@ -92,9 +93,9 @@ function Detail() {
         icon: "error",
         button: "Aceptar",
         timer: "2500",
-      });
+      })
+      
     }
-    // dispatch(addToCart(prodDetail, user));
 
     dispatch(addToCart(data));
 
@@ -135,19 +136,24 @@ function Detail() {
 
               <section>
               <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
-                <h3 className={style.stock}>
-                  Stock disponible. <BsCheck2Circle/>
-
-                </h3>
-                <label form="quantity">Cantidad:</label>
+              <label className={style.p} form="quantity">Cantidad:</label>
               <input
+              className={style.input}
                 type="number"
                 name="cantidad"
                 min="1"
-                max="50"
+                max={prodDetail.stock}
                 onChange={change}
                 value={quantity}
               ></input>
+                <h3 className={style.stock}>
+                  Stock disponible:{prodDetail.stock} <BsCheck2Circle/>
+
+                </h3>
+                <Link   className={style.link} to={"/home"}>
+              <button className={style.button3}>  <BsArrowReturnLeft/> TIENDA</button>
+              </Link>
+                
               </section>
               <section>
                 
