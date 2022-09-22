@@ -22,6 +22,9 @@ import PaymentCreate from "../PayMents/PaymentCreate/PaymentCreate";
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import ShowReviews from "../Reviews/ShowReviews";
+import { BsCheck2Circle} from "react-icons/bs";
+import { BsArrowReturnLeft } from "react-icons/bs";
+
 import { Link } from "react-router-dom";
 
 function Detail() {
@@ -90,9 +93,12 @@ function Detail() {
         icon: "error",
         button: "Aceptar",
         timer: "2500",
-      });
+      })
+      
     }
+
     // dispatch(addToCart(prodDetail, user));
+
     dispatch(addToCart(data));
 
     swal({
@@ -113,7 +119,7 @@ function Detail() {
   };
 
   return (
-    <div className={style.container}>
+    <div>
       {buy === false && (
         <div className={style.div}>
           {prodDetail.name ? (
@@ -134,16 +140,33 @@ function Detail() {
               </span>
 
               <section>
+              <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
+              <label className={style.p} form="quantity">Cantidad:</label>
+              <input
+              className={style.input}
+                type="number"
+                name="cantidad"
+                min="1"
+                max={prodDetail.stock}
+                onChange={change}
+                value={quantity}
+              ></input>
                 <h3 className={style.stock}>
-                  Stock disponible:{prodDetail.stock} unidades
+                  Stock disponible:{prodDetail.stock} <BsCheck2Circle/>
+
                 </h3>
+                <Link   className={style.link} to={"/home"}>
+              <button className={style.button3}>  <BsArrowReturnLeft/> TIENDA</button>
+              </Link>
+                
               </section>
               <section>
-                <h3 className={style.precio}>Precio: ${prodDetail.price}</h3>
-
+                
+                  <div className={style.context}>
                 {!isAuthenticated || !loginUser.email ? (
                   <></>
                 ) : (
+
                   <Link onClick={addCart} to={"/shop"}>
                     <button className={style.button1}> Comprar </button>
                   </Link>
@@ -154,12 +177,16 @@ function Detail() {
                     {" "}
                     Agregar al Carro{" "}
                   </button>
-                ) : ( */}
-                <button className={style.button} onClick={addCart}>
-                  {" "}
-                  Agregar al Carro{" "}
-                </button>
-                {/* )} */}
+
+                ) : (
+                  <button className={style.button} onClick={addCart}>
+                    {" "}
+                    Agregar al Carro{" "}
+                  </button>
+                )}
+                </div>
+
+
                 {!isAuthenticated ? (
                   <></>
                 ) : prodIsFav(prodDetail.id) ? (
@@ -172,6 +199,9 @@ function Detail() {
                   </button>
                 )}
               </section>
+
+             
+
 
               <label form="quantity">Cantidad:</label>
               {!prodDetail.stock > 0 ? (
@@ -186,6 +216,7 @@ function Detail() {
                   value={quantity}
                 ></input>
               )}
+
             </div>
           ) : (
             <Loading />

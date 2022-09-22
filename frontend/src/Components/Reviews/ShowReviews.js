@@ -152,7 +152,7 @@ export default function ShowReviews(prodDetailReviews) {
         })}
       {isAuthenticated 
       ? <div>
-      <h5 >Cu&aacute;ntas estrellas merece nuestro producto: <strong>{prodDetail.name}</strong> </h5>
+      <h5 >¿Cu&aacute;ntas estrellas crees que merece nuestro producto?: <strong>{prodDetail.name}</strong> </h5>
       <div className={style.stars}>
         {stars.map((_, index) => {
           return (
