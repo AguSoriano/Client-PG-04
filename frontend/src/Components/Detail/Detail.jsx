@@ -172,15 +172,20 @@ function Detail() {
                   </button>
                 )}
               </section>
+
               <label form="quantity">Cantidad:</label>
-              <input
-                type="number"
-                name="cantidad"
-                min="1"
-                max={prodDetail.stock}
-                onChange={change}
-                value={quantity}
-              ></input>
+              {!prodDetail.stock > 0 ? (
+                <h2>Sin Stock</h2>
+              ) : (
+                <input
+                  type="number"
+                  name="cantidad"
+                  min="1"
+                  max={prodDetail.stock}
+                  onChange={change}
+                  value={quantity}
+                ></input>
+              )}
             </div>
           ) : (
             <Loading />
