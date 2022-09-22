@@ -61,7 +61,7 @@ function EditData() {
         button: "Aceptar",
         timer: "2500",
       });
-      navigate(`/admin/users`);
+      navigate(-1);
     } else {
       swal("Hubo un problema al editar el perfil, mirar el formulario");
     }
