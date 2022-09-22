@@ -176,12 +176,22 @@ function Detail() {
                   </Link>
                 )}
 
-            
-                  <button className={style.button} onClick={addCart}>
+
+                
+                  {
+                    !isAuthenticated || !loginUser.email ?
+                  (<button className={style.button} onClick={() => loginWithRedirect()}>
                     {" "}
                     Agregar al Carro{" "}
-                  </button>
-          
+                  </button>)
+                
+             
+                  :(<button className={style.button} onClick={addCart}>
+                    {" "}
+                    Agregar al Carro{" "}
+                  </button>)}
+                
+
                 </div>
       
 
