@@ -40,7 +40,7 @@ export const cleanCatDetail = () => {
 };
 
 export const createCategory = (data, loginUser) => {
-  return async () => {
+  return async (dispatch) => {
     const newCategory = {
       loginUser,
       name: data.name.toLowerCase(),
@@ -50,6 +50,7 @@ export const createCategory = (data, loginUser) => {
         "https://pf-api-04.up.railway.app/category",
         newCategory
       );
+      dispatch(getCategories());
     } catch (error) {
       console.log(error);
     }

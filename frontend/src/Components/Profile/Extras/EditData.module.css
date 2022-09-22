@@ -1,95 +1,26 @@
-.formPrincipal {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+.mainDi > form {
+  scale: 1.1;
 }
 
-.divSection {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 5rem;
-}
-
-.divSection > section {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  width: 20rem;
-  height: fit-content;
-  background-color: rgba(230, 230, 230, 0.7);
-  border-radius: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 1rem;
-}
-
-.divSection > section > label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-  height: 2rem;
-  font-weight: bold;
-}
-
-.divSection > section > input {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  width: 15rem;
-  height: 3rem;
-  font-weight: 600;
-  border-radius: 0.4rem;
-  font-size: 0.8rem;
-}
-
-/* .divSection > section > select {
-  width: 12rem;
-  height: 1.5rem;
-  text-transform: uppercase;
-  font-weight: 550;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 0.5rem;
-} */
-
-/* .ul {
-  width: 12rem;
-}
-
-.ul > li {
-  display: flex;
-  flex-direction: row;
-  gap: 0.2rem;
-  text-transform: uppercase;
-  align-items: center;
-} */
-
-.errors {
-  color: red;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-}
-
-/* .btnx {
-  border-radius: 9999px;
+.btnx {
+  border-radius: 5px;
   width: 1.5rem;
   height: 1.5rem;
   border: 0.1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+  background: none;
+  text-transform: uppercase;
+}
+
+.btnx:hover {
+  cursor: pointer;
+  background-color: red;
+  transition: 0.3s;
+  scale: 1.1;
+  color: white;
+}
 
 .btn {
   width: 15rem;
@@ -103,30 +34,40 @@
   cursor: pointer;
 }
 
-.imageDiv {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
+.selectD {
+  background: none;
+  border: 1px solid rgb(190, 186, 186);
+  width: 300px;
+  height: 50px;
+  padding-left: 1rem;
 }
 
-.imageDiv > img {
-  width: 18rem;
-  height: 15rem;
-  margin: 1rem;
-  border-radius: 0.5rem;
+.selectD:hover {
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-content: center;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.listName {
+  width: 3rem;
+  height: 2.5rem;
   border: 1px solid grey;
-}
-
-.imageDiv > input {
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  width: 18rem;
-  height: 2rem;
-  font-weight: 600;
-  border-radius: 0.4rem;
-  font-size: 0.8rem;
+  background-color: #ffff;
+}
+
+.listName:hover {
+  color: red;
+  cursor: pointer;
+  transition: 1s;
 }

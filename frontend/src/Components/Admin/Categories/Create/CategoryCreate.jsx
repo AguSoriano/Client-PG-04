@@ -39,6 +39,7 @@ function CategoryCreate() {
     setInput({
       name: "",
     });
+    navigate(-1);
   };
   return (
     <div className={style.formPrincipal}>
