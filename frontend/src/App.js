@@ -45,7 +45,7 @@ import OrderDetail from "./Components/Admin/Orders/Detail/OrderDetail";
 import Newsletter from "./Components/Newsletter/Newsletter";
 import HistoryOrders from "./Components/History Orders/HistoryOrders";
 import OrderDetailUser from "./Components/History Orders/Detail/OrderDetailUser";
-import { addToCart } from "./redux/actions/Cart/CartAction";
+import { addToCart, setLogin } from "./redux/actions/Cart/CartAction";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -53,38 +53,50 @@ function App() {
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
-  const { isLogin, setIsLogin } = useState(true)
+  const  [isLogin, setIsLogin ] = useState(true)
 
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(getUserLogin(user.email));
+      // console.log("acaestoy")
+      // console.log("LOGIN", isLogin)
+      // console.log("USER", user)
+      // console.log("LOGINUSER", loginUser)
+      // console.log("voy a ejecutar cartLogin")
+      // cartLogin(loginUser);
+      // setIsLogin(false)
     }
     if (!isAuthenticated) {
       dispatch(cleanUserLogin());
+      dispatch(setLogin(true));
     }
   }, [dispatch, isAuthenticated, user]);
 
   // useEffect(()=>{
   //   if (isAuthenticated) {
-  //     if(isLogin){
+  //     console.log("acaestoy")
+
   //       console.log("LOGIN", isLogin)
   //       console.log("voy a ejecutar cartLogin")
   //       cartLogin();
-  //       setIsLogin(false)}}
+  //       setIsLogin(false)}
   // }, [dispatch, isAuthenticated, user])
 
-  // const cartLogin = () => {
+  // const cartLogin =  (loginUser) => {
   //   console.log("estoy en cartLogin")
   //   const items = JSON.parse(window.localStorage.getItem("cartState"));
+  //   console.log("ITEMS", items)
   //   console.log("USER", loginUser)
   //   try {
-  //     return async (dispatch) => {
+  //     return (dispatch) => {
   //       items.cartproduct.map((e) => {
   //         let data = { e, loginUser };
+  //         console.log("cartloginDATA", Data)
   //         dispatch(addToCart(data));
   //       });
   //     };
   //   } catch (error) {
+  //     console.log("soy un error")
   //     console.log(error);
   //   }
   // };

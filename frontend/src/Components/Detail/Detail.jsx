@@ -30,6 +30,7 @@ function Detail() {
   const { id } = useParams();
   const dispatch = ReactRedux.useDispatch();
   const [buy, setBuy] = useState(false);
+  const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -52,7 +53,6 @@ function Detail() {
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
   );
-  const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
 
   const addFav1 = () => {
     if (prodDetail.name) {
@@ -93,7 +93,6 @@ function Detail() {
       });
     }
     // dispatch(addToCart(prodDetail, user));
-
     dispatch(addToCart(data));
 
     swal({
@@ -105,10 +104,13 @@ function Detail() {
     });
   };
 
-
   function change(e) {
     setQuantity(e.target.value);
   }
+
+  const disCart = (data) => {
+    dispatch(addToCart(data));
+  };
 
   return (
     <div className={style.container}>
@@ -147,17 +149,17 @@ function Detail() {
                   </Link>
                 )}
 
-                {!isAuthenticated || !loginUser.email ? (
+                {/* {!isAuthenticated || !loginUser.email ? (
                   <button className={style.button} onClick={() => loginWithRedirect()}>
                     {" "}
                     Agregar al Carro{" "}
                   </button>
-                ) : (
-                  <button className={style.button} onClick={addCart}>
-                    {" "}
-                    Agregar al Carro{" "}
-                  </button>
-                )}
+                ) : ( */}
+                <button className={style.button} onClick={addCart}>
+                  {" "}
+                  Agregar al Carro{" "}
+                </button>
+                {/* )} */}
                 {!isAuthenticated ? (
                   <></>
                 ) : prodIsFav(prodDetail.id) ? (
