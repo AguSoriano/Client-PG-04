@@ -177,7 +177,7 @@ function Detail() {
                 type="number"
                 name="cantidad"
                 min="1"
-                max="50"
+                max={prodDetail.stock}
                 onChange={change}
                 value={quantity}
               ></input>
