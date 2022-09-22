@@ -169,9 +169,9 @@ function Detail() {
                     </label>
                 )}
 
-                <h3 className={style.stock}>
+                {/* <h3 className={style.stock}>
                Stock disponible:{prodDetail.stock} <BsCheck2Circle />
-               </h3>
+               </h3> */}
 
 
                
