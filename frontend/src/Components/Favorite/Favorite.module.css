@@ -1,9 +1,10 @@
 .mainFav {
   display: flex;
   flex-direction: column;
-  row-gap: 3rem;
+  row-gap: 2rem;
   justify-items: center;
   align-items: center;
   margin-top: 3rem;
   margin-left: 4rem;
+  margin-bottom: 3rem;
 }
