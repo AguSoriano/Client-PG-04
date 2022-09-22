@@ -175,7 +175,7 @@ function Detail() {
 
 
                
-                // {/* {prodDetail.stock <= 0 ? (
+                 {/* {prodDetail.stock <= 0 ? (
                 //   <></>
                 // ) 
                 // : (
