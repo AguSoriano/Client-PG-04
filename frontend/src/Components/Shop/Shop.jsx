@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as ReactRedux from "react-redux";
-import { removeAllCart } from "../../redux/actions/Cart/CartAction";
+import { removeAllCart, setLogin, addToCart } from "../../redux/actions/Cart/CartAction";
 import CartItem from "./CartItem";
 import style from "./Shop.module.css";
 import { Link } from "react-router-dom";
@@ -20,13 +20,28 @@ import { BsArrowReturnLeft } from "react-icons/bs";
 function Shop() {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const [buy, setBuy] = useState(false);
-
-  const dispatch = ReactRedux.useDispatch();
   const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
-  console.log("cartttt", cartproduct);
+  const { cartLoginRed } = ReactRedux.useSelector((state) => state.cartReducer);
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
+  const dispatch = ReactRedux.useDispatch();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // console.log("CARTTTLOGIN", cartLoginRed)
+      if (cartLoginRed) {
+        // console.log("acaestoy");
+        // // console.log("LOGIN", isLogin);
+        // console.log("USER", user);
+        // console.log("LOGINUSER", loginUser);
+        // console.log("voy a ejecutar cartLogin");
+        cartLogin();
+        dispatch(setLogin(false));
+      }
+    }
+  }, [dispatch, isAuthenticated, user]);
+
   const clearCart = () => {
     dispatch(removeAllCart(loginUser));
   };
@@ -43,6 +58,20 @@ function Shop() {
       dispatch(getClientSecret(loginUser.id));
       setBuy(true);
     }
+  };
+
+  const cartLogin = () => {
+    // console.log("estoy en cartLogin");
+    const items = JSON.parse(window.localStorage.getItem("cartState"));
+    // console.log("ITEMS", items);
+    // console.log("USER", loginUser);
+
+    items.cartproduct.map((e) => {
+      let prodTotal = e;
+      let data = { prodTotal, loginUser };
+      // console.log("cartloginDATA", data);
+      dispatch(addToCart(data));
+    });
   };
 
   return (

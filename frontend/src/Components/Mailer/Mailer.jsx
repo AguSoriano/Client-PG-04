@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import emailjs from "emailjs-com";
 import * as ReactRedux from "react-redux";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import { clearOnlyCart
- } from "../../redux/actions/Cart/CartAction";
-
-
+import { clearOnlyCart, editStock } from "../../redux/actions/Cart/CartAction";
+import { getProducts } from "../../redux/actions/Products/ProductsAction";
 
 export default function Mailer() {
   const dispatch = ReactRedux.useDispatch();
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
+  const { cartproduct } = ReactRedux.useSelector((state) => state.cartReducer);
+
+  useEffect(() => {
+    refreshStock();
+  }, [dispatch]);
+
+
+  const refreshStock = () => {
+    // const items = JSON.parse(window.localStorage.getItem("cartState"));
+    cartproduct.map((e) => {
+      let stock = e.quantity;
+      console.log("MAILERSTOCK", stock)
+      let id = e.prodDetail.id;
+      console.log("IDSTOCK", id)
+      let data = { stock, id };
+      dispatch(editStock(data));
+      dispatch(getProducts())
+    });
+  };
+
   const clearCart = () => {
     dispatch(clearOnlyCart(loginUser));
   };
-  console.log(clearCart())
+  // console.log(clearCart());
   const navigate = useNavigate();
   function sendEmail(e) {
     e.preventDefault();
@@ -53,27 +71,38 @@ export default function Mailer() {
       }}
     >
       <h1 style={{ marginTop: "25px" }}>Contacto</h1>
-      <form
-        
-        style={{ margin: "25px 85px 75px 100px" }}
-        onSubmit={sendEmail}
-      >
-        
+      <form style={{ margin: "25px 85px 75px 100px" }} onSubmit={sendEmail}>
         <label>Direccion de envio</label>
-        <input type="text" name="address" className="form-control" placeholder="recibe en..." required/>
+        <input
+          type="text"
+          name="address"
+          className="form-control"
+          placeholder="¿Cual es tu dirección?"
+          required
+        />
         <label>Telefono</label>
-        <input type="number" name="number" className="form-control" placeholder="contacto..." required/>
+        <input
+          type="number"
+          name="number"
+          className="form-control"
+          placeholder="¿Tu numero de cel?"
+          required
+        />
         <label>Apellido y Nombre</label>
         <textarea name="lastname" className="form-control">
-        {loginUser.family_name+" "+loginUser.given_name}
+          {loginUser.family_name + " " + loginUser.given_name}
         </textarea>
         <label>Correo</label>
         <textarea name="user_email" className="form-control">
-        {loginUser.email}
+          {loginUser.email}
         </textarea>
         <label>Mensaje</label>
-        <textarea name="message" className="form-control" placeholder="informacion extra..." />
-          <input
+        <textarea
+          name="message"
+          className="form-control"
+          placeholder="¿Que más te gustaria decirnos?"
+        />
+        <input
           onClick={clearCart}
           type="submit"
           value="Enviar"
