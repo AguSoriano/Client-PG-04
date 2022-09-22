@@ -140,7 +140,12 @@ function Detail() {
               </span>
 
               <section>
+                
               <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
+              <h3 className={style.stock}>
+                  Stock disponible:{prodDetail.stock} <BsCheck2Circle/>
+
+                </h3>
               <label className={style.p} form="quantity">Cantidad:</label>
               {!prodDetail.stock > 0 ? (
                 <h2>Sin Stock</h2>
@@ -155,13 +160,8 @@ function Detail() {
                 value={quantity}
               ></input>
               )}
-                <h3 className={style.stock}>
-                  Stock disponible:{prodDetail.stock} <BsCheck2Circle/>
-
-                </h3>
-                <Link   className={style.link} to={"/home"}>
-              <button className={style.button3}>  <BsArrowReturnLeft/> TIENDA</button>
-              </Link>
+                
+               
                 
               </section>
               <section>
@@ -190,6 +190,9 @@ function Detail() {
                     {" "}
                     Agregar al Carro{" "}
                   </button>)}
+                  <Link   className={style.link} to={"/home"}>
+              <button className={style.button3}>  <BsArrowReturnLeft/> TIENDA</button>
+              </Link>
                 
 
                 </div>

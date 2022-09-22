@@ -5,6 +5,8 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { clearOnlyCart, editStock } from "../../redux/actions/Cart/CartAction";
 import { getProducts } from "../../redux/actions/Products/ProductsAction";
+import style from "./Mailer.module.css"
+import { BsPersonFill } from "react-icons/bs";
 
 export default function Mailer() {
   const dispatch = ReactRedux.useDispatch();
@@ -61,54 +63,49 @@ export default function Mailer() {
   }
   //password: _C$WJH6*F-hp*-T
   return (
-    <div
-      className="container border"
-      style={{
-        padding: "20px",
-        width: "100%",
-        backgroundImage: `url("https://lh3.googleusercontent.com/pw/AL9nZEUylurEW8WS1nW6Bvzd8dqHiBsIYo1oOgKpVKXWMONT4BoroO6qTpw3347dqIdzXYDasUEVt_RfS2VW_c_JW6UeX0lQiKrl7NkWIB1HTbOWhcUaOcSRFKSFPNfZX3SNGS_Ok_JSwigMvZj57ExzPLFdsw=w884-h663-no?authuser=0")`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-      }}
-    >
-      <h1 style={{ marginTop: "25px" }}>Contacto</h1>
-      <form style={{ margin: "25px 85px 75px 100px" }} onSubmit={sendEmail}>
-        <label>Direccion de envio</label>
-        <input
-          type="text"
-          name="address"
-          className="form-control"
-          placeholder="¿Cual es tu dirección?"
-          required
-        />
-        <label>Telefono</label>
+    <div className={style.div}>
+  
+      <h1 style={{ marginTop: "25px" }}>Contacto <BsPersonFill fontSize="2rem"/></h1>
+      <form className={style.form} onSubmit={sendEmail}>
+      <label>Apellido y Nombre</label>
+        <textarea name="lastname" className="form-control">
+          {loginUser.family_name + " " + loginUser.given_name}
+        </textarea>
+        <label>Contacto</label>
         <input
           type="number"
           name="number"
           className="form-control"
-          placeholder="¿Tu numero de cel?"
+          placeholder="¿Cuál es tu número de celular?"
           required
         />
-        <label>Apellido y Nombre</label>
-        <textarea name="lastname" className="form-control">
-          {loginUser.family_name + " " + loginUser.given_name}
-        </textarea>
-        <label>Correo</label>
+        
+        <label>Dirección de envio</label>
+        <input
+          type="text"
+          name="address"
+          className="form-control"
+          placeholder="¿Cuál es tu dirección?"
+          required
+        />
+        <label>Dirección de E-mail</label>
         <textarea name="user_email" className="form-control">
           {loginUser.email}
         </textarea>
+
         <label>Mensaje</label>
         <textarea
           name="message"
           className="form-control"
-          placeholder="¿Que más te gustaria decirnos?"
+          placeholder="Mensaje de referencia"
         />
         <input
+        style={{ marginTop: "2rem" , color:"black"}}
           onClick={clearCart}
           type="submit"
           value="Enviar"
-          className="form-control btn btn-primary"
-          style={{ marginTop: "30px" }}
+          className={"form-control btn btn-primary"}
+          
         />
       </form>
     </div>
