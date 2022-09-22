@@ -47,7 +47,7 @@ function App() {
       <Container>
         <UiComponents />
         <Form onSubmit={submitHandler}>
-          <H2>Subscribete a nuestro Newsletter</H2>
+          <H2>Subscribete a nuestro Boletín</H2>
           <Input type="email" onChange={inputHandler} placeholder="Correo..." value={input} name= 'message' required/>
           <Button type="submit">Enviar</Button>
         </Form>
