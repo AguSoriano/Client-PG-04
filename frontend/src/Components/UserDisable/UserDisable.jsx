@@ -12,7 +12,7 @@ function UserDisable() {
     <div className={style.userDisable}>
       <ImSad className={style.sadIcon} />
       <h1>Lo sentimos</h1>
-      <h2>Tu usuario esta desabilitado</h2>
+      <h2>Tu usuario esta deshabilitado</h2>
       <h2>Por favor contacta con el administrador en el siguiente enlace:</h2>
       <Link to={"/profile/ask"} className={style.helpLink}>
         <MdOutlineLiveHelp /> Ayuda
