@@ -60,9 +60,9 @@ export default function Mailer() {
       >
         
         <label>Direccion de envio</label>
-        <input type="text" name="address" className="form-control" placeholder="recibe en..." required/>
+        <input type="text" name="address" className="form-control" placeholder="¿Cual es tu dirección?" required/>
         <label>Telefono</label>
-        <input type="number" name="number" className="form-control" placeholder="contacto..." required/>
+        <input type="number" name="number" className="form-control" placeholder="¿Tu numero de cel?" required/>
         <label>Apellido y Nombre</label>
         <textarea name="lastname" className="form-control">
         {loginUser.family_name+" "+loginUser.given_name}
@@ -72,7 +72,7 @@ export default function Mailer() {
         {loginUser.email}
         </textarea>
         <label>Mensaje</label>
-        <textarea name="message" className="form-control" placeholder="informacion extra..." />
+        <textarea name="message" className="form-control" placeholder="¿Que más te gustaria decirnos?" />
           <input
           onClick={clearCart}
           type="submit"
