@@ -196,7 +196,7 @@ function Detail() {
                       onClick={() => loginWithRedirect()}
                     >
                       {" "}
-                      Agregar al Carro{" "}
+                      Agregar al Carrito{" "}
                     </button>
                   ) : prodDetail.stock <= 0 ? (
                     <button type="button" className={style.button} disabled="disabled">
@@ -207,7 +207,7 @@ function Detail() {
                       <Link onClick={addCart} to={"/shop"}>
                       <button className={style.button}>
                       {" "}
-                      Agregar al Carro{" "}
+                      Agregar al Carrito{" "}
                     </button>
                     </Link>
                   )} 
