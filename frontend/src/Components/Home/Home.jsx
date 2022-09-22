@@ -67,7 +67,7 @@ function Home() {
       <section className={style.prodSection}>
         <h1 className={style.Text}>PRODUCTOS</h1>
         <div className={style.prod}>
-          {product.length > 1 ? (
+          {product.length > 1 && product.status !==true ? (
             prodPage.map((prod) => (
               <Card
                 key={prod.id}
