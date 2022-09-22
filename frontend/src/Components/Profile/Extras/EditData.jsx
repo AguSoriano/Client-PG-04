@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as ReactRedux from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editUserData } from "../../../redux/actions/Users/UsersActions";
+import { editUserData2 } from "../../../redux/actions/Users/UsersActions";
 import style from "./EditData.module.css";
 import swal from "sweetalert";
 import { Form, Input, Button, Upload } from "antd";
@@ -53,7 +53,7 @@ function EditData() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!validador(input)) {
-      dispatch(editUserData(id, input));
+      dispatch(editUserData2(id, input));
       swal({
         title: "Exito",
         text: `El usuario ${input.email} ha sido editado correctamente`,
