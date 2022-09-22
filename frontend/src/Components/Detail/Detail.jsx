@@ -159,15 +159,22 @@ function Detail() {
                     ></input>
                     </label>
                 )}
-                {/* {prodDetail.stock <= 0 ? (
-                  <></>
-                ) 
-                : (
-                   <></> 
-                  //  <h3 className={style.stock}>
-                  //   Stock disponible:{prodDetail.stock} <BsCheck2Circle />
-                  // </h3>
-                )} */}
+
+                <h3 className={style.stock}>
+               Stock disponible:{prodDetail.stock} <BsCheck2Circle />
+               </h3>
+
+
+               
+                // {/* {prodDetail.stock <= 0 ? (
+                //   <></>
+                // ) 
+                // : (
+                //    <></> 
+                //    <h3 className={style.stock}>
+                //     Stock disponible:{prodDetail.stock} <BsCheck2Circle />
+                //   </h3>
+                // )} */}
 
                 <Link className={style.link} to={"/home"}>
                   <button className={style.button3}>

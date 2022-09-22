@@ -15,7 +15,7 @@
 }
  .img{
     float:left;
-    width:45%;
+    width:60%;
     display: flex;
     flex-direction: row;
     border-radius: 1rem;
@@ -62,7 +62,7 @@
     font-weight: 500;
     font-size:larger;
     margin-bottom: -1rem;
-    margin-top: -3.5rem;
+    margin-top: -7rem;
      display: block;
  }
  .precio{
@@ -93,15 +93,15 @@
     margin-bottom: 1rem;
     justify-content: space-between;
     margin-inline: 0.5rem;
-   
+   margin-left: 48rem;
     color: #E74C3C ;
     cursor: pointer;
-    display: inline;
+    display: flex;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-size: 14px;
     width: 12rem;
     font-weight: 500;   padding: 6px 16px;
-    position: relative;
+    
    
    }
    
