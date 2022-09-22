@@ -88,7 +88,7 @@ export default function CheckoutForm() {
       </button>
       {/* Show any error or success messages */}
       {message && <div className={styles.paymentMessage}>{message}</div>}
-      {message==="Tu tarjeta no tiene fondos suficientes."&& <div className={styles.paymentMessage}><Link to={"/shop"}><button>Cart</button></Link></div>}
+      {/* {message==="Tu tarjeta no tiene fondos suficientes."&& <div className={styles.paymentMessage}><Link to={"/shop"}><button>Cart</button></Link></div>} */}
     </form>
   );
 }
