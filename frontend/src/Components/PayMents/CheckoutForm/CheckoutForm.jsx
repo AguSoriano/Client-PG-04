@@ -5,6 +5,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import styles from "./CheckoutForm.module.css";
+import { Link } from "react-router-dom";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -87,6 +88,7 @@ export default function CheckoutForm() {
       </button>
       {/* Show any error or success messages */}
       {message && <div className={styles.paymentMessage}>{message}</div>}
+      {/* {message==="Tu tarjeta no tiene fondos suficientes."&& <div className={styles.paymentMessage}><Link to={"/shop"}><button>Cart</button></Link></div>} */}
     </form>
   );
 }
