@@ -61,7 +61,7 @@
     color:#1CBE60;
     font-weight: 500;
     font-size:larger;
-    margin-bottom: 2rem;
+    margin-bottom: -1rem;
     margin-top: 1rem;
      position: relative;
  }
@@ -113,6 +113,7 @@
   
    
    .button1 {
+    margin-bottom: 1rem;
     background-color: #FAFBFC;
     position:absolute;
     border-radius: 6px;
@@ -163,7 +164,9 @@
    }
    .button1 {
     appearance: none;
-    position:absolute;
+    position:relative;
+    margin-left: 35rem;
+    
     background-color: #FAFBFC;
     border: 1px solid #000000(27, 31, 35, 0.15);
     border-radius: 6px;
@@ -200,21 +203,18 @@
    }
 
    .button3 {
-   display: flexbox;
-
-    margin-right: -30rem;
+   
+    justify-items: baseline;
     text-decoration: none;
     width: 15rem;
     margin-bottom:1rem;
-    margin-top: -4rem;
-    
-    appearance: none;
+    margin-top: 3rem;
+     appearance: none;
     background-color: #FAFBFC;
     border: #F39C12 1.5px solid;
     border-radius: 6px;
     box-sizing: border-box;
     cursor: pointer;
-    display: inline-block;
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-size: 14px;
     font-weight: 500;
@@ -222,8 +222,6 @@
     list-style: none;
     padding: 6px 16px;
    
-
-    margin-left: -30rem;
 
 
 }

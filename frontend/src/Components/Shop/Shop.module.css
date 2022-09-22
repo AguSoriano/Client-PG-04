@@ -141,6 +141,7 @@
 }
 
 .button3 {
+    position: absolute;
     text-decoration: none;
     width: 15rem;
     margin-bottom: 0.5rem;
