@@ -95,6 +95,15 @@ function Detail() {
         timer: "2500",
       });
     }
+    if(quantity > prodDetail.stock){
+      return swal({
+        title: "Cuidado",
+        text: "Stock insuficiente",
+        icon: "error",
+        button: "Aceptar",
+        timer: "2500",
+      })
+    }
 
     // dispatch(addToCart(prodDetail, user));
 
