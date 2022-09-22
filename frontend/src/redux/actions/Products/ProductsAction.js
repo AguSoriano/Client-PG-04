@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  CLEAR_SEARCH,
   FILTER_BY,
   FILTER_BY2,
   GET_NAME_PRODUCT,
@@ -39,6 +40,13 @@ export function getNameProduct(name) {
     }
   };
 }
+
+export const clearSearch = () => {
+  return {
+    type: CLEAR_SEARCH,
+    payload: [],
+  };
+};
 
 export function OrderAlphabetical(payload) {
   try {

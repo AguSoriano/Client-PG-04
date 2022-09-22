@@ -1,3 +1,4 @@
+import { CLEAR_HIST } from "../actions/Favorites/ActionTypes";
 import { CLEAN_DETAIL, GET_DETAIL } from "../actions/ProdDetail/ActionTypes";
 
 // const initialState = JSON.parse(
@@ -15,6 +16,7 @@ import { CLEAN_DETAIL, GET_DETAIL } from "../actions/ProdDetail/ActionTypes";
 const initialState = {
   prodDetail: {},
   prodEditDetail: {},
+  history: [],
 };
 
 export default function prodDetailReducer(
@@ -28,12 +30,19 @@ export default function prodDetailReducer(
         ...state,
         prodDetail: payload,
         prodEditDetail: payload,
+        history: [...state.history, payload]
       };
     }
     case CLEAN_DETAIL: {
       return {
         ...state,
         prodDetail: payload,
+      };
+    }
+    case CLEAR_HIST: {
+      return {
+        ...state,
+        history: payload,
       };
     }
 

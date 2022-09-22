@@ -1,34 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/searchBar";
 import style from "./NavBar.module.css";
-import { FaHeart, FaCartArrowDown } from "react-icons/fa";
+import { FaCartArrowDown } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
 import * as ReactRedux from "react-redux";
+import caneDefaul from "../Img/PG0.png";
 
 function Normal() {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
   const { loginUser } = ReactRedux.useSelector(
     (state) => state.userLoginReducer
   );
+  const navigate = useNavigate();
 
   return (
     <div className={style.navBar}>
-      <section>
+      <main className={style.logo}>
+        <img alt="cane" src={caneDefaul} onClick={() => navigate("/home")} />
+      </main>
+      <div>
         <SearchBar />
-      </section>
-      <section className={style.links}>
-        <Link className={style.link} to={"/about"}>
-          Sobre Nosotros
-        </Link>
-        <Link className={style.link} to={"/home"}>
-          Tienda
-        </Link>
-
-        <Link className={style.link} to={"/shop"}>
-          <FaCartArrowDown size="1.5rem" />
-        </Link>
+        <section className={style.links}>
+          <Link className={style.link} to={"/about"}>
+            Sobre Nosotros
+          </Link>
+          <Link className={style.link} to={"/home"}>
+            Tienda
+          </Link>
+          <Link className={style.link} to={"/history"}>
+            Historial
+          </Link>
+          <Link className={style.link} to={"/profile/favorite"}>
+            Favoritos
+          </Link>
+        </section>
+      </div>
+      <section>
         {!isAuthenticated || !loginUser.email ? (
           <button
             onClick={() => loginWithRedirect()}
@@ -40,7 +49,7 @@ function Normal() {
         ) : (
           <>
             <Link to="/profile" className={style.link}>
-              Perfil
+              Mi cuenta
             </Link>
             {loginUser.isDisable ? (
               <></>
@@ -49,12 +58,13 @@ function Normal() {
                 Panel de administrador
               </Link>
             ) : (
-              <Link className={style.link} to={"/profile/favorite"}>
-                Favoritos <FaHeart />
-              </Link>
+              <></>
             )}
           </>
         )}
+        <Link className={style.link} to={"/shop"}>
+          <FaCartArrowDown size="1.5rem" />
+        </Link>
       </section>
     </div>
   );

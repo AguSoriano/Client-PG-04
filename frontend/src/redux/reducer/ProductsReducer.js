@@ -1,4 +1,5 @@
 import {
+  CLEAR_SEARCH,
   FILTER_BY,
   FILTER_BY2,
   GET_NAME_PRODUCT,
@@ -24,6 +25,7 @@ const initialState = {
   product: [],
   productCopy: [],
   productCopy2: [],
+  search: [],
 };
 
 export default function productsReducer(
@@ -35,7 +37,14 @@ export default function productsReducer(
     case GET_NAME_PRODUCT: {
       return {
         ...state,
-        product: payload,
+        search: payload,
+      };
+    }
+
+    case CLEAR_SEARCH: {
+      return {
+        ...state,
+        search: payload,
       };
     }
 
@@ -68,9 +77,30 @@ export default function productsReducer(
               }
               return 0;
             });
+      const sortedSearch =
+        payload === "A-Z"
+          ? state.search.sort((a, b) => {
+              if (a.name > b.name) {
+                return 1;
+              }
+              if (b.name > a.name) {
+                return -1;
+              }
+              return 0;
+            })
+          : state.product.sort((a, b) => {
+              if (a.name > b.name) {
+                return -1;
+              }
+              if (b.name > a.name) {
+                return 1;
+              }
+              return 0;
+            });
       return {
         ...state,
         product: sortedName,
+        search: sortedSearch,
       };
     }
 
@@ -79,9 +109,14 @@ export default function productsReducer(
         payload === "min_price"
           ? state.product.sort((a, b) => parseInt(a.price) - parseInt(b.price))
           : state.product.sort((a, b) => parseInt(b.price) - parseInt(a.price));
+      const sortedPriceSearch =
+        payload === "min_price"
+          ? state.search.sort((a, b) => parseInt(a.price) - parseInt(b.price))
+          : state.search.sort((a, b) => parseInt(b.price) - parseInt(a.price));
       return {
         ...state,
         product: sortedPrice,
+        search: sortedPriceSearch,
       };
     }
 
