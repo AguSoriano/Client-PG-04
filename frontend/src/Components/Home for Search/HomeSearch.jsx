@@ -54,7 +54,7 @@ function HomeSearch() {
               />
             ))
           ) : (
-            <Loading />
+            <h2>No se encontraron resultados 😞</h2>
           )}
         </div>
       </section>

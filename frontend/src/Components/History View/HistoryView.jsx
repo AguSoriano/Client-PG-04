@@ -1,11 +1,11 @@
 import React from "react";
 import * as ReactRedux from "react-redux";
-// import { clearHist } from "../../redux/actions/Favorites/FavoritesAction";
+import { clearHist } from "../../redux/actions/Favorites/FavoritesAction";
 import Card from "../Card/Card";
 import style from "./HistoryView.module.css";
 
 function HistoryView() {
-  // const dispatch = ReactRedux.useDispatch();
+  const dispatch = ReactRedux.useDispatch();
 
   const { history } = ReactRedux.useSelector(
     (state) => state.prodDetailReducer
@@ -31,9 +31,9 @@ function HistoryView() {
     <div className={style.main}>
       <h2>Tu Historial 📂</h2>
       <section className={style.prodSection}>
-        <div className={style.prod}>
-          {history2.length > 1 ? (
-            history2.map((prod) => (
+        {history2.length > 1 ? (
+          <div className={style.prod}>
+            {history2.map((prod) => (
               <Card
                 key={prod.id}
                 id={prod.id}
@@ -46,13 +46,19 @@ function HistoryView() {
                 heightCard={450}
                 prodDetail={prod}
               />
-            ))
-          ) : (
-            <h2>No hay nada en tu historial</h2>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <h2>No hay nada en tu historial</h2>
+        )}
       </section>
-      {/* <button onClick={() => dispatch(clearHist())}>borrar</button> */}
+      {history2.length > 1 ? (
+        <button onClick={() => dispatch(clearHist())} className={style.btn}>
+          Limpiar Historial
+        </button>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

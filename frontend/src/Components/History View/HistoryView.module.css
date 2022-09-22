@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.main > h2{
+.main > h2 {
   margin-top: 2rem;
 }
 
@@ -28,4 +28,18 @@
   gap: 2rem;
   width: 100%;
   justify-items: center;
+}
+
+.btn {
+  width: 12rem;
+  height: 2.7rem;
+  border: 1px solid grey;
+  margin: auto;
+  border-radius: 5px;
+  background-color: #24a19c;
+  font-size: 1.3rem;
+}
+
+.btn:hover{
+  cursor: pointer;
 }
