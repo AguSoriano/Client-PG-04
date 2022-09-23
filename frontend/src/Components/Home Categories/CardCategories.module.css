@@ -1,0 +1,45 @@
+
+/*-----------------------------------------------*/
+
+.cardCategory {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: 1rem;
+    padding: 1rem;
+    background-color: #24a19c;
+    width: 32rem;
+  }
+  
+  .cardCategory > img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 9999px;
+    border: 5px solid grey;
+  }
+  
+  .cardCategory > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+  }
+
+  .cardCategory > div > h1{
+    -webkit-text-stroke: 1px #ffff
+  }
+  
+  .cardCategory > div > p {
+    display: none;
+    font-size: 1.2rem;
+    color: black;
+  }
+  
+  .cardCategory:hover{
+    scale: 1.01;
+    transition: 0.1s;
+  }
+  .cardCategory:hover > div > p{
+    display: flex;
+    transition: 1s;
+  }

@@ -12,15 +12,16 @@ import {
 export function getProducts() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("https://pf-api-04.up.railway.app/products");
-
+      let { data } = await axios.get(
+        "https://pf-api-04.up.railway.app/products"
+      );
+      const productActives = data.filter((p) => !p.status);
       return dispatch({
         type: GET_PRODUCTS,
-        payload: json.data,
-        // payload: products,
+        payload: productActives,
       });
     } catch (error) {
-      return error;
+      console.log(error);
     }
   };
 }
