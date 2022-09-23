@@ -35,7 +35,7 @@ function SearchBar() {
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
-          placeholder="Buscar..."
+          placeholder="Buscar productos..."
           onChange={(e) => handleInputChange(e)}
         />
         <button type="submit" className={style.btn}>

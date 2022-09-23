@@ -52,6 +52,7 @@ import Comments from "./Components/Profile/Extras Admin/Comments";
 import { addToCart, setLogin } from "./redux/actions/Cart/CartAction";
 import HomeSearch from "./Components/Home for Search/HomeSearch";
 import HistoryView from "./Components/History View/HistoryView";
+import HomeCategories from "./Components/Home Categories/HomeCategories";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -147,6 +148,20 @@ function App() {
               <Navigate to="/admin" />
             ) : !loginUser.isDisable ? (
               <Home />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="homecategories"
+          element={
+            !isAuthenticated ? (
+              <HomeCategories />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Navigate to="/admin" />
+            ) : !loginUser.isDisable ? (
+              <HomeCategories />
             ) : (
               <Navigate to="/userdisable" />
             )

@@ -7,14 +7,15 @@ import { getProducts } from "../../redux/actions/Products/ProductsAction";
 import { weekProd as destacados } from "../../redux/actions/WeekProducts/WeekProdAction";
 import Sort from "../Sort/Sort";
 import Pagination from "../Pagination/Pagination";
-// import img from "../Img/Logo1V2.png";
-import style from "./Home.module.css";
+import img from "../Img/Logo1V2.png";
+import style from "./HomeCategories.module.css";
 import Loading from "../Loading/Loading";
 import Filter from "../Filter/Filter";
 import { Link } from "react-router-dom";
+import CardCategories from "./CardCategories";
 // import Carousel from "../Carousel/Carousel";
 
-function Home() {
+function HomeCategories() {
   const dispatch = ReactRedux.useDispatch();
   const [order, setOrder] = useState("");
   // const [page, setPage] = useState(0);
@@ -32,19 +33,8 @@ function Home() {
 
   return (
     <div className={style.main}>
-      <section>
-        {product.length > 1 ? (
-          <div className={style.filters}>
-            <Filter />
-            <Sort setOrder={setOrder} /*setPage={setPage}*/ />
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </section>
-
       <section className={style.weekSect}>
-        <h1 className={style.Text}>DESTACADO DE LA SEMANA</h1>
+        <h1 className={style.Text}>LO MAS DESTACADO</h1>
         <div className={style.weekProd}>
           {weekProd.length > 1 ? (
             weekProd
@@ -65,38 +55,49 @@ function Home() {
         </div>
       </section>
       <section className={style.prodSection}>
-        <h1 className={style.Text}>PRODUCTOS</h1>
-        <div className={style.prod}>
-          {product.length > 1 ? (
-            prodPage.map((prod) => (
-              <Card
-                key={prod.id}
-                id={prod.id}
-                name={prod.name}
-                img={prod.image}
-                price={prod.price}
-                stock={prod.stock}
-                shortDesc={prod.shortDescription}
-                widthCard={375}
-                heightCard={450}
-                prodDetail={prod}
-              />
-            ))
-          ) : (
-            <Loading />
-          )}
+        <h1 className={style.Text}>CATEGORÍAS</h1>
+        <div>
+          <CardCategories
+            name="Medallones"
+            description="Aca van los medallones"
+            image={img}
+            value="medallon"
+          />
+          <CardCategories
+            name="Tartas"
+            description="Aca van las tartas"
+            image={img}
+            value="tarta"
+          />
+          <CardCategories
+            name="Pastas"
+            description="Aca van los pastas"
+            image={img}
+            value="pasta rellena"
+          />
+          <CardCategories
+            name="Bebidas"
+            description="Aca van las bebidas"
+            image={img}
+            value="bebida"
+          />
+          <CardCategories
+            name="Vegano"
+            description="Aca van los productos veganos"
+            image={img}
+            value="vegano"
+          />
+          <CardCategories
+            name="Todos los productos"
+            description="Aca se muestra todo"
+            image={img}
+            value="all"
+          />
         </div>
-      </section>
-      <section>
-        {product.length > 1 ? (
-          <Pagination /*setPage={setPage} page={page}*/ products={product} />
-        ) : (
-          <div></div>
-        )}
       </section>
       <Footer />
     </div>
   );
 }
 
-export default Home;
+export default HomeCategories;
