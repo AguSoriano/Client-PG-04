@@ -28,9 +28,6 @@ function ProductCreate() {
 
   const validador = (input) => {
     let error;
-    if (input.name.search("[0-9]") !== -1) {
-      error = "El nombre no acepta números";
-    }
     if (!input.name) {
       error = "el nombre no puede estar vacio";
     }
