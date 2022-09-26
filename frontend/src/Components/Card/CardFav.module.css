@@ -51,4 +51,9 @@
 
 .mainCardFav > section > h2 {
   font-weight: bold;
+  text-transform: capitalize;
+}
+
+.mainCardFav > section > p {
+  text-transform: capitalize;
 }
