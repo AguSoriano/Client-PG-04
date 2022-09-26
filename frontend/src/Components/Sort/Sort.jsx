@@ -27,11 +27,11 @@ function Sort({ setOrder /*setPage*/ }) {
   return (
     <div className={style.sort}>
       <section>
-        <select onChange={(e) => handleSort(e)}>
+        {/* <select onChange={(e) => handleSort(e)}>
           <option value="order"> ALFABÉTICO </option>
           <option value="A-Z"> Ascendente </option>
           <option value="Z-A"> Descendente </option>
-        </select>
+        </select> */}
         <select onChange={(e) => handleSortByPrice(e)}>
           <option value="precio"> PRECIO </option>
           <option value="min_price"> Menor precio </option>

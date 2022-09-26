@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import imgFake from "../Img/Logo1V2.png";
 import { FcLike } from "react-icons/fc";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -24,6 +24,7 @@ function CardP({
   heightCard,
 }) {
   const dispatch = ReactRedux.useDispatch();
+  const navigate = useNavigate();
   let newP = `$ ${price}`;
 
   const { favorites } = ReactRedux.useSelector(
@@ -49,6 +50,11 @@ function CardP({
     return false;
   };
 
+  const goTo = () => {
+    navigate(`/products/${id}`);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className={style.mainCard}>
       {prodIsFav(id) ? (
@@ -60,11 +66,17 @@ function CardP({
           <AiOutlineHeart size="2rem" color="red" />
         </button>
       )}
-      <Link to={`/products/${id}`}>
+      <div onClick={() => goTo()}>
         <Card
           hoverable
           style={{ width: widthCard, height: heightCard }}
-          cover={<img alt={name} src={img ? img : imgFake} style={{width: widthCard, height: '255px'}}/>}
+          cover={
+            <img
+              alt={name}
+              src={img ? img : imgFake}
+              style={{ width: widthCard, height: "255px" }}
+            />
+          }
         >
           <Meta
             title={newP}
@@ -72,7 +84,7 @@ function CardP({
             style={{ justifyContent: "center", marginTop: "2rem" }}
           />
         </Card>
-      </Link>
+      </div>
     </div>
   );
 }

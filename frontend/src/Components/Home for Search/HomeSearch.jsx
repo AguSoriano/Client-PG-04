@@ -37,9 +37,9 @@ function HomeSearch() {
       </section>
       <section className={style.prodSection}>
         <h1 className={style.Text}>PRODUCTOS</h1>
-        <div className={style.prod}>
-          {search.length > 1 ? (
-            prodPage.map((prod) => (
+        {search.length > 1 ? (
+          <div className={style.prod}>
+            {prodPage.map((prod) => (
               <Card
                 key={prod.id}
                 id={prod.id}
@@ -52,16 +52,15 @@ function HomeSearch() {
                 heightCard={450}
                 prodDetail={prod}
               />
-            ))
-          ) : (
-            <h2>No se encontraron resultados 😞</h2>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <h2>No se encontraron resultados 😞</h2>
+        )}
       </section>
       <section>
         {search.length > 1 ? <Pagination products={search} /> : <div></div>}
       </section>
-      <Footer />
     </div>
   );
 }

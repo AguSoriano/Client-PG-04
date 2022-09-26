@@ -12,7 +12,7 @@ export const weekProd = () => {
 
       return dispatch({
         type: WEEK_PROD,
-        payload: products.data.slice(0, 3),
+        payload: products.data.slice(0, 5),
       });
     } catch (error) {
       console.log(error);

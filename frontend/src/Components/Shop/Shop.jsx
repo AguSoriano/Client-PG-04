@@ -127,7 +127,7 @@ function Shop() {
                 VACIAR CARRITO
               </button>
               </>
-              <Link   className={style.link} to={"/home"}>
+              <Link   className={style.link} to={"/"}>
               <button className={style.button3}>  <BsArrowReturnLeft/> TIENDA</button>
               </Link>
             </div>

@@ -4,11 +4,12 @@
 .cardCategory {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.3rem;
     margin-left: 1rem;
     padding: 1rem;
-    background-color: #24a19c;
+    background-color: rgb(22, 149, 88);
     width: 32rem;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.9);
   }
   
   .cardCategory > img {
@@ -26,7 +27,8 @@
   }
 
   .cardCategory > div > h1{
-    -webkit-text-stroke: 1px #ffff
+    -webkit-text-stroke: 2px #ffff;
+    font-weight: 900;
   }
   
   .cardCategory > div > p {
@@ -38,6 +40,7 @@
   .cardCategory:hover{
     scale: 1.01;
     transition: 0.1s;
+    cursor: pointer;
   }
   .cardCategory:hover > div > p{
     display: flex;

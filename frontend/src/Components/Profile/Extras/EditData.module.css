@@ -1,3 +1,7 @@
+.mainDi{
+  margin-bottom: 3rem;
+}
+
 .mainDi > form {
   scale: 1.1;
 }
