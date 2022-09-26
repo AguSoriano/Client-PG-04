@@ -81,7 +81,11 @@ function CardP({
           <Meta
             title={newP}
             description={shortDesc}
-            style={{ justifyContent: "center", marginTop: "2rem" }}
+            style={{
+              justifyContent: "center",
+              marginTop: "2rem",
+              textTransform: "capitalize",
+            }}
           />
         </Card>
       </div>
