@@ -31,7 +31,7 @@ import CategoryDetail from "./Components/Admin/Categories/Detail/CategoryDetail"
 import ProductDetail from "./Components/Admin/Products/Detail/ProductDetail";
 import { useAuth0 } from "@auth0/auth0-react";
 import ErrorRoute from "./Components/Error Route/ErrorRoute";
-import { useEffect, useState } from "react";
+import { useEffect /*, useState */} from "react";
 import * as ReactRedux from "react-redux";
 import {
   cleanUserLogin,
@@ -49,7 +49,7 @@ import ToDo from "./Components/Profile/Extras Admin/ToDo";
 import ReportBug from "./Components/Profile/Extras Admin/ReportBug";
 import ContactAdmin from "./Components/Profile/Extras Admin/ContactAdmin";
 import Comments from "./Components/Profile/Extras Admin/Comments";
-import { addToCart, setLogin } from "./redux/actions/Cart/CartAction";
+import { /*addToCart,*/ setLogin } from "./redux/actions/Cart/CartAction";
 import HomeSearch from "./Components/Home for Search/HomeSearch";
 import HistoryView from "./Components/History View/HistoryView";
 import HomeCategories from "./Components/Home Categories/HomeCategories";
@@ -64,7 +64,7 @@ function App() {
     (state) => state.userLoginReducer
   );
 
-  const [isLogin, setIsLogin] = useState(true);
+  // const [isLogin, setIsLogin] = useState(true);
 
   useEffect(() => {
     if (isAuthenticated) {
