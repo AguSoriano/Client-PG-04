@@ -131,83 +131,93 @@ function Detail() {
       {buy === false && (
         <div className={style.div}>
           {prodDetail.name ? (
-            <div className={style.style}>
-              <h1 className={style.titulo}>{prodDetail.name}</h1>
-              <img
-                className={style.img}
-                alt={prodDetail.name}
-                src={prodDetail.image ? prodDetail.image : img}
-              />
-              <p className={style.description}>{prodDetail.longDescription}</p>
-              <span className={style.p}>
-                {prodDetail.categories.map((cat) => (
-                  <p key={cat.id}>{cat.name}</p>
-                ))}
-              </span>
-              <section>
-                <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
-                {prodDetail.stock <= 0 ? (
-                  <></>
-                ) : (
-                  <>
-                    <label className={style.p} form="quantity">
-                      Cantidad:
-                    </label>
-                    <input
-                      className={style.input}
-                      type="number"
-                      name="cantidad"
-                      min="1"
-                      max={prodDetail.stock}
-                      onChange={change}
-                      value={quantity}
-                    />
-                  </>
-                )}
-                {prodDetail.stock > 0 ? (
-                  <h3 className={style.stock}>
-                    Stock disponible:{prodDetail.stock} <BsCheck2Circle />
-                  </h3>
-                ) : (
-                  <h3 className={style.stock}>Sin Stock</h3>
-                )}
+            <div className={style.detailStyle}>
+              {prodIsFav(prodDetail.id) ? (
+                <button
+                  className={style.b}
+                  onClick={() => removeFav1(prodDetail.id)}
+                >
+                  <FcLike size="2rem" color="red" border="white" />
+                </button>
+              ) : (
+                <button className={style.b} onClick={addFav1}>
+                  <AiOutlineHeart size="2rem" color="red" />
+                </button>
+              )}
+              <div className={style.nameSection}>
                 <Link className={style.link} to={"/"}>
                   <button className={style.button3}>
                     <BsArrowReturnLeft /> TIENDA
                   </button>
                 </Link>
-              </section>
-              <section>
-                <div className={style.context}>
+                <img
+                  alt={prodDetail.name}
+                  src={prodDetail.image ? prodDetail.image : img}
+                />
+              </div>
+              <div className={style.descSection}>
+                <h1>{prodDetail.name}</h1>
+                <section>
+                  <h4 className={style.precio}>${prodDetail.price}</h4>
+                  {prodDetail.stock > 0 ? (
+                    <h3 className={style.stock1}>
+                      Quedan: {prodDetail.stock} unidades <BsCheck2Circle />
+                    </h3>
+                  ) : (
+                    <h3 className={style.stock2}>Actualmente sin stock</h3>
+                  )}
+                  <h2>Descripción</h2>
+                  <p>{prodDetail.longDescription}</p>
+                  <h4>
+                    Categorías:{" "}
+                    <p>
+                      {prodDetail.categories.map((cat) => cat.name).join(", ")}
+                    </p>
+                  </h4>
+                </section>
+                <section>
                   {!isAuthenticated ||
                   !loginUser.email ||
                   !prodDetail.stock > 0 ? (
                     <></>
                   ) : (
                     <Link onClick={addCart} to={"/shop"}>
-                      <button className={style.button1}> Comprar </button>
+                      <button className={style.button1}>
+                        <h2>Comprar</h2>
+                      </button>
                     </Link>
                   )}
                   {prodDetail.stock <= 0 ? (
                     <></>
                   ) : (
-                    <button className={style.button} onClick={addCart}>
-                      Agregar al Carrito
-                    </button>
+                    <div className={style.inputDiv}>
+                      <label className={style.p} form="quantity">
+                        Cantidad:
+                      </label>
+                      <input
+                        className={style.input}
+                        type="number"
+                        name="cantidad"
+                        min="1"
+                        max={prodDetail.stock}
+                        onChange={change}
+                        value={quantity}
+                      />
+                    </div>
                   )}
-                </div>
-                {!isAuthenticated ? (
-                  <></>
-                ) : prodIsFav(prodDetail.id) ? (
-                  <button onClick={() => removeFav1(prodDetail.id)}>
-                    <FcLike size="2rem" color="red" border="white" />
-                  </button>
-                ) : (
-                  <button className={style.b} onClick={addFav1}>
-                    <AiOutlineHeart size="2rem" color="red" />
-                  </button>
-                )}
-              </section>
+                </section>
+                <section>
+                  <div className={style.context}>
+                    {prodDetail.stock <= 0 ? (
+                      <></>
+                    ) : (
+                      <button className={style.button} onClick={addCart}>
+                        Agregar al Carrito
+                      </button>
+                    )}
+                  </div>
+                </section>
+              </div>
             </div>
           ) : (
             <Loading />
@@ -242,7 +252,7 @@ function Detail() {
         </>
       ) : null}
 
-      <ShowReviews prodDetail={prodDetail} />
+      {prodDetail.name ? <ShowReviews prodDetail={prodDetail} /> : <></>}
     </div>
   );
 }

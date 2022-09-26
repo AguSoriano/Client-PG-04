@@ -30,10 +30,10 @@ export const editDetail = (id, loginUser, data) => {
   return async (dispatch) => {
     const prodEdited = {
       loginUser,
-      name: data.name.toLowerCase(),
+      name: data.name,
       image: data.image,
-      shortDescription: data.shortDescription.toLowerCase(),
-      longDescription: data.longDescription.toLowerCase(),
+      shortDescription: data.shortDescription,
+      longDescription: data.longDescription,
       stock: Number(data.stock),
       price: Number(data.price),
       category: data.category.map((cat) => cat.name),

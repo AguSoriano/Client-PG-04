@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import style from "./Sort.module.css";
 import {
-  OrderAlphabetical,
+  // OrderAlphabetical,
   OrderPrice,
 } from "../../redux/actions/Products/ProductsAction";
 import { setPageAct } from "../../redux/actions/Page/PageAction";
@@ -10,12 +10,12 @@ import { setPageAct } from "../../redux/actions/Page/PageAction";
 function Sort({ setOrder /*setPage*/ }) {
   const dispatch = useDispatch();
 
-  function handleSort(e) {
-    e.preventDefault();
-    dispatch(OrderAlphabetical(e.target.value));
-    setOrder(e.target.value);
-    dispatch(setPageAct(0));
-  }
+  // function handleSort(e) {
+  //   e.preventDefault();
+  //   dispatch(OrderAlphabetical(e.target.value));
+  //   setOrder(e.target.value);
+  //   dispatch(setPageAct(0));
+  // }
 
   function handleSortByPrice(e) {
     e.preventDefault();
