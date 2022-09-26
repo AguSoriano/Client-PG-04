@@ -10,7 +10,7 @@
 
 .mainCard {
   position: relative;
-  border: 2px solid grey;
+  /* border: 2px solid grey; */
 }
 
 .b {
@@ -39,7 +39,7 @@
 .mainCardFav > img {
   width: 350px;
   height: 300px;
-  border: 2px solid grey;
+  /* border: 2px solid grey; */
 }
 
 .mainCardFav > section {

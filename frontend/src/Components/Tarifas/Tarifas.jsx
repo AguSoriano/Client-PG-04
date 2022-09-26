@@ -13,7 +13,7 @@ function Tarifas() {
       </div>
       <div>
         <h2>💰 Costos de envio 💰</h2>
-        <p>El costo de envio minimo es de $200 😸</p>
+        <p>El costo de envio minimo es de $150 😸</p>
         <p>puede variar deacuerdo a la distancia a recorrer 🛵...</p>
       </div>
       <p>Disculpe las molestias 👩🏽‍🍳... ©CANEFOOD</p>
