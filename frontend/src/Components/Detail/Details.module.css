@@ -1,270 +1,256 @@
-
-
-
-.div{
-    
-    transition: all .6s ease-in-out;
-    width: 90%;
-    margin: auto;
-    border-radius: 15px;
-    padding: 1.5rem;
-   
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-   
-    
+.div {
+  transition: all 0.6s ease-in-out;
+  width: 90%;
+  margin: auto;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
- .img{
-    float:left;
-    width:60%;
-    display: flex;
-    flex-direction: row;
-    border-radius: 1rem;
-    box-shadow: 2px 2px 2px #000000;
-    width: 20rem;
-    height: 20rem;
- }
- .titulo{
-    font-style: normal;
-    margin-bottom: 2.5px;
-    font-weight: 800;
-    font-size: 150%;
-    line-height: 48px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.04em; 
- }
 
+.img {
+  float: left;
+  /* width: 60%; */
+  display: flex;
+  /* flex-direction: row; */
+  border-radius: 1rem;
+  box-shadow: 2px 2px 2px #000000;
+  width: 20rem;
+  height: 20rem;
+}
+.titulo {
+  font-style: normal;
+  margin-bottom: 2.5px;
+  font-weight: 800;
+  font-size: 150%;
+  line-height: 48px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+}
 
- .description{
-    width:40vw;
-    display: contents;
-    text-align: center;
-    margin-bottom: 0.2re;
-    margin-inline: 4rem;
-    font-weight: 500;
-    
-    /* color: rgb(0, 0, 0);
+.description {
+  width: 40vw;
+  display: contents;
+  text-align: center;
+  margin-bottom: 0.2re;
+  margin-inline: 4rem;
+  font-weight: 500;
+
+  /* color: rgb(0, 0, 0);
     padding: .4vh;
    
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px; */
 }
-.p{
-    width:30vw;
-    display: contents;
-    margin-bottom: 2rem;
-    font-weight:600 ;
-    font-variant: small-caps;
-   
+.p {
+  width: 30vw;
+  display: contents;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-variant: small-caps;
 }
-.stock{
-    color: #1CBE60;
-    font-weight: 300;
-    font-size: 20px;
-    margin-left: 20rem;
-    display: block;
+.stock {
+  color: #1cbe60;
+  font-weight: 300;
+  font-size: 20px;
+  margin-left: 20rem;
+  display: block;
 }
- .precio{
-    color:black;
-    font-size:larger;
-    margin-left: 33rem;
-    margin-bottom: 5rem;
- }
+.precio {
+  color: black;
+  font-size: larger;
+  margin-left: 33rem;
+  margin-bottom: 5rem;
+}
 
- .input{
-    width: 6rem;
-   background-color: #FAFBFC;
-   border-radius: 10px;
-   align-items: inherit;
-   position:relative;
-   margin-top: 2rem;
-   margin-bottom: 1rem;
-   align-items: center;
-
- }
-
-
+.input {
+  width: 6rem;
+  background-color: #fafbfc;
+  border-radius: 10px;
+  align-items: inherit;
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
 
 .button {
-    border: .2px solid (27,31,35,.15);
-    border-radius: 6px;
-    color: #e74c3c;
-    cursor: pointer;
-    display: inline;
-    font-family: -apple-system,system-ui,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-    font-size: 14px;
-    font-weight: 500;
-    justify-content: space-between;
-    margin-inline: 0.5rem;
-    padding: 6px 16px;
-    width: 12rem;
-    margin-left: 36rem;
-   }
-   
-   button:hover {
-    background-color: #F3F4F6;
-    text-decoration: none;
-    transition-duration: 0.5s
-   }
-   
- 
-   
-  
-   
-   .button1 {
-    align-items: center;
-    justify-items: center;
-    margin-bottom: 1rem;
-    background-color: #FAFBFC;
-    position:absolute;
-    border-radius: 6px;
-    box-shadow: #1E8449(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
-    color: #1E8449;
-    cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    padding: 6px 16px;
-    width: 12rem;
-    position: relative;
-   }
-   
-   .button1:hover {
-    background-color: #F3F4F6;
-    text-decoration: none;
-    transition-duration: 0.1s;
-    }
-   
-   .button1:disabled {
-    background-color: #FAFBFC;
-    border-color: rgba(27, 31, 35, 0.15);
-    color: #959DA5;
-    cursor: default;
-   }
-   
-   .button1:active {
-    background-color: #EDEFF2;
-    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-    transition: none 0s;
-   }
-   
-   .button1:focus {
-    outline: 1px transparent;
-   }
-   
-   .button1:before {
-    display: none;
-   }
-   
-   .button1:-webkit-details-marker {
-    display: none;
-   }
-   .button1 { 
-    align-items: center;
-    justify-items: center;
-    appearance: none;
-    position:relative;
-    margin-left: 35rem;
-    
-    background-color: #FAFBFC;
-    border: 1px solid #000000(27, 31, 35, 0.15);
-    border-radius: 6px;
-    box-shadow: #000000(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
-    color: #000000;
-    cursor: pointer;
-    display: inline-block;
-    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    list-style: none;
-    padding: 6px 16px;
-    position: relative;
-    
-    
-   }
-   
-   .button2:hover {
-    background-color: #F3F4F6;
-    text-decoration: none;
-    transition-duration: 0.1s;
-   }
-   
-   
-   .b{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    float:right;
-    margin-top: -3.5rem;
-    margin-right: 4rem;
-   }
-
-   .button3 {
-    align-items: center; 
-    appearance: none;
-    background-color: #fafbfc;
-    border: 1.5px solid #f39c12;
-    border-radius: 6px;
-    box-sizing: border-box;
-    cursor: pointer;
-    font-family: -apple-system,system-ui,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-    font-size: 14px;
-    font-weight: 500;
-    justify-items: center;
-    line-height: 20px;
-    list-style: none;
-    margin-bottom: 1rem;
-    margin-left: 35rem;
-    padding: 7px 20px;
-    text-decoration: none;
-    width: 14rem;
+  border: 0.2px solid (27, 31, 35, 0.15);
+  border-radius: 6px;
+  color: #e74c3c;
+  cursor: pointer;
+  display: inline;
+  font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji;
+  font-size: 14px;
+  font-weight: 500;
+  justify-content: space-between;
+  margin-inline: 0.5rem;
+  padding: 6px 16px;
+  width: 12rem;
+  margin-left: 36rem;
 }
 
+button:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+.button1 {
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 1rem;
+  background-color: #fafbfc;
+  position: absolute;
+  border-radius: 6px;
+  box-shadow: #1E8449(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #1e8449;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  width: 12rem;
+  position: relative;
+}
+
+.button1:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button1:disabled {
+  background-color: #fafbfc;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959da5;
+  cursor: default;
+}
+
+.button1:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button1:focus {
+  outline: 1px transparent;
+}
+
+.button1:before {
+  display: none;
+}
+
+.button1:-webkit-details-marker {
+  display: none;
+}
+.button1 {
+  align-items: center;
+  justify-items: center;
+  appearance: none;
+  position: relative;
+  margin-left: 35rem;
+
+  background-color: #fafbfc;
+  border: 1px solid #000000(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: #000000(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+}
+
+.button2:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.b {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin-top: -3.5rem;
+  margin-right: 4rem;
+}
+
+.button3 {
+  align-items: center;
+  appearance: none;
+  background-color: #fafbfc;
+  border: 1.5px solid #f39c12;
+  border-radius: 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, Segoe UI, Helvetica, Arial, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji;
+  font-size: 14px;
+  font-weight: 500;
+  justify-items: center;
+  line-height: 20px;
+  list-style: none;
+  margin-bottom: 1rem;
+  margin-left: 35rem;
+  padding: 7px 20px;
+  text-decoration: none;
+  width: 14rem;
+}
 
 .link {
-    text-decoration: none;
-    color: #000000;
-
+  text-decoration: none;
+  color: #000000;
 }
 
 .link:hover {
-    color: #000000;
+  color: #000000;
 }
 
 .button3:hover {
-    background-color: #F8F9F9;
-    text-decoration: none;
-    transition-duration: 0.1s;
+  background-color: #f8f9f9;
+  text-decoration: none;
+  transition-duration: 0.1s;
 }
-   /* payment */
+/* payment */
 
-   .payment {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-   }
+.payment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid black;
+}
 
-   .imgPayment {
-    width: 25vw;
-    float:left;
-    display: flex;
-    flex-direction: row;
-    border-radius: 1rem;
-    box-shadow: 2px 2px 2px #000000 
-   }
+.imgPayment {
+  width: 25vw;
+  float: left;
+  display: flex;
+  flex-direction: row;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 2px #000000;
+}
 
-   .descriptionPay{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 20%;
-    gap: 10px
-   }
-
+.descriptionPay {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20%;
+  gap: 10px;
+}

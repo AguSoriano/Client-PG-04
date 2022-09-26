@@ -1,7 +1,7 @@
 .buscar {
   display: flex;
   align-items: center;
-  height: 2rem;
+  height: 2.5rem;
   width: 90%;
 }
 
@@ -14,12 +14,17 @@
 
 .buscar > form > input {
   width: 100%;
-  height: 2rem;
+  height: 2.5rem;
   font-size: 18px;
   color: #000;
   border: none;
   background-color: white;
+  padding-left: 1rem;
 }
+.buscar > form > input:focus{
+  outline: 0;
+}
+
 .btn {
   border-left: 1px solid gray;
   border-top: none;
@@ -29,8 +34,8 @@
   align-items: center;
   justify-content: center;
   background-color: white;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   text-align: center;
   cursor: pointer;
 }

@@ -7,6 +7,7 @@ import { BiUser } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
 import * as ReactRedux from "react-redux";
 import caneDefaul from "../Img/PG0.png";
+import Categories from "./Categories";
 
 function Normal() {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -18,16 +19,20 @@ function Normal() {
   return (
     <div className={style.navBar}>
       <main className={style.logo}>
-        <img alt="cane" src={caneDefaul} onClick={() => navigate("/home")} />
+        <img alt="cane" src={caneDefaul} onClick={() => navigate("/")} />
       </main>
       <div>
         <SearchBar />
         <section className={style.links}>
-          <Link className={style.link} to={"/about"}>
-            Sobre Nosotros
-          </Link>
-          <Link className={style.link} to={"/home"}>
+          <Categories />
+          {/* <Link className={style.link} to={"/about"}>
+            Categorias
+          </Link> */}
+          {/* <Link className={style.link} to={"/home"}>
             Tienda
+          </Link> */}
+          <Link className={style.link} to={"/tarifas"}>
+            Costos y Tarifas
           </Link>
           <Link className={style.link} to={"/history"}>
             Historial

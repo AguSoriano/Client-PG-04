@@ -9,9 +9,9 @@ import { getCategories } from "../../redux/actions/Categories/CategoryAction";
 import { setPageAct } from "../../redux/actions/Page/PageAction";
 import style from "./Filter.module.css";
 
-function Filter() {
+function Filter({filtro}) {
   const dispatch = ReactRedux.useDispatch();
-  const [filtro, setFiltro] = useState("");
+  // const [filtro, setFiltro] = useState("");
 
   useEffect(() => {
     dispatch(getCategories());
@@ -19,12 +19,12 @@ function Filter() {
 
   // const categories = ReactRedux.useSelector((state) => state.categories);
 
-  const handleSelect = (e) => {
-    e.preventDefault();
-    setFiltro(e.target.value);
-    dispatch(filterBy(e.target.value));
-    dispatch(setPageAct(0));
-  };
+  // const handleSelect = (e) => {
+  //   e.preventDefault();
+  //   setFiltro(e.target.value);
+  //   dispatch(filterBy(e.target.value));
+  //   dispatch(setPageAct(0));
+  // };
 
   const handleSelect2 = (e) => {
     e.preventDefault();
@@ -34,17 +34,17 @@ function Filter() {
 
   return (
     <div className={style.fMain}>
-      <select className={style.select1} onChange={(e) => handleSelect(e)}>
+      {/* <select className={style.select1} onChange={(e) => handleSelect(e)}>
         <option value="all">CATEGORIAS</option>
         <option value="all">Todos</option>
         <option value="medallon">Medallones</option>
         <option value="tarta">Tartas</option>
         <option value="pasta rellena">Pastas</option>
         <option value="bebida">Bebidas</option>
-      </select>
+      </select> */}
       {filtro === "medallon" ? (
         <select className={style.select2} onChange={(e) => handleSelect2(e)}>
-          <option value="all">SUBCATEGORIAS</option>
+          <option value="all">CATEGORIAS</option>
           <option value="all">Todos</option>
           <option value="soja">Soja</option>
           <option value="garbanzo">Garbanzo</option>

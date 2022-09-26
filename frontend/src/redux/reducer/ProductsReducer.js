@@ -142,9 +142,14 @@ export default function productsReducer(
       return {
         ...state,
         product:
+          // payload === "all"
+          //   ? state.productCopy2
+          //   : state.productCopy2.filter((prod) =>
+          //       prod.categories.some((cat) => cat.name === payload)
+          //     ),
           payload === "all"
-            ? state.productCopy2
-            : state.productCopy2.filter((prod) =>
+            ? state.productCopy
+            : state.productCopy.filter((prod) =>
                 prod.categories.some((cat) => cat.name === payload)
               ),
       };

@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from "./Components/Home/Home";
+// import Home from "./Components/Home/Home";
 import NavBar from "./Components/NavBar/NavBar";
 import Detail from "./Components/Detail/Detail";
 import LandingPage from "./Components/LandingPage/LandinPage";
@@ -53,6 +53,9 @@ import { addToCart, setLogin } from "./redux/actions/Cart/CartAction";
 import HomeSearch from "./Components/Home for Search/HomeSearch";
 import HistoryView from "./Components/History View/HistoryView";
 import HomeCategories from "./Components/Home Categories/HomeCategories";
+import HomeFilters from "./Components/Home for filters/HomeFilters";
+import Tarifas from "./Components/Tarifas/Tarifas";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
@@ -117,6 +120,20 @@ function App() {
           path="/"
           element={
             !isAuthenticated ? (
+              <HomeCategories />
+            ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
+              <Navigate to="/admin" />
+            ) : !loginUser.isDisable ? (
+              <HomeCategories />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        <Route
+          path="caneabout"
+          element={
+            !isAuthenticated ? (
               <LandingPage />
             ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
               <Navigate to="/admin" />
@@ -140,6 +157,18 @@ function App() {
           }
         />
         <Route
+          path="tarifas"
+          element={
+            !isAuthenticated ? (
+              <Tarifas />
+            ) : !loginUser.isDisable ? (
+              <Tarifas />
+            ) : (
+              <Navigate to="/userdisable" />
+            )
+          }
+        />
+        {/* <Route
           path="home"
           element={
             !isAuthenticated ? (
@@ -152,16 +181,16 @@ function App() {
               <Navigate to="/userdisable" />
             )
           }
-        />
+        /> */}
         <Route
-          path="homecategories"
+          path="category/:value/:subvalue"
           element={
             !isAuthenticated ? (
-              <HomeCategories />
+              <HomeFilters />
             ) : loginUser.rol === "admin" || loginUser.rol === "mododios" ? (
               <Navigate to="/admin" />
             ) : !loginUser.isDisable ? (
-              <HomeCategories />
+              <HomeFilters />
             ) : (
               <Navigate to="/userdisable" />
             )
@@ -597,6 +626,7 @@ function App() {
         <Route path="/userdisable" element={<UserDisable />} />
         <Route path="/*" element={<ErrorRoute />} />
       </Routes>
+      <Footer path="/" element={Footer} />
     </div>
   );
 }

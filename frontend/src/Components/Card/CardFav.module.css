@@ -5,6 +5,7 @@
   gap: 3rem;
   align-items: center;
   color: black;
+  background-color: rgba(22, 149, 88, 0.5);
 }
 
 .mainCard {
@@ -13,7 +14,7 @@
 }
 
 .b {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   border: none;
@@ -24,6 +25,7 @@
   right: 0px;
   top: -5px;
   z-index: 2;
+  background-color: rgba(22, 149, 88, 0.5);
 }
 
 .mainCard:hover > .b {

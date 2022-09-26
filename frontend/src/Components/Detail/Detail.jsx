@@ -95,14 +95,14 @@ function Detail() {
         timer: "2500",
       });
     }
-    if(quantity > prodDetail.stock){
+    if (quantity > prodDetail.stock) {
       return swal({
         title: "Cuidado",
         text: "Stock insuficiente",
         icon: "error",
         button: "Aceptar",
         timer: "2500",
-      })
+      });
     }
 
     // dispatch(addToCart(prodDetail, user));
@@ -133,120 +133,69 @@ function Detail() {
           {prodDetail.name ? (
             <div className={style.style}>
               <h1 className={style.titulo}>{prodDetail.name}</h1>
-
               <img
                 className={style.img}
                 alt={prodDetail.name}
                 src={prodDetail.image ? prodDetail.image : img}
               />
-
               <p className={style.description}>{prodDetail.longDescription}</p>
               <span className={style.p}>
                 {prodDetail.categories.map((cat) => (
                   <p key={cat.id}>{cat.name}</p>
                 ))}
               </span>
-
               <section>
-
-
                 <h4 className={style.precio}>Precio: ${prodDetail.price}</h4>
                 {prodDetail.stock <= 0 ? (
-
                   <></>
                 ) : (
-                <label className={style.p} form="quantity">
-                  Cantidad:
-                  <input
-                    className={style.input}
-                    type="number"
-                    name="cantidad"
-                    min="1"
-                    max={prodDetail.stock}
-                    onChange={change}
-                    value={quantity}
-                    ></input>
-                    
-                  {prodDetail.stock <= 0 ? (
-                  <></>
-                ) 
-                : (
-                   <h3 className={style.stock}>
-                    Stock disponible:{prodDetail.stock} <BsCheck2Circle />
-                  </h3>
-                )}
+                  <>
+                    <label className={style.p} form="quantity">
+                      Cantidad:
                     </label>
+                    <input
+                      className={style.input}
+                      type="number"
+                      name="cantidad"
+                      min="1"
+                      max={prodDetail.stock}
+                      onChange={change}
+                      value={quantity}
+                    />
+                  </>
                 )}
-
-              {/* <h5 className={style.stock}>
-               Stock disponible:{prodDetail.stock} <BsCheck2Circle />
-               </h5> */}
-
-
-               
-                  {/* {prodDetail.stock <= 0 ? (
-                  <></>
-                ) 
-                : (
-                   <h3 className={style.stock}>
+                {prodDetail.stock > 0 ? (
+                  <h3 className={style.stock}>
                     Stock disponible:{prodDetail.stock} <BsCheck2Circle />
                   </h3>
-                )}  */}
-
-                <Link className={style.link} to={"/home"}>
+                ) : (
+                  <h3 className={style.stock}>Sin Stock</h3>
+                )}
+                <Link className={style.link} to={"/"}>
                   <button className={style.button3}>
-                    {" "}
                     <BsArrowReturnLeft /> TIENDA
                   </button>
                 </Link>
               </section>
-
               <section>
                 <div className={style.context}>
-                  {/* {!isAuthenticated || !loginUser.email || !prodDetail.stock > 0 ? (
+                  {!isAuthenticated ||
+                  !loginUser.email ||
+                  !prodDetail.stock > 0 ? (
                     <></>
                   ) : (
                     <Link onClick={addCart} to={"/shop"}>
                       <button className={style.button1}> Comprar </button>
                     </Link>
-                  )} */}
-
-                {prodDetail.stock <= 0 ? (
-                <button type="button" className={style.button} disabled="disabled">
-                {" "}
-                No hay Stock{" "}
-                </button>
-                  ) : 
-                  // !isAuthenticated || !loginUser.email ? (
-                  //   <button
-                  //     className={style.button}
-                  //     onClick={() => loginWithRedirect()}
-                  //   >
-                  //     {" "}
-                  //     Agregar al Carrito{" "}
-                  //   </button>
-                  // ) : prodDetail.stock <= 0 ? (
-                  //   <button type="button" className={style.button} disabled="disabled">
-                  //   {" "}
-
-                  //   No hay Stock{" "}
-                  //   </button>):
-                    (
-                      <Link onClick={addCart} to={"/shop"}>
-                      <button className={style.button}>
-                      {" "}
-                      Agregar al Carrito{" "}
+                  )}
+                  {prodDetail.stock <= 0 ? (
+                    <></>
+                  ) : (
+                    <button className={style.button} onClick={addCart}>
+                      Agregar al Carrito
                     </button>
-                    </Link>
-                  )} 
-
-               
-                      
-               
-
-
+                  )}
                 </div>
-
                 {!isAuthenticated ? (
                   <></>
                 ) : prodIsFav(prodDetail.id) ? (
@@ -265,7 +214,6 @@ function Detail() {
           )}
         </div>
       )}
-
       {buy === true && isAuthenticated && loginUser.id ? (
         <div className={style.payment}>
           <div className={style.descriptionPay}>
@@ -292,7 +240,7 @@ function Detail() {
             Login
           </button>
         </>
-      ) : null} 
+      ) : null}
 
       <ShowReviews prodDetail={prodDetail} />
     </div>

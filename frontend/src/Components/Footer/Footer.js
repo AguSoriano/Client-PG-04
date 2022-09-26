@@ -157,6 +157,8 @@ const Footer = () => {
                         
                         <StyledText href="/privacy">Política de privacidad</StyledText>
                         <StyledText href="/terms">Términos de uso</StyledText>
+                        <StyledText href="/caneabout">Cane-Food</StyledText>
+                        <StyledText href="/about">Los creadores</StyledText>
                     </FooterColumn>
                     <FooterColumn>
                     <FooterTitle>Contacto</FooterTitle>
