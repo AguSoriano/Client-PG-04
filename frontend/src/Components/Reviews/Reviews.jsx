@@ -32,7 +32,7 @@ export default function App() {
     .then(res=>{
       console.log(res);
     }).catch(err=> console.log(err));
-    navigate("/home")
+    navigate("/")
     swal({
       title: "Guardado",
       text: "Muchas gracias, será redirigido a la tienda",
