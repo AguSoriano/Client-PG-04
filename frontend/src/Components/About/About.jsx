@@ -22,7 +22,7 @@ function App() {
           pais='Argentina'
           imagen='LuciaCostamagna'
           cargo='Full-Stack'
-          testimonio='Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones en Henry, cambió mi vida y ahora se que puedo lograr lo que sea que me proponga.'
+          testimonio='La programación me desafía y me hace crecer día a día. Tengo siempe objetivos claros y me esfuerzo  por conseguirlos y dar lo mejor de mi en ellos. Me llampo Lucia, soy docente y Full Stack Developer y formé parte del equipo de Front-End en ente proyecto.'
           linkedin="https://www.linkedin.com/in/luciacostamagna/"
           github="https://github.com/Lucostamagna" />
 
