@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
-import Footer from "../Footer/Footer";
 import * as ReactRedux from "react-redux";
 import { getProducts } from "../../redux/actions/Products/ProductsAction";
 import { weekProd as destacados } from "../../redux/actions/WeekProducts/WeekProdAction";
@@ -12,10 +11,13 @@ import all from "../Img/all.jpg";
 import medallon from "../Img/Medallones.jpg";
 import style from "./HomeCategories.module.css";
 import Loading from "../Loading/Loading";
-import { Link } from "react-router-dom";
 import CardCategories from "./CardCategories";
 import { Carousel } from "antd";
 import CardFav from "../Card/CardFav";
+import billetera1 from "../Img/billetera1.jpg";
+import billetera2 from "../Img/billetera4.png";
+import billetera3 from "../Img/mercadopago2.png";
+import billetera5 from "../Img/retiro1.png";
 
 const contentStyle = {
   height: "160px",
@@ -41,6 +43,30 @@ function HomeCategories() {
 
   return (
     <div className={style.main}>
+      <section>
+        <Carousel autoplay>
+          <img
+            src={billetera1}
+            alt="publishing 1"
+            className={style.publishing}
+          />
+          <img
+            src={billetera2}
+            alt="publishing 2"
+            className={style.publishing}
+          />
+          <img
+            src={billetera3}
+            alt="publishing 3"
+            className={style.publishing}
+          />
+          <img
+            src={billetera5}
+            alt="publishing 5"
+            className={style.publishing}
+          />
+        </Carousel>
+      </section>
       <section className={style.weekSect}>
         <h1 className={style.Text}>LO MAS DESTACADO</h1>
         {weekProd.length > 1 ? (
