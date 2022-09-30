@@ -22,7 +22,7 @@ function App() {
           pais='Argentina'
           imagen='LuciaCostamagna'
           cargo='Full-Stack'
-          testimonio='La programación me desafía y me hace crecer día a día. Tengo siempe objetivos claros y me esfuerzo  por conseguirlos y dar lo mejor de mi en ellos. Me llampo Lucia, soy docente y Full Stack Developer y formé parte del equipo de Front-End en ente proyecto.'
+          testimonio='La programación me desafía y me hace crecer día a día. Tengo siempre objetivos claros y me esfuerzo  por conseguirlos y dar lo mejor de mi en ellos. Me llamo Lucia, soy docente y Full Stack Developer y formé parte del equipo de Front-End en este proyecto.'
           linkedin="https://www.linkedin.com/in/luciacostamagna/"
           github="https://github.com/Lucostamagna" />
 
