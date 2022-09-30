@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 4rem;
   width: 100%;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
   margin-bottom: 3rem;
 }
 
@@ -51,4 +51,9 @@
   gap: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.publishing{
+  /* width: 30rem; */
+  height: 32rem;
 }
