@@ -104,7 +104,7 @@ function HomeCategories() {
         <></>
       )}
       <section className={style.weekSect}>
-        <h1 className={style.Text}>Lo mas destacado</h1>
+        <h1 className={style.Text}>Destacados</h1>
         {weekProd.length > 1 ? (
           <div className={style.weekProd}>
             <Carousel autoplay>
