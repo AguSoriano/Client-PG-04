@@ -9,9 +9,11 @@ import {
 } from "../../redux/actions/Favorites/FavoritesAction";
 import { FcLike } from "react-icons/fc";
 import { AiOutlineHeart } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 function CardFav({ name, id, img, price, shortDesc, prodDetail }) {
   const dispatch = ReactRedux.useDispatch();
+  const navigate = useNavigate();
   const { favorites } = ReactRedux.useSelector(
     (state) => state.favoriteReducer
   );
