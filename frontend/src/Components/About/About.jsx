@@ -74,7 +74,7 @@ function App() {
 
         <Testimonio
           nombre="Eduardo Hidalgo"
-          pais="Venezuela"
+          pais="Argentina"
           imagen="EduardoHidalgo"
           cargo="Full-Stack"
           testimonio="Los desafíos son mi pasión. Soy Eduardo Hidalgo, ingeniero químico y actualmente Desarrollador Full Stack. Me caracterizo por ser curioso y detallista, lo cual me impulsa a profundizar en todo lo que hago. Todo proyecto implica una gran responsabilidad y compromiso, pero deja una enorme satisfacción al adquirir nuevos conocimientos. Mi mayor contribución en este proyecto se centró en el backend. Donde compartí con un gran equipo de trabajo y mi mayor aprendizaje fue en la integración de medios de pago."
