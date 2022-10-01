@@ -18,6 +18,7 @@ import billetera1 from "../Img/billetera1.jpg";
 import billetera2 from "../Img/billetera4.png";
 import billetera3 from "../Img/mercadopago2.png";
 import billetera5 from "../Img/retiro1.png";
+import billetera6 from "../Img/billetera6.jpeg";
 
 const contentStyle = {
   height: "160px",
@@ -62,6 +63,11 @@ function HomeCategories() {
           />
           <img
             src={billetera5}
+            alt="publishing 6"
+            className={style.publishing}
+          />
+                    <img
+            src={billetera6}
             alt="publishing 5"
             className={style.publishing}
           />
