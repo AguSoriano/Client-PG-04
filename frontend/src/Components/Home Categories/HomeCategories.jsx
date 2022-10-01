@@ -66,7 +66,7 @@ function HomeCategories() {
             alt="publishing 6"
             className={style.publishing}
           />
-                    <img
+          <img
             src={billetera6}
             alt="publishing 5"
             className={style.publishing}

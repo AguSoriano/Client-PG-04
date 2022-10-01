@@ -13,7 +13,7 @@ function App() {
           pais='Argentina'
           imagen='AgustinSoriano'
           cargo='Full-Stack'
-          testimonio='Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones en Henry, cambió mi vida y ahora se que puedo lograr lo que sea que me proponga.'
+          testimonio='Me defino a mí mismo cómo una persona proactiva, ambiciosa, con fuertes valores morales, con un excelente manejo de las relaciones interpersonales y una buena dinámica de trabajo en equipo, orientada hacia el alcance de los objetivos propuestos.'
           linkedin="https://www.linkedin.com/in/agustin-soriano-027876119/"
           github="https://github.com/AguSoriano" />
 
@@ -31,7 +31,15 @@ function App() {
           pais='Argentina'
           imagen='FedericoEloyFucci'
           cargo='Full-Stack'
-          testimonio='Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones en Henry, cambió mi vida y ahora se que puedo lograr lo que sea que me proponga.'
+          testimonio='Me llamo Federico y actualmente estoy llevando adelante un objectivo claro: insertarme en el mundo IT. 
+          Es por eso que di mis primeros pasos como "Desarrollador Web Full Stack" de la mano de Henry. 
+          Actualmente estoy finalizando mis estudios, para lo cual con mi grupo hemos desarrollado un e-commerce para mi actual trabajo, un microemprendimiento de medallones vegetarianos. Utilizamos para su desarrollo tecnologias como React, Redux, Node Js., Express, sequelice. 
+          
+          Esto y pasadas experiencias me han dado grandes capacidades en toma de desiciones y liderazgo, asi como tambien la necesidad de ponerme a prueba en situaciones cambiantes y adquirir conocimientos escenciales por mi cuenta. 
+          
+          Me adapto rapido, tengo verdadero amor por el conocimiento y me gustan los nuevos desafios.
+          
+          Encontre en el desarrollo web y el universo IT mi verdadera pasión.'
           linkedin="https://www.linkedin.com/in/federico-eloy-fucci-87664357/"
           github="https://github.com/federicofucci21" />
 
@@ -76,7 +84,9 @@ function App() {
           pais='Venezuela'
           imagen='CarlosPerez'
           cargo='Full-Stack'
-          testimonio='Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones en Henry, cambió mi vida y ahora se que puedo lograr lo que sea que me proponga.'
+          testimonio='Hola.... Mi nombre es Carlos, conocer a fondo Javascript, react, redux, entre tantas cosas que aprendí en estos últimos días, me fortalece como profesional del área y ya tengo muchas ganas de aplicar lo aprendido. Me encanta el desarrollo de soluciones que den respuesta a problemas de gestión o control de tareas u oficios. 
+
+          En el proyecto trabajé en ambos ambientes y fue una experiencia notable, tanto en el aspecto de desarrollador, como ser humano. Trabajar con personas a quienes les llevo muchos  años y mantenerme al ritmo de ellos, me da mucha satisfacción y orgullo. Esto y mi familia me da mucha energía para vivir y continuar luchando.'
           linkedin="https://www.linkedin.com/in/cperlovan/"
           github="https://github.com/cperlovan" />
       </div>
