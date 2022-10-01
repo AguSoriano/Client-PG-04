@@ -8,6 +8,10 @@
   background-color: rgba(22, 149, 88, 0.5);
 }
 
+.mainCardFav:hover {
+  cursor: pointer;
+}
+
 .mainCard {
   position: relative;
   /* border: 2px solid grey; */
