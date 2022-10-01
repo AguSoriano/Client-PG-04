@@ -127,7 +127,7 @@ function Detail() {
   };
 
   return (
-    <div>
+    <div className={style.principal}>
       {buy === false && (
         <div className={style.div}>
           {prodDetail.name ? (
