@@ -43,9 +43,8 @@ function App() {
           pais="Argentina"
           imagen="FedericoEloyFucci"
           cargo="Full-Stack"
-          testimonio='Me llamo Federico y actualmente estoy llevando adelante un objectivo claro: insertarme en el mundo IT. 
-          Es por eso que di mis primeros pasos como "Desarrollador Web Full Stack" de la mano de Henry. 
-          Actualmente estoy finalizando mis estudios, para lo cual con mi grupo hemos desarrollado un e-commerce para mi actual trabajo, un microemprendimiento de medallones vegetarianos. Utilizamos para su desarrollo tecnologias como React, Redux, Node Js., Express, sequelice. 
+          testimonio='Me llamo Federico y actualmente estoy llevando adelante un objectivo claro: insertarme en el mundo IT.  
+          Hemos desarrollado este e-commerce para mi actual trabajo, un microemprendimiento de medallones vegetarianos. Utilizamos para su desarrollo tecnologias como React, Redux, Node Js., Express, sequelice. 
           Esto y pasadas experiencias me han dado grandes capacidades en toma de desiciones y liderazgo, asi como tambien la necesidad de ponerme a prueba en situaciones cambiantes y adquirir conocimientos escenciales por mi cuenta.           
           Me adapto rapido, tengo verdadero amor por el conocimiento y me gustan los nuevos desafios.          
           Encontre en el desarrollo web y el universo IT mi verdadera pasión.'
