@@ -18,3 +18,12 @@
   font-weight: 600;
   background-color:#D5F5E3;
 }
+
+.p3{
+  font-family: "Latin Modern Roman";
+font-style: italic;
+margin-top: -2.3rem;
+color: black;
+font-weight: 600;
+/* background-color:#D5F5E3; */
+}
