@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .mainUser > div > div {

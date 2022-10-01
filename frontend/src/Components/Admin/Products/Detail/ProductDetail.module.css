@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .mainD > div > div {
