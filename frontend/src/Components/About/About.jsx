@@ -87,7 +87,7 @@ function App() {
           pais="Argentina"
           imagen="SofiaGonzalez"
           cargo="Full-Stack"
-          testimonio="Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones en Henry, cambió mi vida y ahora se que puedo lograr lo que sea que me proponga."
+          testimonio="Hola, soy Sofía. Dando mis primeros pasos en el mundo del desarrollo web, con pensamiento creativo, inclinación hacia la resolución de problemas y orientación al cliente. En el proyecto me desarrolle principalmente en el Back-End, colaborando en la parte del Front cuando fue necesario."
           linkedin="https://www.linkedin.com/in/sofia-gonzalez-zapiola/"
           github="https://github.com/ChofGonzalez"
         />
