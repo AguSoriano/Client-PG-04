@@ -11,29 +11,13 @@ function HistoryView() {
     (state) => state.prodDetailReducer
   );
 
-  function removeDuplicates(originalArray, prop) {
-    const newArray = [];
-    const lookupObject = {};
-
-    for (var i in originalArray) {
-      lookupObject[originalArray[i][prop]] = originalArray[i];
-    }
-
-    for (i in lookupObject) {
-      newArray.push(lookupObject[i]);
-    }
-    return newArray;
-  }
-
-  const history2 = removeDuplicates(history, "id");
-
   return (
     <div className={style.main}>
       <h2>Tu Historial 📂</h2>
       <section className={style.prodSection}>
-        {history2.length > 1 ? (
+        {history.length > 1 ? (
           <div className={style.prod}>
-            {history2.map((prod) => (
+            {history.map((prod) => (
               <Card
                 key={prod.id}
                 id={prod.id}
@@ -52,7 +36,7 @@ function HistoryView() {
           <h2>No hay nada en tu historial</h2>
         )}
       </section>
-      {history2.length > 1 ? (
+      {history.length > 1 ? (
         <button onClick={() => dispatch(clearHist())} className={style.btn}>
           Limpiar Historial
         </button>

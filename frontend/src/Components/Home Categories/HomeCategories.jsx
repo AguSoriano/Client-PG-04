@@ -39,6 +39,9 @@ function HomeCategories() {
   const { product } = ReactRedux.useSelector((state) => state.productsReducer);
   const { weekProd } = ReactRedux.useSelector((state) => state.weekProdReducer);
   const { page } = ReactRedux.useSelector((state) => state.pageReducer);
+  const { history } = ReactRedux.useSelector(
+    (state) => state.prodDetailReducer
+  );
 
   const prodPage = product.slice(page, page + 6);
 
@@ -73,8 +76,35 @@ function HomeCategories() {
           />
         </Carousel>
       </section>
+      {history.length ? (
+        <section className={style.weekSect}>
+          <h1 className={style.Text}>Basado en tu última visita</h1>
+          <div className={style.weekProd}>
+            <Carousel autoplay>
+              {product
+                .filter(
+                  (p) => p.categories[0].name === history[0].categories[0].name
+                )
+                .slice(0, 6)
+                .map((prod) => (
+                  <CardFav
+                    key={prod.id}
+                    name={prod.name}
+                    id={prod.id}
+                    img={prod.image}
+                    price={prod.price}
+                    shortDesc={prod.shortDescription}
+                    prodDetail={prod}
+                  />
+                ))}
+            </Carousel>
+          </div>
+        </section>
+      ) : (
+        <></>
+      )}
       <section className={style.weekSect}>
-        <h1 className={style.Text}>LO MAS DESTACADO</h1>
+        <h1 className={style.Text}>Lo mas destacado</h1>
         {weekProd.length > 1 ? (
           <div className={style.weekProd}>
             <Carousel autoplay>
@@ -96,7 +126,7 @@ function HomeCategories() {
         )}
       </section>
       <section className={style.prodSection}>
-        <h1 className={style.Text}>CATEGORÍAS</h1>
+        <h1 className={style.Text}>Categorias</h1>
         <div>
           <CardCategories
             name="Medallones"
