@@ -1,3 +1,8 @@
+.mainDi{
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
 .mainDi > form {
   scale: 1.1;
 }
