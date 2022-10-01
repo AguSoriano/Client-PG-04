@@ -10,13 +10,15 @@
   width: 100%;
   font-size: 28px;
   padding: 8px 5px;
-  text-align: center;
-  text-transform: uppercase;
+  text-align: left;
+  margin-left: 10%;
+  /* text-transform: uppercase; */
   text-rendering: optimizeLegibility;
-  color: #e0dfdc;
-  background-color: rgb(127, 79, 36);
+  /* color: #e0dfdc; */
+  color: rgb(127, 79, 36);
+  /* background-color: rgb(127, 79, 36); */
   letter-spacing: 0.1em;
-  font-weight: 900;
+  /* font-weight: 900; */
 }
 
 .prodSection {
