@@ -17,8 +17,8 @@ function LandingPage() {
 
   return (
     <div>
-      <p className={style.p}> Comprá y disfrutá </p>
-      <p className={style.p2}> Tienda de productos naturales y saludables </p>
+      <p className={style.p}> Cané Medallones Vegetarianos </p>
+      {/* <p className={style.p2}> Tienda de productos naturales y saludables </p> */}
       <p className={style.p3}>
         {" "}
         “Cané Medallones Vegetarianos es un emprendimiento familiar de la ciudad
@@ -43,10 +43,6 @@ function LandingPage() {
           width={1200}
           ifCard={false}
         />
-      </div>
-
-      <div className={style.footer}>
-        <Footer />
       </div>
     </div>
   );
