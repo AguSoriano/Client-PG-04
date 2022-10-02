@@ -43,11 +43,9 @@ function App() {
           pais="Argentina"
           imagen="FedericoEloyFucci"
           cargo="Full-Stack"
-          testimonio='Me llamo Federico y actualmente estoy llevando adelante un objectivo claro: insertarme en el mundo IT.  
-          Hemos desarrollado este e-commerce para mi actual trabajo, un microemprendimiento de medallones vegetarianos. Utilizamos para su desarrollo tecnologias como React, Redux, Node Js., Express, sequelice. 
-          Esto y pasadas experiencias me han dado grandes capacidades en toma de desiciones y liderazgo, asi como tambien la necesidad de ponerme a prueba en situaciones cambiantes y adquirir conocimientos escenciales por mi cuenta.           
-          Me adapto rapido, tengo verdadero amor por el conocimiento y me gustan los nuevos desafios.          
-          Encontre en el desarrollo web y el universo IT mi verdadera pasión.'
+          testimonio="Me llamo Federico y actualmente estoy llevando adelante un objectivo claro: insertarme en el mundo IT.  
+          Me adapto rapido, tengo verdadero amor por el conocimiento y me gustan los nuevos desafios.
+          Encontre en el desarrollo web y el universo IT mi verdadera pasión."
           linkedin="https://www.linkedin.com/in/federico-eloy-fucci-87664357/"
           github="https://github.com/federicofucci21"
         />
