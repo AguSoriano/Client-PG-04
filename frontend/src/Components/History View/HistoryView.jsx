@@ -15,7 +15,7 @@ function HistoryView() {
     <div className={style.main}>
       <h2>Tu Historial 📂</h2>
       <section className={style.prodSection}>
-        {history.length > 1 ? (
+        {history.length > 0 ? (
           <div className={style.prod}>
             {history.map((prod) => (
               <Card
