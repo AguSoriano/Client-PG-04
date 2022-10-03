@@ -3,6 +3,7 @@ import { Dropdown, Menu, Space } from "antd";
 import { useNavigate } from "react-router-dom";
 import { setPageAct } from "../../redux/actions/Page/PageAction";
 import * as ReactRedux from "react-redux";
+import { getProducts } from "../../redux/actions/Products/ProductsAction";
 
 function Categories() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function Categories() {
 
   const handleClick = ({ key }) => {
     navigate(`/category/${key}`);
+    dispatch(getProducts())
     dispatch(setPageAct(0));
   };
   const menu = (

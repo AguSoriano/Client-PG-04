@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import Card from "../Card/Card";
-import Footer from "../Footer/Footer";
 import * as ReactRedux from "react-redux";
 import { getProducts } from "../../redux/actions/Products/ProductsAction";
 import Sort from "../Sort/Sort";
 import Pagination from "../Pagination/Pagination";
 import style from "./Home.module.css";
 import { useParams } from "react-router-dom";
-import Filter from "../Filter/Filter";
 
 function HomeFilters() {
   const { value, subvalue } = useParams();
@@ -48,7 +46,6 @@ function HomeFilters() {
       <section>
         {prodFilter.length > 1 ? (
           <div className={style.filters}>
-            <Filter filtro={value} />
             <Sort setOrder={setOrder} />
           </div>
         ) : (

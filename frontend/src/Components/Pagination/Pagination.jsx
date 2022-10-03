@@ -15,9 +15,11 @@ function Pagination({ /*page, setPage,*/ products }) {
 
   const goTo = (number) => {
     if (number === 0) {
+      window.scrollTo(0, 0);
       return dispatch(setPageAct(0));
     }
     dispatch(setPageAct(6 * number));
+    window.scrollTo(0, 0);
   };
 
   const actualPage = (num) => {
@@ -32,12 +34,14 @@ function Pagination({ /*page, setPage,*/ products }) {
   const next = () => {
     if (page < products.length - 6) {
       dispatch(setPageAct(page + 6));
+      window.scrollTo(0, 0);
     }
   };
 
   const prev = () => {
     if (page > 0) {
       dispatch(setPageAct(page - 6));
+      window.scrollTo(0, 0);
     }
   };
   return (
