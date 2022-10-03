@@ -36,7 +36,7 @@ function HistoryView() {
           <h2>No hay nada en tu historial</h2>
         )}
       </section>
-      {history.length > 1 ? (
+      {history.length > 0 ? (
         <button onClick={() => dispatch(clearHist())} className={style.btn}>
           Limpiar Historial
         </button>
