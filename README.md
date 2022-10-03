@@ -99,4 +99,4 @@ After:
 
 If you don't want to run your personal back-end, you can use our back skipping the step "Cloning the back-end" and the step number 3 on "Preparing the front-end".
 
-## If you want more click [here](https://www.cane-food.vercel.app/) and go to the deploy
+## If you want more click [here](https://cane-food.vercel.app/) and go to the deploy
